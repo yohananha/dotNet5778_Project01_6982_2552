@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BE
 {
-    public class Nanny
+    class Nanny
     {
         public long nannyId { get; set; }
         public string lastNameNanny { get; set; }

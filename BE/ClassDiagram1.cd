@@ -22,10 +22,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="BE.Nanny">
-    <Position X="5" Y="2.25" Width="1.5" />
+    <Position X="4.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAABAAAAAKAAAAAEBsAAgAAIDEGAgAAIAAAABAQAACA=</HashCode>
       <FileName>Nanny.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.Contract">
+    <Position X="6.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAgAAAAEAAQAAEBAAAAAAAAAAAIAAAAAAAAQQIgAA=</HashCode>
+      <FileName>Contract.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
