@@ -10,7 +10,7 @@ namespace BE
     {
         public int idContract { get; set; }
         public long idNanny { get; set; }
-        public long idKid { get; set; }
+        public long idChild { get; set; }
         public bool isMet { get; set; }
         public bool isContract { get; set; }
         public double salaryPerHour { get; set; }
