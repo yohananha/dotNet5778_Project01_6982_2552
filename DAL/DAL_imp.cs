@@ -127,7 +127,7 @@ namespace DAL
             if (_mother==null)
                 throw new Exception("Mother is not exist in system");
             deleteAllContrctMother(idMotherDel);
-
+            DataSource.motherList.Remove(_mother);
         }
 
         //metod 
