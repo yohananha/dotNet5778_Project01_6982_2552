@@ -8,8 +8,8 @@ namespace BE
 {
     class Child
     {
-        public int idMom { get; set; }
-        public int idChild { get; set; }
+        public long idMom { get; set; }
+        public long idChild { get; set; }
         public string firstName { get; set; }
         public DateTime birthdayKid { get; set; }
         public bool isSpecialNeed { get; set; }
