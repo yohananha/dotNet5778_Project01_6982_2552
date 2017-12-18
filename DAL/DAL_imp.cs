@@ -14,10 +14,10 @@ namespace DAL
         
         public void addChild(Child child)
         {
-            Child _child=
+            
         }
 
-        Child IDAL.getChild(long idChild)
+        public Child getChild(long idChild)
         {
             throw new NotImplementedException();
         }
@@ -87,10 +87,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public void getChild(long idChild)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public void getContract(int idContract)
         {
