@@ -7,11 +7,18 @@
       <FileName>Class1.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BE.Nanny">
-    <Position X="2.25" Y="0.5" Width="2.25" />
+  <Class Name="BE.Mother">
+    <Position X="2.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAKAAAAAEBsAAgAAIDEGAgAAIAAAABAQAACA=</HashCode>
-      <FileName>Nanny.cs</FileName>
+      <HashCode>BCAAAAAAAAAAAAAEgAQAAAAAkAAAAAAAAAAAgAAAIAA=</HashCode>
+      <FileName>Mother.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.Child">
+    <Position X="0.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAABAAACAAAAAAAAAAAEAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Child.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
