@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Contract
+    public class Contract
     {
         public int idContract { get; set; }
         public long idNanny { get; set; }

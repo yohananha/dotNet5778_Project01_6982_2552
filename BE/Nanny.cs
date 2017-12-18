@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BE
 {
-    class Nanny
+    public class Nanny
     {
         public long nannyId { get; set; }
         public string lastNameNanny { get; set; }
@@ -17,8 +17,8 @@ namespace BE
         public int floorNanny { get; set; }
         public int experienceNanny { get; set; }
         public int maxChildNanny { get; set; }
-        public int minEgeChildNanny { get; set; }
-        public int maxEgeChildNanny { get; set; }
+        public int minAgeChildNanny { get; set; }
+        public int maxAgeChildNanny { get; set; }
         public bool isByHourNanny { get; set; }
         public int rateHourNanny { get; set; }
         public int rateMonthNanny { get; set; }
