@@ -27,6 +27,8 @@ namespace DAL
         void updateContract(int idContractUpdate);
 
         IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate=null);
-
+        IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null);
+        IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null);
+        IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null);
     }
 }
