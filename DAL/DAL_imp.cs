@@ -10,12 +10,11 @@ namespace DAL
 {
     class DAL_imp : IDAL
     {
-
-        DataSource ds = new DataSource();
-
+        private DataSource ds = new DataSource();
+        
         public void addChild(Child child)
         {
-            throw new NotImplementedException();
+            Child _child=
         }
 
         public void addContract(Contract contract)
@@ -63,17 +62,27 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public Child getChild(long idChild)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Contract getContract(int idContract)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void getNanny(long idNanny)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void getMom(long idMom)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void getChild(long idChild)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void getContract(int idContract)
         {
             throw new NotImplementedException();
         }
