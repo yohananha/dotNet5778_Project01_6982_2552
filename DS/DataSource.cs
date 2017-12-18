@@ -7,7 +7,7 @@ using BE;
 
 namespace DS
 {
-    class DataSource
+    public class DataSource
     {
         public static List<Nanny> nannyList = new List<Nanny>();
         public static List<Mother> motherList = new List<Mother>();
