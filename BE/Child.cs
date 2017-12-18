@@ -8,76 +8,16 @@ namespace BE
 {
     class Child
     {
-        public int idMom
+        public int idMom { get; set; }
+        public int idChild { get; set; }
+        public string firstName { get; set; }
+        public DateTime birthdayKid { get; set; }
+        public bool isSpecialNeed { get; set; }
+        public string specialNeeds { get; set; }
+
+        public override string ToString()
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
-        public int idChild
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
-        public string firstName
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
-        public DateTime birthdayKid
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
-        public bool isSpecialNeed
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
-        public string specialNeeds
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
+            return base.ToString(); 
         }
     }
 }
