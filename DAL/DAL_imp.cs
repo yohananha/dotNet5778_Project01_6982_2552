@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
+using DS;
 
 namespace DAL
 {
     class DAL_imp : IDAL
     {
+
+        DataSource ds = new DataSource();
+
         public void addChild(Child child)
         {
             throw new NotImplementedException();
@@ -55,6 +59,16 @@ namespace DAL
         }
 
         public IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Child getChild(long idChild)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Contract getContract(int idContract)
         {
             throw new NotImplementedException();
         }

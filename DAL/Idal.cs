@@ -21,10 +21,12 @@ namespace DAL
         void addChild(Child child);
         void deleteChild(long idChildDel);
         void updateChild(long idChildUpdate);
+        Child getChild(long idChild);
 
         void addContract(Contract contract);
         void deleteContract(int idContractDel);
         void updateContract(int idContractUpdate);
+        Contract getContract(int idContract);
 
         IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate=null);
         IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null);

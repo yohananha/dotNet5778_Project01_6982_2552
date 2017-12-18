@@ -53,6 +53,10 @@
       <Project>{ae07b57f-edde-41d4-ba35-d143f6276ac7}</Project>
       <Name>BE</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DS\DS.csproj">
+      <Project>{b024b3a2-5669-482b-bfc2-f73646094746}</Project>
+      <Name>DS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
