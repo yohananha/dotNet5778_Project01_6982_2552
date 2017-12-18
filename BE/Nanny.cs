@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BE
 {
-    class Nanny
+    public class Nanny
     {
         public long nannyId { get; set; }
         public string lastNameNanny { get; set; }
