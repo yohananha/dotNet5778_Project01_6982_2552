@@ -8,7 +8,7 @@ using BE;
 
 namespace DAL
 {
-    public interface IDAL
+    public interface Idal
     {
         void addNanny(Nanny nanny);
         void deleteNanny(long idNannyDel);
@@ -21,12 +21,10 @@ namespace DAL
         void addChild(Child child);
         void deleteChild(long idChildDel);
         void updateChild(long idChildUpdate);
-        Child getChild(long idChild);
 
         void addContract(Contract contract);
         void deleteContract(int idContractDel);
         void updateContract(int idContractUpdate);
-        Contract getContract(int idContract);
 
         IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate=null);
         IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null);
@@ -34,9 +32,9 @@ namespace DAL
         IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null);
 
         //getters by id
-        void getNanny(long idNanny);
-        void getMom(long idMom);
-        void getChild(long idChild);
-        void getContract(int idContract);
+        Nanny getNanny(long idNanny);
+        Mother getMom(long idMom);
+        Child getChild(long idChild);
+        Contract getContract(int idContract);
     }
 }

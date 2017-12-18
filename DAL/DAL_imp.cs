@@ -8,19 +8,16 @@ using DS;
 
 namespace DAL
 {
-    class DAL_imp : IDAL
+    class DAL_imp : Idal
     {
         private DataSource ds = new DataSource();
         
         public void addChild(Child child)
         {
-            Child _child=
+            Child _child = getChild(child.idChild);
         }
 
-        Child IDAL.getChild(long idChild)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public void addContract(Contract contract)
         {
@@ -62,10 +59,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        Contract IDAL.getContract(int idContract)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate = null)
         {
@@ -77,26 +71,27 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public void getNanny(long idNanny)
+        public Nanny getNanny(long idNanny)
         {
             throw new NotImplementedException();
         }
 
-        public void getMom(long idMom)
+        public Mother getMom(long idMom)
         {
             throw new NotImplementedException();
         }
 
-        public void getChild(long idChild)
+        public Child getChild(long idChild)
         {
             throw new NotImplementedException();
         }
 
-        public void getContract(int idContract)
+        public Contract getContract(int idContract)
         {
             throw new NotImplementedException();
         }
 
+  
         public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
         {
             throw new NotImplementedException();
