@@ -17,6 +17,11 @@ namespace DAL
             Child _child=
         }
 
+        Child IDAL.getChild(long idChild)
+        {
+            throw new NotImplementedException();
+        }
+
         public void addContract(Contract contract)
         {
             throw new NotImplementedException();
@@ -53,6 +58,11 @@ namespace DAL
         }
 
         public IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        Contract IDAL.getContract(int idContract)
         {
             throw new NotImplementedException();
         }
