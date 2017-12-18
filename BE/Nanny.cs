@@ -26,6 +26,7 @@ namespace BE
         public DateTime[,] hoursWorkNanny { get; set; }
         public bool isTamatNanny { get; set; }
         public string recommendationsNanny { get; set; }
+        public int currentChildren { get; set; }
 
         public override string ToString()
         {
