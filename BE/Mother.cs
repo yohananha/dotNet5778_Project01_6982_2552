@@ -8,7 +8,7 @@ namespace BE
 {
     public class Mother
     {
-        public int MomID { get; set; }
+        public long idMom { get; set; }
         public string LasNameMom { get; set; }
         public string FirstNameMom { get; set; }
         public int PhoneMom { get; set; }
