@@ -12,19 +12,19 @@ namespace DAL
     {
         void addNanny(Nanny nanny);
         void deleteNanny(long idNannyDel);
-        void updateNanny(long idNannyUpdate);
+        void updateNanny(Nanny nannye);
 
         void addMom(Mother mother);
         void deleteMother(long idMotherDel);
-        void updateMother(long idMotherUpdate);
+        void updateMother(Mother mother);
 
         void addChild(Child child);
         void deleteChild(long idChildDel);
-        void updateChild(long idChildUpdate);
+        void updateChild(Child child);
 
         void addContract(Contract contract);
         void deleteContract(int idContractDel);
-        void updateContract(int idContractUpdate);
+        void updateContract(Contract contract);
 
         IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate=null);
         IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null);

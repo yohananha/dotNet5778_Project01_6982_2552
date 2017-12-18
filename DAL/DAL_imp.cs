@@ -12,18 +12,20 @@ namespace DAL
 {
     class DAL_imp : Idal
     {
-        private DataSource ds = new DataSource();
+        private DataSource ds;
 
-        public static List<Nanny> nannyList = new List<Nanny>();
-        public static List<Mother> motherList = new List<Mother>();
-        public static List<Child> childList = new List<Child>();
-        public static List<Contract> contractList = new List<Contract>();
+        //constractor 
+        public DAL_imp()
+        {
+          new DataSource();
+        }
+
 
         #region child funcs
 
         public Child getChild(long idChild)
         {
-            return childList.FirstOrDefault(_child => _child.idChild == idChild);
+            return DataSource.childList.FirstOrDefault(_child => _child.idChild == idChild);
         }
 
         public void addChild(Child child)
@@ -31,7 +33,7 @@ namespace DAL
             Child _child = getChild(child.idChild);
             if (child != null)//child found
                 throw new Exception("Child is already exist in system");
-            childList.Add(child);
+            DataSource.childList.Add(child);
         }
 
         public void deleteChild(long idChildDel)
@@ -39,16 +41,16 @@ namespace DAL
             Child _child = getChild(idChildDel);
             if (_child==null)//no child found
                 throw  new Exception("Child is not appear in system");
-            contractList.RemoveAll(c => c.idChild == idChildDel);//delete all contract regarding the child
-            childList.Remove(_child);
+            DataSource.contractList.RemoveAll(c => c.idChild == idChildDel);//delete all contract regarding the child
+            DataSource.childList.Remove(_child);
         }
 
-        public void updateChild(long idChildUpdate)
+        public void updateChild(Child child)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = )
+        public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
         {
             throw new NotImplementedException();
         }
@@ -59,7 +61,7 @@ namespace DAL
 
         public Contract getContract(int idContract)
         {
-            return contractList.FirstOrDefault(cl => cl.idContract == idContract);
+            return DataSource.contractList.FirstOrDefault(cl => cl.idContract == idContract);
         }
         
         [SuppressMessage("ReSharper", "HeuristicUnreachableCode")]
@@ -76,7 +78,7 @@ namespace DAL
             if (contractNanny==null)
                 throw new Exception("Nanny is not appear in system");
 
-            contractList.Add(contract);
+            DataSource.contractList.Add(contract);
             }
 
         public void deleteContract(int idContractDel)
@@ -87,12 +89,12 @@ namespace DAL
             //update the current number of chidren 
             Nanny contracctNanny = getNanny(_contract.idNanny);
             contracctNanny.currentChildren--;
-            updateNanny(contracctNanny.nannyId);
+            updateNanny(contracctNanny);
 
-            contractList.Remove(_contract);
+            DataSource.contractList.Remove(_contract);
         }
 
-        public void updateContract(int idContractUpdate)
+        public void updateContract(Contract contract)
         {
 
         }
@@ -108,7 +110,7 @@ namespace DAL
 
         public Mother getMom(long idMom)
         {
-            return motherList.FirstOrDefault(ml => ml.idMom == idMom);
+            return DataSource.motherList.FirstOrDefault(ml => ml.idMom == idMom);
         }
 
         public void addMom(Mother mother)
@@ -116,7 +118,7 @@ namespace DAL
             Mother _mother = getMom(mother.idMom);
             if (mother!=null)
                 throw new Exception("Mother already exist in system");
-            motherList.Add(mother);
+            DataSource.motherList.Add(mother);
         }
 
         public void deleteMother(long idMotherDel)
@@ -124,10 +126,30 @@ namespace DAL
             Mother _mother = getMom(idMotherDel);
             if (_mother==null)
                 throw new Exception("Mother is not exist in system");
-          
+            deleteAllContrctMother(idMotherDel);
+
         }
 
-        public void updateMother(long idMotherUpdate)
+        //metod 
+        private void deleteAllContrctMother(long idMotherDel)
+        {
+            var listChild = DataSource.childList.Where(t => t.idMom == idMotherDel);
+            //if we need to delete only the contract
+            foreach (var item in listChild)
+            {
+              DataSource.contractList.RemoveAll(c => c.idChild == item.idChild);
+            }
+
+            //if we need delete all child mother
+            //the metod deleteChild delete also the contract child
+            foreach (var item in listChild)
+            {
+                deleteChild(item.idChild);
+            }
+
+        }
+
+        public void updateMother(Mother mother)
         {
             throw new NotImplementedException();
         }
@@ -143,7 +165,7 @@ namespace DAL
 
         public Nanny getNanny(long idNanny)
         {
-            return nannyList.FirstOrDefault(nl=>nl.nannyId==idNanny);
+            return DataSource.nannyList.FirstOrDefault(nl=>nl.nannyId==idNanny);
         }
 
         public void addNanny(Nanny nanny)
@@ -151,7 +173,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public void updateNanny(long idNannyUpdate)
+        public void updateNanny(Nanny nanny)
         {
             throw new NotImplementedException();
         }
