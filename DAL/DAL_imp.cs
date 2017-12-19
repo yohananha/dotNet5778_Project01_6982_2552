@@ -126,10 +126,10 @@ namespace DAL
 
         public void addMom(Mother mother)
         {
-            Mother _mother = getMom(mother.idMom);
-            if (mother != null)
+            int indexMom = DataSource.motherList.FindIndex(ml => ml.idMom == mother.idMom);
+            if (indexMom!=-1)
                 throw new Exception("Mother already exist in system");
-            DataSource.motherList.Add(mother);
+            DataSource.motherList[indexMom]=mother;
         }
 
         public void deleteMother(long idMotherDel)
@@ -154,7 +154,10 @@ namespace DAL
 
         public void updateMother(Mother mother)
         {
-            throw new NotImplementedException();
+            int indexMom=DataSource.motherList.FindIndex(ml=>ml.idMom==mother.idMom);
+            if (indexMom==-1)
+                throw new Exception("Mother is not appear in the system");
+            DataSource.motherList[indexMom] = mother;
         }
 
         public IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null)
