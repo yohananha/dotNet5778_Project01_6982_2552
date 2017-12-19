@@ -28,6 +28,7 @@ namespace DAL
             return DataSource.childList.FirstOrDefault(_child => _child.idChild == idChild);
         }
 
+        [SuppressMessage("ReSharper", "HeuristicUnreachableCode")]
         public void addChild(Child child)
         {
             Child _child = getChild(child.idChild);
@@ -47,7 +48,11 @@ namespace DAL
 
         public void updateChild(Child child)
         {
-            throw new NotImplementedException();
+            Child _child = getChild(child.idChild);
+            if (_child == null)//no child found
+                throw new Exception("Child is not appear in system");
+            DataSource.childList.Remove(_child);
+            DataSource.childList.Add(child);
         }
 
         public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
@@ -191,6 +196,6 @@ namespace DAL
         }
 
         #endregion
-
+        
      }
 }
