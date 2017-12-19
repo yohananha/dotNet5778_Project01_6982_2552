@@ -12,8 +12,6 @@ namespace DAL
 {
     class DAL_imp : Idal
     {
-        private DataSource ds;
-
         //constractor 
         public DAL_imp()
         {
@@ -28,7 +26,6 @@ namespace DAL
             return DataSource.childList.FirstOrDefault(_child => _child.idChild == idChild);
         }
 
-        [SuppressMessage("ReSharper", "HeuristicUnreachableCode")]
         public void addChild(Child child)
         {
             Child _child = getChild(child.idChild);
@@ -48,11 +45,10 @@ namespace DAL
 
         public void updateChild(Child child)
         {
-            Child _child = getChild(child.idChild);
-            if (_child == null)//no child found
+            int index = DataSource.childList.FindIndex(c => c.idChild == child.idChild);
+            if (index == -1)//no child found
                 throw new Exception("Child is not appear in system");
-            DataSource.childList.Remove(_child);
-            DataSource.childList.Add(child);
+            DataSource.childList[index] = child;
         }
 
         public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
