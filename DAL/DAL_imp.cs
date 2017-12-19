@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using BE;
 using DS;
 
@@ -81,8 +82,9 @@ namespace DAL
             Nanny contractNanny = getNanny(contract.idNanny);
             if (contractNanny==null)
                 throw new Exception("Nanny is not appear in system");
-
+            contract.idContract = ++contract_Id;
             DataSource.contractList.Add(contract);
+
             }
 
         public void deleteContract(int idContractDel)
@@ -100,7 +102,11 @@ namespace DAL
 
         public void updateContract(Contract contract)
         {
-
+            Contract _contract = getContract(contract.idContract);
+            if (_contract==null)
+                throw new Exception("Contract is not appear in system");
+            int index = DataSource.contractList.FindIndex(cl => cl.idContract == _contract.idContract);
+            DataSource.contractList[index] = _contract;
         }
 
         public IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null)
@@ -174,19 +180,29 @@ namespace DAL
 
         public void addNanny(Nanny nanny)
         {
-            throw new NotImplementedException();
+            int nanIndex = DataSource.nannyList.FindIndex(nl => nl.nannyId == nanny.nannyId);
+            if (nanIndex != -1)
+                throw new Exception("Nanny is already exist in system");
+            DataSource.nannyList.Add(nanny);
         }
 
         public void updateNanny(Nanny nanny)
         {
-            throw new NotImplementedException();
+            int nanindex = DataSource.nannyList.FindIndex(nl => nl.nannyId == nanny.nannyId);
+            if (nanindex == -1)
+                throw new Exception("Nanny is not exist in system");
+            DataSource.nannyList[nanindex] = nanny;
         }
 
       
 
         public void deleteNanny(long idNannyDel)
         {
-            throw new NotImplementedException();
+            int nanindex = DataSource.nannyList.FindIndex(nl => nl.nannyId == idNannyDel);
+            if (nanindex == -1)
+                throw new Exception("Nanny is not exist in system");
+            DataSource.contractList.RemoveAll(cl => cl.idNanny == idNannyDel);
+            DataSource.nannyList.RemoveAt(nanindex);
         }
 
         public IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate = null)
