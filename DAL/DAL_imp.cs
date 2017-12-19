@@ -53,7 +53,10 @@ namespace DAL
 
         public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            if (Predicate == null)
+                throw new Exception("get mom");
+
+            return DataSource.childList.Where(Predicate);
         }
 
         #endregion
