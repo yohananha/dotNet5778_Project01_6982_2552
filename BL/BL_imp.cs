@@ -18,7 +18,7 @@ namespace BL
         #region child metod
 
         public void addChild(Child child)
-        { 
+        {
             dal.addChild(child);
         }
 
@@ -44,68 +44,91 @@ namespace BL
         #region contract metod
         public void addContract(Contract contract)
         {
-            throw new NotImplementedException();
+            Child contracctChild = dal.getChild(contract.idChild);
+            DateTime today = DateTime.Today;
+            if (today.Year - contracctChild.birthdayKid.Year < 1 && today.Month - contracctChild.birthdayKid.Month < 3)
+                throw new Exception("Child is too small");
+            Nanny contractNanny = dal.getNanny(contract.idNanny);
+            if (contractNanny.maxChildNanny == contractNanny.currentChildren)
+                throw new Exception("This nanny has reached the limit of children");
+            /*
+             * 
+             * 
+             * need to add salary check. maybe different function
+             * 
+             * 
+             */
+            dal.addContract(contract);
         }
 
         public void deleteContract(int idContractDel)
         {
-            throw new NotImplementedException();
+            dal.deleteContract(idContractDel);
         }
 
         public IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            if (Predicate == null)
+                return dal.getContracts();
+            return dal.getContracts(Predicate);
         }
 
 
         public void updateContract(Contract contract)
         {
-            throw new NotImplementedException();
+            dal.updateContract(contract);
         }
         #endregion
 
-        #region mom metod
+        #region mom methods
         public void addMom(Mother mother)
         {
-            throw new NotImplementedException();
+            dal.addMom(mother);
         }
 
 
         public void deleteMother(long idMotherDel)
         {
-            throw new NotImplementedException();
+            dal.deleteMother(idMotherDel);
         }
 
         public IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            if (Predicate == null)
+                return dal.getAllMothers();
+            return dal.getAllMothers(Predicate);
         }
 
         public void updateMother(Mother mother)
         {
-            throw new NotImplementedException();
+            dal.updateMother(mother);
         }
         #endregion
 
         #region nanny metod
         public void addNanny(Nanny nanny)
         {
-            throw new NotImplementedException();
+            DateTime today = DateTime.Today;
+            if (today.Year - 18 < nanny.dateNanny.Year)
+                throw new Exception("Nanny is too young");
+            dal.addNanny(nanny);
         }
 
         public void deleteNanny(long idNannyDel)
         {
-            throw new NotImplementedException();
+            dal.deleteNanny(idNannyDel);
         }
 
         public IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            if (Predicate == null)
+                return dal.getAllNanny();
+            return dal.getAllNanny(Predicate);
         }
 
-        public void updateNanny(Nanny nannye)
+        public void updateNanny(Nanny nanny)
         {
-            throw new NotImplementedException();
+            dal.updateNanny(nanny);
         }
 
         #endregion
