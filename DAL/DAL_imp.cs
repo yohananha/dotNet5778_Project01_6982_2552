@@ -109,7 +109,10 @@ namespace DAL
 
         public IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            if (Predicate == null)
+                return DataSource.contractList.AsEnumerable();
+
+            return DataSource.contractList.Where(Predicate);
         }
 
         #endregion
@@ -131,30 +134,22 @@ namespace DAL
 
         public void deleteMother(long idMotherDel)
         {
-            Mother _mother = getMom(idMotherDel);
-            if (_mother == null)
+            int index = DataSource.motherList.FindIndex(m => m.idMom == idMotherDel);
+            if (index == -1)
                 throw new Exception("Mother is not exist in system");
-            deleteAllContractMother(idMotherDel);
-            DataSource.motherList.Remove(_mother);
+
+            deleteAllChildtMother(idMotherDel);
+
+            DataSource.motherList.RemoveAt(index);
         }
 
         //metod 
-        private void deleteAllContractMother(long idMotherDel)
+        private void deleteAllChildtMother(long idMotherDel)
         {
-            var listChild = DataSource.childList.Where(t => t.idMom == idMotherDel);
-            //if we need to delete only the contract
-            foreach (var item in listChild)
-            {
-                DataSource.contractList.RemoveAll(c => c.idChild == item.idChild);
-            }
-
-            //if we need delete all child mother
+            var listChildToDelete = DataSource.childList.Where(t => t.idMom == idMotherDel);
             //the metod deleteChild delete also the contract child
-            foreach (var item in listChild)
-            {
+            foreach (var item in listChildToDelete)
                 deleteChild(item.idChild);
-            }
-
         }
 
         public void updateMother(Mother mother)
@@ -167,7 +162,10 @@ namespace DAL
 
         public IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            if (Predicate == null)
+                return DataSource.motherList.AsEnumerable();
+
+            return DataSource.motherList.Where(Predicate);
         }
 
         #endregion
@@ -208,7 +206,10 @@ namespace DAL
 
         public IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            if (Predicate == null)
+                return DataSource.nannyList.AsEnumerable();
+
+            return DataSource.nannyList.Where(Predicate);
         }
 
         #endregion
