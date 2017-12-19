@@ -10,7 +10,7 @@ namespace BL
     class BL_imp : Ibl
     {
         DAL.Idal dal;
-
+        //CTOR creating factory
         public BL_imp()
         {
             dal = DAL.factoryDal.getDal();
