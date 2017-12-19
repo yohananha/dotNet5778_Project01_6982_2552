@@ -17,7 +17,7 @@ namespace BL
         }
 
         public void addChild(Child child)
-        {
+        { 
             dal.addChild(child);
         }
 
