@@ -12,6 +12,8 @@ namespace DAL
 {
     class DAL_imp : Idal
     {
+        public static int contract_Id = 1;
+
         //constractor 
         public DAL_imp()
         {
@@ -54,7 +56,7 @@ namespace DAL
         public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
         {
             if (Predicate==null)
-                throw new Exception("Please send mother's ID");
+                throw new Exception("Please send mother ID");
             return DataSource.childList.Where(Predicate);
         }
 
@@ -66,14 +68,12 @@ namespace DAL
         {
             return DataSource.contractList.FirstOrDefault(cl => cl.idContract == idContract);
         }
-
-        [SuppressMessage("ReSharper", "HeuristicUnreachableCode")]
+        
         public void addContract(Contract contract)
         {
-            Contract _contract = getContract(contract.idContract);
+            Contract _contract = DataSource.contractList.FirstOrDefault(c => c.idChild == contract.idChild && c.idNanny == contract.idNanny);
             if (contract!=null)
-                throw new Exception("Contract already exist in system");
-
+                throw new Exception("Contract already exist in system, please update the contract");
             Child contractchild = getChild(contract.idChild);
             Mother contractMother = getMom(contractchild.idMom);
             if (contractMother==null)
@@ -81,7 +81,7 @@ namespace DAL
             Nanny contractNanny = getNanny(contract.idNanny);
             if (contractNanny==null)
                 throw new Exception("Nanny is not appear in system");
-            _contract.idContract
+
             DataSource.contractList.Add(contract);
             }
 
