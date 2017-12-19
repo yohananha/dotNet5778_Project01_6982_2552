@@ -12,8 +12,6 @@ namespace DAL
 {
     class DAL_imp : Idal
     {
-        private DataSource ds;
-
         //constractor 
         public DAL_imp()
         {
@@ -28,7 +26,6 @@ namespace DAL
             return DataSource.childList.FirstOrDefault(_child => _child.idChild == idChild);
         }
 
-        [SuppressMessage("ReSharper", "HeuristicUnreachableCode")]
         public void addChild(Child child)
         {
             Child _child = getChild(child.idChild);
