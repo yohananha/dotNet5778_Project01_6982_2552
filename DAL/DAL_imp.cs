@@ -18,7 +18,7 @@ namespace DAL
         //constractor 
         public DAL_imp()
         {
-          new DataSource();
+            new DataSource();
         }
 
 
@@ -41,7 +41,7 @@ namespace DAL
         {
             int index = DataSource.childList.FindIndex(c => c.idChild == idChildDel);
             if (index == -1)//no child found
-                throw  new Exception("Child is not appear in system");
+                throw new Exception("Child is not appear in system");
             DataSource.contractList.RemoveAll(c => c.idChild == idChildDel);//delete all contract regarding the child
             DataSource.childList.RemoveAt(index);
         }
@@ -56,7 +56,7 @@ namespace DAL
 
         public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
         {
-            if (Predicate==null)
+            if (Predicate == null)
                 throw new Exception("Please send mother ID");
             return DataSource.childList.Where(Predicate);
         }
@@ -69,28 +69,28 @@ namespace DAL
         {
             return DataSource.contractList.FirstOrDefault(cl => cl.idContract == idContract);
         }
-        
+
         public void addContract(Contract contract)
         {
             int contractIndex = DataSource.contractList.FindIndex(c => c.idChild == contract.idChild && c.idNanny == contract.idNanny);
-            if (contractIndex!=-1)
+            if (contractIndex != -1)
                 throw new Exception("Contract already exist in system, please update the contract");
             Child contractchild = getChild(contract.idChild);
             Mother contractMother = getMom(contractchild.idMom);
-            if (contractMother==null)
+            if (contractMother == null)
                 throw new Exception("Mother is not appear in the system");
             Nanny contractNanny = getNanny(contract.idNanny);
-            if (contractNanny==null)
+            if (contractNanny == null)
                 throw new Exception("Nanny is not appear in system");
             contract.idContract = ++contract_Id;
             DataSource.contractList.Add(contract);
 
-            }
+        }
 
         public void deleteContract(int idContractDel)
         {
             int index = DataSource.contractList.FindIndex(cl => cl.idContract == idContractDel);
-            if (index ==-1)
+            if (index == -1)
                 throw new Exception("Contract is not exist in system");
             //update the current number of chidren 
             Nanny contracctNanny = getNanny(idContractDel);
@@ -102,7 +102,7 @@ namespace DAL
         public void updateContract(Contract contract)
         {
             int index = DataSource.contractList.FindIndex(cl => cl.idContract == contract.idContract);
-            if (index==-1)
+            if (index == -1)
                 throw new Exception("Contract is not appear in system");
             DataSource.contractList[index] = contract;
         }
@@ -124,15 +124,15 @@ namespace DAL
         public void addMom(Mother mother)
         {
             int indexMom = DataSource.motherList.FindIndex(ml => ml.idMom == mother.idMom);
-            if (indexMom!=-1)
+            if (indexMom != -1)
                 throw new Exception("Mother already exist in system");
-            DataSource.motherList[indexMom]=mother;
+            DataSource.motherList[indexMom] = mother;
         }
 
         public void deleteMother(long idMotherDel)
         {
             Mother _mother = getMom(idMotherDel);
-            if (_mother==null)
+            if (_mother == null)
                 throw new Exception("Mother is not exist in system");
             deleteAllContractMother(idMotherDel);
             DataSource.motherList.Remove(_mother);
@@ -145,7 +145,7 @@ namespace DAL
             //if we need to delete only the contract
             foreach (var item in listChild)
             {
-              DataSource.contractList.RemoveAll(c => c.idChild == item.idChild);
+                DataSource.contractList.RemoveAll(c => c.idChild == item.idChild);
             }
 
             //if we need delete all child mother
@@ -159,8 +159,8 @@ namespace DAL
 
         public void updateMother(Mother mother)
         {
-            int indexMom=DataSource.motherList.FindIndex(ml=>ml.idMom==mother.idMom);
-            if (indexMom==-1)
+            int indexMom = DataSource.motherList.FindIndex(ml => ml.idMom == mother.idMom);
+            if (indexMom == -1)
                 throw new Exception("Mother is not appear in the system");
             DataSource.motherList[indexMom] = mother;
         }
@@ -176,7 +176,7 @@ namespace DAL
 
         public Nanny getNanny(long idNanny)
         {
-            return DataSource.nannyList.FirstOrDefault(nl=>nl.nannyId==idNanny);
+            return DataSource.nannyList.FirstOrDefault(nl => nl.nannyId == idNanny);
         }
 
         public void addNanny(Nanny nanny)
@@ -195,7 +195,7 @@ namespace DAL
             DataSource.nannyList[nanindex] = nanny;
         }
 
-      
+
 
         public void deleteNanny(long idNannyDel)
         {
@@ -212,6 +212,6 @@ namespace DAL
         }
 
         #endregion
-        
-     }
+
+    }
 }
