@@ -1,37 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="BE.Class1" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Class1.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="BE.Mother">
     <Position X="2.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BCAAAAAAAAAAAAAEgAQAAAAAkAAAAAAAAAAAgAAAIAA=</HashCode>
+      <HashCode>BCAAAAAAAAAAAACEAAQAAAAAkAAAAAAAAAAAgAAAIAA=</HashCode>
       <FileName>Mother.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BE.Child">
     <Position X="0.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAABAABAAACAAAAAAAAAAAEAAAAAAAAAAABAAAA=</HashCode>
+      <HashCode>AAQAAAABAABAAACEAAAAAAAAAAEAAAAAAAAAAABAAAA=</HashCode>
       <FileName>Child.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BE.Nanny">
     <Position X="4.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAKAAAAAEBsAAgAAIDEGAgAAIAAAABAQAACA=</HashCode>
+      <HashCode>AAABAAAAAKAAAAAEBsAAAAgIDEEAiEAIAAAABAQAACA=</HashCode>
       <FileName>Nanny.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BE.Contract">
     <Position X="6.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAgAAAAEAAQAAEBAAAAAAAAAAAIAAAAAAAAQQIgAA=</HashCode>
+      <HashCode>CAAAgAAAAEAAQAAEAAAAAAAAAAEAIAAAAAAAAQQIgAA=</HashCode>
       <FileName>Contract.cs</FileName>
     </TypeIdentifier>
   </Class>

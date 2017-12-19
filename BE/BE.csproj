@@ -41,7 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Child.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Contract.cs" />
     <Compile Include="Mother.cs" />
     <Compile Include="Nanny.cs" />
