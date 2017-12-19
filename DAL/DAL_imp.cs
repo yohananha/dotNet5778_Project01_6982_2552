@@ -31,19 +31,19 @@ namespace DAL
 
         public void addChild(Child child)
         {
-            Child _child = getChild(child.idChild);
-            if (child != null)//child found
+            int index = DataSource.childList.FindIndex(c => c.idChild == child.idChild);
+            if (index == -1)//no child found
                 throw new Exception("Child is already exist in system");
             DataSource.childList.Add(child);
         }
 
         public void deleteChild(long idChildDel)
         {
-            Child _child = getChild(idChildDel);
-            if (_child==null)//no child found
+            int index = DataSource.childList.FindIndex(c => c.idChild == idChildDel);
+            if (index == -1)//no child found
                 throw  new Exception("Child is not appear in system");
             DataSource.contractList.RemoveAll(c => c.idChild == idChildDel);//delete all contract regarding the child
-            DataSource.childList.Remove(_child);
+            DataSource.childList.RemoveAt(index);
         }
 
         public void updateChild(Child child)
