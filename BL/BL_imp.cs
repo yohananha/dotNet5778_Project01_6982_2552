@@ -15,28 +15,34 @@ namespace BL
         {
             dal = DAL.factoryDal.getDal();
         }
+        #region child metod
 
         public void addChild(Child child)
         {
             dal.addChild(child);
         }
 
-        public void addContract(Contract contract)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void addMom(Mother mother)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void addNanny(Nanny nanny)
-        {
-            throw new NotImplementedException();
-        }
-
         public void deleteChild(long idChildDel)
+        {
+            dal.deleteChild(idChildDel);
+        }
+
+        public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
+        {
+            if (Predicate == null)
+                return dal.getKidsByMoms();
+            return dal.getKidsByMoms(Predicate);
+        }
+
+        public void updateChild(Child child)
+        {
+            dal.updateChild(child);
+        }
+
+        #endregion
+
+        #region contract metod
+        public void addContract(Contract contract)
         {
             throw new NotImplementedException();
         }
@@ -46,12 +52,26 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public void deleteMother(long idMotherDel)
+        public IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null)
         {
             throw new NotImplementedException();
         }
 
-        public void deleteNanny(long idNannyDel)
+
+        public void updateContract(Contract contract)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region mom metod
+        public void addMom(Mother mother)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void deleteMother(long idMotherDel)
         {
             throw new NotImplementedException();
         }
@@ -61,32 +81,24 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void updateChild(Child child)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void updateContract(Contract contract)
-        {
-            throw new NotImplementedException();
-        }
-
         public void updateMother(Mother mother)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region nanny metod
+        public void addNanny(Nanny nanny)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void deleteNanny(long idNannyDel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate = null)
         {
             throw new NotImplementedException();
         }
@@ -95,5 +107,7 @@ namespace BL
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }
