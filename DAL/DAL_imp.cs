@@ -12,6 +12,8 @@ namespace DAL
 {
     class DAL_imp : Idal
     {
+        public static int contract_Id = 1;
+
         //constractor 
         public DAL_imp()
         {
@@ -67,12 +69,11 @@ namespace DAL
             return DataSource.contractList.FirstOrDefault(cl => cl.idContract == idContract);
         }
         
-        [SuppressMessage("ReSharper", "HeuristicUnreachableCode")]
         public void addContract(Contract contract)
         {
-            Contract _contract = getContract(contract.idContract);
+            Contract _contract = DataSource.contractList.FirstOrDefault(c => c.idChild == contract.idChild && c.idNanny == contract.idNanny);
             if (contract!=null)
-                throw new Exception("Contract already exist in system");
+                throw new Exception("Contract already exist in system, please update the contract");
             Child contractchild = getChild(contract.idChild);
             Mother contractMother = getMom(contractchild.idMom);
             if (contractMother==null)
