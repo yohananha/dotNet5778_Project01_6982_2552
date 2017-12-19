@@ -53,7 +53,9 @@ namespace DAL
 
         public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            if (Predicate==null)
+                throw new Exception("Please send mother ID");
+            return DataSource.childList.Where(Predicate);
         }
 
         #endregion
@@ -127,12 +129,12 @@ namespace DAL
             Mother _mother = getMom(idMotherDel);
             if (_mother==null)
                 throw new Exception("Mother is not exist in system");
-            deleteAllContrctMother(idMotherDel);
+            deleteAllContractMother(idMotherDel);
             DataSource.motherList.Remove(_mother);
         }
 
         //metod 
-        private void deleteAllContrctMother(long idMotherDel)
+        private void deleteAllContractMother(long idMotherDel)
         {
             var listChild = DataSource.childList.Where(t => t.idMom == idMotherDel);
             //if we need to delete only the contract
