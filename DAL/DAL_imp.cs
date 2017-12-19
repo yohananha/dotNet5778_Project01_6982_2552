@@ -72,8 +72,8 @@ namespace DAL
         
         public void addContract(Contract contract)
         {
-            Contract _contract = DataSource.contractList.FirstOrDefault(c => c.idChild == contract.idChild && c.idNanny == contract.idNanny);
-            if (contract!=null)
+            int contractIndex = DataSource.contractList.FindIndex(c => c.idChild == contract.idChild && c.idNanny == contract.idNanny);
+            if (contractIndex!=-1)
                 throw new Exception("Contract already exist in system, please update the contract");
             Child contractchild = getChild(contract.idChild);
             Mother contractMother = getMom(contractchild.idMom);
@@ -89,24 +89,22 @@ namespace DAL
 
         public void deleteContract(int idContractDel)
         {
-            Contract _contract = getContract(idContractDel);
-            if (_contract == null)
+            int index = DataSource.contractList.FindIndex(cl => cl.idContract == idContractDel);
+            if (index ==-1)
                 throw new Exception("Contract is not exist in system");
             //update the current number of chidren 
-            Nanny contracctNanny = getNanny(_contract.idNanny);
+            Nanny contracctNanny = getNanny(idContractDel);
             contracctNanny.currentChildren--;
             updateNanny(contracctNanny);
-
-            DataSource.contractList.Remove(_contract);
+            DataSource.contractList.RemoveAt(index);
         }
 
         public void updateContract(Contract contract)
         {
-            Contract _contract = getContract(contract.idContract);
-            if (_contract==null)
+            int index = DataSource.contractList.FindIndex(cl => cl.idContract == contract.idContract);
+            if (index==-1)
                 throw new Exception("Contract is not appear in system");
-            int index = DataSource.contractList.FindIndex(cl => cl.idContract == _contract.idContract);
-            DataSource.contractList[index] = _contract;
+            DataSource.contractList[index] = contract;
         }
 
         public IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null)
