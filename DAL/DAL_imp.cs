@@ -18,7 +18,7 @@ namespace DAL
         //constractor 
         public DAL_imp()
         {
-          new DataSource();
+            new DataSource();
         }
 
 
@@ -41,7 +41,7 @@ namespace DAL
         {
             int index = DataSource.childList.FindIndex(c => c.idChild == idChildDel);
             if (index == -1)//no child found
-                throw  new Exception("Child is not appear in system");
+                throw new Exception("Child is not appear in system");
             DataSource.contractList.RemoveAll(c => c.idChild == idChildDel);//delete all contract regarding the child
             DataSource.childList.RemoveAt(index);
         }
@@ -56,7 +56,7 @@ namespace DAL
 
         public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
         {
-            if (Predicate==null)
+            if (Predicate == null)
                 throw new Exception("Please send mother ID");
             return DataSource.childList.Where(Predicate);
         }
@@ -69,28 +69,28 @@ namespace DAL
         {
             return DataSource.contractList.FirstOrDefault(cl => cl.idContract == idContract);
         }
-        
+
         public void addContract(Contract contract)
         {
             int contractIndex = DataSource.contractList.FindIndex(c => c.idChild == contract.idChild && c.idNanny == contract.idNanny);
-            if (contractIndex!=-1)
+            if (contractIndex != -1)
                 throw new Exception("Contract already exist in system, please update the contract");
             Child contractchild = getChild(contract.idChild);
             Mother contractMother = getMom(contractchild.idMom);
-            if (contractMother==null)
+            if (contractMother == null)
                 throw new Exception("Mother is not appear in the system");
             Nanny contractNanny = getNanny(contract.idNanny);
-            if (contractNanny==null)
+            if (contractNanny == null)
                 throw new Exception("Nanny is not appear in system");
             contract.idContract = ++contract_Id;
             DataSource.contractList.Add(contract);
 
-            }
+        }
 
         public void deleteContract(int idContractDel)
         {
             int index = DataSource.contractList.FindIndex(cl => cl.idContract == idContractDel);
-            if (index ==-1)
+            if (index == -1)
                 throw new Exception("Contract is not exist in system");
             //update the current number of chidren 
             Nanny contracctNanny = getNanny(idContractDel);
@@ -102,14 +102,17 @@ namespace DAL
         public void updateContract(Contract contract)
         {
             int index = DataSource.contractList.FindIndex(cl => cl.idContract == contract.idContract);
-            if (index==-1)
+            if (index == -1)
                 throw new Exception("Contract is not appear in system");
             DataSource.contractList[index] = contract;
         }
 
         public IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            if (Predicate == null)
+                return DataSource.contractList.AsEnumerable();
+
+            return DataSource.contractList.Where(Predicate);
         }
 
         #endregion
@@ -124,37 +127,29 @@ namespace DAL
         public void addMom(Mother mother)
         {
             Mother _mother = getMom(mother.idMom);
-            if (mother!=null)
+            if (mother != null)
                 throw new Exception("Mother already exist in system");
             DataSource.motherList.Add(mother);
         }
 
         public void deleteMother(long idMotherDel)
         {
-            Mother _mother = getMom(idMotherDel);
-            if (_mother==null)
+            int index = DataSource.motherList.FindIndex(m => m.idMom == idMotherDel);
+            if (index == -1)
                 throw new Exception("Mother is not exist in system");
-            deleteAllContractMother(idMotherDel);
-            DataSource.motherList.Remove(_mother);
+
+            deleteAllChildtMother(idMotherDel);
+
+            DataSource.motherList.RemoveAt(index);
         }
 
         //metod 
-        private void deleteAllContractMother(long idMotherDel)
+        private void deleteAllChildtMother(long idMotherDel)
         {
-            var listChild = DataSource.childList.Where(t => t.idMom == idMotherDel);
-            //if we need to delete only the contract
-            foreach (var item in listChild)
-            {
-              DataSource.contractList.RemoveAll(c => c.idChild == item.idChild);
-            }
-
-            //if we need delete all child mother
+            var listChildToDelete = DataSource.childList.Where(t => t.idMom == idMotherDel);
             //the metod deleteChild delete also the contract child
-            foreach (var item in listChild)
-            {
+            foreach (var item in listChildToDelete)
                 deleteChild(item.idChild);
-            }
-
         }
 
         public void updateMother(Mother mother)
@@ -164,7 +159,10 @@ namespace DAL
 
         public IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            if (Predicate == null)
+                return DataSource.motherList.AsEnumerable();
+
+            return DataSource.motherList.Where(Predicate);
         }
 
         #endregion
@@ -173,7 +171,7 @@ namespace DAL
 
         public Nanny getNanny(long idNanny)
         {
-            return DataSource.nannyList.FirstOrDefault(nl=>nl.nannyId==idNanny);
+            return DataSource.nannyList.FirstOrDefault(nl => nl.nannyId == idNanny);
         }
 
         public void addNanny(Nanny nanny)
@@ -192,7 +190,7 @@ namespace DAL
             DataSource.nannyList[nanindex] = nanny;
         }
 
-      
+
 
         public void deleteNanny(long idNannyDel)
         {
@@ -205,10 +203,13 @@ namespace DAL
 
         public IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            if (Predicate == null)
+                return DataSource.nannyList.AsEnumerable();
+
+            return DataSource.nannyList.Where(Predicate);
         }
 
         #endregion
-        
-     }
+
+    }
 }
