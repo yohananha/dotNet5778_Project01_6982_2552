@@ -42,15 +42,25 @@ namespace BL
         #endregion
 
         #region contract metod
+
+        public int MomsKidsByNanny(Child child,Nanny nanny)
+        {
+            int kids = 0;
+            long momKid = child.idMom;
+            //1. search for mom's children in children list
+            //2. count the contract list (by LinQ) for nannyID&&childID (maybe with for)
+            return kids;
+        }
         public void addContract(Contract contract)
         {
-            Child contracctChild = dal.getChild(contract.idChild);
+            Child contractChild = dal.getChild(contract.idChild);
             DateTime today = DateTime.Today;
-            if (today.Year - contracctChild.birthdayKid.Year < 1 && today.Month - contracctChild.birthdayKid.Month < 3)
+            if (today.Year - contractChild.birthdayKid.Year < 1 && today.Month - contractChild.birthdayKid.Month < 3)
                 throw new Exception("Child is too small");
             Nanny contractNanny = dal.getNanny(contract.idNanny);
             if (contractNanny.maxChildNanny == contractNanny.currentChildren)
                 throw new Exception("This nanny has reached the limit of children");
+            
             /*
              * 
              * 
