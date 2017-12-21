@@ -17,6 +17,7 @@ namespace BE
         public bool[] DaysRequestMom { get; set; }
         public DateTime[,] HoursRequestMom { get; set; }
 
+
         public override string ToString()
         {
             throw new System.NotImplementedException();
