@@ -15,6 +15,7 @@ namespace BL
         {
             dal = DAL.factoryDal.getDal();
         }
+
         #region child metod
 
         public void addChild(Child child)
@@ -40,17 +41,21 @@ namespace BL
         }
 
         #endregion
-
+        
         #region contract metod
 
         public int MomsKidsByNanny(Child child,Nanny nanny)
         {
-            int kids = 0;
-            long momKid = child.idMom;
-            //1. search for mom's children in children list
-            //2. count the contract list (by LinQ) for nannyID&&childID (maybe with for)
-            return kids;
+
+            var kidsMom = dal.getKidsByMoms(a => a.idMom == child.idMom);
+            var nannyContract = dal.getContracts(a => a.idNanny == nanny.nannyId);
+            return (from a in kidsMom
+                    let childId = a.idChild
+                    from b in nannyContract
+                    where b.idChild == childId
+                    select b).Count();
         }
+
         public void addContract(Contract contract)
         {
             Child contractChild = dal.getChild(contract.idChild);
