@@ -121,12 +121,12 @@ namespace DAL
 
         public Mother getMom(long idMom)
         {
-            return DataSource.motherList.FirstOrDefault(ml => ml.idMom == idMom);
+            return DataSource.motherList.FirstOrDefault(ml => ml.IdMom == idMom);
         }
 
         public void addMom(Mother mother)
         {
-            int indexMom = DataSource.motherList.FindIndex(ml => ml.idMom == mother.idMom);
+            int indexMom = DataSource.motherList.FindIndex(ml => ml.IdMom == mother.IdMom);
             if (indexMom != -1)
                 throw new Exception("Mother already exist in system");
             DataSource.motherList[indexMom] = mother;
@@ -134,7 +134,7 @@ namespace DAL
 
         public void deleteMother(long idMotherDel)
         {
-            int index = DataSource.motherList.FindIndex(m => m.idMom == idMotherDel);
+            int index = DataSource.motherList.FindIndex(m => m.IdMom == idMotherDel);
             if (index == -1)
                 throw new Exception("Mother is not exist in system");
 
@@ -154,7 +154,7 @@ namespace DAL
 
         public void updateMother(Mother mother)
         {
-            int indexMom = DataSource.motherList.FindIndex(ml => ml.idMom == mother.idMom);
+            int indexMom = DataSource.motherList.FindIndex(ml => ml.IdMom == mother.IdMom);
             if (indexMom == -1)
                 throw new Exception("Mother is not appear in the system");
             DataSource.motherList[indexMom] = mother;

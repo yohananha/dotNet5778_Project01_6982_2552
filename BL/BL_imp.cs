@@ -57,20 +57,22 @@ namespace BL
         public void addContract(Contract contract)
         {
             Child contractChild = dal.getChild(contract.idChild);
+            Nanny contractNanny = dal.getNanny(contract.idNanny);
+            Mother contractMother = dal.getMom(contractChild.idMom);
+            double discountRate = MomsKidsByNanny(contractChild, contractNanny) * 0.02 * contractNanny.rateMonthNanny;
             DateTime today = DateTime.Today;
             if (today.Year - contractChild.birthdayKid.Year < 1 && today.Month - contractChild.birthdayKid.Month < 3)
                 throw new Exception("Child is too small");
-            Nanny contractNanny = dal.getNanny(contract.idNanny);
+           
             if (contractNanny.maxChildNanny == contractNanny.currentChildren)
                 throw new Exception("This nanny has reached the limit of children");
             if (contract.isHour == false)
-                contract.salaryPerMonth = contractNanny.rateMonthNanny -
-                                          (MomsKidsByNanny(contractChild, contractNanny) * 0.02 *
-                                           contractNanny.rateMonthNanny);
-            //else
-            //{
-                
-            //}
+                contract.salaryPerMonth = contractNanny.rateMonthNanny - contractNanny.rateMonthNanny*discountRate;
+            else
+            {
+                contract.salaryPerMonth =
+                    getMomHours(contractMother) * 4 - getMomHours(contractMother) * 4 * discountRate;
+            }
             dal.addContract(contract);
         }
 
@@ -94,6 +96,17 @@ namespace BL
         #endregion
 
         #region mom methods
+
+        public int getMomHours(Mother mother)
+        {
+            int sum = 0;
+            for (var i = 0; i < 6; i++)
+            {
+                sum += mother.ScheduleMom[i].endHour - mother.ScheduleMom[i].startHour;
+            }
+            return sum;
+        }
+
         public void addMom(Mother mother)
         {
             dal.addMom(mother);
