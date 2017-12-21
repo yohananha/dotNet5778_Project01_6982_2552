@@ -15,7 +15,6 @@ namespace BL
         {
             dal = DAL.factoryDal.getDal();
         }
-
         #region child metod
 
         public void addChild(Child child)
@@ -41,21 +40,20 @@ namespace BL
         }
 
         #endregion
-        
+
         #region contract metod
 
         public int MomsKidsByNanny(Child child,Nanny nanny)
         {
-
             var kidsMom = dal.getKidsByMoms(a => a.idMom == child.idMom);
-            var nannyContract = dal.getContracts(a => a.idNanny == nanny.nannyId);
-            return (from a in kidsMom
-                    let childId = a.idChild
-                    from b in nannyContract
-                    where b.idChild == childId
-                    select b).Count();
+            var nannycontract = dal.getContracts(a => a.idNanny == nanny.nannyId);
+            
+            var finalList =from a in kidsMom
+                           from b in nannycontract
+                           where b.idChild==a.idChild
+                           select b;
+            return finalList.Count();
         }
-
         public void addContract(Contract contract)
         {
             Child contractChild = dal.getChild(contract.idChild);
@@ -65,14 +63,14 @@ namespace BL
             Nanny contractNanny = dal.getNanny(contract.idNanny);
             if (contractNanny.maxChildNanny == contractNanny.currentChildren)
                 throw new Exception("This nanny has reached the limit of children");
-            
-            /*
-             * 
-             * 
-             * need to add salary check. maybe different function
-             * 
-             * 
-             */
+            if (contract.isHour == false)
+                contract.salaryPerMonth = contractNanny.rateMonthNanny -
+                                          (MomsKidsByNanny(contractChild, contractNanny) * 0.02 *
+                                           contractNanny.rateMonthNanny);
+            //else
+            //{
+                
+            //}
             dal.addContract(contract);
         }
 
