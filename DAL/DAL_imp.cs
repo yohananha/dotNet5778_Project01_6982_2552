@@ -31,8 +31,7 @@ namespace DAL
 
         public void addChild(Child child)
         {
-            int index = DataSource.childList.FindIndex(c => c.idChild == child.idChild);
-            if (index == -1)//no child found
+            if (DataSource.childList.Exists(c => c.idChild == child.idChild))//no child found
                 throw new Exception("Child is already exist in system");
             DataSource.childList.Add(child);
         }
@@ -72,8 +71,7 @@ namespace DAL
 
         public void addContract(Contract contract)
         {
-            int contractIndex = DataSource.contractList.FindIndex(c => c.idChild == contract.idChild && c.idNanny == contract.idNanny);
-            if (contractIndex != -1)
+            if (DataSource.contractList.Exists(c => c.idChild == contract.idChild && c.idNanny == contract.idNanny))
                 throw new Exception("Contract already exist in system, please update the contract");
             Child contractchild = getChild(contract.idChild);
             Mother contractMother = getMom(contractchild.idMom);
@@ -126,10 +124,9 @@ namespace DAL
 
         public void addMom(Mother mother)
         {
-            int indexMom = DataSource.motherList.FindIndex(ml => ml.IdMom == mother.IdMom);
-            if (indexMom != -1)
+             if (DataSource.motherList.Exists(ml => ml.IdMom == mother.IdMom))
                 throw new Exception("Mother already exist in system");
-            DataSource.motherList[indexMom] = mother;
+            DataSource.motherList.Add(mother);
         }
 
         public void deleteMother(long idMotherDel)
@@ -146,7 +143,10 @@ namespace DAL
         //metod 
         private void deleteAllChildtMother(long idMotherDel)
         {
-            var listChildToDelete = DataSource.childList.Where(t => t.idMom == idMotherDel);
+            var listChildToDelete = from item in DataSource.childList
+                                    where item.idMom == idMotherDel
+                                    select item;
+     
             //the metod deleteChild delete also the contract child
             foreach (var item in listChildToDelete)
                 deleteChild(item.idChild);
@@ -179,8 +179,7 @@ namespace DAL
 
         public void addNanny(Nanny nanny)
         {
-            int nanIndex = DataSource.nannyList.FindIndex(nl => nl.nannyId == nanny.nannyId);
-            if (nanIndex != -1)
+            if (DataSource.nannyList.Exists(nl => nl.nannyId == nanny.nannyId))
                 throw new Exception("Nanny is already exist in system");
             DataSource.nannyList.Add(nanny);
         }
