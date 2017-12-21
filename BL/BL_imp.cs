@@ -45,11 +45,14 @@ namespace BL
 
         public int MomsKidsByNanny(Child child,Nanny nanny)
         {
-            int kids = 0;
-            long momKid = child.idMom;
-            //1. search for mom's children in children list
-            //2. count the contract list (by LinQ) for nannyID&&childID (maybe with for)
-            return kids;
+            var kidsMom = dal.getKidsByMoms(a => a.idMom == child.idMom);
+            var nannycontract = dal.getContracts(a => a.idNanny == nanny.nannyId);
+            
+            var finalList =from a in kidsMom
+                           from b in nannycontract
+                           where b.idChild==a.idChild
+                           select b;
+            return finalList.Count();
         }
         public void addContract(Contract contract)
         {
@@ -60,14 +63,14 @@ namespace BL
             Nanny contractNanny = dal.getNanny(contract.idNanny);
             if (contractNanny.maxChildNanny == contractNanny.currentChildren)
                 throw new Exception("This nanny has reached the limit of children");
-            
-            /*
-             * 
-             * 
-             * need to add salary check. maybe different function
-             * 
-             * 
-             */
+            if (contract.isHour == false)
+                contract.salaryPerMonth = contractNanny.rateMonthNanny -
+                                          (MomsKidsByNanny(contractChild, contractNanny) * 0.02 *
+                                           contractNanny.rateMonthNanny);
+            //else
+            //{
+                
+            //}
             dal.addContract(contract);
         }
 
