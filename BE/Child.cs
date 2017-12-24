@@ -17,7 +17,21 @@ namespace BE
 
         public override string ToString()
         {
-            return base.ToString(); 
+            return base.ToString();
+        }
+
+        public Child duplication()
+        {
+            Child duplicationChild = new Child();
+
+            duplicationChild.idMom = this.idMom;
+            duplicationChild.idChild = this.idChild;
+            duplicationChild.firstName = this.firstName;
+            duplicationChild.birthdayKid = this.birthdayKid;
+            duplicationChild.isSpecialNeed = this.isSpecialNeed;
+            duplicationChild.specialNeeds = this.specialNeeds;
+
+            return duplicationChild;
         }
     }
 }

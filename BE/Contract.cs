@@ -23,5 +23,23 @@ namespace BE
         {
             return base.ToString();
         }
+
+        public Contract duplication()
+        {
+            Contract duplicationContract = new Contract();
+
+            duplicationContract.idContract = this.idContract;
+            duplicationContract.idNanny = this.idNanny;
+            duplicationContract.idChild = this.idChild;
+            duplicationContract.isMet = this.isMet;
+            duplicationContract.isContract = this.isContract;
+            duplicationContract.salaryPerHour = this.salaryPerHour;
+            duplicationContract.salaryPerMonth = this.salaryPerMonth;
+            duplicationContract.isHour = this.isHour;
+            duplicationContract.workBegin = this.workBegin;
+            duplicationContract.workEnd = this.workEnd;
+
+            return duplicationContract;
+        }
     }
 }

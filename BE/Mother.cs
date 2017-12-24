@@ -15,10 +15,29 @@ namespace BE
         public string AddressMom { get; set; }
         public bool IsLookingForNanny { get; set; }
         public bool[] DaysRequestMom { get; set; }
-        public Schedule [] ScheduleMom { get; set; }
+        public Schedule[] ScheduleMom { get; set; }
+        public string nothMom { get; set; }
+
         public override string ToString()
         {
             throw new System.NotImplementedException();
+        }
+
+        public Mother duplication()
+        {
+            Mother duplicationMom = new Mother();
+
+            duplicationMom.IdMom = this.IdMom;
+            duplicationMom.LasNameMom = this.LasNameMom;
+            duplicationMom.FirstNameMom = this.FirstNameMom;
+            duplicationMom.PhoneMom = this.PhoneMom;
+            duplicationMom.AddressMom = this.AddressMom;
+            duplicationMom.IsLookingForNanny = this.IsLookingForNanny;
+            duplicationMom.DaysRequestMom = this.DaysRequestMom;
+            duplicationMom.ScheduleMom = this.ScheduleMom;
+            duplicationMom.nothMom = this.nothMom;
+
+            return duplicationMom;
         }
     }
 }

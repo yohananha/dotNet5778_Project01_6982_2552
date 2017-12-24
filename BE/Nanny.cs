@@ -23,7 +23,6 @@ namespace BE
         public int rateHourNanny { get; set; }
         public int rateMonthNanny { get; set; }
         public bool[] daysWorkNanny { get; set; }
-        public DateTime[,] hoursWorkNanny { get; set; }
         public bool isTamatNanny { get; set; }
         public string recommendationsNanny { get; set; }
         public int currentChildren { get; set; }
@@ -32,6 +31,34 @@ namespace BE
         public override string ToString()
         {
             return base.ToString();
+        }
+
+        public Nanny duplication()
+        {
+            Nanny duplicationNanny = new Nanny();
+
+            duplicationNanny.nannyId = this.nannyId;
+            duplicationNanny.firstNameNanny = this.firstNameNanny;
+            duplicationNanny.lastNameNanny = this.lastNameNanny;
+            duplicationNanny.dateNanny = this.dateNanny;
+            duplicationNanny.phoneNanny = this.phoneNanny;
+            duplicationNanny.addressNanny = this.addressNanny;
+            duplicationNanny.elevatorNanny = this.elevatorNanny;
+            duplicationNanny.floorNanny = this.floorNanny;
+            duplicationNanny.experienceNanny = this.experienceNanny;
+            duplicationNanny.maxChildNanny = this.maxChildNanny;
+            duplicationNanny.minAgeChildNanny = this.minAgeChildNanny;
+            duplicationNanny.maxAgeChildNanny = this.maxAgeChildNanny;
+            duplicationNanny.isByHourNanny = this.isByHourNanny;
+            duplicationNanny.rateHourNanny = this.rateHourNanny;
+            duplicationNanny.rateMonthNanny = this.rateMonthNanny;
+            duplicationNanny.daysWorkNanny = this.daysWorkNanny;
+            duplicationNanny.isTamatNanny = this.isTamatNanny;
+            duplicationNanny.recommendationsNanny = this.recommendationsNanny;
+            duplicationNanny.currentChildren = this.currentChildren;
+            duplicationNanny.ScheduleMom = this.ScheduleMom;
+
+            return duplicationNanny;
         }
     }
 }

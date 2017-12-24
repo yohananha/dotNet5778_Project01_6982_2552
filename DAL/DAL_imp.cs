@@ -33,7 +33,7 @@ namespace DAL
         {
             if (DataSource.childList.Exists(c => c.idChild == child.idChild))//no child found
                 throw new Exception("Child is already exist in system");
-            DataSource.childList.Add(child);
+            DataSource.childList.Add(child.duplication());
         }
 
         public void deleteChild(long idChildDel)
@@ -50,7 +50,7 @@ namespace DAL
             int index = DataSource.childList.FindIndex(c => c.idChild == child.idChild);
             if (index == -1)//no child found
                 throw new Exception("Child is not appear in system");
-            DataSource.childList[index] = child;
+            DataSource.childList[index] = child.duplication();
         }
 
         public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
@@ -81,7 +81,7 @@ namespace DAL
             if (contractNanny == null)
                 throw new Exception("Nanny is not appear in system");
             contract.idContract = ++contract_Id;
-            DataSource.contractList.Add(contract);
+            DataSource.contractList.Add(contract.duplication());
 
         }
 
@@ -102,7 +102,7 @@ namespace DAL
             int index = DataSource.contractList.FindIndex(cl => cl.idContract == contract.idContract);
             if (index == -1)
                 throw new Exception("Contract is not appear in system");
-            DataSource.contractList[index] = contract;
+            DataSource.contractList[index] = contract.duplication();
         }
 
         public IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null)
@@ -126,7 +126,7 @@ namespace DAL
         {
              if (DataSource.motherList.Exists(ml => ml.IdMom == mother.IdMom))
                 throw new Exception("Mother already exist in system");
-            DataSource.motherList.Add(mother);
+            DataSource.motherList.Add(mother.duplication());
         }
 
         public void deleteMother(long idMotherDel)
@@ -157,7 +157,7 @@ namespace DAL
             int indexMom = DataSource.motherList.FindIndex(ml => ml.IdMom == mother.IdMom);
             if (indexMom == -1)
                 throw new Exception("Mother is not appear in the system");
-            DataSource.motherList[indexMom] = mother;
+            DataSource.motherList[indexMom] = mother.duplication();
         }
 
         public IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null)
@@ -181,7 +181,7 @@ namespace DAL
         {
             if (DataSource.nannyList.Exists(nl => nl.nannyId == nanny.nannyId))
                 throw new Exception("Nanny is already exist in system");
-            DataSource.nannyList.Add(nanny);
+            DataSource.nannyList.Add(nanny.duplication());
         }
 
         public void updateNanny(Nanny nanny)
@@ -189,7 +189,7 @@ namespace DAL
             int nanindex = DataSource.nannyList.FindIndex(nl => nl.nannyId == nanny.nannyId);
             if (nanindex == -1)
                 throw new Exception("Nanny is not exist in system");
-            DataSource.nannyList[nanindex] = nanny;
+            DataSource.nannyList[nanindex] = nanny.duplication();
         }
 
 
