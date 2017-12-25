@@ -97,12 +97,14 @@ namespace BL
 
         #region mom methods
 
-        public int getMomHours(Mother mother)
+        public double getMomHours(Mother mother)
         {
-            int sum = 0;
+            double sum = 0;
+            TimeSpan temp;
             for (var i = 0; i < 6; i++)
             {
-                sum += mother.ScheduleMom[i].endHour - mother.ScheduleMom[i].startHour;
+                temp = mother.ScheduleMom[i].endHour - mother.ScheduleMom[i].startHour;
+                sum += temp.Hours + temp.Minutes / 60.0;
             }
             return sum;
         }

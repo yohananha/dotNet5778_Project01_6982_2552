@@ -1,8 +1,10 @@
-﻿namespace BE
+﻿using System;
+
+namespace BE
 {
     public class Schedule
     {
-        public int startHour;
-        public int endHour;
+        public DateTime startHour;
+        public DateTime endHour;
     }
 }
