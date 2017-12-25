@@ -301,6 +301,28 @@ namespace BL
             //           group a by CalculateDistance(a.addressNanny, addressMom) < rangeM*1000;
         }
 
+
+        //public IEnumerable<IGrouping<int, Nanny>> getNannyByDistance(string addressMom, bool isSort)
+        //{
+        //    //if no sort return by grouping
+        //    if(!isSort)
+        //    return from a in dal.getAllNanny()
+        //           group a by CalculateDistance(addressMom, a.addressNanny) / 5000;
+
+        //    //if is sort first get all nanny and clac the distance and after return by grouping with order
+        //    var nannyList = from a in dal.getAllNanny()
+        //                    select a.duplication();
+
+        //    foreach (var a in nannyList)
+        //    {
+        //        a.Distance = CalculateDistance(addressMom, a.addressNanny);
+        //    }
+
+        //    return from a in dal.getAllNanny()
+        //           orderby a.Distance
+        //           group a by a.Distance / 5000;
+        //}
+
         public IEnumerable<IGrouping<int, Nanny>> getChildByAgeRange(bool minAge, bool isSort)
         {
             if (isSort)
