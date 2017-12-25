@@ -189,7 +189,7 @@ namespace BL
             var nannyList = dal.getAllNanny();
 
             var compatibleNanny= from a in nannyList
-                   where cehckSchedule(a, mom)
+                   where checkSchedule(a, mom)
                    select a;
             if (!compatibleNanny.Any())
             {
@@ -241,7 +241,7 @@ namespace BL
              }
         }
 
-        public bool cehckSchedule(Nanny nanny, Mother mom)
+        public bool checkSchedule(Nanny nanny, Mother mom)
         {
             for (int i = 0; i < 6; i++)
             {
