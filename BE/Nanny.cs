@@ -28,6 +28,7 @@ namespace BE
         public int currentChildren { get; set; }
         public Schedule[] ScheduleNanny { get; set; }
         public double diff { get; set; }
+        public int Distance { get; set; }
 
         public override string ToString()
         {

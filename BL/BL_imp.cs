@@ -275,6 +275,26 @@ namespace BL
         {
             return contractByTerm(Predicate).Count();
         }
+
+        public IEnumerable<Nanny> getNannyByDistance(Mother mom, double distance)
+        {
+            int distanceMeter = (int)(distance * 1000);
+
+            // copy the list into new one
+            var nannyList = from a in dal.getAllNanny()
+                            select a.duplication();
+
+            foreach (var a in nannyList)
+            {
+                a.Distance = CalculateDistance(mom.AddressMom, a.addressNanny);
+            }
+
+            return from a in nannyList
+                   where  a.Distance < distanceMeter
+                   select a;
+        }
+
+
         #endregion
     }
 }
