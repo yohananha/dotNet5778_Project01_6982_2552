@@ -107,7 +107,7 @@ namespace BL
             {
               sum += mother.ScheduleMom[i].endHour - mother.ScheduleMom[i].startHour;
             }
-            return (sum.Days-1) * 24 + sum.Hours + sum.Minutes / 60.0;
+            return (sum.Days * 24 + sum.Hours + sum.Minutes / 60.0);
         }
 
         public void addMom(Mother mother)
@@ -163,7 +163,6 @@ namespace BL
         #endregion
 
         #region other functions
-
         //google directions
         public static int CalculateDistance(string source/*mother*/, string dest/*nanny*/)
         {
@@ -179,27 +178,29 @@ namespace BL
             return leg.Distance.Value;
         }
 
+        /// <summary>
+        /// first get all Nanny and after cehck with metod which nanny compatible to mother
+        /// </summary>
+        /// <param name="mom"></param>
+        /// <returns></returns> Nanny list compatible to mother
         public IEnumerable<Nanny> getAllCompatibleNanny(Mother mom)
         {
-            var nannyList = getAllNanny();
+            var nannyList = dal.getAllNanny();
 
             return from a in nannyList
-                where checkSchdule(a, mom)
-                select a;
+                   where cehckSchedule(a, mom)
+                   select a; 
         }
 
-        public bool checkSchdule(Nanny nanny, Mother mother)
+        public bool cehckSchedule(Nanny nanny, Mother mom)
         {
-
             for (int i = 0; i < 6; i++)
             {
-                if (nanny.ScheduleNanny[i].startHour > mother.ScheduleMom[i].startHour ||
-                    nanny.ScheduleNanny[i].endHour < mother.ScheduleMom[i].endHour)
+                if (nanny.ScheduleNanny[i].startHour > mom.ScheduleMom[i].startHour || nanny.ScheduleNanny[i].endHour < mom.ScheduleMom[i].endHour)
                     return false;
             }
             return true;
         }
-
         #endregion
     }
 }
