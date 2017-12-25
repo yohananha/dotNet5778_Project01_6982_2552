@@ -294,10 +294,11 @@ namespace BL
                    select a;
         }
 
-        public IEnumerable<IGrouping<bool, Nanny>> getNannyByDistance(string addressMom, string addressNanny, double rangeM)
+        public IEnumerable<IGrouping<bool, Nanny>> getNannyByDistance(string addressMom, string addressNanny, double rangeM, bool isSort)
         {
-            return from a in dal.getAllNanny()
-                group a by CalculateDistance(addressNanny, addressMom) < rangeM*1000;
+            //if (isSort)
+            //    return from a in dal.getAllNanny()
+            //           group a by CalculateDistance(a.addressNanny, addressMom) < rangeM*1000;
         }
 
         public IEnumerable<IGrouping<int, Nanny>> getChildByAgeRange(bool minAge, bool isSort)
