@@ -241,6 +241,27 @@ namespace BL
              }
         }
 
+        public void getNannyByAgeRange(bool isSort, bool upList)
+        {
+            //IEnumerable<IGrouping<>> nannyList = dal.getAllNanny();
+            //if (upList)
+            //{
+            //    nannyList.GroupBy(n => n.maxAgeChildNanny % 3);
+            //    if (isSort)
+            //        nannyList.OrderBy(x => x.Key);
+            //}
+            //else
+            //{
+            //    nannyList.GroupBy(n => n.maxAgeChildNanny % 3);
+            //    if (isSort)
+            //        nannyList.OrderBy(x => x.Key);
+            //}
+        }
+
+
+
+
+
         public bool checkSchedule(Nanny nanny, Mother mom)
         {
             for (int i = 0; i < 6; i++)
