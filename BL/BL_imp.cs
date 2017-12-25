@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
+using GoogleMapsApi;
+using GoogleMapsApi.Entities.Directions.Request;
+using GoogleMapsApi.Entities.Directions.Response;
 
 namespace BL
 {
@@ -99,14 +102,12 @@ namespace BL
 
         public double getMomHours(Mother mother)
         {
-            double sum = 0;
-            TimeSpan temp;
+            TimeSpan sum = new TimeSpan();
             for (var i = 0; i < 6; i++)
             {
-                temp = mother.ScheduleMom[i].endHour - mother.ScheduleMom[i].startHour;
-                sum += temp.Hours + temp.Minutes / 60.0;
+              sum += mother.ScheduleMom[i].endHour - mother.ScheduleMom[i].startHour;
             }
-            return sum;
+            return (sum.Days * 24 + sum.Hours + sum.Minutes / 60.0);
         }
 
         public void addMom(Mother mother)
@@ -157,6 +158,24 @@ namespace BL
         public void updateNanny(Nanny nanny)
         {
             dal.updateNanny(nanny);
+        }
+
+        #endregion
+
+        #region other functions
+        //google directions
+        public static int CalculateDistance(string source/*mother*/, string dest/*nanny*/)
+        {
+            var drivingDirectionRequest = new DirectionsRequest
+            {
+                TravelMode = TravelMode.Walking,
+                Origin = source,
+                Destination = dest,
+            };
+            DirectionsResponse drivingDirections = GoogleMaps.Directions.Query(drivingDirectionRequest);
+            Route route = drivingDirections.Routes.First();
+            Leg leg = route.Legs.First();
+            return leg.Distance.Value;
         }
 
         #endregion
