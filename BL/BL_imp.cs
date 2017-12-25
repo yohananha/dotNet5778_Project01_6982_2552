@@ -47,15 +47,15 @@ namespace BL
 
         #region contract metod
 
-        public int MomsKidsByNanny(Child child,Nanny nanny)
+        public int MomsKidsByNanny(Child child, Nanny nanny)
         {
             var kidsMom = dal.getKidsByMoms(a => a.idMom == child.idMom);
             var nannycontract = dal.getContracts(a => a.idNanny == nanny.nannyId);
-            
-            var finalList =from a in kidsMom
-                           from b in nannycontract
-                           where b.idChild==a.idChild
-                           select b;
+
+            var finalList = from a in kidsMom
+                            from b in nannycontract
+                            where b.idChild == a.idChild
+                            select b;
             return finalList.Count();
         }
         public void addContract(Contract contract)
@@ -67,11 +67,11 @@ namespace BL
             DateTime today = DateTime.Today;
             if (today.Year - contractChild.birthdayKid.Year < 1 && today.Month - contractChild.birthdayKid.Month < 3)
                 throw new Exception("Child is too small");
-           
+
             if (contractNanny.maxChildNanny == contractNanny.currentChildren)
                 throw new Exception("This nanny has reached the limit of children");
             if (contract.isHour == false)
-                contract.salaryPerMonth = contractNanny.rateMonthNanny - contractNanny.rateMonthNanny*discountRate;
+                contract.salaryPerMonth = contractNanny.rateMonthNanny - contractNanny.rateMonthNanny * discountRate;
             else
             {
                 contract.salaryPerMonth =
@@ -106,9 +106,9 @@ namespace BL
             TimeSpan sum = new TimeSpan();
             for (var i = 0; i < 6; i++)
             {
-              sum += mother.ScheduleMom[i].endHour - mother.ScheduleMom[i].startHour;
+                sum += mother.ScheduleMom[i].endHour - mother.ScheduleMom[i].startHour;
             }
-            return ((sum.Days-1) * 24 + sum.Hours + sum.Minutes / 60.0);
+            return ((sum.Days - 1) * 24 + sum.Hours + sum.Minutes / 60.0);
         }
 
         public void addMom(Mother mother)
@@ -188,9 +188,9 @@ namespace BL
         {
             var nannyList = dal.getAllNanny();
 
-            var compatibleNanny= from a in nannyList
-                   where checkSchedule(a, mom)
-                   select a;
+            var compatibleNanny = from a in nannyList
+                                  where checkSchedule(a, mom)
+                                  select a;
             if (!compatibleNanny.Any())
             {
                 return fiveNearestNanny(mom);
@@ -202,11 +202,11 @@ namespace BL
         {
             // copy the list into new one
             var nannyList = from a in dal.getAllNanny()
-                select a.duplication();
+                            select a.duplication();
 
             foreach (var a in nannyList)
             {
-               schduleDifference(a, mom);
+                schduleDifference(a, mom);
             }
 
             return nannyList.OrderBy(a => a.diff).Take(5);
@@ -238,7 +238,7 @@ namespace BL
                     sum = mom.ScheduleMom[i].endHour - nanny.ScheduleNanny[i].endHour;
                     nanny.diff += ((sum.Days - 1) * 24 + sum.Hours + sum.Minutes / 60.0);
                 }
-             }
+            }
         }
 
         public void getNannyByAgeRange(bool isSort, bool upList)
@@ -266,11 +266,73 @@ namespace BL
         {
             for (int i = 0; i < 6; i++)
             {
-                if (nanny.ScheduleNanny[i].startHour > mom.ScheduleMom[i].startHour || 
+                if (nanny.ScheduleNanny[i].startHour > mom.ScheduleMom[i].startHour ||
                     nanny.ScheduleNanny[i].endHour < mom.ScheduleMom[i].endHour)
                     return false;
             }
             return true;
+        }
+
+        public IEnumerable<Child> getAllChildWithoutNanny()
+        {
+            return from a in dal.getKidsByMoms()
+                   let idChild = a.idChild
+                   from b in dal.getContracts()
+                   where idChild != b.idChild
+                   select a;
+        }
+
+        public IEnumerable<Nanny> getTamatNanny()
+        {
+            return dal.getAllNanny(a => a.isTamatNanny);
+        }
+
+        public IEnumerable<Contract> contractByTerm(Func<Contract, bool> Predicate = null)
+        {
+            return dal.getContracts(Predicate);
+        }
+
+        public int numContractByTerm(Func<Contract, bool> Predicate = null)
+        {
+            return contractByTerm(Predicate).Count();
+        }
+
+        public IEnumerable<Nanny> getNannyByDistance(Mother mom, double distance)
+        {
+            int distanceMeter = (int)(distance * 1000);
+
+            // copy the list into new one
+            var nannyList = from a in dal.getAllNanny()
+                            select a.duplication();
+
+            foreach (var a in nannyList)
+            {
+                a.Distance = CalculateDistance(mom.AddressMom, a.addressNanny);
+            }
+
+            return from a in nannyList
+                   where a.Distance < distanceMeter
+                   select a;
+        }
+
+        public IEnumerable<IGrouping<int, Nanny>> getChildByAgeRange(bool minAge, bool isSort)
+        {
+            if (isSort)
+                if (minAge)
+                    return from a in dal.getAllNanny()
+                           orderby a.minAgeChildNanny
+                           group a by a.minAgeChildNanny / 3;
+                else
+                    return from a in dal.getAllNanny()
+                           orderby a.maxAgeChildNanny
+                           group a by a.minAgeChildNanny / 3;
+            else
+                    if (minAge)
+                        return from a in dal.getAllNanny()
+                               group a by a.minAgeChildNanny / 3;
+                    else
+                        return from a in dal.getAllNanny()
+                               group a by a.minAgeChildNanny / 3;
         }
         #endregion
     }

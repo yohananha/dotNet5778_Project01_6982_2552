@@ -56,7 +56,7 @@ namespace DAL
         public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
         {
             if (Predicate == null)
-                throw new Exception("Please send mother ID");
+                return DataSource.childList.AsEnumerable();
             return DataSource.childList.Where(Predicate);
         }
 
