@@ -241,27 +241,6 @@ namespace BL
             }
         }
 
-        public void getNannyByAgeRange(bool isSort, bool upList)
-        {
-            //IEnumerable<IGrouping<>> nannyList = dal.getAllNanny();
-            //if (upList)
-            //{
-            //    nannyList.GroupBy(n => n.maxAgeChildNanny % 3);
-            //    if (isSort)
-            //        nannyList.OrderBy(x => x.Key);
-            //}
-            //else
-            //{
-            //    nannyList.GroupBy(n => n.maxAgeChildNanny % 3);
-            //    if (isSort)
-            //        nannyList.OrderBy(x => x.Key);
-            //}
-        }
-
-
-
-
-
         public bool checkSchedule(Nanny nanny, Mother mom)
         {
             for (int i = 0; i < 6; i++)
@@ -313,6 +292,12 @@ namespace BL
             return from a in nannyList
                    where a.Distance < distanceMeter
                    select a;
+        }
+
+        public IEnumerable<IGrouping<bool, Nanny>> getNannyByDistance(string addressMom, string addressNanny, double rangeM)
+        {
+            return from a in dal.getAllNanny()
+                group a by CalculateDistance(addressNanny, addressMom) < rangeM*1000;
         }
 
         public IEnumerable<IGrouping<int, Nanny>> getChildByAgeRange(bool minAge, bool isSort)
