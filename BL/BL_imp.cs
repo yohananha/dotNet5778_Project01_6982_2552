@@ -179,7 +179,7 @@ namespace BL
         }
 
         /// <summary>
-        /// first get all Nanny and after cehck with metod which nanny compatible to mother
+        /// get all the nannies into a list, and then check each one for compitabillity
         /// </summary>
         /// <param name="mom"></param>
         /// <returns></returns> Nanny list compatible to mother
@@ -187,10 +187,21 @@ namespace BL
         {
             var nannyList = dal.getAllNanny();
 
-            return from a in nannyList
+            var compatinleNanny= from a in nannyList
                    where cehckSchedule(a, mom)
-                   select a; 
+                   select a;
+            if (!compatinleNanny.Any())
+            {
+                return fiveNearestNanny(mom);
+            }
+            else return compatinleNanny;
         }
+
+        private IEnumerable<Nanny> fiveNearestNanny(Mother mom)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public bool cehckSchedule(Nanny nanny, Mother mom)
         {
