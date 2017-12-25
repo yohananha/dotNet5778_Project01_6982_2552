@@ -178,6 +178,29 @@ namespace BL
             return leg.Distance.Value;
         }
 
+        /// <summary>
+        /// first get all Nanny and after cehck with metod which nanny compatible to mother
+        /// </summary>
+        /// <param name="mom"></param>
+        /// <returns></returns> Nanny list compatible to mother
+        public IEnumerable<Nanny> getAllCompatibleNanny(Mother mom)
+        {
+            var nannyList = dal.getAllNanny();
+
+            return from a in nannyList
+                   where cehckSchedule(a, mom)
+                   select a; 
+        }
+
+        public bool cehckSchedule(Nanny nanny, Mother mom)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                if (nanny.ScheduleNanny[i].startHour > mom.ScheduleMom[i].startHour || nanny.ScheduleNanny[i].endHour < mom.ScheduleMom[i].endHour)
+                    return false;
+            }
+            return true;
+        }
         #endregion
     }
 }
