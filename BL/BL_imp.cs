@@ -46,15 +46,15 @@ namespace BL
 
         #region contract metod
 
-        public int MomsKidsByNanny(Child child,Nanny nanny)
+        public int MomsKidsByNanny(Child child, Nanny nanny)
         {
             var kidsMom = dal.getKidsByMoms(a => a.idMom == child.idMom);
             var nannycontract = dal.getContracts(a => a.idNanny == nanny.nannyId);
-            
-            var finalList =from a in kidsMom
-                           from b in nannycontract
-                           where b.idChild==a.idChild
-                           select b;
+
+            var finalList = from a in kidsMom
+                            from b in nannycontract
+                            where b.idChild == a.idChild
+                            select b;
             return finalList.Count();
         }
         public void addContract(Contract contract)
@@ -66,11 +66,11 @@ namespace BL
             DateTime today = DateTime.Today;
             if (today.Year - contractChild.birthdayKid.Year < 1 && today.Month - contractChild.birthdayKid.Month < 3)
                 throw new Exception("Child is too small");
-           
+
             if (contractNanny.maxChildNanny == contractNanny.currentChildren)
                 throw new Exception("This nanny has reached the limit of children");
             if (contract.isHour == false)
-                contract.salaryPerMonth = contractNanny.rateMonthNanny - contractNanny.rateMonthNanny*discountRate;
+                contract.salaryPerMonth = contractNanny.rateMonthNanny - contractNanny.rateMonthNanny * discountRate;
             else
             {
                 contract.salaryPerMonth =
@@ -105,7 +105,7 @@ namespace BL
             TimeSpan sum = new TimeSpan();
             for (var i = 0; i < 6; i++)
             {
-              sum += mother.ScheduleMom[i].endHour - mother.ScheduleMom[i].startHour;
+                sum += mother.ScheduleMom[i].endHour - mother.ScheduleMom[i].startHour;
             }
             return (sum.Days * 24 + sum.Hours + sum.Minutes / 60.0);
         }
@@ -187,9 +187,9 @@ namespace BL
         {
             var nannyList = dal.getAllNanny();
 
-            var compatinleNanny= from a in nannyList
-                   where cehckSchedule(a, mom)
-                   select a;
+            var compatinleNanny = from a in nannyList
+                                  where cehckSchedule(a, mom)
+                                  select a;
             if (!compatinleNanny.Any())
             {
                 return fiveNearestNanny(mom);
@@ -207,10 +207,35 @@ namespace BL
         {
             for (int i = 0; i < 6; i++)
             {
-                if (nanny.ScheduleNanny[i].startHour > mom.ScheduleMom[i].startHour || nanny.ScheduleNanny[i].endHour < mom.ScheduleMom[i].endHour)
+                if (nanny.ScheduleNanny[i].startHour > mom.ScheduleMom[i].startHour ||
+                    nanny.ScheduleNanny[i].endHour < mom.ScheduleMom[i].endHour)
                     return false;
             }
             return true;
+        }
+
+        public IEnumerable<Child> getAllChildWithoutNanny()
+        {
+            return from a in dal.getKidsByMoms()
+                   let idChild = a.idChild
+                   from b in dal.getContracts()
+                   where idChild != b.idChild
+                   select a;
+        }
+
+        public IEnumerable<Nanny> getTamatNanny()
+        {
+            return dal.getAllNanny(a => a.isTamatNanny);
+        }
+
+        public IEnumerable<Contract> contractByTerm(Func<Contract, bool> Predicate = null)
+        {
+            return dal.getContracts(Predicate);
+        }
+
+        public int numContractByTerm(Func<Contract, bool> Predicate = null)
+        {
+            return contractByTerm(Predicate).Count();
         }
         #endregion
     }
