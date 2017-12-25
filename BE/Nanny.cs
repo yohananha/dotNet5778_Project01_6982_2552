@@ -26,7 +26,7 @@ namespace BE
         public bool isTamatNanny { get; set; }
         public string recommendationsNanny { get; set; }
         public int currentChildren { get; set; }
-        public Schedule[] ScheduleMom { get; set; }
+        public Schedule[] ScheduleNanny { get; set; }
 
         public override string ToString()
         {
