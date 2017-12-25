@@ -108,7 +108,7 @@ namespace BL
             {
                 sum += mother.ScheduleMom[i].endHour - mother.ScheduleMom[i].startHour;
             }
-            return ((sum.Days-1) * 24 + sum.Hours + sum.Minutes / 60.0);
+            return ((sum.Days - 1) * 24 + sum.Hours + sum.Minutes / 60.0);
         }
 
         public void addMom(Mother mother)
@@ -188,9 +188,9 @@ namespace BL
         {
             var nannyList = dal.getAllNanny();
 
-            var compatibleNanny= from a in nannyList
-                   where checkSchedule(a, mom)
-                   select a;
+            var compatibleNanny = from a in nannyList
+                                  where checkSchedule(a, mom)
+                                  select a;
             if (!compatibleNanny.Any())
             {
                 return fiveNearestNanny(mom);
@@ -202,11 +202,11 @@ namespace BL
         {
             // copy the list into new one
             var nannyList = from a in dal.getAllNanny()
-                select a.duplication();
+                            select a.duplication();
 
             foreach (var a in nannyList)
             {
-               schduleDifference(a, mom);
+                schduleDifference(a, mom);
             }
 
             return nannyList.OrderBy(a => a.diff).Take(5);
@@ -238,14 +238,14 @@ namespace BL
                     sum = mom.ScheduleMom[i].endHour - nanny.ScheduleNanny[i].endHour;
                     nanny.diff += ((sum.Days - 1) * 24 + sum.Hours + sum.Minutes / 60.0);
                 }
-             }
+            }
         }
 
         public bool checkSchedule(Nanny nanny, Mother mom)
         {
             for (int i = 0; i < 6; i++)
             {
-                if (nanny.ScheduleNanny[i].startHour > mom.ScheduleMom[i].startHour || 
+                if (nanny.ScheduleNanny[i].startHour > mom.ScheduleMom[i].startHour ||
                     nanny.ScheduleNanny[i].endHour < mom.ScheduleMom[i].endHour)
                     return false;
             }
@@ -290,11 +290,29 @@ namespace BL
             }
 
             return from a in nannyList
-                   where  a.Distance < distanceMeter
+                   where a.Distance < distanceMeter
                    select a;
         }
 
-
+        public IEnumerable<IGrouping<int, Nanny>> getChildByAgeRange(bool minAge, bool isSort)
+        {
+            if (isSort)
+                if (minAge)
+                    return from a in dal.getAllNanny()
+                           orderby a.minAgeChildNanny
+                           group a by a.minAgeChildNanny / 3;
+                else
+                    return from a in dal.getAllNanny()
+                           orderby a.maxAgeChildNanny
+                           group a by a.minAgeChildNanny / 3;
+            else
+                    if (minAge)
+                        return from a in dal.getAllNanny()
+                               group a by a.minAgeChildNanny / 3;
+                    else
+                        return from a in dal.getAllNanny()
+                               group a by a.minAgeChildNanny / 3;
+        }
         #endregion
     }
 }
