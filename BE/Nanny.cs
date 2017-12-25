@@ -27,6 +27,7 @@ namespace BE
         public string recommendationsNanny { get; set; }
         public int currentChildren { get; set; }
         public Schedule[] ScheduleNanny { get; set; }
+        public double diff { get; set; }
 
         public override string ToString()
         {

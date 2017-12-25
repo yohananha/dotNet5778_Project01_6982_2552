@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
@@ -107,7 +108,7 @@ namespace BL
             {
               sum += mother.ScheduleMom[i].endHour - mother.ScheduleMom[i].startHour;
             }
-            return (sum.Days * 24 + sum.Hours + sum.Minutes / 60.0);
+            return ((sum.Days-1) * 24 + sum.Hours + sum.Minutes / 60.0);
         }
 
         public void addMom(Mother mother)
@@ -187,27 +188,65 @@ namespace BL
         {
             var nannyList = dal.getAllNanny();
 
-            var compatinleNanny= from a in nannyList
+            var compatibleNanny= from a in nannyList
                    where cehckSchedule(a, mom)
                    select a;
-            if (!compatinleNanny.Any())
+            if (!compatibleNanny.Any())
             {
                 return fiveNearestNanny(mom);
             }
-            else return compatinleNanny;
+            else return compatibleNanny;
         }
 
         private IEnumerable<Nanny> fiveNearestNanny(Mother mom)
         {
-            throw new NotImplementedException();
+            // copy the list into new one
+            var nannyList = from a in dal.getAllNanny()
+                select a.duplication();
+
+            foreach (var a in nannyList)
+            {
+               schduleDifference(a, mom);
+            }
+
+            return nannyList.OrderBy(a => a.diff).Take(5);
+
+
         }
 
+
+        /// <summary>
+        /// calculates the difference between moms request hours and the nanny scheduele
+        /// </summary>
+        /// <param name="nanny"></param>
+        /// <param name="mom"></param>
+        /// <returns></returns>
+        public void schduleDifference(Nanny nanny, Mother mom)
+        {
+            nanny.diff = 0;
+            for (int i = 0; i < 6; i++)
+            {
+                if (nanny.ScheduleNanny[i].startHour > mom.ScheduleMom[i].startHour)
+                {
+                    TimeSpan sum = new TimeSpan();
+                    sum = nanny.ScheduleNanny[i].startHour - mom.ScheduleMom[i].startHour;
+                    nanny.diff += ((sum.Days - 1) * 24 + sum.Hours + sum.Minutes / 60.0);
+                }
+                if (nanny.ScheduleNanny[i].endHour < mom.ScheduleMom[i].endHour)
+                {
+                    TimeSpan sum = new TimeSpan();
+                    sum = mom.ScheduleMom[i].endHour - nanny.ScheduleNanny[i].endHour;
+                    nanny.diff += ((sum.Days - 1) * 24 + sum.Hours + sum.Minutes / 60.0);
+                }
+             }
+        }
 
         public bool cehckSchedule(Nanny nanny, Mother mom)
         {
             for (int i = 0; i < 6; i++)
             {
-                if (nanny.ScheduleNanny[i].startHour > mom.ScheduleMom[i].startHour || nanny.ScheduleNanny[i].endHour < mom.ScheduleMom[i].endHour)
+                if (nanny.ScheduleNanny[i].startHour > mom.ScheduleMom[i].startHour || 
+                    nanny.ScheduleNanny[i].endHour < mom.ScheduleMom[i].endHour)
                     return false;
             }
             return true;
