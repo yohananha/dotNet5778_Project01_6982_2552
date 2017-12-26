@@ -15,19 +15,14 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for Nanny.xaml
+    /// Interaction logic for AddNanny.xaml
     /// </summary>
-    public partial class Nanny : Window
+    public partial class AddNanny : Window
     {
-        public Nanny()
+        public AddNanny()
         {
             InitializeComponent();
         }
 
-        private void AddNanny_Click(object sender, RoutedEventArgs e)
-        {
-            AddNanny add = new AddNanny();
-            add.Show();
-        }
-    }
+ }
 }

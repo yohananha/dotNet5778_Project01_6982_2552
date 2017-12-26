@@ -35,7 +35,7 @@ namespace PL
 
         private void button_Copy_Click(object sender, RoutedEventArgs e)
         {
-            Nanny nann = new Nanny();
+            var nann = new PL.Nanny();
             nann.Show();
         }
     }
