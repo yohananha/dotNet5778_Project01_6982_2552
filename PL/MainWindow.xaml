@@ -1,0 +1,15 @@
+﻿<Window x:Class="PL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="111,100,0,0" TextWrapping="Wrap" Text="Nanny or Mother?" VerticalAlignment="Top" Height="67" Width="280" TextAlignment="Center" LineHeight="22" FontSize="30"/>
+        <Button x:Name="button" Content="Mother" HorizontalAlignment="Left" Margin="289,177,0,0" VerticalAlignment="Center" Width="130" Height="78" Click="button_Click"/>
+        <Button x:Name="button_Copy" Content="Nanny" HorizontalAlignment="Left" Margin="101,175,0,0" VerticalAlignment="Center" Width="130" Height="78" Click="button_Copy_Click"/>
+
+    </Grid>
+</Window>

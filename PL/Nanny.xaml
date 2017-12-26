@@ -1,0 +1,15 @@
+﻿<Window x:Class="PL.Nanny"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="Nanny" Height="300" Width="300">
+    <Grid>
+        <Button x:Name="AddNanny" Content="Add nanny" HorizontalAlignment="Left" Margin="53,30,0,0" VerticalAlignment="Top" Width="200" Height="60"/>
+        <Button x:Name="DelNanny" Content="Delete nanny" HorizontalAlignment="Left" Margin="53,102,0,0" VerticalAlignment="Top" Width="200" Height="60                 "/>
+        <Button x:Name="UpdateNanny" Content="Update nanny" HorizontalAlignment="Left" Margin="53,175,0,0" VerticalAlignment="Top" Width="200" Height="60                 "/>
+
+    </Grid>
+</Window>

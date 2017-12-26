@@ -58,7 +58,7 @@ namespace BE
             duplicationNanny.isTamatNanny = this.isTamatNanny;
             duplicationNanny.recommendationsNanny = this.recommendationsNanny;
             duplicationNanny.currentChildren = this.currentChildren;
-            duplicationNanny.ScheduleMom = this.ScheduleMom;
+    //        duplicationNanny.ScheduleMom = this.ScheduleMom;
 
             return duplicationNanny;
         }
