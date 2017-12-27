@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Mother" Height="300" Width="300">
     <Grid>
-        <Button x:Name="AddMother" Content="Add mother" HorizontalAlignment="Center" Margin="73,25,76.6,0" VerticalAlignment="Top" Width="144" Height="62"/>
+        <Button x:Name="AddMother" Content="Add mother" HorizontalAlignment="Center" Margin="73,25,76.6,0" VerticalAlignment="Top" Width="144" Height="62" Click="AddMother_Click"/>
         <Button x:Name="DelMother" Content="Delete mother" HorizontalAlignment="Center" Margin="73,103,76.6,0" VerticalAlignment="Top" Width="144" Height="62"/>
         <Button x:Name="UpdateMother" Content="Update mother" HorizontalAlignment="Center" Margin="73,180,76.6,0" VerticalAlignment="Top" Width="144" Height="62"/>
 

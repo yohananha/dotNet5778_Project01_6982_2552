@@ -13,7 +13,7 @@ namespace BE
         public string FirstNameMom { get; set; }
         public int PhoneMom { get; set; }
         public string AddressMom { get; set; }
-        public bool IsLookingForNanny { get; set; }
+        public string AddressForNanny { get; set; }
         public bool[] DaysRequestMom { get; set; }
         public Schedule[] ScheduleMom { get; set; }
         public string nothMom { get; set; }
@@ -32,7 +32,7 @@ namespace BE
             duplicationMom.FirstNameMom = this.FirstNameMom;
             duplicationMom.PhoneMom = this.PhoneMom;
             duplicationMom.AddressMom = this.AddressMom;
-            duplicationMom.IsLookingForNanny = this.IsLookingForNanny;
+            duplicationMom.AddressForNanny = this.AddressForNanny;
             duplicationMom.DaysRequestMom = this.DaysRequestMom;
             duplicationMom.ScheduleMom = this.ScheduleMom;
             duplicationMom.nothMom = this.nothMom;

@@ -24,6 +24,10 @@ namespace PL
             InitializeComponent();
         }
 
-
+        private void AddMother_Click(object sender, RoutedEventArgs e)
+        {
+            AddMotherWindow addMom = new AddMotherWindow();
+            addMom.Show();
+        }
     }
 }

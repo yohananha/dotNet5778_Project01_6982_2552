@@ -18,6 +18,7 @@ namespace BL
         public BL_imp()
         {
             dal = DAL.factoryDal.getDal();
+            
         }
         #region child metod
 

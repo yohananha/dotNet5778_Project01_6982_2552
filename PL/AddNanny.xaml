@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="AddNanny" Height="397.6" Width="300">
+        Title="AddNanny" Height="397.6" Width="400
+        ">
     <Grid Margin="0,0,-0.4,0" Height="328" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
@@ -23,7 +24,12 @@
         <TextBox x:Name="_maxKids" HorizontalAlignment="Center" Height="13" Margin="13,159,15.2,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="135" FontSize="10"/>
         <TextBox x:Name="_minAgeKids" HorizontalAlignment="Center" Height="13" Margin="13,177,15.2,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="135" FontSize="10"/>
         <TextBox x:Name="_maxAgeKids" HorizontalAlignment="Center" Height="13" Margin="13,192,15.2,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="135" FontSize="10"/>
-        <TextBox x:Name="_PriceHour" HorizontalAlignment="Center" Height="13" Margin="13,224,15.2,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="135" FontSize="10"/>
+        <TextBox x:Name="_PriceHour" HorizontalAlignment="Center" Height="13" Margin="13,224,15.2,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="135"
+                 FontSize="10">
+            <TextBox.Visibility>
+                <Binding ElementName="rdoHour" Path = "(ToggleButton.IsChecked)" />
+            </TextBox.Visibility>
+        </TextBox>
         <TextBox x:Name="_PriceMonth" HorizontalAlignment="Center" Height="13" Margin="132,255,15.2,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="16" FontSize="10" Text="א" Foreground="#FFB7B7B7"/>
         <TextBox x:Name="textBox_Copy14" HorizontalAlignment="Center" Height="13" Margin="132,271,15.2,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="16" FontSize="10" Text="א" Foreground="#FFB7B7B7"/>
         <TextBox x:Name="textBox_Copy15" HorizontalAlignment="Center" Height="13" Margin="13,239,15.2,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="135" FontSize="10"/>
@@ -41,6 +47,9 @@
         <TextBox x:Name="textBox_Copy4" HorizontalAlignment="Center" Height="13" Margin="34,271,112.2,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="17" FontSize="10" RenderTransformOrigin="-0.723,0.462" Text="א" Foreground="#FFB7B7B7"/>
         <TextBox x:Name="_PriceMonth_Copy5" HorizontalAlignment="Center" Height="13" Margin="14,255,133.2,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="16" FontSize="10" Text="א" Foreground="#FFB7B7B7"/>
         <TextBox x:Name="textBox_Copy5" HorizontalAlignment="Center" Height="13" Margin="14,271,133.2,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="16" FontSize="10" RenderTransformOrigin="-0.723,0.462" Text="א" Foreground="#FFB7B7B7"/>
+        <ComboBox x:Name="salaryCheck" HorizontalAlignment="Left" Margin="41,206,0,0" VerticalAlignment="Top" Width="135" Height="14"/>
+        <ComboBox x:Name="vaccation" HorizontalAlignment="Left" Margin="41,286,0,0" VerticalAlignment="Top" Width="135" Height="14"/>
+        <ComboBox x:Name="elevator" HorizontalAlignment="Left" Margin="41,127,0,0" VerticalAlignment="Top" Width="135" Height="14" />
 
     </Grid>
 </Window>
