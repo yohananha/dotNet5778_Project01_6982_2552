@@ -15,7 +15,7 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             int choice;
-            bl = BL.factoryBL.getBL();
+            bl = BL.FactoryBL.GetBL();
 
             Console.WriteLine("Hello");
             Console.WriteLine("Mom- enter 1 \nNanny- enter 2 /nExit- enter 0");
