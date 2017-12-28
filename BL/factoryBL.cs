@@ -9,10 +9,11 @@ namespace BL
 {
     public class FactoryBL
     {
-        public static Ibl bl;
+        public static Ibl bl = null;
         public static Ibl GetBL()
         {
-            bl = new BL_imp();
+            if (bl == null)
+                bl = new BL_imp();
             return bl;
         }
     }
