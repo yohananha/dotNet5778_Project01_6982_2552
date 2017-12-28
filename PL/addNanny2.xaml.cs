@@ -19,17 +19,30 @@ namespace PL
     /// </summary>
     public partial class addNanny2 : Window
     {
+        public BE.Nanny nannyToAdd;
+        public BL.Ibl bl;
+
+
         public addNanny2()
         {
             InitializeComponent();
+            nannyToAdd = new BE.Nanny();
+            this.DataContext = nannyToAdd;
+            bl = BL.FactoryBL.GetBL();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
-
-            System.Windows.Data.CollectionViewSource nannyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("nannyViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // nannyViewSource.Source = [generic data source]
+            try
+            {
+                bl.addNanny(nannyToAdd);
+                nannyToAdd = new BE.Nanny();
+                this.DataContext = nannyToAdd;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
         }
     }
 }

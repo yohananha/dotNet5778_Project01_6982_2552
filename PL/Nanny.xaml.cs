@@ -26,7 +26,7 @@ namespace PL
 
         private void AddNanny_Click(object sender, RoutedEventArgs e)
         {
-            AddNanny add = new AddNanny();
+            addNanny2 add = new addNanny2();
             add.Show();
         }
     }
