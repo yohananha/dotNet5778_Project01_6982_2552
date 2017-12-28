@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
 
 namespace PL
 {
@@ -26,6 +27,8 @@ namespace PL
         {
             InitializeComponent();
             momToAdd = new BE.Mother();
+            momToAdd.DaysRequestMom = new bool[6];
+            momToAdd.ScheduleMom = new Schedule[6];
             this.AddMomGrid.DataContext = momToAdd;
             bl = BL.FactoryBL.GetBL();
         }
@@ -37,13 +40,19 @@ namespace PL
         {
             try
             {
-            //    momToAdd.FirstNameMom = this.firstNameMomTextBox.Text;
-            //    momToAdd.LasNameMom = this.lasNameMomTextBox.Text;
-            //    momToAdd.IdMom = int.Parse(this.idMomTextBox.Text);
-            //    momToAdd.PhoneMom = int.Parse(this.phoneMomTextBox.Text);
-            //    momToAdd.AddressMom = this.addressMomTextBox.Text;
-            //    momToAdd.AddressForNanny = this.addressForNannyTextBox.Text;
+                //    momToAdd.FirstNameMom = this.firstNameMomTextBox.Text;
+                //    momToAdd.LasNameMom = this.lasNameMomTextBox.Text;
+                //    momToAdd.IdMom = int.Parse(this.idMomTextBox.Text);
+                //    momToAdd.PhoneMom = int.Parse(this.phoneMomTextBox.Text);
+                //    momToAdd.AddressMom = this.addressMomTextBox.Text;
+                //    momToAdd.AddressForNanny = this.addressForNannyTextBox.Text;
 
+                momToAdd.DaysRequestMom[0] = (bool)SunCheck.IsChecked;
+                momToAdd.DaysRequestMom[1] = (bool)MonCheck.IsChecked;
+                momToAdd.DaysRequestMom[2] = (bool)TueCheck.IsChecked;
+                momToAdd.DaysRequestMom[3] = (bool)WedCheck.IsChecked;
+                momToAdd.DaysRequestMom[4] = (bool)ThuCheck.IsChecked;
+                momToAdd.DaysRequestMom[5] = (bool)FriCheck.IsChecked;
 
                 bl.addMom(momToAdd);
                 momToAdd = new BE.Mother();
@@ -58,6 +67,14 @@ namespace PL
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            System.Windows.Data.CollectionViewSource motherViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("motherViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // motherViewSource.Source = [generic data source]
         }
     }
 }
