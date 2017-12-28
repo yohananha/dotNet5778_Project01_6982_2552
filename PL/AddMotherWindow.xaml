@@ -45,17 +45,17 @@
             <Label Content="כתובת דרושה למטפלת" HorizontalAlignment="Left" Margin="135,187,-3.4,-120" Grid.Row="0" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
             <TextBox x:Name="addressForNannyTextBox" HorizontalAlignment="Left" Height="23" Margin="2,188,0,-119" Grid.Row="0" Text="{Binding AddressForNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
-        <Label x:Name="SunLabel" Content="יום א" HorizontalAlignment="Left" Margin="241,33.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="MonLabel" Content="יום ב" HorizontalAlignment="Left" Margin="189,33.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="TueLabel" Content="יום ג" HorizontalAlignment="Left" Margin="142,33.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="WedLabel" Content="יום ד" HorizontalAlignment="Left" Margin="97,33.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="ThuLabel" Content="יום ה" HorizontalAlignment="Left" Margin="52,33.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="SunLabel" Content="יום א" HorizontalAlignment="Left" Margin="201,33.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="MonLabel" Content="יום ב" HorizontalAlignment="Left" Margin="159,33.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="TueLabel" Content="יום ג" HorizontalAlignment="Left" Margin="122,33.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="WedLabel" Content="יום ד" HorizontalAlignment="Left" Margin="87,33.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="ThuLabel" Content="יום ה" HorizontalAlignment="Left" Margin="47,33.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label x:Name="FriLabel" Content="יום ו" HorizontalAlignment="Left" Margin="13,33.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <CheckBox x:Name="SunCheck" Content="" HorizontalAlignment="Left" Margin="250,66.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <CheckBox x:Name="MonCheck" Content="" HorizontalAlignment="Left" Margin="196,66.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <CheckBox x:Name="TueCheck" Content="" HorizontalAlignment="Left" Margin="148,66.4,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-1.06,0.263"/>
-        <CheckBox x:Name="WedCheck" Content="" HorizontalAlignment="Left" Margin="106,66.4,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-1.06,0.263"/>
-        <CheckBox x:Name="ThuCheck" Content="" HorizontalAlignment="Left" Margin="63,66.4,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-1.06,0.263"/>
+        <CheckBox x:Name="SunCheck" Content="" HorizontalAlignment="Left" Margin="210,66.4,0,0" Grid.Row="1" VerticalAlignment="Top"  />
+        <CheckBox x:Name="MonCheck" Content="" HorizontalAlignment="Left" Margin="166,66.4,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <CheckBox x:Name="TueCheck" Content="" HorizontalAlignment="Left" Margin="128,66.4,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-1.06,0.263"/>
+        <CheckBox x:Name="WedCheck" Content="" HorizontalAlignment="Left" Margin="96,66.4,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-1.06,0.263"/>
+        <CheckBox x:Name="ThuCheck" Content="" HorizontalAlignment="Left" Margin="58,66.4,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-1.06,0.263"/>
         <CheckBox x:Name="FriCheck" Content="" HorizontalAlignment="Left" Margin="22,66.4,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-1.06,0.263"/>
 
 

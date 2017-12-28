@@ -76,5 +76,6 @@ namespace PL
             // Load data by setting the CollectionViewSource.Source property:
             // motherViewSource.Source = [generic data source]
         }
+
     }
 }
