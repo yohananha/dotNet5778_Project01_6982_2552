@@ -29,5 +29,11 @@ namespace PL
             addNanny2 add = new addNanny2();
             add.Show();
         }
+
+        private void DelNanny_Click(object sender, RoutedEventArgs e)
+        {
+            deleteNannyWindow deleteNanny = new deleteNannyWindow();
+            deleteNanny.Show();
+        }
     }
 }
