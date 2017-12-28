@@ -29,5 +29,11 @@ namespace PL
             AddMotherWindow addMom = new AddMotherWindow();
             addMom.Show();
         }
+
+        private void DelMother_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteMotherWindow delMom = new DeleteMotherWindow();
+            delMom.Show();
+        }
     }
 }

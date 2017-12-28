@@ -54,6 +54,21 @@ namespace PL
                 momToAdd.DaysRequestMom[4] = (bool)ThuCheck.IsChecked;
                 momToAdd.DaysRequestMom[5] = (bool)FriCheck.IsChecked;
 
+                momToAdd.ScheduleMom[0].startHour = Convert.ToDateTime(SunStart.Text);
+                momToAdd.ScheduleMom[0].endHour = Convert.ToDateTime(SunEnd.Text);
+                momToAdd.ScheduleMom[1].startHour = Convert.ToDateTime(MonStart.Text);
+                momToAdd.ScheduleMom[1].endHour = Convert.ToDateTime(MonEnd.Text);
+                momToAdd.ScheduleMom[2].startHour = Convert.ToDateTime(TueStart.Text);
+                momToAdd.ScheduleMom[2].endHour = Convert.ToDateTime(TueEnd.Text);
+                momToAdd.ScheduleMom[3].startHour = Convert.ToDateTime(WedStart.Text);
+                momToAdd.ScheduleMom[3].endHour = Convert.ToDateTime(WedEnd.Text);
+                momToAdd.ScheduleMom[4].startHour = Convert.ToDateTime(ThrStart.Text);
+                momToAdd.ScheduleMom[4].endHour = Convert.ToDateTime(ThuEnd.Text);
+                momToAdd.ScheduleMom[5].startHour = Convert.ToDateTime(FriStart.Text);
+                momToAdd.ScheduleMom[5].endHour = Convert.ToDateTime(FriEnd.Text);
+
+
+
                 bl.addMom(momToAdd);
                 momToAdd = new BE.Mother();
                 AddMomGrid.DataContext = momToAdd;
