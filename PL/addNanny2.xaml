@@ -7,7 +7,7 @@
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PL.addNanny2"
         mc:Ignorable="d"
         Title="addNanny2" Height="400" Width="610">
-
+   
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -54,51 +54,6 @@
             <TextBox x:Name="rateHourNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding rateHourNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="0"/>
             <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="שכר לחודש:"/>
             <TextBox x:Name="rateMonthNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding rateMonthNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="0"/>
-
-            <Grid x:Name="grid3" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1.5*"/>
-                </Grid.ColumnDefinitions>
-                <Label x:Name="DayLabel" Content="יום" Grid.Column="6" HorizontalAlignment="Left" Margin="18,28,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
-                <Label x:Name="StartHourLabel" Content="שעת&#xD;&#xA;התחלה" Grid.Column="6" HorizontalAlignment="Left" Margin="5,0.8,0,0" VerticalAlignment="Top" Height="36" FontSize="10" Grid.Row="1" Width="43"/>
-                <Label x:Name="EndHourLabel" Content="שעת&#xD;&#xA;סיום" Grid.Column="6" HorizontalAlignment="Left" Margin="6,36.8,0,-1.6" VerticalAlignment="Top" Height="40" FontSize="10" Grid.Row="1" Width="47" Grid.RowSpan="2"/>
-                <Label x:Name="Sun" Content="א" Grid.Column="5" HorizontalAlignment="Left" Margin="10.6,8,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
-                <Label x:Name="Mon" Content="ב" Grid.Column="4" HorizontalAlignment="Left" Margin="12,8,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
-                <Label x:Name="Tue" Content="ג" Grid.Column="3" HorizontalAlignment="Left" Margin="14,8,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
-                <Label x:Name="wed" Content="ד" Grid.Column="2" HorizontalAlignment="Left" Margin="13,8,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
-                <Label x:Name="Thu" Content="ה" Grid.Column="1" HorizontalAlignment="Left" Margin="12,8,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
-                <Label x:Name="Fri" Content="ו" HorizontalAlignment="Left" Margin="13,8,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
-                <CheckBox x:Name="SunCheck" Content="" Grid.Column="5" HorizontalAlignment="Left" Margin="11,48,0,0" VerticalAlignment="Top" IsChecked="{Binding daysWorkNanny[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <CheckBox x:Name="MonCheck" Content="" Grid.Column="4" HorizontalAlignment="Left" Margin="11,48,0,0" VerticalAlignment="Top" IsChecked="{Binding daysWorkNanny[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <CheckBox x:Name="TueCheck" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="13,48,0,0" VerticalAlignment="Top" IsChecked="{Binding daysWorkNanny[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <CheckBox x:Name="WedCheck" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="12,48,0,0" VerticalAlignment="Top" IsChecked="{Binding daysWorkNanny[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <CheckBox x:Name="ThuCheck" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="13,48,0,0" VerticalAlignment="Top" IsChecked="{Binding daysWorkNanny[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <CheckBox x:Name="FriCheck" Content="" Grid.Column="0" HorizontalAlignment="Left" Margin="13,48,0,0" VerticalAlignment="Top" IsChecked="{Binding daysWorkNanny[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <TextBox x:Name="SunStart" Grid.Column="5" HorizontalAlignment="Left" Height="23" Margin="8,8,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding ElementName= SunCheck, Path= IsChecked}" Text="{Binding ScheduleNanny[0].startHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <TextBox x:Name="SunEnd" Grid.Column="5" HorizontalAlignment="Left" Height="23" Margin="8,8,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="24"   IsEnabled="{Binding ElementName= SunCheck, Path= IsChecked}" Text="{Binding ScheduleNanny[0].endHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <TextBox x:Name="MonStart" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="8,8,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding ElementName= MonCheck, Path= IsChecked}" Text="{Binding ScheduleNanny[1].startHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <TextBox x:Name="MonEnd" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="8,8,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding ElementName= MonCheck, Path= IsChecked}" Text="{Binding ScheduleNanny[1].endHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <TextBox x:Name="TueStart" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="8,8,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding ElementName= TueCheck, Path= IsChecked}" Text="{Binding ScheduleNanny[2].startHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <TextBox x:Name="TueEnd" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="8,8,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding ElementName= TueCheck, Path= IsChecked}" Text="{Binding ScheduleNanny[2].endHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <TextBox x:Name="WedStart" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="8,8,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding ElementName= WedCheck, Path= IsChecked}" Text="{Binding ScheduleNanny[3].startHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <TextBox x:Name="WedEnd" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="8,8,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding ElementName= WedCheck, Path= IsChecked}" Text="{Binding ScheduleNanny[3].endHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <TextBox x:Name="ThrStart" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="8,8,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding ElementName= ThuCheck, Path= IsChecked}" Text="{Binding ScheduleNanny[4].startHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <TextBox x:Name="ThuEnd" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="8,8,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding ElementName= ThuCheck, Path= IsChecked}" Text="{Binding ScheduleNanny[4].endHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <TextBox x:Name="FriStart"  HorizontalAlignment="Left" Height="23" Margin="8,8,0,0" Grid.Row="1" TextWrapping="Wrap" IsEnabled="{Binding ElementName= FriCheck, Path= IsChecked}" VerticalAlignment="Top" Width="24" Text="{Binding ScheduleNanny[5].startHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                <TextBox x:Name="FriEnd" HorizontalAlignment="Left" Height="23" Margin="8,8,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding ElementName= FriCheck, Path= IsChecked}" Text="{Binding ScheduleNanny[5].endHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-            </Grid>
-
             <Button x:Name="button" Content="הוסף" Grid.Row="10" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Width="120" Click="button_Click"/>
 
         </Grid>
@@ -144,5 +99,5 @@
             <TextBox x:Name="recommendationsNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding recommendationsNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="10" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="0"/>
 
         </Grid>
-    </Grid>
+        </Grid>
 </Window>

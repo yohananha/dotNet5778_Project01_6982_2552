@@ -10,24 +10,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BE;
 
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for Nanny.xaml
+    /// Interaction logic for ScheduleWindow.xaml
     /// </summary>
-    public partial class Nanny : Window
+    public partial class ScheduleWindow : UserControl
     {
-        public Nanny()
+        public bool tmpCheck;
+        public Schedule tmpSched;
+        public ScheduleWindow()
         {
             InitializeComponent();
+            bool [] tmpCheck = new bool[6];
+            Schedule[] tmpSched = new Schedule[6];
         }
 
-        private void AddNanny_Click(object sender, RoutedEventArgs e)
-        {
-            addNanny2 add = new addNanny2();
-            add.Show();
-        }
+
+
     }
 }
