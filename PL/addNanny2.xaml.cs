@@ -35,6 +35,31 @@ namespace PL
         {
             try
             {
+                nannyToAdd.ScheduleNanny[0].startHour = DateTime.ParseExact("0001-01-01" + SunStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                 System.Globalization.CultureInfo.InvariantCulture);
+                nannyToAdd.ScheduleNanny[0].endHour = DateTime.ParseExact("0001-01-01" + SunEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                nannyToAdd.ScheduleNanny[1].startHour = DateTime.ParseExact("0001-01-01" + MonStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                nannyToAdd.ScheduleNanny[1].endHour = DateTime.ParseExact("0001-01-01" + MonEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                nannyToAdd.ScheduleNanny[2].startHour = DateTime.ParseExact("0001-01-01" + TueStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                nannyToAdd.ScheduleNanny[2].endHour = DateTime.ParseExact("0001-01-01" + TueEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                nannyToAdd.ScheduleNanny[3].startHour = DateTime.ParseExact("0001-01-01" + WedStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                nannyToAdd.ScheduleNanny[3].endHour = DateTime.ParseExact("0001-01-01" + WedEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                nannyToAdd.ScheduleNanny[4].startHour = DateTime.ParseExact("0001-01-01" + ThrStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                nannyToAdd.ScheduleNanny[4].endHour = DateTime.ParseExact("0001-01-01" + ThuEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                nannyToAdd.ScheduleNanny[5].startHour = DateTime.ParseExact("0001-01-01" + FriStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                nannyToAdd.ScheduleNanny[5].endHour = DateTime.ParseExact("0001-01-01" + FriEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+
                 bl.addNanny(nannyToAdd);
                 nannyToAdd = new BE.Nanny();
                 this.DataContext = nannyToAdd;
