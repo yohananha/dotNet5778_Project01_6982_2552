@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for DeleteMotherWindow.xaml
+    /// Interaction logic for deleteNannyWindow.xaml
     /// </summary>
-    public partial class DeleteMotherWindow : Window
+    public partial class deleteNannyWindow : Window
     {
-        public DeleteMotherWindow()
+        public deleteNannyWindow()
         {
             InitializeComponent();
         }

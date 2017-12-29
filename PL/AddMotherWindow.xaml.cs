@@ -47,25 +47,39 @@ namespace PL
                 //    momToAdd.AddressMom = this.addressMomTextBox.Text;
                 //    momToAdd.AddressForNanny = this.addressForNannyTextBox.Text;
 
-                momToAdd.DaysRequestMom[0] = (bool)SunCheck.IsChecked;
-                momToAdd.DaysRequestMom[1] = (bool)MonCheck.IsChecked;
-                momToAdd.DaysRequestMom[2] = (bool)TueCheck.IsChecked;
-                momToAdd.DaysRequestMom[3] = (bool)WedCheck.IsChecked;
-                momToAdd.DaysRequestMom[4] = (bool)ThuCheck.IsChecked;
-                momToAdd.DaysRequestMom[5] = (bool)FriCheck.IsChecked;
+                //momToAdd.DaysRequestMom[0] = (bool)SunCheck.IsChecked;
+                //momToAdd.DaysRequestMom[1] = (bool)MonCheck.IsChecked;
+                //momToAdd.DaysRequestMom[2] = (bool)TueCheck.IsChecked;
+                //momToAdd.DaysRequestMom[3] = (bool)WedCheck.IsChecked;
+                //momToAdd.DaysRequestMom[4] = (bool)ThuCheck.IsChecked;
+                //momToAdd.DaysRequestMom[5] = (bool)FriCheck.IsChecked;
 
-                momToAdd.ScheduleMom[0].startHour = Convert.ToDateTime(SunStart.Text);
-                momToAdd.ScheduleMom[0].endHour = Convert.ToDateTime(SunEnd.Text);
-                momToAdd.ScheduleMom[1].startHour = Convert.ToDateTime(MonStart.Text);
-                momToAdd.ScheduleMom[1].endHour = Convert.ToDateTime(MonEnd.Text);
-                momToAdd.ScheduleMom[2].startHour = Convert.ToDateTime(TueStart.Text);
-                momToAdd.ScheduleMom[2].endHour = Convert.ToDateTime(TueEnd.Text);
-                momToAdd.ScheduleMom[3].startHour = Convert.ToDateTime(WedStart.Text);
-                momToAdd.ScheduleMom[3].endHour = Convert.ToDateTime(WedEnd.Text);
-                momToAdd.ScheduleMom[4].startHour = Convert.ToDateTime(ThrStart.Text);
-                momToAdd.ScheduleMom[4].endHour = Convert.ToDateTime(ThuEnd.Text);
-                momToAdd.ScheduleMom[5].startHour = Convert.ToDateTime(FriStart.Text);
-                momToAdd.ScheduleMom[5].endHour = Convert.ToDateTime(FriEnd.Text);
+          
+
+                momToAdd.ScheduleMom[0].startHour = DateTime.ParseExact("0001-01-01" + SunStart.Text+",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                momToAdd.ScheduleMom[0].endHour = DateTime.ParseExact("0001-01-01" + SunEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                momToAdd.ScheduleMom[1].startHour = DateTime.ParseExact("0001-01-01" + MonStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                momToAdd.ScheduleMom[1].endHour = DateTime.ParseExact("0001-01-01" + MonEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                momToAdd.ScheduleMom[2].startHour = DateTime.ParseExact("0001-01-01" + TueStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                momToAdd.ScheduleMom[2].endHour = DateTime.ParseExact("0001-01-01" + TueEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                momToAdd.ScheduleMom[3].startHour = DateTime.ParseExact("0001-01-01" + WedStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                momToAdd.ScheduleMom[3].endHour = DateTime.ParseExact("0001-01-01" + WedEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                momToAdd.ScheduleMom[4].startHour = DateTime.ParseExact("0001-01-01" + ThrStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                momToAdd.ScheduleMom[4].endHour = DateTime.ParseExact("0001-01-01" + ThuEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                momToAdd.ScheduleMom[5].startHour = DateTime.ParseExact("0001-01-01" + FriStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                momToAdd.ScheduleMom[5].endHour = DateTime.ParseExact("0001-01-01" + FriEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                    System.Globalization.CultureInfo.InvariantCulture);
 
 
 
