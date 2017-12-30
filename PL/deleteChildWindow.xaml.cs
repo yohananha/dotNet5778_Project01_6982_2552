@@ -15,25 +15,27 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for Nanny.xaml
+    /// Interaction logic for deleteChildWindow.xaml
     /// </summary>
-    public partial class Nanny : Window
+    public partial class deleteChildWindow : Window
     {
-        public Nanny()
+        public BL.Ibl bl;
+        public deleteChildWindow()
         {
             InitializeComponent();
+            bl = BL.FactoryBL.GetBL();
         }
 
-        private void AddNanny_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
-            addNanny2 add = new addNanny2();
-            add.Show();
-        }
-
-        private void DelNanny_Click(object sender, RoutedEventArgs e)
-        {
-            deleteNannyWindow del = new deleteNannyWindow();
-            del.Show();
+            try
+            {
+                bl.deleteChild(int.Parse(textBox.Text));
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
         }
     }
 }
