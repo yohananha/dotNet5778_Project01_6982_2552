@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,14 +28,14 @@ namespace PL
         {
             InitializeComponent();
             momToAdd = new BE.Mother();
-            momToAdd.DaysRequestMom = new bool[6];
             momToAdd.ScheduleMom = new Schedule[6];
-            this.AddMomGrid.DataContext = momToAdd;
+            momToAdd.DaysRequestMom = new bool[6];
+       this.AddMomGrid.DataContext = momToAdd;
             bl = BL.FactoryBL.GetBL();
         }
 
 
-    
+
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -54,32 +55,54 @@ namespace PL
                 //momToAdd.DaysRequestMom[4] = (bool)ThuCheck.IsChecked;
                 //momToAdd.DaysRequestMom[5] = (bool)FriCheck.IsChecked;
 
-          
 
-                momToAdd.ScheduleMom[0].startHour = DateTime.ParseExact("0001-01-01" + SunStart.Text+",000", "yyyy-MM-dd HH:mm:ss,fff",
-                    System.Globalization.CultureInfo.InvariantCulture);
-                momToAdd.ScheduleMom[0].endHour = DateTime.ParseExact("0001-01-01" + SunEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                    System.Globalization.CultureInfo.InvariantCulture);
-                momToAdd.ScheduleMom[1].startHour = DateTime.ParseExact("0001-01-01" + MonStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                    System.Globalization.CultureInfo.InvariantCulture);
-                momToAdd.ScheduleMom[1].endHour = DateTime.ParseExact("0001-01-01" + MonEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                    System.Globalization.CultureInfo.InvariantCulture);
-                momToAdd.ScheduleMom[2].startHour = DateTime.ParseExact("0001-01-01" + TueStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                    System.Globalization.CultureInfo.InvariantCulture);
-                momToAdd.ScheduleMom[2].endHour = DateTime.ParseExact("0001-01-01" + TueEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                    System.Globalization.CultureInfo.InvariantCulture);
-                momToAdd.ScheduleMom[3].startHour = DateTime.ParseExact("0001-01-01" + WedStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                    System.Globalization.CultureInfo.InvariantCulture);
-                momToAdd.ScheduleMom[3].endHour = DateTime.ParseExact("0001-01-01" + WedEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                    System.Globalization.CultureInfo.InvariantCulture);
-                momToAdd.ScheduleMom[4].startHour = DateTime.ParseExact("0001-01-01" + ThrStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                    System.Globalization.CultureInfo.InvariantCulture);
-                momToAdd.ScheduleMom[4].endHour = DateTime.ParseExact("0001-01-01" + ThuEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                    System.Globalization.CultureInfo.InvariantCulture);
-                momToAdd.ScheduleMom[5].startHour = DateTime.ParseExact("0001-01-01" + FriStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                    System.Globalization.CultureInfo.InvariantCulture);
-                momToAdd.ScheduleMom[5].endHour = DateTime.ParseExact("0001-01-01" + FriEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                    System.Globalization.CultureInfo.InvariantCulture);
+
+                if ((bool)(SunCheck.IsChecked == true))
+                {
+
+                    momToAdd.ScheduleMom[0].startHour.AddHours(Convert.ToDouble(SunStart.Text.Substring(0, 2)));
+                    momToAdd.ScheduleMom[0].endHour.AddHours(Convert.ToDouble(SunEnd.Text.Substring(2, 2)));
+
+                    //momToAdd.ScheduleMom[0].endHour = DateTime.ParseExact(a, "yyyy-MM-dd HH:mm:ss,fff",
+                    //    CultureInfo.InvariantCulture);
+                }
+
+                if ((bool)(MonCheck.IsChecked == true))
+                {
+                    momToAdd.ScheduleMom[1].startHour = DateTime.ParseExact("0001-01-01" + MonStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                        CultureInfo.InvariantCulture);
+                    momToAdd.ScheduleMom[1].endHour = DateTime.ParseExact("0001-01-01" + MonEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                        CultureInfo.InvariantCulture);
+                }
+
+                if ((bool)(TueCheck.IsChecked == true))
+                {
+                    momToAdd.ScheduleMom[2].startHour = DateTime.ParseExact("0001-01-01" + TueStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                        CultureInfo.InvariantCulture);
+                    momToAdd.ScheduleMom[2].endHour = DateTime.ParseExact("0001-01-01" + TueEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                        CultureInfo.InvariantCulture);
+                }
+                if ((bool)(WedCheck.IsChecked == true))
+                {
+                    momToAdd.ScheduleMom[3].startHour = DateTime.ParseExact("0001-01-01" + WedStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                        CultureInfo.InvariantCulture);
+                    momToAdd.ScheduleMom[3].endHour = DateTime.ParseExact("0001-01-01" + WedEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                        CultureInfo.InvariantCulture);
+                }
+
+                if ((bool)(ThuCheck.IsChecked == true))
+                {
+                    momToAdd.ScheduleMom[4].startHour = DateTime.ParseExact("0001-01-01" + ThrStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                        CultureInfo.InvariantCulture);
+                    momToAdd.ScheduleMom[4].endHour = DateTime.ParseExact("0001-01-01" + ThuEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
+                        CultureInfo.InvariantCulture);
+                }
+
+                if ((bool)(FriCheck.IsChecked == true))
+                {
+                    momToAdd.ScheduleMom[5].startHour = DateTime.Parse("0001-01-01" + FriStart.Text + ",000");
+                    momToAdd.ScheduleMom[5].endHour = DateTime.Parse("0001-01-01" + FriEnd.Text + ",000");
+                }
 
 
 
@@ -93,9 +116,10 @@ namespace PL
             }
             catch (Exception ex)
             {
+
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

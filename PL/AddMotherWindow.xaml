@@ -54,13 +54,13 @@
         <Label x:Name="wed" Content="ד" HorizontalAlignment="Left" Margin="92,87.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1"/>
         <Label x:Name="Thu" Content="ה" HorizontalAlignment="Left" Margin="51,87.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1"/>
         <Label x:Name="Fri" Content="ו" HorizontalAlignment="Left" Margin="12,87.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1"/>
-        <CheckBox x:Name="SunCheck" Content="" HorizontalAlignment="Left" Margin="210,127.4,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <CheckBox x:Name="MonCheck" Content="" HorizontalAlignment="Left" Margin="170,127.4,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <CheckBox x:Name="TueCheck" Content="" HorizontalAlignment="Left" Margin="132,127.4,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <CheckBox x:Name="WedCheck" Content="" HorizontalAlignment="Left" Margin="91,127.4,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <CheckBox x:Name="ThuCheck" Content="" HorizontalAlignment="Left" Margin="52,127.4,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <CheckBox x:Name="SunCheck" Content="" HorizontalAlignment="Left" Margin="210,127.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False" />
+        <CheckBox x:Name="MonCheck" Content="" HorizontalAlignment="Left" Margin="170,127.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False"/>
+        <CheckBox x:Name="TueCheck" Content="" HorizontalAlignment="Left" Margin="132,127.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False"/>
+        <CheckBox x:Name="WedCheck" Content="" HorizontalAlignment="Left" Margin="91,127.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False"/>
+        <CheckBox x:Name="ThuCheck" Content="" HorizontalAlignment="Left" Margin="52,127.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False"/>
         <CheckBox x:Name="FriCheck" Content="" HorizontalAlignment="Left" Margin="12,127.4,0,0" VerticalAlignment="Top" IsChecked="False" Grid.Row="1"/>
-        <TextBox x:Name="SunStart" HorizontalAlignment="Left" Height="23" Margin="206,162.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=SunCheck}"/>
+        <TextBox x:Name="SunStart" HorizontalAlignment="Left" Height="23" Margin="206,162.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=SunCheck}" />
         <TextBox x:Name="SunEnd" HorizontalAlignment="Left" Height="23" Margin="206,200.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=SunCheck}"/>
         <TextBox x:Name="MonStart" HorizontalAlignment="Left" Height="23" Margin="166,162.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=MonCheck}"/>
         <TextBox x:Name="MonEnd" HorizontalAlignment="Left" Height="23" Margin="166,200.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=MonCheck}"/>

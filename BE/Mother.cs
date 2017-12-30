@@ -6,6 +6,11 @@ using System.Text;
 
 namespace BE
 {
+    public class Schedule
+    {
+        public DateTime startHour = DateTime.MinValue;
+        public DateTime endHour = DateTime.MinValue;
+    }
     public class Mother
     {
         public long IdMom { get; set; }
