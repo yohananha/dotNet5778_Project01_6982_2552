@@ -75,10 +75,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="deleteNannyWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,9 +95,6 @@
     </Compile>
     <Compile Include="DeleteMotherWindow.xaml.cs">
       <DependentUpon>DeleteMotherWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="deleteNannyWindow.xaml.cs">
-      <DependentUpon>deleteNannyWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="HelpFuncsPL.cs" />
     <Compile Include="MainWindow.xaml.cs">
