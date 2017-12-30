@@ -35,6 +35,8 @@ namespace PL
         {
             try
             {
+                nannyToAdd.ScheduleNanny = new BE.Schedule[6];
+                
                 nannyToAdd.ScheduleNanny[0].startHour = DateTime.ParseExact("0001-01-01" + SunStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
                  System.Globalization.CultureInfo.InvariantCulture);
                 nannyToAdd.ScheduleNanny[0].endHour = DateTime.ParseExact("0001-01-01" + SunEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",

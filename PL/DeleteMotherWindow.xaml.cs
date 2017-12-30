@@ -19,14 +19,23 @@ namespace PL
     /// </summary>
     public partial class DeleteMotherWindow : Window
     {
+        public BL.Ibl bl;
         public DeleteMotherWindow()
         {
             InitializeComponent();
+            bl = BL.FactoryBL.GetBL();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                bl.deleteMother(int.Parse(textBox.Text));
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
         }
     }
 }
