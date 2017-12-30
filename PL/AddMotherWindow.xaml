@@ -4,9 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
-        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PL.AddMotherWindow"
+        xmlns:BE="clr-namespace:BE;assembly=BE"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        x:Class="PL.AddMotherWindow"
         mc:Ignorable="d"
         Title="AddMotherWindow" Height="400" Width="600" Loaded="Window_Loaded">
+
     <Window.Resources>
         <CollectionViewSource x:Key="motherViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Mother}, CreateList=True}"/>
         <CollectionViewSource x:Key="motherScheduleMomViewSource" Source="{Binding ScheduleMom, Source={StaticResource motherViewSource}}"/>
@@ -24,54 +27,60 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="128,22,0,0" TextWrapping="Wrap" Text="הוספת אמא חדשה" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="45" Width="338" FontSize="24" FontWeight="Bold" TextAlignment="Center" LineHeight="6"/>
         <Button x:Name="button" Content="הוספה" HorizontalAlignment="Left" Margin="26,10.2,0,0" Grid.Row="2" VerticalAlignment="Top" Width="123" Height="30" Click="button_Click"/>
-        <Grid x:Name="AddMomGrid" Grid.Column="1" HorizontalAlignment="Left" Margin="26.2,17.4,-2.4,0" Grid.Row="1" VerticalAlignment="Top" Height="229" Width="273">
+        <Grid x:Name="AddMomGrid" HorizontalAlignment="Left" Margin="24,9.4,-2.4,0" Grid.Row="1" VerticalAlignment="Top" Height="109" Width="572" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="13*"/>
+                <ColumnDefinition Width="154*"/>
+                <ColumnDefinition Width="142*"/>
+                <ColumnDefinition Width="15*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="שם פרטי" Grid.Column="1" HorizontalAlignment="Left" Margin="50.8,11,0,55" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="firstNameMomTextBox" HorizontalAlignment="Left" Height="23" Margin="3,14,0,55" Grid.Row="0" Text="{Binding FirstNameMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="שם משפחה" HorizontalAlignment="Left" Margin="39.8,53,0,13" Grid.Row="0" VerticalAlignment="Center" Grid.Column="1"/>
-            <TextBox x:Name="lasNameMomTextBox" HorizontalAlignment="Left" Height="23" Margin="2,54,0,15" Grid.Row="0" Text="{Binding LasNameMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="תעודת זהות" HorizontalAlignment="Left" Margin="49.8,90,0,-23" Grid.Row="0" VerticalAlignment="Center" Grid.Column="1"/>
-            <TextBox x:Name="idMomTextBox" HorizontalAlignment="Left" Height="24" Margin="2,90,0,-22" Grid.Row="0" Text="{Binding IdMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="מס' טלפון" HorizontalAlignment="Left" Margin="57.8,123,0,-57" Grid.Row="0" VerticalAlignment="Center" Grid.Column="1"/>
-            <TextBox x:Name="phoneMomTextBox" HorizontalAlignment="Left" Height="24" Margin="2,123,0,-55" Grid.Row="0" Text="{Binding PhoneMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="כתובת האם" HorizontalAlignment="Left" Margin="50.8,157,-0.4,-89" Grid.Row="0" VerticalAlignment="Center" Grid.Column="1"/>
-            <TextBox x:Name="addressMomTextBox" HorizontalAlignment="Left" Height="23" Margin="3,154,0,-85" Grid.Row="0" Text="{Binding AddressMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="כתובת דרושה למטפלת" HorizontalAlignment="Left" Margin="135,187,-3.4,-120" Grid.Row="0" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="addressForNannyTextBox" HorizontalAlignment="Left" Height="23" Margin="2,188,0,-119" Grid.Row="0" Text="{Binding AddressForNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="שם פרטי" Grid.Column="4" HorizontalAlignment="Left" Margin="49.6,7,0,96" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox x:Name="firstNameMomTextBox" HorizontalAlignment="Left" Height="23" Margin="30.2,8,0,97" Grid.Row="0" Text="{Binding FirstNameMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.Column="3"/>
+            <Label Content="שם משפחה" HorizontalAlignment="Left" Margin="40.6,44,0,59" Grid.Row="0" VerticalAlignment="Center" Grid.Column="4"/>
+            <TextBox x:Name="lasNameMomTextBox" HorizontalAlignment="Left" Height="23" Margin="31.2,42,0,63" Grid.Row="0" Text="{Binding LasNameMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.Column="3"/>
+            <Label Content="תעודת זהות" HorizontalAlignment="Left" Margin="50.6,76,0,26" Grid.Row="0" VerticalAlignment="Center" Grid.Column="4"/>
+            <TextBox x:Name="idMomTextBox" HorizontalAlignment="Left" Height="24" Margin="31.2,75,0,29" Grid.Row="0" Text="{Binding IdMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.Column="3"/>
+            <Label Content="מס' טלפון" HorizontalAlignment="Left" Margin="59.8,0,0,99" Grid.Row="0" VerticalAlignment="Center" Grid.Column="1"/>
+            <TextBox x:Name="phoneMomTextBox" HorizontalAlignment="Left" Height="24" Margin="2,-1,0,101" Grid.Row="0" Text="{Binding PhoneMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="כתובת האם" HorizontalAlignment="Left" Margin="52.8,33,0,66" Grid.Row="0" VerticalAlignment="Center" Grid.Column="1"/>
+            <TextBox x:Name="addressMomTextBox" HorizontalAlignment="Left" Height="23" Margin="3,30,0,71" Grid.Row="0" Text="{Binding AddressMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="כתובת דרושה למטפלת" HorizontalAlignment="Left" Margin="4.8,63,0,36" Grid.Row="0" VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1"/>
+            <TextBox x:Name="addressForNannyTextBox" HorizontalAlignment="Left" Height="23" Margin="2,64,0,37" Grid.Row="0" Text="{Binding AddressForNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
-        <Label x:Name="DayLabel" Content="יום" HorizontalAlignment="Left" Margin="257,107.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1"/>
-        <Label x:Name="StartHourLabel" Content="שעת&#xA;התחלה" HorizontalAlignment="Left" Margin="244,155.4,0,0" VerticalAlignment="Top" Height="36" FontSize="10" Grid.Row="1" Width="43"/>
-        <Label x:Name="EndHourLabel" Content="שעת&#xA;סיום" HorizontalAlignment="Left" Margin="245,191.4,0,0" VerticalAlignment="Top" Height="40" FontSize="10" Grid.Row="1" Width="47"/>
-        <Label x:Name="Sun" Content="א" HorizontalAlignment="Left" Margin="210,87.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1"/>
-        <Label x:Name="Mon" Content="ב" HorizontalAlignment="Left" Margin="171,87.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1"/>
-        <Label x:Name="Tue" Content="ג" HorizontalAlignment="Left" Margin="133,87.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1"/>
-        <Label x:Name="wed" Content="ד" HorizontalAlignment="Left" Margin="92,87.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1"/>
-        <Label x:Name="Thu" Content="ה" HorizontalAlignment="Left" Margin="51,87.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1"/>
-        <Label x:Name="Fri" Content="ו" HorizontalAlignment="Left" Margin="12,87.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1"/>
-        <CheckBox x:Name="SunCheck" Content="" HorizontalAlignment="Left" Margin="210,127.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False" />
-        <CheckBox x:Name="MonCheck" Content="" HorizontalAlignment="Left" Margin="170,127.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False"/>
-        <CheckBox x:Name="TueCheck" Content="" HorizontalAlignment="Left" Margin="132,127.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False"/>
-        <CheckBox x:Name="WedCheck" Content="" HorizontalAlignment="Left" Margin="91,127.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False"/>
-        <CheckBox x:Name="ThuCheck" Content="" HorizontalAlignment="Left" Margin="52,127.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False"/>
-        <CheckBox x:Name="FriCheck" Content="" HorizontalAlignment="Left" Margin="12,127.4,0,0" VerticalAlignment="Top" IsChecked="False" Grid.Row="1"/>
-        <TextBox x:Name="SunStart" HorizontalAlignment="Left" Height="23" Margin="206,162.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=SunCheck}" />
-        <TextBox x:Name="SunEnd" HorizontalAlignment="Left" Height="23" Margin="206,200.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=SunCheck}"/>
-        <TextBox x:Name="MonStart" HorizontalAlignment="Left" Height="23" Margin="166,162.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=MonCheck}"/>
-        <TextBox x:Name="MonEnd" HorizontalAlignment="Left" Height="23" Margin="166,200.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=MonCheck}"/>
-        <TextBox x:Name="TueStart" HorizontalAlignment="Left" Height="23" Margin="126,162.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=TueCheck}"/>
-        <TextBox x:Name="TueEnd" HorizontalAlignment="Left" Height="23" Margin="126,200.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=TueCheck}"/>
-        <TextBox x:Name="WedStart" HorizontalAlignment="Left" Height="23" Margin="86,162.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=WedCheck}"/>
-        <TextBox x:Name="WedEnd" HorizontalAlignment="Left" Height="23" Margin="86,200.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=WedCheck}"/>
-        <TextBox x:Name="ThrStart" HorizontalAlignment="Left" Height="23" Margin="46,162.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=ThuCheck}"/>
-        <TextBox x:Name="ThuEnd" HorizontalAlignment="Left" Height="23" Margin="46,200.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=ThuCheck}"/>
-        <TextBox x:Name="FriStart"  HorizontalAlignment="Left" Height="23" Margin="6,162.4,0,0" Grid.Row="1" TextWrapping="Wrap" IsEnabled="{Binding IsChecked, ElementName=FriCheck}" VerticalAlignment="Top" Width="24"/>
-        <TextBox x:Name="FriEnd" HorizontalAlignment="Left" Height="23" Margin="6,200.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" IsEnabled="{Binding IsChecked, ElementName=FriCheck}"/>
+        <Label x:Name="DayLabel" Content="יום" HorizontalAlignment="Left" Margin="246.2,147.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1" Grid.Column="1"/>
+        <Label x:Name="StartHourLabel" Content="שעת&#xA;התחלה" HorizontalAlignment="Left" Margin="242.2,168.4,0,0" VerticalAlignment="Top" Height="36" FontSize="10" Grid.Row="1" Width="43" Grid.Column="1"/>
+        <Label x:Name="EndHourLabel" Content="שעת&#xA;סיום" HorizontalAlignment="Left" Margin="242.2,209.4,0,0" VerticalAlignment="Top" Height="40" FontSize="10" Grid.Row="1" Width="47" Grid.Column="1" Grid.RowSpan="2"/>
+        <Label x:Name="Sun" Content="א" HorizontalAlignment="Left" Margin="179.2,122.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1" Grid.Column="1"/>
+        <Label x:Name="Mon" Content="ב" HorizontalAlignment="Left" Margin="115.2,122.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1" Grid.Column="1"/>
+        <Label x:Name="Tue" Content="ג" HorizontalAlignment="Left" Margin="41.2,122.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1" Grid.Column="1"/>
+        <Label x:Name="wed" Content="ד" HorizontalAlignment="Left" Margin="246,122.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1"/>
+        <Label x:Name="Thu" Content="ה" HorizontalAlignment="Left" Margin="165,120.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1"/>
+        <Label x:Name="Fri" Content="ו" HorizontalAlignment="Left" Margin="85,120.4,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605" Grid.Row="1"/>
+        <CheckBox x:Name="SunCheck" Content="" HorizontalAlignment="Left" Margin="179.2,150.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False" Grid.Column="1" />
+        <CheckBox x:Name="MonCheck" Content="" HorizontalAlignment="Left" Margin="114.2,150.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False" Grid.Column="1"/>
+        <CheckBox x:Name="TueCheck" Content="" HorizontalAlignment="Left" Margin="40.2,150.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False" Grid.Column="1"/>
+        <CheckBox x:Name="WedCheck" Content="" HorizontalAlignment="Left" Margin="245,150.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False" RenderTransformOrigin="2.273,0.675"/>
+        <CheckBox x:Name="ThuCheck" Content="" HorizontalAlignment="Left" Margin="166,148.4,0,0" VerticalAlignment="Top" Grid.Row="1" IsChecked="False"/>
+
+        <CheckBox x:Name="FriCheck" Content="" HorizontalAlignment="Left" Margin="85,148.4,0,0" VerticalAlignment="Top" IsChecked="False" Grid.Row="1"/>
+        <xctk:TimePicker x:Name="SunEnd" Format="ShortTime" Value="00:00" Margin="156.2,215.4,69.6,9.8" Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=SunCheck}" Grid.Column="1"/>
+        <xctk:TimePicker Name="SunStart" Format="ShortTime"   Value="00:00"  Margin="156.2,181.4,69.6,45.8" Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=SunCheck}" RenderTransformOrigin="-2.189,-5.233" Grid.Column="1"/>
+        <xctk:TimePicker x:Name="MonEnd" Format="ShortTime" Value="00:00" Margin="82.2,215.4,143.6,9.8" Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=MonCheck}" Grid.Column="1"/>
+        <xctk:TimePicker x:Name="MonStart" Format="ShortTime"   Value="00:00"  Margin="82.2,181.4,143.6,45.8" Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=MonCheck}" RenderTransformOrigin="-2.189,-5.233" Grid.Column="1"/>
+        <xctk:TimePicker x:Name="TueEnd" Format="ShortTime" Value="00:00" Margin="8.2,215.4,217.6,9.8" Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=TueCheck}" Grid.Column="1"/>
+        <xctk:TimePicker x:Name="TueStart" Format="ShortTime"   Value="00:00"  Margin="8.2,181.4,217.6,45.8" Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=TueCheck}" RenderTransformOrigin="-2.189,-5.233" Grid.Column="1"/>
+        <xctk:TimePicker x:Name="WedEnd" Format="ShortTime" Value="00:00" Margin="219,215.4,6.8,9.8" Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=WedCheck}"/>
+        <xctk:TimePicker x:Name="WedStart" Format="ShortTime"   Value="00:00"  Margin="219,181.4,6.8,45.8" Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=WedCheck}" RenderTransformOrigin="-2.189,-5.233"/>
+        <xctk:TimePicker x:Name="ThuEnd" Format="ShortTime" Value="00:00" Margin="142,215.4,83.8,9.8" Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=ThuCheck}"/>
+        <xctk:TimePicker x:Name="ThuStart" Format="ShortTime"  Value="00:00"  Margin="142,181.4,83.8,45.8" Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=ThuCheck}" RenderTransformOrigin="-2.189,-5.233"/>
+        <xctk:TimePicker x:Name="FriEnd" Format="ShortTime" Value="00:00" Margin="64,215.4,161.8,9.8" Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=FriCheck}"/>
+        <xctk:TimePicker x:Name="FriStart" Format="ShortTime"  Value="00:00"  Margin="64,181.4,161.8,45.8" Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=FriCheck}" RenderTransformOrigin="-2.189,-5.233"/>
+
 
 
     </Grid>

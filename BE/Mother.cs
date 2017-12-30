@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace BE
@@ -21,6 +22,8 @@ namespace BE
         public string AddressForNanny { get; set; }
         public bool[] DaysRequestMom { get; set; }
         public Schedule[] ScheduleMom { get; set; }
+        public DateTime[] startHour { get; set; }
+        public DateTime[] endHour { get; set; }
         public string nothMom { get; set; }
 
         public override string ToString()

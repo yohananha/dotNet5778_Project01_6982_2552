@@ -28,7 +28,8 @@ namespace PL
         {
             InitializeComponent();
             momToAdd = new BE.Mother();
-            momToAdd.ScheduleMom = new Schedule[6];
+            momToAdd.startHour = new DateTime[6];
+            momToAdd.endHour = new DateTime[6];
             momToAdd.DaysRequestMom = new bool[6];
        this.AddMomGrid.DataContext = momToAdd;
             bl = BL.FactoryBL.GetBL();
@@ -60,50 +61,51 @@ namespace PL
                 if ((bool)(SunCheck.IsChecked == true))
                 {
 
-                    momToAdd.ScheduleMom[0].startHour.AddHours(Convert.ToDouble(SunStart.Text.Substring(0, 2)));
-                    momToAdd.ScheduleMom[0].endHour.AddHours(Convert.ToDouble(SunEnd.Text.Substring(2, 2)));
-
-                    //momToAdd.ScheduleMom[0].endHour = DateTime.ParseExact(a, "yyyy-MM-dd HH:mm:ss,fff",
-                    //    CultureInfo.InvariantCulture);
+                    var start = SunStart.Value;
+                    var end = SunEnd.Value;
+                    momToAdd.startHour[0] = Convert.ToDateTime(start);
+                    momToAdd.endHour[0] = Convert.ToDateTime(end);
                 }
-
                 if ((bool)(MonCheck.IsChecked == true))
                 {
-                    momToAdd.ScheduleMom[1].startHour = DateTime.ParseExact("0001-01-01" + MonStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                        CultureInfo.InvariantCulture);
-                    momToAdd.ScheduleMom[1].endHour = DateTime.ParseExact("0001-01-01" + MonEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                        CultureInfo.InvariantCulture);
-                }
 
+                    var start = MonStart.Value;
+                    var end = MonEnd.Value;
+                    momToAdd.startHour[1] = Convert.ToDateTime(start);
+                    momToAdd.endHour[1] = Convert.ToDateTime(end);
+                }
                 if ((bool)(TueCheck.IsChecked == true))
                 {
-                    momToAdd.ScheduleMom[2].startHour = DateTime.ParseExact("0001-01-01" + TueStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                        CultureInfo.InvariantCulture);
-                    momToAdd.ScheduleMom[2].endHour = DateTime.ParseExact("0001-01-01" + TueEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                        CultureInfo.InvariantCulture);
+
+                    var start = TueStart.Value;
+                    var end = TueEnd.Value;
+                    momToAdd.startHour[2] = Convert.ToDateTime(start);
+                    momToAdd.endHour[2] = Convert.ToDateTime(end);
                 }
                 if ((bool)(WedCheck.IsChecked == true))
                 {
-                    momToAdd.ScheduleMom[3].startHour = DateTime.ParseExact("0001-01-01" + WedStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                        CultureInfo.InvariantCulture);
-                    momToAdd.ScheduleMom[3].endHour = DateTime.ParseExact("0001-01-01" + WedEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                        CultureInfo.InvariantCulture);
-                }
 
+                    var start = WedStart.Value;
+                    var end = WedEnd.Value;
+                    momToAdd.startHour[3] = Convert.ToDateTime(start);
+                    momToAdd.endHour[3] = Convert.ToDateTime(end);
+                }
                 if ((bool)(ThuCheck.IsChecked == true))
                 {
-                    momToAdd.ScheduleMom[4].startHour = DateTime.ParseExact("0001-01-01" + ThrStart.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                        CultureInfo.InvariantCulture);
-                    momToAdd.ScheduleMom[4].endHour = DateTime.ParseExact("0001-01-01" + ThuEnd.Text + ",000", "yyyy-MM-dd HH:mm:ss,fff",
-                        CultureInfo.InvariantCulture);
-                }
 
+                    var start = ThuStart.Value;
+                    var end = ThuEnd.Value;
+                    momToAdd.startHour[4] = Convert.ToDateTime(start);
+                    momToAdd.endHour[4] = Convert.ToDateTime(end);
+                }
                 if ((bool)(FriCheck.IsChecked == true))
                 {
-                    momToAdd.ScheduleMom[5].startHour = DateTime.Parse("0001-01-01" + FriStart.Text + ",000");
-                    momToAdd.ScheduleMom[5].endHour = DateTime.Parse("0001-01-01" + FriEnd.Text + ",000");
-                }
 
+                    var start = FriStart.Value;
+                    var end = FriEnd.Value;
+                    momToAdd.startHour[5] = Convert.ToDateTime(start);
+                    momToAdd.endHour[5] = Convert.ToDateTime(end);
+                }
 
 
                 bl.addMom(momToAdd);
