@@ -15,12 +15,12 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for DeleteMotherWindow.xaml
+    /// Interaction logic for deleteNannyWindow.xaml
     /// </summary>
-    public partial class DeleteMotherWindow : Window
+    public partial class deleteNannyWindow : Window
     {
         public BL.Ibl bl;
-        public DeleteMotherWindow()
+        public deleteNannyWindow()
         {
             InitializeComponent();
             bl = BL.FactoryBL.GetBL();
@@ -30,7 +30,7 @@ namespace PL
         {
             try
             {
-                bl.deleteMother(int.Parse(textBox.Text));
+                bl.deleteNanny(int.Parse(textBox.Text));
             }
             catch (Exception Ex)
             {
