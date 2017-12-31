@@ -30,6 +30,12 @@ namespace BL
         IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null);
         IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null);
         IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null);
-        
+
+        //getters by id
+        Nanny getNanny(long idNanny);
+        Mother getMom(long idMom);
+        Child getChild(long idChild);
+        Contract getContract(int idContract);
+
     }
 }
