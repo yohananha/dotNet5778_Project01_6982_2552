@@ -94,6 +94,9 @@
     <Compile Include="UpdateMotherWindow.xaml.cs">
       <DependentUpon>UpdateMotherWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateNannyWindow.xaml.cs">
+      <DependentUpon>UpdateNannyWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="addChildWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UpdateMotherWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateNannyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

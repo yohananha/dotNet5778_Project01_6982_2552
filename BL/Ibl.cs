@@ -13,6 +13,7 @@ namespace BL
         void addNanny(Nanny nanny);
         void deleteNanny(long idNannyDel);
         void updateNanny(Nanny nannye);
+        Nanny getNanny(long idNanny);
 
         void addMom(Mother mother);
         void deleteMother(long idMotherDel);
@@ -22,10 +23,12 @@ namespace BL
         void addChild(Child child);
         void deleteChild(long idChildDel);
         void updateChild(Child child);
+        Child getChild(long idChild);
 
         void addContract(Contract contract);
         void deleteContract(int idContractDel);
         void updateContract(Contract contract);
+        Contract getContract(int idContract);
 
         IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate = null);
         IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null);

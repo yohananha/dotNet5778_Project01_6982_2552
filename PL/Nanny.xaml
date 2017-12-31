@@ -9,7 +9,7 @@
     <Grid>
         <Button x:Name="AddNanny" Content="Add nanny" HorizontalAlignment="Left" Margin="53,30,0,0" VerticalAlignment="Top" Width="200" Height="60" Click="AddNanny_Click"/>
         <Button x:Name="DelNanny" Content="Delete nanny" HorizontalAlignment="Left" Margin="53,102,0,0" VerticalAlignment="Top" Width="200" Height="60                 " Click="DelNanny_Click"/>
-        <Button x:Name="UpdateNanny" Content="Update nanny" HorizontalAlignment="Left" Margin="53,175,0,0" VerticalAlignment="Top" Width="200" Height="60                 "/>
+        <Button x:Name="UpdateNanny" Content="Update nanny" HorizontalAlignment="Left" Margin="53,175,0,0" VerticalAlignment="Top" Width="200" Height="60                 " Click="UpdateNanny_Click"/>
 
     </Grid>
 </Window>

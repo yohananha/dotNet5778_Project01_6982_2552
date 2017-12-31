@@ -35,5 +35,11 @@ namespace PL
             deleteNannyWindow del = new deleteNannyWindow();
             del.Show();
         }
+
+        private void UpdateNanny_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateNannyWindow updNanny = new UpdateNannyWindow();
+            updNanny.Show();
+        }
     }
 }

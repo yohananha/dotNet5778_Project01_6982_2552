@@ -22,6 +22,11 @@ namespace BL
         }
         #region child metod
 
+        public Child getChild(long idChild)
+        {
+            return dal.getChild(idChild);
+        }
+
         public void addChild(Child child)
         {
             dal.addChild(child);
@@ -47,6 +52,11 @@ namespace BL
         #endregion
 
         #region contract metod
+
+        public Contract getContract(int idContract)
+        {
+            return dal.getContract(idContract);
+        }
 
         public int MomsKidsByNanny(Child child, Nanny nanny)
         {
@@ -146,6 +156,12 @@ namespace BL
         #endregion
 
         #region nanny metod
+
+        public Nanny getNanny(long idNanny)
+        {
+            return dal.getNanny(idNanny);
+        }
+
         public void addNanny(Nanny nanny)
         {
             DateTime today = DateTime.Today;
