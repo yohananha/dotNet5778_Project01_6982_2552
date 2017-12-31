@@ -21,6 +21,7 @@ namespace DAL
         void addChild(Child child);
         void deleteChild(long idChildDel);
         void updateChild(Child child);
+        
 
         void addContract(Contract contract);
         void deleteContract(int idContractDel);

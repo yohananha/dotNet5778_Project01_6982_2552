@@ -31,12 +31,10 @@ namespace PL
             momToAdd.startHour = new DateTime[6];
             momToAdd.endHour = new DateTime[6];
             momToAdd.DaysRequestMom = new bool[6];
-       this.AddMomGrid.DataContext = momToAdd;
+            AddMomGrid.DataContext = momToAdd;
             bl = BL.FactoryBL.GetBL();
         }
-
-
-
+        
 
         private void button_Click(object sender, RoutedEventArgs e)
         {

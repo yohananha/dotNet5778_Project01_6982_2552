@@ -17,6 +17,7 @@ namespace BL
         void addMom(Mother mother);
         void deleteMother(long idMotherDel);
         void updateMother(Mother mother);
+        Mother getMother(long idMom);
 
         void addChild(Child child);
         void deleteChild(long idChildDel);
@@ -30,12 +31,6 @@ namespace BL
         IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null);
         IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null);
         IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null);
-
-        //getters by id
-        Nanny getNanny(long idNanny);
-        Mother getMom(long idMom);
-        Child getChild(long idChild);
-        Contract getContract(int idContract);
-
+        
     }
 }

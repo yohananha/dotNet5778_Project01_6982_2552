@@ -117,6 +117,8 @@ namespace DAL
 
         #region  mother funcs
 
+
+
         public Mother getMom(long idMom)
         {
             return DataSource.motherList.FirstOrDefault(ml => ml.IdMom == idMom);
