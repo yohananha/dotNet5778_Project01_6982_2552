@@ -4,16 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
-        xmlns:BE="clr-namespace:BE;assembly=BE" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="PL.UpdateMotherWindow"
+        xmlns:BE="clr-namespace:BE;assembly=BE" 
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="PL.UpdateMotherWindow"
         mc:Ignorable="d"
-        Title="UpdateMotherWindow" Height="600" Width="600" Loaded="Window_Loaded">
-    <Window.Resources>
-        <CollectionViewSource x:Key="motherViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Mother}, CreateList=True}"/>
-    </Window.Resources>
+        Title="UpdateMotherWindow" Height="600" Width="600">
+
     <Grid>
         <Button x:Name="button" Content="חיפוש ת&quot;ז" HorizontalAlignment="Center" Margin="0,131,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
 
-        <Grid x:Name="grid1" DataContext="{StaticResource motherViewSource}" HorizontalAlignment="Left" Margin="231,88,0,0" VerticalAlignment="Top">
+        <Grid x:Name="grid1"  HorizontalAlignment="Left" Margin="231,88,0,0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -33,7 +32,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid x:Name="grid2" Grid.Column="1" DataContext="{StaticResource motherViewSource}" HorizontalAlignment="Left" Margin="39,18,0,0" VerticalAlignment="Top">
+            <Grid x:Name="grid2" Grid.Column="1"  HorizontalAlignment="Left" Margin="39,18,0,0" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
@@ -95,7 +94,7 @@
         <xctk:TimePicker x:Name="ThuStart" Format="ShortTime"  Value="00:00"  Margin="128,377,394.6,173.4" IsEnabled="{Binding IsChecked, ElementName=ThuCheck}" RenderTransformOrigin="-2.189,-5.233"/>
         <xctk:TimePicker x:Name="FriEnd" Format="ShortTime" Value="00:00" Margin="50,411,472.6,137.4" IsEnabled="{Binding IsChecked, ElementName=FriCheck}"/>
         <xctk:TimePicker x:Name="FriStart" Format="ShortTime"  Value="00:00"  Margin="50,377,472.6,173.4" IsEnabled="{Binding IsChecked, ElementName=FriCheck}" RenderTransformOrigin="-2.189,-5.233"/>
-        <Button x:Name="button1" Content="עדכון" HorizontalAlignment="Left" Margin="49,490,0,0" VerticalAlignment="Top" Width="149" Height="50"/>
+        <Button x:Name="button1" Content="עדכון" HorizontalAlignment="Left" Margin="49,490,0,0" VerticalAlignment="Top" Width="149" Height="50" Click="button1_Click"/>
 
 
 

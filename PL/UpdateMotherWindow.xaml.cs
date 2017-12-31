@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
 
 namespace PL
 {
@@ -19,33 +21,133 @@ namespace PL
     /// </summary>
     public partial class UpdateMotherWindow : Window
     {
-        public BE.Mother momToUpdate;
+        public BE.Mother mom;
         public BL.Ibl bl;
 
         public UpdateMotherWindow()
         {
             InitializeComponent();
-            momToUpdate = new BE.Mother();
-            momToUpdate.startHour = new DateTime[6];
-            momToUpdate.endHour = new DateTime[6];
-            momToUpdate.DaysRequestMom = new bool[6];
-            updateMomDeatails.DataContext = momToUpdate;
             bl = BL.FactoryBL.GetBL();
+            mom = new BE.Mother();
+            mom.startHour = new DateTime[6];
+            mom.endHour = new DateTime[6];
+            mom.DaysRequestMom = new bool[6];
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
 
-            System.Windows.Data.CollectionViewSource motherViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("motherViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // motherViewSource.Source = [generic data source]
-        }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            
-            momToUpdate = bl.getMother(Convert.ToInt64(idMomTextBox.Text));
-            
+            try
+            {
+                //mom.IdMom = Convert.ToInt64(idMomTextBox.Text);
+                mom = bl.getMother(Convert.ToInt64(idMomTextBox.Text));
+
+
+                firstNameMomTextBox.Text = mom.FirstNameMom;
+                lasNameMomTextBox.Text = mom.LasNameMom;
+                addressForNannyTextBox.Text = mom.AddressForNanny;
+                addressMomTextBox.Text = mom.AddressMom;
+                phoneMomTextBox.Text = mom.PhoneMom;
+
+                if (mom.DaysRequestMom[0] == true)
+                {
+                    SunCheck.IsChecked = true;
+                    SunStart.Value = mom.startHour[0];
+                    SunEnd.Value = mom.endHour[0];
+                }
+                if (mom.DaysRequestMom[1] == true)
+                {
+                    MonCheck.IsChecked = true;
+                    MonStart.Value = mom.startHour[1];
+                    MonEnd.Value = mom.endHour[1];
+                }
+                if (mom.DaysRequestMom[2] == true)
+                {
+                    TueCheck.IsChecked = true;
+                    TueStart.Value = mom.startHour[2];
+                    TueEnd.Value = mom.endHour[2];
+                }
+                if (mom.DaysRequestMom[3] == true)
+                {
+                    WedCheck.IsChecked = true;
+                    WedStart.Value = mom.startHour[3];
+                    WedEnd.Value = mom.endHour[3];
+                }
+                if (mom.DaysRequestMom[4] == true)
+                {
+                    ThuCheck.IsChecked = true;
+                    ThuStart.Value = mom.startHour[4];
+                    ThuEnd.Value = mom.endHour[4];
+                }
+                if (mom.DaysRequestMom[5] == true)
+                {
+                    FriCheck.IsChecked = true;
+                    FriStart.Value = mom.startHour[5];
+                    FriEnd.Value = mom.endHour[5];
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("check your input and try again");
+            }
+
+
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //mom.IdMom = Convert.ToInt64(idMomTextBox.Text);
+                mom = bl.getMother(Convert.ToInt64(idMomTextBox.Text));
+
+
+                mom.FirstNameMom = firstNameMomTextBox.Text;
+                mom.LasNameMom = lasNameMomTextBox.Text;
+                mom.AddressForNanny = addressForNannyTextBox.Text;
+                mom.AddressMom = addressMomTextBox.Text;
+                mom.PhoneMom = phoneMomTextBox.Text;
+
+                if ((bool)(TueCheck.IsChecked == true))
+                {
+                    mom.DaysRequestMom[2] = true;
+                    var start = TueStart.Value;
+                    var end = TueEnd.Value;
+                    mom.startHour[2] = Convert.ToDateTime(start);
+                    mom.endHour[2] = Convert.ToDateTime(end);
+                }
+                if ((bool)(WedCheck.IsChecked == true))
+                {
+                    mom.DaysRequestMom[3] = true;
+                    var start = WedStart.Value;
+                    var end = WedEnd.Value;
+                    mom.startHour[3] = Convert.ToDateTime(start);
+                    mom.endHour[3] = Convert.ToDateTime(end);
+                }
+                if ((bool)(ThuCheck.IsChecked == true))
+                {
+                    mom.DaysRequestMom[4] = true;
+                    var start = ThuStart.Value;
+                    var end = ThuEnd.Value;
+                    mom.startHour[4] = Convert.ToDateTime(start);
+                    mom.endHour[4] = Convert.ToDateTime(end);
+                }
+                if ((bool)(FriCheck.IsChecked == true))
+                {
+                    mom.DaysRequestMom[5] = true;
+                    var start = FriStart.Value;
+                    var end = FriEnd.Value;
+                    mom.startHour[5] = Convert.ToDateTime(start);
+                    mom.endHour[5] = Convert.ToDateTime(end);
+                }
+                MessageBox.Show("פרטי האם עודכנו");
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("check your input and try again");
+            }
         }
     }
 }
