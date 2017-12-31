@@ -58,7 +58,7 @@ namespace PL
 
                 if ((bool)(SunCheck.IsChecked == true))
                 {
-
+                    momToAdd.DaysRequestMom[0] = true;
                     var start = SunStart.Value;
                     var end = SunEnd.Value;
                     momToAdd.startHour[0] = Convert.ToDateTime(start);
@@ -66,7 +66,7 @@ namespace PL
                 }
                 if ((bool)(MonCheck.IsChecked == true))
                 {
-
+                    momToAdd.DaysRequestMom[1] = true;
                     var start = MonStart.Value;
                     var end = MonEnd.Value;
                     momToAdd.startHour[1] = Convert.ToDateTime(start);
@@ -74,7 +74,7 @@ namespace PL
                 }
                 if ((bool)(TueCheck.IsChecked == true))
                 {
-
+                    momToAdd.DaysRequestMom[2] = true;
                     var start = TueStart.Value;
                     var end = TueEnd.Value;
                     momToAdd.startHour[2] = Convert.ToDateTime(start);
@@ -82,7 +82,7 @@ namespace PL
                 }
                 if ((bool)(WedCheck.IsChecked == true))
                 {
-
+                    momToAdd.DaysRequestMom[3] = true;
                     var start = WedStart.Value;
                     var end = WedEnd.Value;
                     momToAdd.startHour[3] = Convert.ToDateTime(start);
@@ -90,7 +90,7 @@ namespace PL
                 }
                 if ((bool)(ThuCheck.IsChecked == true))
                 {
-
+                    momToAdd.DaysRequestMom[4] = true;
                     var start = ThuStart.Value;
                     var end = ThuEnd.Value;
                     momToAdd.startHour[4] = Convert.ToDateTime(start);
@@ -98,7 +98,7 @@ namespace PL
                 }
                 if ((bool)(FriCheck.IsChecked == true))
                 {
-
+                    momToAdd.DaysRequestMom[5] = true;
                     var start = FriStart.Value;
                     var end = FriEnd.Value;
                     momToAdd.startHour[5] = Convert.ToDateTime(start);

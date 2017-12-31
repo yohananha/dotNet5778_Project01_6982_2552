@@ -115,7 +115,7 @@ namespace BL
         public Mother getMother(long idMom)
         {
             Mother mom = new Mother();
-
+            mom = dal.getMom(idMom);
 
 
             return mom;
