@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="Mother" Height="300" Width="300">
+        Title="Mother" Height="400" Width="300">
     <Grid>
         <Button x:Name="AddMother" Content="Add mother" HorizontalAlignment="Center" Margin="49,25,46.333,0" VerticalAlignment="Top" Width="198" Height="62" Click="AddMother_Click"/>
         <Button x:Name="DelMother" Content="Delete mother" HorizontalAlignment="Center" Margin="49,94,153.333,0" VerticalAlignment="Top" Width="91" Height="59" Click="DelMother_Click"/>
@@ -14,6 +14,8 @@
         <Button x:Name="addContract" Content="Add Contract" HorizontalAlignment="Left" Margin="145,159,0,0" VerticalAlignment="Top" Width="102" Height="50"/>
         <Button x:Name="deleteChild" Content="Delete Child" HorizontalAlignment="Left" Margin="49,214,0,0" VerticalAlignment="Top" Width="91" Height="47" Click="deleteChild_Click"/>
         <Button x:Name="deleteContract" Content="Delete Contract" HorizontalAlignment="Left" Margin="145,214,0,0" VerticalAlignment="Top" Width="102" Height="47"/>
+        <Button x:Name="deleteChild_Copy" Content="Update Child" HorizontalAlignment="Left" Margin="49,270,0,0" VerticalAlignment="Top" Width="91" Height="47" Click="UpdateChild_Click"/>
+        <Button x:Name="deleteContract_Copy" Content="Update Contract" HorizontalAlignment="Left" Margin="145,270,0,0" VerticalAlignment="Top" Width="102" Height="47"/>
 
     </Grid>
 </Window>
