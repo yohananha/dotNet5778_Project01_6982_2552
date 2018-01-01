@@ -26,7 +26,10 @@ namespace DAL
 
         public Child getChild(long idChild)
         {
-            return DataSource.childList.FirstOrDefault(_child => _child.idChild == idChild);
+            var child = DataSource.childList.FirstOrDefault(_child => _child.idChild == idChild);
+            if (child == null)
+                throw new Exception("id doesn't exist");
+            return child;
         }
 
         public void addChild(Child child)
@@ -66,7 +69,10 @@ namespace DAL
 
         public Contract getContract(int idContract)
         {
-            return DataSource.contractList.FirstOrDefault(cl => cl.idContract == idContract);
+            var contract = DataSource.contractList.FirstOrDefault(cl => cl.idContract == idContract);
+            if (contract == null)
+                throw new Exception("id doesn't exist");
+            return contract;
         }
 
         public void addContract(Contract contract)
@@ -121,7 +127,10 @@ namespace DAL
 
         public Mother getMom(long idMom)
         {
-            return DataSource.motherList.FirstOrDefault(ml => ml.IdMom == idMom);
+            var mom = DataSource.motherList.FirstOrDefault(ml => ml.IdMom == idMom);
+            if (mom == null)
+                throw new Exception("id doesn't exist");
+            return mom;
         }
 
         public void addMom(Mother mother)
@@ -176,7 +185,10 @@ namespace DAL
 
         public Nanny getNanny(long idNanny)
         {
-            return DataSource.nannyList.FirstOrDefault(nl => nl.nannyId == idNanny);
+            var nanny = DataSource.nannyList.FirstOrDefault(nl => nl.nannyId == idNanny);
+            if (nanny == null)
+                throw new Exception("id doesn't exist");
+            return nanny;
         }
 
         public void addNanny(Nanny nanny)

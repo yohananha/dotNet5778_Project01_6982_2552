@@ -27,7 +27,6 @@ namespace BE
         public bool isTamatNanny { get; set; }
         public string recommendationsNanny { get; set; }
         public int currentChildren { get; set; }
-        public Schedule[] ScheduleNanny { get; set; }
         public DateTime[] startHour { get; set; }
         public DateTime[] endHour { get; set; }
         public double diff { get; set; }

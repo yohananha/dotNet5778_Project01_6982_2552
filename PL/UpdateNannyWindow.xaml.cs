@@ -26,15 +26,18 @@ namespace PL
         {
             InitializeComponent();
             nannyToUpdate = new BE.Nanny();
+            updateNannyDeatails.DataContext = nannyToUpdate;
             nannyToUpdate.startHour = new DateTime[6];
             nannyToUpdate.endHour = new DateTime[6];
             nannyToUpdate.daysWorkNanny = new bool[6];
-            updateNannyDeatails.DataContext = nannyToUpdate;
             bl = BL.FactoryBL.GetBL();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+
             nannyToUpdate = bl.getNanny(Convert.ToInt64(nannyIdTextBox.Text));
 
             lastNameNannyTextBox.Text = nannyToUpdate.lastNameNanny;
@@ -53,7 +56,49 @@ namespace PL
             rateMonthNannyTextBox.Text = Convert.ToString(nannyToUpdate.rateMonthNanny);
             isTamatNannyCheckBox.IsChecked = nannyToUpdate.isTamatNanny;
             recommendationsNannyTextBox.Text = nannyToUpdate.recommendationsNanny;
-    }
+
+            if (nannyToUpdate.daysWorkNanny[0] == true)
+            {
+                SunCheck.IsChecked = true;
+                SunStart.Value = nannyToUpdate.startHour[0].ToLocalTime();
+                SunEnd.Value = nannyToUpdate.endHour[0].ToLocalTime();
+            }
+            if (nannyToUpdate.daysWorkNanny[1] == true)
+            {
+                MonCheck.IsChecked = true;
+                MonStart.Value = nannyToUpdate.startHour[1].ToLocalTime();
+                MonEnd.Value = nannyToUpdate.endHour[1].ToLocalTime();
+            }
+            if (nannyToUpdate.daysWorkNanny[2] == true)
+            {
+                TueCheck.IsChecked = true;
+                TueStart.Value = nannyToUpdate.startHour[2].ToLocalTime();
+                TueEnd.Value = nannyToUpdate.endHour[2].ToLocalTime();
+            }
+            if (nannyToUpdate.daysWorkNanny[3] == true)
+            {
+                WedCheck.IsChecked = true;
+                WedStart.Value = nannyToUpdate.startHour[3].ToLocalTime();
+                WedEnd.Value = nannyToUpdate.endHour[3].ToLocalTime();
+            }
+            if (nannyToUpdate.daysWorkNanny[4] == true)
+            {
+                ThuCheck.IsChecked = true;
+                ThuStart.Value = nannyToUpdate.startHour[4].ToLocalTime();
+                ThuEnd.Value = nannyToUpdate.endHour[4].ToLocalTime();
+            }
+            if (nannyToUpdate.daysWorkNanny[5] == true)
+            {
+                FriCheck.IsChecked = true;
+                FriStart.Value = nannyToUpdate.startHour[5].ToLocalTime();
+                FriEnd.Value = nannyToUpdate.endHour[5].ToLocalTime();
+            }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -108,9 +153,11 @@ namespace PL
                     nannyToUpdate.endHour[5] = Convert.ToDateTime(end);
                 }
 
-                bl.addNanny(nannyToUpdate);
+                bl.updateNanny(nannyToUpdate);
                 nannyToUpdate = new BE.Nanny();
                 this.DataContext = nannyToUpdate;
+                MessageBox.Show("פרטי המטפלת עודכנו");
+                this.Close();
             }
             catch (Exception Ex)
             {

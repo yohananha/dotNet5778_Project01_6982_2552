@@ -30,6 +30,7 @@ namespace PL
             nannyToAdd = new BE.Nanny();
             nannyToAdd.startHour = new DateTime[6];
             nannyToAdd.endHour = new DateTime[6];
+            nannyToAdd.daysWorkNanny = new bool[6];
             this.DataContext = nannyToAdd;
             bl = BL.FactoryBL.GetBL();
         }
@@ -90,6 +91,8 @@ namespace PL
                 bl.addNanny(nannyToAdd);
                 nannyToAdd = new BE.Nanny();
                 this.DataContext = nannyToAdd;
+                MessageBox.Show("המטפלת הוספה בהצלחה");
+                this.Close();
             }
             catch (Exception Ex)
             {
