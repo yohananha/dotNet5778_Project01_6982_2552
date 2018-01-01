@@ -126,7 +126,7 @@ namespace BL
             TimeSpan sum = new TimeSpan();
             for (var i = 0; i < 6; i++)
             {
-                sum += mother.ScheduleMom[i].endHour - mother.ScheduleMom[i].startHour;
+                sum += mother.endHour[i] - mother.startHour[i];
             }
             return ((sum.Days - 1) * 24 + sum.Hours + sum.Minutes / 60.0);
         }
@@ -252,16 +252,16 @@ namespace BL
             nanny.diff = 0;
             for (int i = 0; i < 6; i++)
             {
-                if (nanny.ScheduleNanny[i].startHour > mom.ScheduleMom[i].startHour)
+                if (nanny.ScheduleNanny[i].startHour > mom.startHour[i])
                 {
                     TimeSpan sum = new TimeSpan();
-                    sum = nanny.ScheduleNanny[i].startHour - mom.ScheduleMom[i].startHour;
+                    sum = nanny.ScheduleNanny[i].startHour - mom.startHour[i];
                     nanny.diff += ((sum.Days - 1) * 24 + sum.Hours + sum.Minutes / 60.0);
                 }
-                if (nanny.ScheduleNanny[i].endHour < mom.ScheduleMom[i].endHour)
+                if (nanny.ScheduleNanny[i].endHour < mom.endHour[i])
                 {
                     TimeSpan sum = new TimeSpan();
-                    sum = mom.ScheduleMom[i].endHour - nanny.ScheduleNanny[i].endHour;
+                    sum = mom.endHour[i] - nanny.ScheduleNanny[i].endHour;
                     nanny.diff += ((sum.Days - 1) * 24 + sum.Hours + sum.Minutes / 60.0);
                 }
             }
@@ -271,8 +271,8 @@ namespace BL
         {
             for (int i = 0; i < 6; i++)
             {
-                if (nanny.ScheduleNanny[i].startHour > mom.ScheduleMom[i].startHour ||
-                    nanny.ScheduleNanny[i].endHour < mom.ScheduleMom[i].endHour)
+                if (nanny.ScheduleNanny[i].startHour > mom.startHour[i] ||
+                    nanny.ScheduleNanny[i].endHour < mom.endHour[i])
                     return false;
             }
             return true;
