@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -30,13 +31,15 @@ namespace PL
             bl = BL.FactoryBL.GetBL();
         }
 
-        private void addChild_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 bl.addChild(childToAdd);
                 childToAdd = new BE.Child();
                 this.DataContext = childToAdd;
+                MessageBox.Show("ילד נוסף בהצלחה");
+                Close();
             }
             catch (Exception Ex)
             {

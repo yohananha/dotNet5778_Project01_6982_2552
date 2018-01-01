@@ -53,5 +53,13 @@ namespace PL
             UpdateMotherWindow upMom = new UpdateMotherWindow();
             upMom.Show();
         }
+
+        
+
+        private void UpdateChild_Click(object sender, RoutedEventArgs e)
+        {
+            upChild upchild = new upChild();
+            upchild.Show();
+        }
     }
 }
