@@ -109,6 +109,8 @@ namespace PL
                 bl.addMom(momToAdd);
                 momToAdd = new BE.Mother();
                 AddMomGrid.DataContext = momToAdd;
+                MessageBox.Show("אם נוספה בהצלחה!");
+                this.Close();
             }
             catch (FormatException)
             {

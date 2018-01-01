@@ -53,38 +53,38 @@ namespace PL
                 if (mom.DaysRequestMom[0] == true)
                 {
                     SunCheck.IsChecked = true;
-                    SunStart.Value = mom.startHour[0];
-                    SunEnd.Value = mom.endHour[0];
+                    SunStart.Value = mom.startHour[0].ToLocalTime();
+                    SunEnd.Value = mom.endHour[0].ToLocalTime();
                 }
                 if (mom.DaysRequestMom[1] == true)
                 {
                     MonCheck.IsChecked = true;
-                    MonStart.Value = mom.startHour[1];
-                    MonEnd.Value = mom.endHour[1];
+                    MonStart.Value = mom.startHour[1].ToLocalTime();
+                    MonEnd.Value = mom.endHour[1].ToLocalTime();
                 }
                 if (mom.DaysRequestMom[2] == true)
                 {
                     TueCheck.IsChecked = true;
-                    TueStart.Value = mom.startHour[2];
-                    TueEnd.Value = mom.endHour[2];
+                    TueStart.Value = mom.startHour[2].ToLocalTime();
+                    TueEnd.Value = mom.endHour[2].ToLocalTime();
                 }
                 if (mom.DaysRequestMom[3] == true)
                 {
                     WedCheck.IsChecked = true;
-                    WedStart.Value = mom.startHour[3];
-                    WedEnd.Value = mom.endHour[3];
+                    WedStart.Value = mom.startHour[3].ToLocalTime();
+                    WedEnd.Value = mom.endHour[3].ToLocalTime();
                 }
                 if (mom.DaysRequestMom[4] == true)
                 {
                     ThuCheck.IsChecked = true;
-                    ThuStart.Value = mom.startHour[4];
-                    ThuEnd.Value = mom.endHour[4];
+                    ThuStart.Value = mom.startHour[4].ToLocalTime();
+                    ThuEnd.Value = mom.endHour[4].ToLocalTime();
                 }
                 if (mom.DaysRequestMom[5] == true)
                 {
                     FriCheck.IsChecked = true;
-                    FriStart.Value = mom.startHour[5];
-                    FriEnd.Value = mom.endHour[5];
+                    FriStart.Value = mom.startHour[5].ToLocalTime();
+                    FriEnd.Value = mom.endHour[5].ToLocalTime();
                 }
             }
             catch (Exception exception)
@@ -142,6 +142,7 @@ namespace PL
                     mom.endHour[5] = Convert.ToDateTime(end);
                 }
                 MessageBox.Show("פרטי האם עודכנו");
+                this.Close();
 
             }
             catch (Exception exception)

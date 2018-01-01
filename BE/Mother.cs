@@ -21,7 +21,6 @@ namespace BE
         public string AddressMom { get; set; }
         public string AddressForNanny { get; set; }
         public bool[] DaysRequestMom { get; set; }
-        public Schedule[] ScheduleMom { get; set; }
         public DateTime[] startHour { get; set; }
         public DateTime[] endHour { get; set; }
         public string nothMom { get; set; }
@@ -42,8 +41,9 @@ namespace BE
             duplicationMom.AddressMom = this.AddressMom;
             duplicationMom.AddressForNanny = this.AddressForNanny;
             duplicationMom.DaysRequestMom = this.DaysRequestMom;
-            duplicationMom.ScheduleMom = this.ScheduleMom;
             duplicationMom.nothMom = this.nothMom;
+            duplicationMom.endHour = this.endHour;
+            duplicationMom.startHour = this.startHour;
 
             return duplicationMom;
         }
