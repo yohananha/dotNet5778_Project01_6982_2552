@@ -36,7 +36,24 @@ namespace PL
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             nannyToUpdate = bl.getNanny(Convert.ToInt64(nannyIdTextBox.Text));
-        }
+
+            lastNameNannyTextBox.Text = nannyToUpdate.lastNameNanny;
+            firstNameNannyTextBox.Text = nannyToUpdate.firstNameNanny;
+            dateNannyDatePicker.DataContext = nannyToUpdate.dateNanny;
+            phoneNannyTextBox.Text = Convert.ToString(nannyToUpdate.phoneNanny);
+            addressNannyTextBox.Text = nannyToUpdate.addressNanny;
+            elevatorNannyCheckBox.IsChecked = nannyToUpdate.elevatorNanny;
+            floorNannyTextBox.Text = Convert.ToString(nannyToUpdate.floorNanny);
+            experienceNannyTextBox.Text = Convert.ToString(nannyToUpdate.experienceNanny);
+            maxChildNannyTextBox.Text = Convert.ToString(nannyToUpdate.maxChildNanny);
+            minAgeChildNannyTextBox.Text = Convert.ToString(nannyToUpdate.minAgeChildNanny);
+            maxAgeChildNannyTextBox.Text = Convert.ToString(nannyToUpdate.maxAgeChildNanny);
+            isByHourNannyCheckBox.IsChecked = nannyToUpdate.isByHourNanny;
+            rateHourNannyTextBox.Text = Convert.ToString(nannyToUpdate.rateHourNanny);
+            rateMonthNannyTextBox.Text = Convert.ToString(nannyToUpdate.rateMonthNanny);
+            isTamatNannyCheckBox.IsChecked = nannyToUpdate.isTamatNanny;
+            recommendationsNannyTextBox.Text = nannyToUpdate.recommendationsNanny;
+    }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
