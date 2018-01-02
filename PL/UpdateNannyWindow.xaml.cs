@@ -26,7 +26,7 @@ namespace PL
         {
             InitializeComponent();
             nannyToUpdate = new BE.Nanny();
-            updateNannyDeatails.DataContext = nannyToUpdate;
+            this.DataContext = nannyToUpdate;
             nannyToUpdate.startHour = new DateTime[6];
             nannyToUpdate.endHour = new DateTime[6];
             nannyToUpdate.daysWorkNanny = new bool[6];
@@ -38,61 +38,46 @@ namespace PL
             try
             {
 
-            nannyToUpdate = bl.getNanny(Convert.ToInt64(nannyIdTextBox.Text));
+                nannyToUpdate = bl.getNanny(Convert.ToInt64(nannyIdTextBox.Text));
 
-            lastNameNannyTextBox.Text = nannyToUpdate.lastNameNanny;
-            firstNameNannyTextBox.Text = nannyToUpdate.firstNameNanny;
-            dateNannyDatePicker.DataContext = nannyToUpdate.dateNanny;
-            phoneNannyTextBox.Text = Convert.ToString(nannyToUpdate.phoneNanny);
-            addressNannyTextBox.Text = nannyToUpdate.addressNanny;
-            elevatorNannyCheckBox.IsChecked = nannyToUpdate.elevatorNanny;
-            floorNannyTextBox.Text = Convert.ToString(nannyToUpdate.floorNanny);
-            experienceNannyTextBox.Text = Convert.ToString(nannyToUpdate.experienceNanny);
-            maxChildNannyTextBox.Text = Convert.ToString(nannyToUpdate.maxChildNanny);
-            minAgeChildNannyTextBox.Text = Convert.ToString(nannyToUpdate.minAgeChildNanny);
-            maxAgeChildNannyTextBox.Text = Convert.ToString(nannyToUpdate.maxAgeChildNanny);
-            isByHourNannyCheckBox.IsChecked = nannyToUpdate.isByHourNanny;
-            rateHourNannyTextBox.Text = Convert.ToString(nannyToUpdate.rateHourNanny);
-            rateMonthNannyTextBox.Text = Convert.ToString(nannyToUpdate.rateMonthNanny);
-            isTamatNannyCheckBox.IsChecked = nannyToUpdate.isTamatNanny;
-            recommendationsNannyTextBox.Text = nannyToUpdate.recommendationsNanny;
+                this.DataContext = nannyToUpdate;
 
-            if (nannyToUpdate.daysWorkNanny[0] == true)
-            {
-                SunCheck.IsChecked = true;
-                SunStart.Value = nannyToUpdate.startHour[0].ToLocalTime();
-                SunEnd.Value = nannyToUpdate.endHour[0].ToLocalTime();
-            }
-            if (nannyToUpdate.daysWorkNanny[1] == true)
-            {
-                MonCheck.IsChecked = true;
-                MonStart.Value = nannyToUpdate.startHour[1].ToLocalTime();
-                MonEnd.Value = nannyToUpdate.endHour[1].ToLocalTime();
-            }
-            if (nannyToUpdate.daysWorkNanny[2] == true)
-            {
-                TueCheck.IsChecked = true;
-                TueStart.Value = nannyToUpdate.startHour[2].ToLocalTime();
-                TueEnd.Value = nannyToUpdate.endHour[2].ToLocalTime();
-            }
-            if (nannyToUpdate.daysWorkNanny[3] == true)
-            {
-                WedCheck.IsChecked = true;
-                WedStart.Value = nannyToUpdate.startHour[3].ToLocalTime();
-                WedEnd.Value = nannyToUpdate.endHour[3].ToLocalTime();
-            }
-            if (nannyToUpdate.daysWorkNanny[4] == true)
-            {
-                ThuCheck.IsChecked = true;
-                ThuStart.Value = nannyToUpdate.startHour[4].ToLocalTime();
-                ThuEnd.Value = nannyToUpdate.endHour[4].ToLocalTime();
-            }
-            if (nannyToUpdate.daysWorkNanny[5] == true)
-            {
-                FriCheck.IsChecked = true;
-                FriStart.Value = nannyToUpdate.startHour[5].ToLocalTime();
-                FriEnd.Value = nannyToUpdate.endHour[5].ToLocalTime();
-            }
+                if (nannyToUpdate.daysWorkNanny[0] == true)
+                {
+                    SunCheck.IsChecked = true;
+                    SunStart.Value = nannyToUpdate.startHour[0].ToLocalTime();
+                    SunEnd.Value = nannyToUpdate.endHour[0].ToLocalTime();
+                }
+                if (nannyToUpdate.daysWorkNanny[1] == true)
+                {
+                    MonCheck.IsChecked = true;
+                    MonStart.Value = nannyToUpdate.startHour[1].ToLocalTime();
+                    MonEnd.Value = nannyToUpdate.endHour[1].ToLocalTime();
+                }
+                if (nannyToUpdate.daysWorkNanny[2] == true)
+                {
+                    TueCheck.IsChecked = true;
+                    TueStart.Value = nannyToUpdate.startHour[2].ToLocalTime();
+                    TueEnd.Value = nannyToUpdate.endHour[2].ToLocalTime();
+                }
+                if (nannyToUpdate.daysWorkNanny[3] == true)
+                {
+                    WedCheck.IsChecked = true;
+                    WedStart.Value = nannyToUpdate.startHour[3].ToLocalTime();
+                    WedEnd.Value = nannyToUpdate.endHour[3].ToLocalTime();
+                }
+                if (nannyToUpdate.daysWorkNanny[4] == true)
+                {
+                    ThuCheck.IsChecked = true;
+                    ThuStart.Value = nannyToUpdate.startHour[4].ToLocalTime();
+                    ThuEnd.Value = nannyToUpdate.endHour[4].ToLocalTime();
+                }
+                if (nannyToUpdate.daysWorkNanny[5] == true)
+                {
+                    FriCheck.IsChecked = true;
+                    FriStart.Value = nannyToUpdate.startHour[5].ToLocalTime();
+                    FriEnd.Value = nannyToUpdate.endHour[5].ToLocalTime();
+                }
             }
             catch (Exception Ex)
             {
@@ -106,7 +91,7 @@ namespace PL
             {
                 if ((bool)(SunCheck.IsChecked == true))
                 {
-
+                    nannyToUpdate.daysWorkNanny[0] = true;
                     var start = SunStart.Value;
                     var end = SunEnd.Value;
                     nannyToUpdate.startHour[0] = Convert.ToDateTime(start);
@@ -114,7 +99,7 @@ namespace PL
                 }
                 if ((bool)(MonCheck.IsChecked == true))
                 {
-
+                    nannyToUpdate.daysWorkNanny[1] = true;
                     var start = MonStart.Value;
                     var end = MonEnd.Value;
                     nannyToUpdate.startHour[1] = Convert.ToDateTime(start);
@@ -122,7 +107,7 @@ namespace PL
                 }
                 if ((bool)(TueCheck.IsChecked == true))
                 {
-
+                    nannyToUpdate.daysWorkNanny[2] = true;
                     var start = TueStart.Value;
                     var end = TueEnd.Value;
                     nannyToUpdate.startHour[2] = Convert.ToDateTime(start);
@@ -130,7 +115,7 @@ namespace PL
                 }
                 if ((bool)(WedCheck.IsChecked == true))
                 {
-
+                    nannyToUpdate.daysWorkNanny[3] = true;
                     var start = WedStart.Value;
                     var end = WedEnd.Value;
                     nannyToUpdate.startHour[3] = Convert.ToDateTime(start);
@@ -138,7 +123,7 @@ namespace PL
                 }
                 if ((bool)(ThuCheck.IsChecked == true))
                 {
-
+                    nannyToUpdate.daysWorkNanny[4] = true;
                     var start = ThuStart.Value;
                     var end = ThuEnd.Value;
                     nannyToUpdate.startHour[4] = Convert.ToDateTime(start);
@@ -146,7 +131,7 @@ namespace PL
                 }
                 if ((bool)(FriCheck.IsChecked == true))
                 {
-
+                    nannyToUpdate.daysWorkNanny[5] = true;
                     var start = FriStart.Value;
                     var end = FriEnd.Value;
                     nannyToUpdate.startHour[5] = Convert.ToDateTime(start);

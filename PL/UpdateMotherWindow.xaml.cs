@@ -43,12 +43,7 @@ namespace PL
                 //mom.IdMom = Convert.ToInt64(idMomTextBox.Text);
                 mom = bl.getMother(Convert.ToInt64(idMomTextBox.Text));
 
-
-                firstNameMomTextBox.Text = mom.FirstNameMom;
-                lasNameMomTextBox.Text = mom.LasNameMom;
-                addressForNannyTextBox.Text = mom.AddressForNanny;
-                addressMomTextBox.Text = mom.AddressMom;
-                phoneMomTextBox.Text = mom.PhoneMom;
+                this.DataContext = mom;
 
                 if (mom.DaysRequestMom[0] == true)
                 {
@@ -99,16 +94,22 @@ namespace PL
         {
             try
             {
-                //mom.IdMom = Convert.ToInt64(idMomTextBox.Text);
-                mom = bl.getMother(Convert.ToInt64(idMomTextBox.Text));
-
-
-                mom.FirstNameMom = firstNameMomTextBox.Text;
-                mom.LasNameMom = lasNameMomTextBox.Text;
-                mom.AddressForNanny = addressForNannyTextBox.Text;
-                mom.AddressMom = addressMomTextBox.Text;
-                mom.PhoneMom = phoneMomTextBox.Text;
-
+                if ((bool)(SunCheck.IsChecked == true))
+                {
+                    mom.DaysRequestMom[0] = true;
+                    var start = SunStart.Value;
+                    var end = SunEnd.Value;
+                    mom.startHour[0] = Convert.ToDateTime(start);
+                    mom.endHour[0] = Convert.ToDateTime(end);
+                }
+                if ((bool)(MonCheck.IsChecked == true))
+                {
+                    mom.DaysRequestMom[1] = true;
+                    var start = MonStart.Value;
+                    var end = MonEnd.Value;
+                    mom.startHour[1] = Convert.ToDateTime(start);
+                    mom.endHour[1] = Convert.ToDateTime(end);
+                }
                 if ((bool)(TueCheck.IsChecked == true))
                 {
                     mom.DaysRequestMom[2] = true;
@@ -141,6 +142,7 @@ namespace PL
                     mom.startHour[5] = Convert.ToDateTime(start);
                     mom.endHour[5] = Convert.ToDateTime(end);
                 }
+                bl.updateMother(mom);
                 MessageBox.Show("פרטי האם עודכנו");
                 this.Close();
 
