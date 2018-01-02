@@ -48,38 +48,38 @@ namespace PL
                 if (mom.DaysRequestMom[0] == true)
                 {
                     SunCheck.IsChecked = true;
-                    SunStart.Value = mom.startHour[0].ToLocalTime();
-                    SunEnd.Value = mom.endHour[0].ToLocalTime();
+                    SunStart.Value = mom.startHour[0].ToUniversalTime();
+                    SunEnd.Value = mom.endHour[0].ToUniversalTime();
                 }
                 if (mom.DaysRequestMom[1] == true)
                 {
                     MonCheck.IsChecked = true;
-                    MonStart.Value = mom.startHour[1].ToLocalTime();
-                    MonEnd.Value = mom.endHour[1].ToLocalTime();
+                    MonStart.Value = mom.startHour[1].ToUniversalTime();
+                    MonEnd.Value = mom.endHour[1].ToUniversalTime();
                 }
                 if (mom.DaysRequestMom[2] == true)
                 {
                     TueCheck.IsChecked = true;
-                    TueStart.Value = mom.startHour[2].ToLocalTime();
-                    TueEnd.Value = mom.endHour[2].ToLocalTime();
+                    TueStart.Value = mom.startHour[2].ToUniversalTime();
+                    TueEnd.Value = mom.endHour[2].ToUniversalTime();
                 }
                 if (mom.DaysRequestMom[3] == true)
                 {
                     WedCheck.IsChecked = true;
-                    WedStart.Value = mom.startHour[3].ToLocalTime();
-                    WedEnd.Value = mom.endHour[3].ToLocalTime();
+                    WedStart.Value = mom.startHour[3].ToUniversalTime();
+                    WedEnd.Value = mom.endHour[3].ToUniversalTime();
                 }
                 if (mom.DaysRequestMom[4] == true)
                 {
                     ThuCheck.IsChecked = true;
-                    ThuStart.Value = mom.startHour[4].ToLocalTime();
-                    ThuEnd.Value = mom.endHour[4].ToLocalTime();
+                    ThuStart.Value = mom.startHour[4].ToUniversalTime();
+                    ThuEnd.Value = mom.endHour[4].ToUniversalTime();
                 }
                 if (mom.DaysRequestMom[5] == true)
                 {
                     FriCheck.IsChecked = true;
-                    FriStart.Value = mom.startHour[5].ToLocalTime();
-                    FriEnd.Value = mom.endHour[5].ToLocalTime();
+                    FriStart.Value = mom.startHour[5].ToUniversalTime();
+                    FriEnd.Value = mom.endHour[5].ToUniversalTime();
                 }
             }
             catch (Exception exception)
