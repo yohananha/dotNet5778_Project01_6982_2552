@@ -229,6 +229,15 @@
       <Name>BL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\1459.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\mary-poppins-black-silhouette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\mary2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,11 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="700" Width="1000" WindowStyle="None" WindowStartupLocation="CenterScreen">
+
     <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="111,100,0,0" TextWrapping="Wrap" Text="Nanny or Mother?" VerticalAlignment="Top" Height="67" Width="280" TextAlignment="Center" LineHeight="22" FontSize="30"/>
-        <Button x:Name="button" Content="Mother" HorizontalAlignment="Left" Margin="289,177,0,0" VerticalAlignment="Center" Width="130" Height="78" Click="button_Click"/>
-        <Button x:Name="button_Copy" Content="Nanny" HorizontalAlignment="Left" Margin="101,175,0,0" VerticalAlignment="Center" Width="130" Height="78" Click="button_Copy_Click"/>
+        <Image x:Name="BGMain"  Source="images/1459.jpg" Stretch="Fill" Width="1000" Height="700"/>
+        <Image x:Name ="mary" Source="images/mary2.png" Width="200" HorizontalAlignment="Left" VerticalAlignment="Bottom"></Image>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="164,253,153.6,0" TextWrapping="Wrap" Text="ברוכים הבאים" VerticalAlignment="Top" Height="131" Width="676" TextAlignment="Center" LineHeight="22" FontSize="72" FontWeight="Bold" Foreground="White" FontFamily="Open Sans Hebrew"/>
+        <Button x:Name="button" Content="מסך אם" HorizontalAlignment="Center" Margin="289,177,0,0" VerticalAlignment="Center" Width="200" Height="78" Click="button_Click" FontSize="20" FontFamily="Open Sans Hebrew" FontWeight="Bold" Background="White" Opacity="0.6" BorderBrush="{x:Null}" Foreground="#FF93398D"/>
+        <Button x:Name="button_Copy" Content="מסך מטפלת" HorizontalAlignment="Center" Margin="162,301,469.6,126.6" VerticalAlignment="Center" Width="200" Height="78" Click="button_Copy_Click" FontSize="20" FontFamily="Open Sans Hebrew" FontWeight="Bold" Opacity="0.6" BorderBrush="{x:Null}" Foreground="#FF93398D">
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="exitButton" Content="יציאה" HorizontalAlignment="Right" Margin="0,0,21,21" VerticalAlignment="Bottom" Width="104" Height="37" Background="White" BorderBrush="{x:Null}" Opacity="0.6" Click="exitButton_Click"/>
 
     </Grid>
 </Window>

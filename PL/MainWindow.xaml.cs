@@ -38,5 +38,10 @@ namespace PL
             var nann = new Nanny();
             nann.Show();
         }
+
+        private void exitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
