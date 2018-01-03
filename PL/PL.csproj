@@ -82,6 +82,9 @@
     <Compile Include="addChildWindow.xaml.cs">
       <DependentUpon>addChildWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="addContractWindow.xaml.cs">
+      <DependentUpon>addContractWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="deleteChildWindow.xaml.cs">
       <DependentUpon>deleteChildWindow.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,10 @@
       <DependentUpon>UpdateNannyWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="addChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="addContractWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

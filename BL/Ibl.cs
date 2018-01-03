@@ -34,6 +34,16 @@ namespace BL
         IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null);
         IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null);
         IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null);
-        
+
+        //other metod
+        int CalculateDistance(string source/*mother*/, string dest/*nanny*/);
+        IEnumerable<Nanny> getAllCompatibleNanny(Mother mom);
+        IEnumerable<Child> getAllChildWithoutNanny();
+        IEnumerable<Nanny> getTamatNanny();
+        IEnumerable<Contract> contractByTerm(Func<Contract, bool> Predicate = null);
+        int numContractByTerm(Func<Contract, bool> Predicate = null);
+        IEnumerable<Nanny> getNannyByDistance(Mother mom, double distance);
+        IEnumerable<IGrouping<int, Nanny>> getNannyByDistance(string addressMom, bool isSort);
+        IEnumerable<IGrouping<int, Nanny>> getChildByAgeRange(bool minAge, bool isSort);
     }
 }

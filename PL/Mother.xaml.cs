@@ -61,5 +61,11 @@ namespace PL
             upChild upchild = new upChild();
             upchild.Show();
         }
+
+        private void addContract_Click(object sender, RoutedEventArgs e)
+        {
+            addContractWindow addContract = new addContractWindow();
+            addContract.Show();
+        }
     }
 }

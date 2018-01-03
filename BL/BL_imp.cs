@@ -191,7 +191,7 @@ namespace BL
 
         #region other functions
         //google directions
-        public static int CalculateDistance(string source/*mother*/, string dest/*nanny*/)
+        public int CalculateDistance(string source/*mother*/, string dest/*nanny*/)
         {
             var drivingDirectionRequest = new DirectionsRequest
             {

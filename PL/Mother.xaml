@@ -11,7 +11,7 @@
         <Button x:Name="DelMother" Content="Delete mother" HorizontalAlignment="Center" Margin="49,94,153.333,0" VerticalAlignment="Top" Width="91" Height="59" Click="DelMother_Click"/>
         <Button x:Name="UpdateMother" Content="Update mother" HorizontalAlignment="Center" Margin="145,95,46.333,0" VerticalAlignment="Top" Width="102" Height="59" Click="UpdateMother_Click"/>
         <Button x:Name="addChild" Content="Add Child" HorizontalAlignment="Left" Margin="49,158,0,0" VerticalAlignment="Top" Width="91" Height="50" Click="addChild_Click"/>
-        <Button x:Name="addContract" Content="Add Contract" HorizontalAlignment="Left" Margin="145,159,0,0" VerticalAlignment="Top" Width="102" Height="50"/>
+        <Button x:Name="addContract" Content="Add Contract" HorizontalAlignment="Left" Margin="145,159,0,0" VerticalAlignment="Top" Width="102" Height="50" Click="addContract_Click"/>
         <Button x:Name="deleteChild" Content="Delete Child" HorizontalAlignment="Left" Margin="49,214,0,0" VerticalAlignment="Top" Width="91" Height="47" Click="deleteChild_Click"/>
         <Button x:Name="deleteContract" Content="Delete Contract" HorizontalAlignment="Left" Margin="145,214,0,0" VerticalAlignment="Top" Width="102" Height="47"/>
         <Button x:Name="deleteChild_Copy" Content="Update Child" HorizontalAlignment="Left" Margin="49,270,0,0" VerticalAlignment="Top" Width="91" Height="47" Click="UpdateChild_Click"/>
