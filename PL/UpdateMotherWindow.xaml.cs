@@ -27,8 +27,9 @@ namespace PL
         public UpdateMotherWindow()
         {
             InitializeComponent();
-            bl = BL.FactoryBL.GetBL();
             mom = new BE.Mother();
+            updateMomDeatails.DataContext = mom;
+            bl = BL.FactoryBL.GetBL();
             mom.startHour = new DateTime[6];
             mom.endHour = new DateTime[6];
             mom.DaysRequestMom = new bool[6];
@@ -44,11 +45,7 @@ namespace PL
                 mom = bl.getMother(Convert.ToInt64(idMomTextBox.Text));
 
 
-                firstNameMomTextBox.Text = mom.FirstNameMom;
-                lasNameMomTextBox.Text = mom.LasNameMom;
-                addressForNannyTextBox.Text = mom.AddressForNanny;
-                addressMomTextBox.Text = mom.AddressMom;
-                phoneMomTextBox.Text = mom.PhoneMom;
+                updateMomDeatails.DataContext = mom;
 
                 if (mom.DaysRequestMom[0] == true)
                 {
@@ -103,11 +100,7 @@ namespace PL
                 mom = bl.getMother(Convert.ToInt64(idMomTextBox.Text));
 
 
-                mom.FirstNameMom = firstNameMomTextBox.Text;
-                mom.LasNameMom = lasNameMomTextBox.Text;
-                mom.AddressForNanny = addressForNannyTextBox.Text;
-                mom.AddressMom = addressMomTextBox.Text;
-                mom.PhoneMom = phoneMomTextBox.Text;
+               mom = (BE.Mother) updateMomDeatails.DataContext ;
 
                 if ((bool)(TueCheck.IsChecked == true))
                 {
@@ -141,6 +134,7 @@ namespace PL
                     mom.startHour[5] = Convert.ToDateTime(start);
                     mom.endHour[5] = Convert.ToDateTime(end);
                 }
+                bl.updateMother(mom);
                 MessageBox.Show("פרטי האם עודכנו");
                 this.Close();
 
