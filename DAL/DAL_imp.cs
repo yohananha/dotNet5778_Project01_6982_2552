@@ -67,9 +67,9 @@ namespace DAL
 
         #region contract funcs
 
-        public Contract getContract(int idContract)
+        public Contract getContract(int idChild)
         {
-            var contract = DataSource.contractList.FirstOrDefault(cl => cl.idContract == idContract);
+            var contract = DataSource.contractList.FirstOrDefault(cl => cl.idChild == idChild);
             if (contract == null)
                 throw new Exception("id doesn't exist");
             return contract.duplication();
@@ -91,13 +91,13 @@ namespace DAL
 
         }
 
-        public void deleteContract(int idContractDel)
+        public void deleteContract(int idChildContractDel)
         {
-            int index = DataSource.contractList.FindIndex(cl => cl.idContract == idContractDel);
+            int index = DataSource.contractList.FindIndex(cl => cl.idChild == idChildContractDel);
             if (index == -1)
                 throw new Exception("Contract is not exist in system");
             //update the current number of chidren 
-            Nanny contracctNanny = getNanny(idContractDel);
+            Nanny contracctNanny = getNanny(DataSource.contractList[index].idNanny);
             contracctNanny.currentChildren--;
             updateNanny(contracctNanny);
             DataSource.contractList.RemoveAt(index);

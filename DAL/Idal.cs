@@ -24,7 +24,7 @@ namespace DAL
         
 
         void addContract(Contract contract);
-        void deleteContract(int idContractDel);
+        void deleteContract(int idChildContractDel);
         void updateContract(Contract contract);
 
         IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate=null);

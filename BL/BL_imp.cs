@@ -18,7 +18,7 @@ namespace BL
         public BL_imp()
         {
             dal = DAL.factoryDal.getDal();
-            
+
         }
         #region child metod
 
@@ -53,9 +53,9 @@ namespace BL
 
         #region contract metod
 
-        public Contract getContract(int idContract)
+        public Contract getContract(int idChildContract)
         {
-            return dal.getContract(idContract);
+            return dal.getContract(idChildContract);
         }
 
         public int MomsKidsByNanny(Child child, Nanny nanny)
@@ -81,19 +81,27 @@ namespace BL
 
             if (contractNanny.maxChildNanny == contractNanny.currentChildren)
                 throw new Exception("This nanny has reached the limit of children");
-            if (contract.isHour == false)
-                contract.salaryPerMonth = contractNanny.rateMonthNanny - contractNanny.rateMonthNanny * discountRate;
-            else
-            {
-                contract.salaryPerMonth =
-                    getMomHours(contractMother) * 4 - getMomHours(contractMother) * 4 * discountRate;
-            }
             dal.addContract(contract);
         }
 
-        public void deleteContract(int idContractDel)
+        public double getSalary(long idChild, long idNanny, bool isHour)
         {
-            dal.deleteContract(idContractDel);
+
+            Child contractChild = dal.getChild(idChild);
+            Nanny contractNanny = dal.getNanny(idNanny);
+            Mother contractMother = dal.getMom(contractChild.idMom);
+            double discountRate = MomsKidsByNanny(contractChild, contractNanny) * 0.02 * contractNanny.rateMonthNanny;
+            if (isHour == false)
+                return (contractNanny.rateMonthNanny - contractNanny.rateMonthNanny * discountRate);
+            else
+            {
+                return (getMomHours(contractMother) * 4 - getMomHours(contractMother) * 4 * discountRate);
+            }
+        }
+
+        public void deleteContract(int idChildContractDel)
+        {
+            dal.deleteContract(idChildContractDel);
         }
 
         public IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null)
@@ -362,11 +370,11 @@ namespace BL
                            group a by a.minAgeChildNanny / 3;
             else
                     if (minAge)
-                        return from a in dal.getAllNanny()
-                               group a by a.minAgeChildNanny / 3;
-                    else
-                        return from a in dal.getAllNanny()
-                               group a by a.minAgeChildNanny / 3;
+                return from a in dal.getAllNanny()
+                       group a by a.minAgeChildNanny / 3;
+            else
+                return from a in dal.getAllNanny()
+                       group a by a.minAgeChildNanny / 3;
         }
         #endregion
     }

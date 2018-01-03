@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <Label x:Name="label" Content="הוספת חוזה" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Center" FontSize="20"/>
 
-        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="0,38,0,0" Grid.RowSpan="4" VerticalAlignment="Top" Height="331" Width="244">
+        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="0,38,0,0" Grid.RowSpan="4" VerticalAlignment="Top" Height="330" Width="244">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -38,9 +38,9 @@
                 <RowDefinition Height="80"/>
             </Grid.RowDefinitions>
             <Label Content="id Child:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="idChildTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding idChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="idChildTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" IsReadOnly="True" Text="{Binding idChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="id Nanny:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="idNannyTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding idNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="idNannyTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" IsReadOnly="True" Text="{Binding idNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="is Contract:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
             <CheckBox x:Name="isContractCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding isContract, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
             <Label Content="is Hour:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
@@ -48,14 +48,14 @@
             <Label Content="is Met:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
             <CheckBox x:Name="isMetCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding isMet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
             <Label Content="salary Per Hour:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
-            <TextBox x:Name="salaryPerHourTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="salaryPerHourTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" IsReadOnly="True" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="salary Per Month:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
-            <TextBox x:Name="salaryPerMonthTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="salaryPerMonthTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" IsReadOnly="True" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="work Begin:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
             <DatePicker x:Name="workBeginDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="7" SelectedDate="{Binding workBegin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
             <Label Content="work End:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center"/>
             <DatePicker x:Name="workEndDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="8" SelectedDate="{Binding workEnd, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
-            <Button x:Name="button1" Grid.ColumnSpan="2" Content="הוסף חוזה"  Grid.Row="9" Margin="0,0,0,37" />
+            <Button x:Name="button1" Grid.ColumnSpan="2" Content="הוסף חוזה"  Grid.Row="9" Margin="0,0,0,37" Click="button1_Click"  />
         </Grid>
         <Grid Grid.Column="1" HorizontalAlignment="Left" Height="113" Margin="0,4.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="249">
             <Grid.RowDefinitions>
@@ -73,12 +73,7 @@
                 <RowDefinition Height="108*"/>
             </Grid.RowDefinitions>
             <Label x:Name="label2" Content="רשימת ילדים" HorizontalAlignment="Left" Margin="69,0,0,0" Grid.RowSpan="2" VerticalAlignment="Top" FontSize="16"/>
-            <DataGrid x:Name="dataGridChildList" AutoGenerateColumns="False" Grid.Row="1" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding firstName}" />
-                    <DataGridTextColumn Header="Id" Binding="{Binding idChild}" />
-                </DataGrid.Columns>
-            </DataGrid>
+            <DataGrid x:Name="dataGridChildList"  Grid.Row="1" IsReadOnly="True" SelectionChanged="dataGridChildList_SelectionChanged" />
 
         </Grid>
         <Grid Grid.Column="1" Grid.Row="3" >
@@ -87,13 +82,7 @@
                 <RowDefinition Height="47*"/>
             </Grid.RowDefinitions>
             <Label x:Name="label3" Content="רשימת מטפלות" HorizontalAlignment="Left" Margin="60,2,0,0" VerticalAlignment="Top" FontSize="16"/>
-            <DataGrid x:Name="dataGridNannyList" AutoGenerateColumns="False" Grid.Row="1">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding firstNameNanny}" />
-                    <DataGridTextColumn Header="Distance" Binding="{Binding Distance}" />
-                    <DataGridTextColumn Header="Id" Binding="{Binding nannyId}" />
-                </DataGrid.Columns>
-            </DataGrid>
+            <DataGrid x:Name="dataGridNannyList"  Grid.Row="1" IsReadOnly="True" SelectionChanged="dataGridNannyList_SelectionChanged"/>
 
         </Grid>
 

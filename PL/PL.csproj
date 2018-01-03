@@ -88,6 +88,9 @@
     <Compile Include="deleteChildWindow.xaml.cs">
       <DependentUpon>deleteChildWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="deleteContractWindow.xaml.cs">
+      <DependentUpon>deleteContractWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="deleteNannyWindow.xaml.cs">
       <DependentUpon>deleteNannyWindow.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="deleteChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="deleteContractWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
