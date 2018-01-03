@@ -30,13 +30,13 @@ namespace PL
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Mother moth  = new Mother() ;
-            moth.Show();
+            moth.ShowDialog();
         }
 
         private void button_Copy_Click(object sender, RoutedEventArgs e)
         {
             var nann = new Nanny();
-            nann.Show();
+            nann.ShowDialog();
         }
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
