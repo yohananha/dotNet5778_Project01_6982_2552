@@ -27,7 +27,7 @@
             </Grid.ColumnDefinitions>
             <Label x:Name="label" Grid.Row="0" Grid.ColumnSpan="2" Content="הוספת ילד" HorizontalAlignment="Left" Margin="117,10,0,0" VerticalAlignment="Top"/>
             <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="1" Content="תאריך לידה:"/>
-            <DatePicker x:Name="birthdayKidDatePicker" VerticalAlignment="Center" SelectedDate="{Binding birthdayKid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" HorizontalAlignment="Left"/>
+            <DatePicker x:Name="birthdayKidDatePicker" Text="01/01/2010" VerticalAlignment="Center" SelectedDate="{Binding birthdayKid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" HorizontalAlignment="Left" DisplayDate="2018-01-03"/>
             <Label VerticalAlignment="Center" Margin="3" HorizontalAlignment="Left" Grid.Column="1" Content="שם פרטי:" Grid.Row="2"/>
             <TextBox x:Name="firstNameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding firstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Row="2"/>
             <Label VerticalAlignment="Center" Margin="3" HorizontalAlignment="Left" Grid.Column="1" Content="תעודת זהות:" Grid.Row="1"/>
