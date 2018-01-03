@@ -27,31 +27,31 @@ namespace PL
         private void AddMother_Click(object sender, RoutedEventArgs e)
         {
             AddMotherWindow addMom = new AddMotherWindow();
-            addMom.Show();
+            addMom.ShowDialog();
         }
 
         private void DelMother_Click(object sender, RoutedEventArgs e)
         {
             DeleteMotherWindow delMom = new DeleteMotherWindow();
-            delMom.Show();
+            delMom.ShowDialog();
         }
 
         private void addChild_Click(object sender, RoutedEventArgs e)
         {
             addChildWindow addChild = new addChildWindow();
-            addChild.Show();
+            addChild.ShowDialog();
         }
 
         private void deleteChild_Click(object sender, RoutedEventArgs e)
         {
             deleteChildWindow delChild = new deleteChildWindow();
-            delChild.Show();
+            delChild.ShowDialog();
         }
 
         private void UpdateMother_Click(object sender, RoutedEventArgs e)
         {
             UpdateMotherWindow upMom = new UpdateMotherWindow();
-            upMom.Show();
+            upMom.ShowDialog();
         }
 
         
@@ -59,7 +59,7 @@ namespace PL
         private void UpdateChild_Click(object sender, RoutedEventArgs e)
         {
             upChild upchild = new upChild();
-            upchild.Show();
+            upchild.ShowDialog();
         }
 
         private void addContract_Click(object sender, RoutedEventArgs e)
