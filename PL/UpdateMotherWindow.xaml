@@ -37,15 +37,15 @@
                 <ColumnDefinition Width="15*"/>
             </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="49.6,7,0,96" HorizontalAlignment="Left" Grid.Column="4" Content="שם פרטי"/>
-            <TextBox x:Name="firstNameMomTextBox" Width="120" VerticalAlignment="Center" Text="{Binding FirstNameMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit }" Grid.Row="0" Margin="30.2,8,0,97" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
+            <TextBox x:Name="firstNameMomTextBox" Width="120" VerticalAlignment="Center" Text="{Binding FirstNameMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true }" Grid.Row="0" Margin="30.2,8,0,97" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="40.6,44,0,59" HorizontalAlignment="Left" Grid.Column="4" Content="שם משפחה"/>
-            <TextBox x:Name="lasNameMomTextBox" Width="120" VerticalAlignment="Center" Text="{Binding LasNameMom,UpdateSourceTrigger=Explicit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="31.2,42,0,63" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
+            <TextBox x:Name="lasNameMomTextBox" Width="120" VerticalAlignment="Center" Text="{Binding LasNameMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="31.2,42,0,63" Height="23" HorizontalAlignment="Left" Grid.Column="3"/>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="59.8,0,0,99" HorizontalAlignment="Left" Grid.Column="1" Content="מס' טלפון"/>
-            <TextBox x:Name="phoneMomTextBox" Width="120" VerticalAlignment="Center" Text="{Binding PhoneMom,UpdateSourceTrigger=Explicit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="2,-1,0,101" Height="24" HorizontalAlignment="Left"/>
+            <TextBox x:Name="phoneMomTextBox" Width="120" VerticalAlignment="Center" Text="{Binding PhoneMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="2,-1,0,101" Height="24" HorizontalAlignment="Left"/>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="52.8,33,0,66" HorizontalAlignment="Left" Grid.Column="1" Content="כתובת האם"/>
-            <TextBox x:Name="addressMomTextBox" Width="120" VerticalAlignment="Center" Text="{Binding AddressMom,UpdateSourceTrigger=Explicit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3,30,0,71" Height="23" HorizontalAlignment="Left"/>
+            <TextBox x:Name="addressMomTextBox" Width="120" VerticalAlignment="Center" Text="{Binding AddressMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3,30,0,71" Height="23" HorizontalAlignment="Left"/>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="4.8,63,0,36" HorizontalAlignment="Left" Grid.Column="1" Content="כתובת דרושה למטפלת" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="addressForNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding AddressForNanny,UpdateSourceTrigger=Explicit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="2,64,0,37" Height="23" HorizontalAlignment="Left"/>
+            <TextBox x:Name="addressForNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding AddressForNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="2,64,0,37" Height="23" HorizontalAlignment="Left"/>
         </Grid>
         <Label x:Name="DayLabel" VerticalAlignment="Top" RenderTransformOrigin="0.313,0.605" Margin="529,343,0,0" Height="21" HorizontalAlignment="Left" FontSize="10" Content="יום"/>
         <Label x:Name="StartHourLabel" Width="43" VerticalAlignment="Top" Margin="525,364,0,0" Height="36" HorizontalAlignment="Left" FontSize="10" Content="שעת&#xA;התחלה"/>

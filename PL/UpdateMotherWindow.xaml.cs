@@ -27,9 +27,8 @@ namespace PL
         public UpdateMotherWindow()
         {
             InitializeComponent();
-            mom = new BE.Mother();
-            updateMomDeatails.DataContext = mom;
             bl = BL.FactoryBL.GetBL();
+            mom = new BE.Mother();
             mom.startHour = new DateTime[6];
             mom.endHour = new DateTime[6];
             mom.DaysRequestMom = new bool[6];
@@ -44,44 +43,43 @@ namespace PL
                 //mom.IdMom = Convert.ToInt64(idMomTextBox.Text);
                 mom = bl.getMother(Convert.ToInt64(idMomTextBox.Text));
 
-
-                updateMomDeatails.DataContext = mom;
+                this.DataContext = mom;
 
                 if (mom.DaysRequestMom[0] == true)
                 {
                     SunCheck.IsChecked = true;
-                    SunStart.Value = mom.startHour[0].ToLocalTime();
-                    SunEnd.Value = mom.endHour[0].ToLocalTime();
+                    SunStart.Value = mom.startHour[0].ToUniversalTime();
+                    SunEnd.Value = mom.endHour[0].ToUniversalTime();
                 }
                 if (mom.DaysRequestMom[1] == true)
                 {
                     MonCheck.IsChecked = true;
-                    MonStart.Value = mom.startHour[1].ToLocalTime();
-                    MonEnd.Value = mom.endHour[1].ToLocalTime();
+                    MonStart.Value = mom.startHour[1].ToUniversalTime();
+                    MonEnd.Value = mom.endHour[1].ToUniversalTime();
                 }
                 if (mom.DaysRequestMom[2] == true)
                 {
                     TueCheck.IsChecked = true;
-                    TueStart.Value = mom.startHour[2].ToLocalTime();
-                    TueEnd.Value = mom.endHour[2].ToLocalTime();
+                    TueStart.Value = mom.startHour[2].ToUniversalTime();
+                    TueEnd.Value = mom.endHour[2].ToUniversalTime();
                 }
                 if (mom.DaysRequestMom[3] == true)
                 {
                     WedCheck.IsChecked = true;
-                    WedStart.Value = mom.startHour[3].ToLocalTime();
-                    WedEnd.Value = mom.endHour[3].ToLocalTime();
+                    WedStart.Value = mom.startHour[3].ToUniversalTime();
+                    WedEnd.Value = mom.endHour[3].ToUniversalTime();
                 }
                 if (mom.DaysRequestMom[4] == true)
                 {
                     ThuCheck.IsChecked = true;
-                    ThuStart.Value = mom.startHour[4].ToLocalTime();
-                    ThuEnd.Value = mom.endHour[4].ToLocalTime();
+                    ThuStart.Value = mom.startHour[4].ToUniversalTime();
+                    ThuEnd.Value = mom.endHour[4].ToUniversalTime();
                 }
                 if (mom.DaysRequestMom[5] == true)
                 {
                     FriCheck.IsChecked = true;
-                    FriStart.Value = mom.startHour[5].ToLocalTime();
-                    FriEnd.Value = mom.endHour[5].ToLocalTime();
+                    FriStart.Value = mom.startHour[5].ToUniversalTime();
+                    FriEnd.Value = mom.endHour[5].ToUniversalTime();
                 }
             }
             catch (Exception exception)
@@ -96,12 +94,22 @@ namespace PL
         {
             try
             {
-                //mom.IdMom = Convert.ToInt64(idMomTextBox.Text);
-                mom = bl.getMother(Convert.ToInt64(idMomTextBox.Text));
-
-
-               mom = (BE.Mother) updateMomDeatails.DataContext ;
-
+                if ((bool)(SunCheck.IsChecked == true))
+                {
+                    mom.DaysRequestMom[0] = true;
+                    var start = SunStart.Value;
+                    var end = SunEnd.Value;
+                    mom.startHour[0] = Convert.ToDateTime(start);
+                    mom.endHour[0] = Convert.ToDateTime(end);
+                }
+                if ((bool)(MonCheck.IsChecked == true))
+                {
+                    mom.DaysRequestMom[1] = true;
+                    var start = MonStart.Value;
+                    var end = MonEnd.Value;
+                    mom.startHour[1] = Convert.ToDateTime(start);
+                    mom.endHour[1] = Convert.ToDateTime(end);
+                }
                 if ((bool)(TueCheck.IsChecked == true))
                 {
                     mom.DaysRequestMom[2] = true;

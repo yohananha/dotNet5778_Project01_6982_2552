@@ -41,7 +41,7 @@ namespace PL
             {
                 if ((bool)(SunCheck.IsChecked == true))
                 {
-
+                    nannyToAdd.daysWorkNanny[0] = true;
                     var start = SunStart.Value;
                     var end = SunEnd.Value;
                     nannyToAdd.startHour[0] = Convert.ToDateTime(start);
@@ -49,7 +49,7 @@ namespace PL
                 }
                 if ((bool)(MonCheck.IsChecked == true))
                 {
-
+                    nannyToAdd.daysWorkNanny[1] = true;
                     var start = MonStart.Value;
                     var end = MonEnd.Value;
                     nannyToAdd.startHour[1] = Convert.ToDateTime(start);
@@ -57,7 +57,7 @@ namespace PL
                 }
                 if ((bool)(TueCheck.IsChecked == true))
                 {
-
+                    nannyToAdd.daysWorkNanny[2] = true;
                     var start = TueStart.Value;
                     var end = TueEnd.Value;
                     nannyToAdd.startHour[2] = Convert.ToDateTime(start);
@@ -65,7 +65,7 @@ namespace PL
                 }
                 if ((bool)(WedCheck.IsChecked == true))
                 {
-
+                    nannyToAdd.daysWorkNanny[3] = true;
                     var start = WedStart.Value;
                     var end = WedEnd.Value;
                     nannyToAdd.startHour[3] = Convert.ToDateTime(start);
@@ -73,7 +73,7 @@ namespace PL
                 }
                 if ((bool)(ThuCheck.IsChecked == true))
                 {
-
+                    nannyToAdd.daysWorkNanny[4] = true;
                     var start = ThuStart.Value;
                     var end = ThuEnd.Value;
                     nannyToAdd.startHour[4] = Convert.ToDateTime(start);
@@ -81,7 +81,7 @@ namespace PL
                 }
                 if ((bool)(FriCheck.IsChecked == true))
                 {
-
+                    nannyToAdd.daysWorkNanny[5] = true;
                     var start = FriStart.Value;
                     var end = FriEnd.Value;
                     nannyToAdd.startHour[5] = Convert.ToDateTime(start);
