@@ -23,6 +23,7 @@ namespace PL
     {
         public BL.Ibl bl;
         public BE.Mother mom;
+        public BE.Contract contrract;
         public IEnumerable<BE.Child> childList;
         public IEnumerable<BE.Nanny> nannyList;  
         public addContractWindow()
@@ -43,7 +44,7 @@ namespace PL
 
             nannyList = bl.getAllCompatibleNanny(mom);
             dataGridNannyList.ItemsSource = nannyList;
-
+             
             }
             catch (Exception EX)
             {
