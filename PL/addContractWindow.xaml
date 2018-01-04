@@ -64,7 +64,7 @@
                 <RowDefinition Height="42*"/>
             </Grid.RowDefinitions>
             <Label x:Name="label1" Content="תעודת זהות אמא" HorizontalAlignment="Left" Margin="72,0,0,0.333"  />
-            <TextBox x:Name="textBoxMom"  Grid.Row="1" Text="TextBox" />
+            <TextBox x:Name="textBoxMom"  Grid.Row="1" Text="" />
             <Button x:Name="buttonSerchChildNanny" Content="חפש ילדים ומטפלות לפי אמא"  Grid.Row="1" Click="buttonSerchChildNanny_Click" Height="42" Margin="0,0,0,-0.2" Grid.RowSpan="2" VerticalAlignment="Bottom" />
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2">

@@ -43,5 +43,11 @@ namespace PL
         {
             Close();
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            DataSearchWindoe data = new DataSearchWindoe();
+            data.ShowDialog();
+        }
     }
 }
