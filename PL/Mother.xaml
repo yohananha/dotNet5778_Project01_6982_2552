@@ -15,7 +15,7 @@
         <Button x:Name="deleteChild" Content="Delete Child" HorizontalAlignment="Left" Margin="49,214,0,0" VerticalAlignment="Top" Width="91" Height="47" Click="deleteChild_Click"/>
         <Button x:Name="deleteContract" Content="Delete Contract" HorizontalAlignment="Left" Margin="145,214,0,0" VerticalAlignment="Top" Width="102" Height="47" Click="deleteContract_Click"/>
         <Button x:Name="deleteChild_Copy" Content="Update Child" HorizontalAlignment="Left" Margin="49,270,0,0" VerticalAlignment="Top" Width="91" Height="47" Click="UpdateChild_Click"/>
-        <Button x:Name="deleteContract_Copy" Content="Update Contract" HorizontalAlignment="Left" Margin="145,270,0,0" VerticalAlignment="Top" Width="102" Height="47"/>
+        <Button x:Name="deleteContract_Copy" Content="Update Contract" HorizontalAlignment="Left" Margin="145,270,0,0" VerticalAlignment="Top" Width="102" Height="47" Click="deleteContract_Copy_Click"/>
 
     </Grid>
 </Window>

@@ -100,6 +100,9 @@
     <Compile Include="upChild.xaml.cs">
       <DependentUpon>upChild.xaml</DependentUpon>
     </Compile>
+    <Compile Include="updateContractWindow.xaml.cs">
+      <DependentUpon>updateContractWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateMotherWindow.xaml.cs">
       <DependentUpon>UpdateMotherWindow.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="upChild.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="updateContractWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

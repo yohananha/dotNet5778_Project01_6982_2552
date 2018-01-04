@@ -46,5 +46,6 @@ namespace BL
         IEnumerable<Nanny> getNannyByDistance(Mother mom, double distance);
         IEnumerable<IGrouping<int, Nanny>> getNannyByDistance(string addressMom, bool isSort);
         IEnumerable<IGrouping<int, Nanny>> getChildByAgeRange(bool minAge, bool isSort);
+        bool checkSchedule(Nanny nanny, Mother mom);
     }
 }

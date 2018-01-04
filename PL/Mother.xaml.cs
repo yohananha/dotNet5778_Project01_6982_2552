@@ -73,5 +73,11 @@ namespace PL
             deleteContractWindow delCon = new deleteContractWindow();
             delCon.Show();
         }
+
+        private void deleteContract_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            updateContractWindow updCon = new updateContractWindow();
+            updCon.Show();
+        }
     }
 }

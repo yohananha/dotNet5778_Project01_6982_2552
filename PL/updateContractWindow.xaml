@@ -1,0 +1,121 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PL.updateContractWindow"
+        mc:Ignorable="d"
+        Title="updateContractWindow" Height="500" Width="900">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="160*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52*"/>
+            <RowDefinition Height="66*"/>
+            <RowDefinition Height="453*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label" Grid.ColumnSpan="2" Content="עדכון חוזה" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="22" Height="39" Margin="244,6,243.333,7" Width="106"/>
+        <Grid Grid.ColumnSpan="2" Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="187*"/>
+                <ColumnDefinition Width="231*"/>
+                <ColumnDefinition Width="175*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="label1" Content="חפש חוזה לפי ילד" Grid.Column="2" FontSize="22" />
+            <TextBox x:Name="idChildTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="23" Margin="3" Text="{Binding idChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Button x:Name="buttonSearchContract" Content="חפש חוזה" Click="buttonSearchContract_Click"/>
+        </Grid>
+
+        <Grid x:Name="grid1" Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="id Contract:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="idContractTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" IsReadOnly="True" Text="{Binding idContract, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="id Nanny:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox x:Name="idNannyTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" IsReadOnly="True" Text="{Binding idNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="is Contract:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <CheckBox x:Name="isContractCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding isContract, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="is Hour:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+            <CheckBox x:Name="isHourCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding isHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label Content="is Met:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+            <CheckBox x:Name="isMetCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding isMet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label Content="salary Per Hour:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+            <TextBox x:Name="salaryPerHourTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" IsReadOnly="True" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="salary Per Month:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
+            <TextBox x:Name="salaryPerMonthTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="7" IsReadOnly="True" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="work Begin:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center"/>
+            <DatePicker x:Name="workBeginDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="8" SelectedDate="{Binding workBegin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+            <Label Content="work End:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
+            <DatePicker x:Name="workEndDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="9" SelectedDate="{Binding workEnd, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+            <Button x:Name="button1" Grid.ColumnSpan="2" Content="עדכן חוזה"  Grid.Row="10" Click="button1_Click" />
+            <Label x:Name="label2" Content="פרטי חוזה" Grid.ColumnSpan="2" FontSize="36" />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="45*"/>
+                <RowDefinition Height="255*"/>
+                <RowDefinition Height="33*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="label3" Grid.Column="1" Content="תז אמא" HorizontalAlignment="Center" FontSize="20" Margin="52,0" Width="76"  />
+            <Label x:Name="label4" Content="עדכון שעות אמא" HorizontalAlignment="Center" Grid.Row="1" FontSize="20" Grid.ColumnSpan="2" />
+            <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                <Label x:Name="DayLabel" Content="יום" HorizontalAlignment="Left" Margin="487,20,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
+                <Label x:Name="StartHourLabel" Content="שעת&#xA;התחלה" HorizontalAlignment="Left" Margin="502,86,0,0" VerticalAlignment="Top" Height="36" FontSize="10" Width="43"/>
+                <Label x:Name="EndHourLabel" Content="שעת&#xA;סיום" HorizontalAlignment="Left" Margin="503,138,0,0" VerticalAlignment="Top" Height="40" FontSize="10" Width="47"/>
+                <Label x:Name="Sun" Content="א" HorizontalAlignment="Left" Margin="434,20,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
+                <Label x:Name="Mon" Content="ב" HorizontalAlignment="Left" Margin="362,20,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
+                <Label x:Name="Tue" Content="ג" HorizontalAlignment="Left" Margin="275,15,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
+                <Label x:Name="wed" Content="ד" HorizontalAlignment="Left" Margin="193,15,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
+                <Label x:Name="Thu" Content="ה" HorizontalAlignment="Left" Margin="129,16,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
+                <Label x:Name="Fri" Content="ו" HorizontalAlignment="Left" Margin="64,15,0,0" VerticalAlignment="Top" Height="21" FontSize="10" RenderTransformOrigin="0.313,0.605"/>
+                <CheckBox x:Name="SunCheck" Content="" HorizontalAlignment="Left" Margin="434,46,0,0" VerticalAlignment="Top" IsChecked="False" />
+                <CheckBox x:Name="MonCheck" Content="" HorizontalAlignment="Left" Margin="362,46,0,0" VerticalAlignment="Top" IsChecked="False"/>
+                <CheckBox x:Name="TueCheck" Content="" HorizontalAlignment="Left" Margin="273,46,0,0" VerticalAlignment="Top" IsChecked="False"/>
+                <CheckBox x:Name="WedCheck" Content="" HorizontalAlignment="Left" Margin="193,46,0,0" VerticalAlignment="Top" IsChecked="False" RenderTransformOrigin="2.273,0.675"/>
+                <CheckBox x:Name="ThuCheck" Content="" HorizontalAlignment="Left" Margin="129,46,0,0" VerticalAlignment="Top" IsChecked="False"/>
+
+                <CheckBox x:Name="FriCheck" Content="" HorizontalAlignment="Left" Margin="60,46,0,0" VerticalAlignment="Top" IsChecked="False"/>
+                <xctk:TimePicker x:Name="SunEnd" Format="ShortTime" Value="00:00" Margin="410,146,53,78.333" IsEnabled="{Binding IsChecked, ElementName=SunCheck}"/>
+                <xctk:TimePicker Name="SunStart" Format="ShortTime"   Value="00:00"  Margin="406,88,53,138.333" IsEnabled="{Binding IsChecked, ElementName=SunCheck}" RenderTransformOrigin="-2.189,-5.233"/>
+                <xctk:TimePicker x:Name="MonEnd" Format="ShortTime" Value="00:00" Margin="329,146,145,78.333" IsEnabled="{Binding IsChecked, ElementName=MonCheck}"/>
+                <xctk:TimePicker x:Name="MonStart" Format="ShortTime"   Value="00:00"  Margin="329,88,145,138.333" IsEnabled="{Binding IsChecked, ElementName=MonCheck}" RenderTransformOrigin="-2.189,-5.233"/>
+                <xctk:TimePicker x:Name="TueEnd" Format="ShortTime" Value="00:00" Margin="257,146,226,78.333" IsEnabled="{Binding IsChecked, ElementName=TueCheck}"/>
+                <xctk:TimePicker x:Name="TueStart" Format="ShortTime"   Value="00:00"  Margin="257,86,226,140.333" IsEnabled="{Binding IsChecked, ElementName=TueCheck}" RenderTransformOrigin="-2.189,-5.233"/>
+                <xctk:TimePicker x:Name="WedEnd" Format="ShortTime" Value="00:00" Margin="170,147,293,77.333" IsEnabled="{Binding IsChecked, ElementName=WedCheck}"/>
+                <xctk:TimePicker x:Name="WedStart" Format="ShortTime"   Value="00:00"  Margin="170,86,293,140.333" IsEnabled="{Binding IsChecked, ElementName=WedCheck}" RenderTransformOrigin="-2.189,-5.233"/>
+                <xctk:TimePicker x:Name="ThuEnd" Format="ShortTime" Value="00:00" Margin="101,147,380,77.333" IsEnabled="{Binding IsChecked, ElementName=ThuCheck}"/>
+                <xctk:TimePicker x:Name="ThuStart" Format="ShortTime"  Value="00:00"  Margin="101,86,380,140.333" IsEnabled="{Binding IsChecked, ElementName=ThuCheck}" RenderTransformOrigin="-2.189,-5.233"/>
+                <xctk:TimePicker x:Name="FriEnd" Format="ShortTime" Value="00:00" Margin="26,147,449,78.333" IsEnabled="{Binding IsChecked, ElementName=FriCheck}"/>
+                <xctk:TimePicker x:Name="FriStart" Format="ShortTime"  Value="00:00"  Margin="26,86,449,140.333" IsEnabled="{Binding IsChecked, ElementName=FriCheck}" RenderTransformOrigin="-2.189,-5.233"/>
+            </Grid>
+            <Button x:Name="button2" Content="עדכן שעות ושכר מטפלת" Grid.ColumnSpan="2" Grid.Row="3" Click="button2_Click" />
+            <Label x:Name="label5" HorizontalAlignment="Center" FontSize="20" Margin="85,0" Width="10"/>
+        </Grid>
+
+    </Grid>
+</Window>
