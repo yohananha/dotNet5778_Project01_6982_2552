@@ -136,7 +136,7 @@ namespace BL
             {
                 sum += mother.endHour[i] - mother.startHour[i];
             }
-            return ((sum.Days - 1) * 24 + sum.Hours + sum.Minutes / 60.0);
+            return (sum.Days  * 24 + sum.Hours + sum.Minutes / 60.0);
         }
 
         public void addMom(Mother mother)
