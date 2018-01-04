@@ -27,7 +27,7 @@ namespace PL
         public BE.Nanny nanny;
         public BE.Child child;
         public IEnumerable<BE.Child> childList;
-        public IEnumerable<BE.Nanny> nannyList;  
+        public IEnumerable<BE.Nanny> nannyList;
         public addContractWindow()
         {
             InitializeComponent();
@@ -41,13 +41,13 @@ namespace PL
             try
             {
 
-            mom = bl.getMother(Convert.ToInt64(textBoxMom.Text));
-            childList = bl.getKidsByMoms(a => a.idMom == mom.IdMom);
-            dataGridChildList.ItemsSource = childList;
+                mom = bl.getMother(Convert.ToInt64(textBoxMom.Text));
+                childList = bl.getKidsByMoms(a => a.idMom == mom.IdMom);
+                dataGridChildList.ItemsSource = childList;
 
-            nannyList = bl.getAllCompatibleNanny(mom);
-            dataGridNannyList.ItemsSource = nannyList;
-             
+                nannyList = bl.getAllCompatibleNanny(mom);
+                dataGridNannyList.ItemsSource = nannyList;
+
             }
             catch (Exception EX)
             {
@@ -75,8 +75,12 @@ namespace PL
                 idNannyTextBox.Text = Convert.ToString(nanny.nannyId);
                 isHourCheckBox.IsChecked = nanny.isByHourNanny;
                 if (nanny.isByHourNanny)
+                {
                     salaryPerHourTextBox.Text = Convert.ToString(bl.getSalary(child.idChild, nanny.nannyId, true));
+                    contract.salaryPerHour = bl.getSalary(child.idChild, nanny.nannyId, true);
+                }
                 salaryPerMonthTextBox.Text = Convert.ToString(bl.getSalary(child.idChild, nanny.nannyId, false));
+                contract.salaryPerMonth = bl.getSalary(child.idChild, nanny.nannyId, false);
                 contract.idNanny = nanny.nannyId;
             }
         }

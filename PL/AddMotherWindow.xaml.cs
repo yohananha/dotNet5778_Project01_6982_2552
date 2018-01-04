@@ -40,20 +40,6 @@ namespace PL
         {
             try
             {
-                //    momToAdd.FirstNameMom = this.firstNameMomTextBox.Text;
-                //    momToAdd.LasNameMom = this.lasNameMomTextBox.Text;
-                //    momToAdd.IdMom = int.Parse(this.idMomTextBox.Text);
-                //    momToAdd.PhoneMom = int.Parse(this.phoneMomTextBox.Text);
-                //    momToAdd.AddressMom = this.addressMomTextBox.Text;
-                //    momToAdd.AddressForNanny = this.addressForNannyTextBox.Text;
-
-                //momToAdd.DaysRequestMom[0] = (bool)SunCheck.IsChecked;
-                //momToAdd.DaysRequestMom[1] = (bool)MonCheck.IsChecked;
-                //momToAdd.DaysRequestMom[2] = (bool)TueCheck.IsChecked;
-                //momToAdd.DaysRequestMom[3] = (bool)WedCheck.IsChecked;
-                //momToAdd.DaysRequestMom[4] = (bool)ThuCheck.IsChecked;
-                //momToAdd.DaysRequestMom[5] = (bool)FriCheck.IsChecked;
-
 
 
                 if ((bool)(SunCheck.IsChecked == true))

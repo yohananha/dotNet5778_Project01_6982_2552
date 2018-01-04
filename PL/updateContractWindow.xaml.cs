@@ -144,8 +144,8 @@ namespace PL
                     throw new Exception("המטפלת לא עובדת בשעות הנדרשות");
 
                 if (isHourCheckBox.IsChecked == true)
-                    salaryPerHourTextBox.Text = Convert.ToString(bl.getSalary(child.idChild, Convert.ToInt64(idNannyTextBox.Text), true));
-                salaryPerMonthTextBox.Text = Convert.ToString(bl.getSalary(child.idChild, Convert.ToInt64(idNannyTextBox.Text), false));
+                    salaryPerHourTextBox.Text = Convert.ToString(bl.getSalary(Convert.ToInt32(idChildTextBox.Text), Convert.ToInt64(idNannyTextBox.Text), true));
+                salaryPerMonthTextBox.Text = Convert.ToString(bl.getSalary(Convert.ToInt32(idChildTextBox.Text), Convert.ToInt64(idNannyTextBox.Text), false));
 
             }
             catch (Exception Ex)
