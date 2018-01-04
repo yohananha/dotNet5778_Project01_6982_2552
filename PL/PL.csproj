@@ -37,6 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -46,9 +48,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
     <Reference Include="Xceed.Wpf.AvalonDock, Version=3.2.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.2.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
       <Private>True</Private>
@@ -84,6 +88,9 @@
     </Compile>
     <Compile Include="addContractWindow.xaml.cs">
       <DependentUpon>addContractWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataSearchWindoe.xaml.cs">
+      <DependentUpon>DataSearchWindoe.xaml</DependentUpon>
     </Compile>
     <Compile Include="deleteChildWindow.xaml.cs">
       <DependentUpon>deleteChildWindow.xaml</DependentUpon>
@@ -122,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="addNanny2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataSearchWindoe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,6 +233,7 @@
     <None Include="Properties\DataSources\BE.Mother.datasource" />
     <None Include="Properties\DataSources\BE.Nanny.datasource" />
     <None Include="Properties\DataSources\BE.Schedule.datasource" />
+    <None Include="Properties\DataSources\BL.Ibl.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

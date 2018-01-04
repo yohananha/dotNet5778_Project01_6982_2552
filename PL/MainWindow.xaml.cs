@@ -37,11 +37,18 @@ namespace PL
         {
             var nann = new Nanny();
             nann.ShowDialog();
+            
         }
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            DataSearchWindoe data = new DataSearchWindoe();
+            data.ShowDialog();
         }
     }
 }

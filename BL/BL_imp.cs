@@ -95,7 +95,7 @@ namespace BL
                 return (contractNanny.rateMonthNanny - contractNanny.rateMonthNanny * discountRate);
             else
             {
-                return (getMomHours(contractMother) * 4 - getMomHours(contractMother) * 4 * discountRate);
+                return (getMomHours(contractMother) * 4*contractNanny.rateHourNanny - getMomHours(contractMother)*contractNanny.rateHourNanny * 4 * discountRate);
             }
         }
 
