@@ -10,9 +10,9 @@
     <Grid>
         <Image x:Name="BGMain"  Source="images/1459.jpg" Stretch="Fill" Width="1000" Height="700"/>
         <Image x:Name ="mary" Source="images/mary2.png" Width="200" HorizontalAlignment="Left" VerticalAlignment="Bottom"></Image>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="164,163,153.6,0" TextWrapping="Wrap" Text="ברוכים הבאים" VerticalAlignment="Top" Height="131" Width="676" TextAlignment="Center" LineHeight="22" FontSize="72" FontWeight="Bold" Foreground="White" FontFamily="Open Sans Hebrew"/>
-        <Button x:Name="button" Content="מסך אם" HorizontalAlignment="Center" Margin="541,306,252.6,309.6" VerticalAlignment="Center" Width="200" Height="78" Click="button_Click" FontSize="20" FontFamily="Open Sans Hebrew" FontWeight="Bold" Background="White" Opacity="0.6" BorderBrush="{x:Null}" Foreground="#FF93398D"/>
-        <Button x:Name="button_Copy" Content="מסך מטפלת" HorizontalAlignment="Center" Margin="243,305,550.6,310.6" VerticalAlignment="Center" Width="200" Height="78" Click="button_Copy_Click" FontSize="20" FontFamily="Open Sans Hebrew" FontWeight="Bold" Opacity="0.6" BorderBrush="{x:Null}" Foreground="#FF93398D">
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="164,238,153.6,0" TextWrapping="Wrap" Text="ברוכים הבאים" VerticalAlignment="Top" Height="131" Width="676" TextAlignment="Center" LineHeight="22" FontSize="72" FontWeight="Bold" Foreground="White" FontFamily="Open Sans Hebrew"/>
+        <Button x:Name="button" Content="מסך אם" HorizontalAlignment="Center" Margin="541,381,252.6,234.6" VerticalAlignment="Center" Width="200" Height="78" Click="button_Click" FontSize="20" FontFamily="Open Sans Hebrew" FontWeight="Bold" Background="White" Opacity="0.6" BorderBrush="{x:Null}" Foreground="#FF93398D"/>
+        <Button x:Name="button_Copy" Content="מסך מטפלת" HorizontalAlignment="Center" Margin="243,380,550.6,235.6" VerticalAlignment="Center" Width="200" Height="78" Click="button_Copy_Click" FontSize="20" FontFamily="Open Sans Hebrew" FontWeight="Bold" Opacity="0.6" BorderBrush="{x:Null}" Foreground="#FF93398D">
             <Button.Background>
                 <RadialGradientBrush>
                     <GradientStop Color="White" Offset="0"/>
