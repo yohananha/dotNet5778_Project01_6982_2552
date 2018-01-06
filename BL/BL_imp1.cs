@@ -11,14 +11,19 @@ using GoogleMapsApi.Entities.Directions.Response;
 
 namespace BL
 {
-    class BL_imp : Ibl
+   partial class BL_imp : Ibl
     {
         DAL.Idal dal;
+        static Random r = new Random();
+
         //CTOR creating factory
         public BL_imp()
         {
             dal = DAL.factoryDal.getDal();
-
+            initilizeArray();
+            NannyInitilize();
+            MotherInitilize();
+            ChildInitilize();
         }
         #region child metod
 
@@ -95,7 +100,7 @@ namespace BL
                 return (contractNanny.rateMonthNanny - contractNanny.rateMonthNanny * discountRate);
             else
             {
-                return (getMomHours(contractMother) * 4*contractNanny.rateHourNanny - getMomHours(contractMother)*contractNanny.rateHourNanny * 4 * discountRate);
+                return (getMomHours(contractMother) * 4 * contractNanny.rateHourNanny - getMomHours(contractMother) * contractNanny.rateHourNanny * 4 * discountRate);
             }
         }
 
@@ -136,7 +141,7 @@ namespace BL
             {
                 sum += mother.endHour[i] - mother.startHour[i];
             }
-            return (sum.Days  * 24 + sum.Hours + sum.Minutes / 60.0);
+            return (sum.Days * 24 + sum.Hours + sum.Minutes / 60.0);
         }
 
         public void addMom(Mother mother)
@@ -279,10 +284,10 @@ namespace BL
         {
             for (int i = 0; i < 6; i++)
             {
-                if(mom.DaysRequestMom[i])
-                if (nanny.startHour[i] >= mom.startHour[i] ||
-                    nanny.endHour[i] <= mom.endHour[i])
-                    return false;
+                if (mom.DaysRequestMom[i])
+                    if (nanny.startHour[i] >= mom.startHour[i] ||
+                        nanny.endHour[i] <= mom.endHour[i])
+                        return false;
             }
             return true;
         }

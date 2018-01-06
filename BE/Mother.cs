@@ -17,7 +17,7 @@ namespace BE
         public long IdMom { get; set; }
         public string LasNameMom { get; set; }
         public string FirstNameMom { get; set; }
-        public string PhoneMom { get; set; }
+        public long PhoneMom { get; set; }
         public string AddressMom { get; set; }
         public string AddressForNanny { get; set; }
         public bool[] DaysRequestMom { get; set; }

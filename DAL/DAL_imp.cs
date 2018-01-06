@@ -13,6 +13,7 @@ namespace DAL
 {
     class DAL_imp : Idal
     {
+        
         public static int contract_Id = 1;
 
         //constractor 
@@ -137,6 +138,7 @@ namespace DAL
         {
              if (DataSource.motherList.Exists(ml => ml.IdMom == mother.IdMom))
                 throw new Exception("Mother already exist in system");
+
             DataSource.motherList.Add(mother.duplication());
         }
 
@@ -226,6 +228,6 @@ namespace DAL
         }
 
         #endregion
-
+        
     }
 }
