@@ -45,38 +45,38 @@ namespace PL
                 if (nannyToUpdate.daysWorkNanny[0] == true)
                 {
                     SunCheck.IsChecked = true;
-                    SunStart.Value = nannyToUpdate.startHour[0].ToUniversalTime();
-                    SunEnd.Value = nannyToUpdate.endHour[0].ToUniversalTime();
+                    SunStart.Value = nannyToUpdate.startHour[0];
+                    SunEnd.Value = nannyToUpdate.endHour[0];
                 }
                 if (nannyToUpdate.daysWorkNanny[1] == true)
                 {
                     MonCheck.IsChecked = true;
-                    MonStart.Value = nannyToUpdate.startHour[1].ToUniversalTime();
-                    MonEnd.Value = nannyToUpdate.endHour[1].ToUniversalTime();
+                    MonStart.Value = nannyToUpdate.startHour[1];
+                    MonEnd.Value = nannyToUpdate.endHour[1];
                 }
                 if (nannyToUpdate.daysWorkNanny[2] == true)
                 {
                     TueCheck.IsChecked = true;
-                    TueStart.Value = nannyToUpdate.startHour[2].ToUniversalTime();
-                    TueEnd.Value = nannyToUpdate.endHour[2].ToUniversalTime();
+                    TueStart.Value = nannyToUpdate.startHour[2];
+                    TueEnd.Value = nannyToUpdate.endHour[2];
                 }
                 if (nannyToUpdate.daysWorkNanny[3] == true)
                 {
                     WedCheck.IsChecked = true;
-                    WedStart.Value = nannyToUpdate.startHour[3].ToUniversalTime();
-                    WedEnd.Value = nannyToUpdate.endHour[3].ToUniversalTime();
+                    WedStart.Value = nannyToUpdate.startHour[3];
+                    WedEnd.Value = nannyToUpdate.endHour[3];
                 }
                 if (nannyToUpdate.daysWorkNanny[4] == true)
                 {
                     ThuCheck.IsChecked = true;
-                    ThuStart.Value = nannyToUpdate.startHour[4].ToUniversalTime();
-                    ThuEnd.Value = nannyToUpdate.endHour[4].ToUniversalTime();
+                    ThuStart.Value = nannyToUpdate.startHour[4];
+                    ThuEnd.Value = nannyToUpdate.endHour[4];
                 }
                 if (nannyToUpdate.daysWorkNanny[5] == true)
                 {
                     FriCheck.IsChecked = true;
-                    FriStart.Value = nannyToUpdate.startHour[5].ToUniversalTime();
-                    FriEnd.Value = nannyToUpdate.endHour[5].ToUniversalTime();
+                    FriStart.Value = nannyToUpdate.startHour[5];
+                    FriEnd.Value = nannyToUpdate.endHour[5];
                 }
             }
             catch (Exception Ex)

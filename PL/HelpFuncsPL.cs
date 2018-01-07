@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace PL
 {
-    class HelpFuncsPL
+     static class HelpFuncsPL
     {
-        
+        public static DateTime ToTime(this DateTime DT)
+        {
+            return DT.ToUniversalTime().AddHours(2);
+        }
     }
 }
