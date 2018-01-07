@@ -285,8 +285,8 @@ namespace BL
             for (int i = 0; i < 6; i++)
             {
                 if (mom.DaysRequestMom[i])
-                    if (nanny.startHour[i] >= mom.startHour[i] ||
-                        nanny.endHour[i] <= mom.endHour[i])
+                    if (nanny.startHour[i] > mom.startHour[i] ||
+                        nanny.endHour[i] < mom.endHour[i])
                         return false;
             }
             return true;
