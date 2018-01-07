@@ -19,10 +19,10 @@ namespace BE
         public DateTime workBegin { get; set; }
         public DateTime workEnd { get; set; }
 
-        public override string ToString()
-        {
-            return base.ToString();
-        }
+        //public override string ToString()
+        //{
+        //    return base.ToString();
+        //}
 
         public Contract duplication()
         {

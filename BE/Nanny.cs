@@ -32,10 +32,10 @@ namespace BE
         public double diff { get; set; }
         public int Distance { get; set; }
 
-        public override string ToString()
-        {
-            return base.ToString();
-        }
+        //public override string ToString()
+        //{
+        //    return base.ToString();
+        //}
 
         public Nanny duplication()
         {

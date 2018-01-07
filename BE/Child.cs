@@ -15,10 +15,10 @@ namespace BE
         public bool isSpecialNeed { get; set; }
         public string specialNeeds { get; set; }
 
-        public override string ToString()
-        {
-            return base.ToString();
-        }
+        //public override string ToString()
+        //{
+        //    return base.ToString();
+        //}
 
         public Child duplication()
         {

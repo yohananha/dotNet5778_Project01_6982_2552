@@ -294,6 +294,8 @@ namespace BL
 
         public IEnumerable<Child> getAllChildWithoutNanny()
         {
+            if (dal.getContracts().Count() == 0)
+                return dal.getKidsByMoms();
             return from a in dal.getKidsByMoms()
                    let idChild = a.idChild
                    from b in dal.getContracts()

@@ -25,10 +25,10 @@ namespace BE
         public DateTime[] endHour { get; set; }
         public string nothMom { get; set; }
 
-        public override string ToString()
-        {
-            throw new System.NotImplementedException();
-        }
+        //public override string ToString()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
         public Mother duplication()
         {
