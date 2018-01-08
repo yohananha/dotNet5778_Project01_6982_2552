@@ -10,25 +10,16 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-
-        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="73,14,0,0" HorizontalAlignment="Left">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="grid1" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -55,10 +46,8 @@
             <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="שכר לחודש:"/>
             <TextBox x:Name="rateMonthNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding rateMonthNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="0"/>
 
-            <Button x:Name="button" Content="הוסף" Grid.Row="19" HorizontalAlignment="Left" Margin="1,328.4,0,-347.4" VerticalAlignment="Center" Width="120" Click="button_Click"/>
-
         </Grid>
-        <Grid x:Name="grid2" Grid.Column="1" VerticalAlignment="Top" Margin="19,0,0,-269.333" HorizontalAlignment="Left"  Grid.ColumnSpan="2">
+        <Grid x:Name="grid2" Grid.Column="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -101,35 +90,52 @@
 
         </Grid>
 
-        <Label x:Name="DayLabel" VerticalAlignment="Top" RenderTransformOrigin="0.313,0.605" Margin="262.8,393,0,0" Height="21" HorizontalAlignment="Left" FontSize="10" Grid.Column="1" Content="יום"/>
-        <Label x:Name="StartHourLabel" Width="43" VerticalAlignment="Top" Margin="252.8,425,0,0" Height="36" HorizontalAlignment="Left" FontSize="10" Grid.Column="1" Content="שעת&#xA;התחלה"/>
-        <Label x:Name="EndHourLabel" Width="47" VerticalAlignment="Top" Margin="248.8,463,0,0" Height="40" HorizontalAlignment="Left" FontSize="10" Grid.Column="1" Content="שעת&#xA;סיום"/>
-        <Label x:Name="Sun" VerticalAlignment="Top" RenderTransformOrigin="0.313,0.605" Margin="157.8,378,0,0" Height="21" HorizontalAlignment="Left" FontSize="10" Grid.Column="1" Content="א"/>
-        <Label x:Name="Mon" VerticalAlignment="Top" RenderTransformOrigin="0.313,0.605" Margin="79.8,377,0,0" Height="21" HorizontalAlignment="Left" FontSize="10" Grid.Column="1" Content="ב"/>
-        <Label x:Name="Tue" VerticalAlignment="Top" RenderTransformOrigin="0.313,0.605" Margin="11.8,374,0,0" Height="21" HorizontalAlignment="Left" FontSize="10" Grid.Column="1" Content="ג"/>
-        <Label x:Name="wed" VerticalAlignment="Top" RenderTransformOrigin="0.313,0.605" Margin="268,374,0,0" Height="21" HorizontalAlignment="Left" FontSize="10" Content="ד"/>
-        <Label x:Name="Thu" VerticalAlignment="Top" RenderTransformOrigin="0.313,0.605" Margin="196,378,0,0" Height="21" HorizontalAlignment="Left" FontSize="10" Content="ה"/>
-        <Label x:Name="Fri" VerticalAlignment="Top" RenderTransformOrigin="0.313,0.605" Margin="115,376,0,0" Height="21" HorizontalAlignment="Left" FontSize="10" Content="ו"/>
-        <CheckBox x:Name="SunCheck" VerticalAlignment="Top" Margin="157.8,406,0,0" IsChecked="False" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-        <CheckBox x:Name="MonCheck" VerticalAlignment="Top" Margin="78.8,405,0,0" IsChecked="False" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-        <CheckBox x:Name="TueCheck" VerticalAlignment="Top" Margin="10.8,402,0,0" IsChecked="False" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-        <CheckBox x:Name="WedCheck" VerticalAlignment="Top" RenderTransformOrigin="2.273,0.675" Margin="267,402,0,0" IsChecked="False" HorizontalAlignment="Left" Content=""/>
-        <CheckBox x:Name="ThuCheck" VerticalAlignment="Top" Margin="197,406,0,0" IsChecked="False" HorizontalAlignment="Left" Content=""/>
-        <CheckBox x:Name="FriCheck" VerticalAlignment="Top" Margin="115,404,0,0" IsChecked="False" HorizontalAlignment="Left" Content=""/>
-        <xctk:TimePicker x:Name="SunEnd" Format="ShortTime" Value="00:00" Margin="141.8,475,135.4,65.4" IsEnabled="{Binding IsChecked, ElementName=SunCheck}" Grid.Column="1" Width="70" Height="30"/>
-        <xctk:TimePicker x:Name="SunStart" Format="ShortTime"   Value="00:00"  Margin="139.8,432,137.4,108.4" IsEnabled="{Binding IsChecked, ElementName=SunCheck}" RenderTransformOrigin="-2.189,-5.233" Grid.Column="1" Width="70" Height="30"/>
-        <xctk:TimePicker x:Name="MonEnd" Format="ShortTime" Value="00:00" Margin="63.8,472,213.4,68.4" IsEnabled="{Binding IsChecked, ElementName=MonCheck}" Grid.Column="1" Width="70" Height="30"/>
-        <xctk:TimePicker x:Name="MonStart" Format="ShortTime"   Value="00:00"  Margin="64.2,433,212.6,107.4" IsEnabled="{Binding IsChecked, ElementName=MonCheck}" RenderTransformOrigin="-2.189,-5.233" Grid.Column="1" Width="70" Height="30"/>
-        <xctk:TimePicker x:Name="TueEnd" Format="ShortTime" Value="00:00" Margin="333,471,290.6,69.4" IsEnabled="{Binding IsChecked, ElementName=TueCheck}" Grid.ColumnSpan="2" Width="70" Height="30"/>
-        <xctk:TimePicker x:Name="TueStart" Format="ShortTime"   Value="00:00"  Margin="333,432,290.6,108.4" IsEnabled="{Binding IsChecked, ElementName=TueCheck}" RenderTransformOrigin="-2.189,-5.233" Width="70" Height="30" Grid.ColumnSpan="2"/>
-        <xctk:TimePicker x:Name="WedEnd" Format="ShortTime" Value="00:00" Margin="251,473,26.2,67.4" IsEnabled="{Binding IsChecked, ElementName=WedCheck}" Width="70" Height="30"/>
-        <xctk:TimePicker x:Name="WedStart" Format="ShortTime"   Value="00:00"  Margin="251,434,0,106.4" IsEnabled="{Binding IsChecked, ElementName=WedCheck}" RenderTransformOrigin="-2.189,-5.233" HorizontalAlignment="Left" Width="70" Height="30"/>
-        <xctk:TimePicker x:Name="ThuEnd" Format="ShortTime" Value="00:00" Margin="172,471,105.2,69.4" IsEnabled="{Binding IsChecked, ElementName=ThuCheck}" Width="70" Height="30"/>
-        <xctk:TimePicker x:Name="ThuStart" Format="ShortTime"  Value="00:00"  Margin="174,434,103.2,106.4" IsEnabled="{Binding IsChecked, ElementName=ThuCheck}" RenderTransformOrigin="-2.189,-5.233" Width="70" Height="30"/>
-        <xctk:TimePicker x:Name="FriEnd" Format="ShortTime" Value="00:00" Margin="95,470,182.2,70.4" IsEnabled="{Binding IsChecked, ElementName=FriCheck}" Width="70" Height="30"/>
-        <xctk:TimePicker x:Name="FriStart" Format="ShortTime"  Value="00:00"  Margin="94,434,183.2,106.4" IsEnabled="{Binding IsChecked, ElementName=FriCheck}" RenderTransformOrigin="-2.189,-5.233" Width="70" Height="30"/>
+        <Grid x:Name="grid3" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="DayLabel" Grid.Row="1" Grid.Column="6" FontSize="10" Content="יום"/>
+            <Label x:Name="StartHourLabel" FontSize="10" Grid.Row="2" Grid.Column="6" Content="שעת&#xA;התחלה"/>
+            <Label x:Name="EndHourLabel"  FontSize="10" Grid.Row="3" Grid.Column="6" Content="שעת&#xA;סיום"/>
+            <Label x:Name="Sun" FontSize="10" Grid.Column="5" Content="א"/>
+            <Label x:Name="Mon" FontSize="10" Grid.Column="4" Content="ב"/>
+            <Label x:Name="Tue"  FontSize="10" Grid.Column="3" Content="ג"/>
+            <Label x:Name="wed"  FontSize="10" Grid.Column="2" Content="ד"/>
+            <Label x:Name="Thu"  FontSize="10" Grid.Column="1" Content="ה"/>
+            <Label x:Name="Fri"  FontSize="10" Grid.Column="0" Content="ו"/>
+            <CheckBox x:Name="SunCheck" IsChecked="{Binding daysWorkNanny[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="5" Grid.Row="1"  Content=""/>
+            <CheckBox x:Name="MonCheck" IsChecked="{Binding daysWorkNanny[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="4" Grid.Row="1"  Content=""/>
+            <CheckBox x:Name="TueCheck"  IsChecked="{Binding daysWorkNanny[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="3" Grid.Row="1"  Content=""/>
+            <CheckBox x:Name="WedCheck"  IsChecked="{Binding daysWorkNanny[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="1"   Content=""/>
+            <CheckBox x:Name="ThuCheck"  IsChecked="{Binding daysWorkNanny[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="1" Grid.Row="1"   Content=""/>
+            <CheckBox x:Name="FriCheck"  IsChecked="{Binding daysWorkNanny[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="0" Grid.Row="1"  Content=""/>
+            <xctk:TimePicker x:Name="SunEnd" Format="ShortTime" Value="{Binding endHour[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=SunCheck}" Grid.Column="5" Grid.Row="3" />
+            <xctk:TimePicker x:Name="SunStart" Format="ShortTime"   Value="{Binding startHour[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=SunCheck}"  Grid.Column="5" Grid.Row="2" />
+            <xctk:TimePicker x:Name="MonEnd" Format="ShortTime" Value="{Binding endHour[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsEnabled="{Binding IsChecked, ElementName=MonCheck}" Grid.Column="4" Grid.Row="3" />
+            <xctk:TimePicker x:Name="MonStart" Format="ShortTime"   Value="{Binding startHour[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"   IsEnabled="{Binding IsChecked, ElementName=MonCheck}"  Grid.Column="4" Grid.Row="2" />
+            <xctk:TimePicker x:Name="TueEnd" Format="ShortTime" Value="{Binding endHour[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=TueCheck}" Grid.Column="3" Grid.Row="3" />
+            <xctk:TimePicker x:Name="TueStart" Format="ShortTime"   Value="{Binding startHour[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"   IsEnabled="{Binding IsChecked, ElementName=TueCheck}"  Grid.Column="3" Grid.Row="2"/>
+            <xctk:TimePicker x:Name="WedEnd" Format="ShortTime" Value="{Binding endHour[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=WedCheck}"  Grid.Column="2" Grid.Row="3"/>
+            <xctk:TimePicker x:Name="WedStart" Format="ShortTime"   Value="{Binding startHour[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"   IsEnabled="{Binding IsChecked, ElementName=WedCheck}"   Grid.Column="2" Grid.Row="2" />
+            <xctk:TimePicker x:Name="ThuEnd" Format="ShortTime" Value="{Binding endHour[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsEnabled="{Binding IsChecked, ElementName=ThuCheck}"  Grid.Column="1" Grid.Row="3"/>
+            <xctk:TimePicker x:Name="ThuStart" Format="ShortTime"  Value="{Binding startHour[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=ThuCheck}" Grid.Column="1" Grid.Row="2"/>
+            <xctk:TimePicker x:Name="FriEnd" Format="ShortTime" Value="{Binding endHour[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=FriCheck}" Grid.Row="3"/>
+            <xctk:TimePicker x:Name="FriStart" Format="ShortTime"  Value="{Binding startHour[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=FriCheck}"  Grid.Row="2"/>
+        </Grid>
 
-
+        <Button x:Name="button" Content="הוסף" Grid.Row="2"  Click="button_Click" Grid.ColumnSpan="2" Margin="0,45.333,346.333,-46"/>
 
     </Grid>
 </Window>
