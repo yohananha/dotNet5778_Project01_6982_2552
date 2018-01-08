@@ -8,6 +8,7 @@
         Title="ContractWindow" Height="700" Width="1000" WindowStyle="None" WindowStartupLocation="CenterScreen">
 
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="5*"/>
