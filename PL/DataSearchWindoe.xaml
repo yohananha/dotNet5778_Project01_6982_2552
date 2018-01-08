@@ -30,7 +30,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="NannyList" Content="רשימת כל המטפלות" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="250" Height="60" Click="NannyList_Click_1"/>
+            <Button x:Name="NannyList" Content="רשימת כל המטפלות" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="250" Height="60" Click="NannyList_Click_1" Margin="23,0,24,7.2"/>
             <Button x:Name="Momlist" Content="רשימת כל האמהות" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="250" Height="60" Grid.Row="1" Click="Momlist_Click"/>
             <Button x:Name="MomsKids" Content="רשימת משפחה" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="250" Height="60" Grid.Row="2" Click="MomsKids_Click"/>
             <Button x:Name="AllContracts" Content="רשימת החוזים המלאה" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="250" Height="60" Grid.Row="3" Click="AllContracts_Click"/>
@@ -39,7 +39,7 @@
 
         </Grid>
 
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="center" Margin="59.2,68,45.6,0" Grid.Row="1" VerticalAlignment="Top" Height="383" Width="364" Grid.Column="1"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="center"  Margin="59.2,68,45.6,0" Grid.Row="1" VerticalAlignment="Top" Height="383" Width="364" Grid.Column="1"/>
         <Label x:Name="label" Content="תז אמא" Grid.Column="1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="171.2,22,0,0" Grid.Row="1" VerticalAlignment="Top" Height="35" Width="106" />
 
         <Grid x:Name="grid1" Grid.Column="1" DataContext="{StaticResource motherViewSource}" HorizontalAlignment="Left" Margin="67.2,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="29" Width="126">
