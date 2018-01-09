@@ -145,6 +145,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="BE.Child1.datasource" />
+    <None Include="BE.Contract1.datasource" />
+    <None Include="BE.Mother1.datasource" />
+    <None Include="BE.Nanny1.datasource" />
+    <None Include="BE.Schedule1.datasource" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -176,6 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\nanny.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\mother.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
