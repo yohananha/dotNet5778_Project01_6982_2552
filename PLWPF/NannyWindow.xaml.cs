@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BE;
+using BL;
 namespace PLWPF
 {
     /// <summary>
@@ -19,27 +20,68 @@ namespace PLWPF
     /// </summary>
     public partial class NannyWindow : Window
     {
+        public BE.Nanny nannyToAdd;
+        public BL.Ibl bl;
+
         public NannyWindow()
         {
             InitializeComponent();
+            bl = BL.FactoryBL.GetBL();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        #region addNannyEvent
+        private void button_buttonBackMainWindow(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void button_Click_buttonAddNanny(object sender, RoutedEventArgs e)
         {
-
-            System.Windows.Data.CollectionViewSource nannyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("nannyViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // nannyViewSource.Source = [generic data source]
+            try
+            {
+                bl.addNanny(nannyToAdd);
+                nannyToAdd = new BE.Nanny();
+                addNannyTab.DataContext = nannyToAdd;
+                MessageBox.Show("המטפלת הוספה בהצלחה");
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
         }
 
-        private void button_Click_1(object sender, RoutedEventArgs e)
+        private void addNannyTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            nannyToAdd = new BE.Nanny();
+            nannyToAdd.startHour = new DateTime[6];
+            nannyToAdd.endHour = new DateTime[6];
+            nannyToAdd.daysWorkNanny = new bool[6];
+            addNannyTab.DataContext = nannyToAdd;
+        }
 
+
+
+        #endregion
+
+        private void deleteNannyTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            comboBoxNanny.ItemsSource = bl.getAllNanny();
+            comboBoxNanny.DisplayMemberPath = "fullName";
+            comboBoxNanny.SelectedValuePath = "nannyId";
+        }
+
+        private void buttonDeleteNanny_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bl.deleteNanny(Convert.ToInt64(comboBoxNanny.SelectedValue));
+                MessageBox.Show("מטפלת נמחקה בהצלחה");
+                comboBoxNanny.Items.Refresh();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
         }
     }
 }

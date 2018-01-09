@@ -17,18 +17,27 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <Image x:Name="BGMain" Source="images/nanny.jpg" Stretch="Fill" Width="1000" Height="700" Grid.ColumnSpan="2"  Grid.RowSpan="4" />
-        <Label x:Name="label" Content="מסך המטפלות" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,45,0,0" VerticalAlignment="Bottom" Height="100" Width="400" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White"/>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000" Opacity="0.8" BorderBrush="{x:Null}" SelectedIndex="{Binding Mode=OneWay}" >
-            <TabItem Header="מחיקת מטפלת" Height="80" Width="332" FontFamily="Open Sans Hebrew" FontSize="20" Opacity="0.8" Foreground="#FF0E1842" BorderBrush="{x:Null}">
-
-                <Grid Background="#FFFF" Opacity="0.4"/>
+        <Image x:Name="BGMain" Source="images/nanny.jpg" Stretch="Fill" Width="1000" Height="700" Grid.ColumnSpan="2" Margin="0,0,-6.4,-6.4" Grid.RowSpan="4" />
+        <Label x:Name="label" Content="מסך המטפלות" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,45,0,0" VerticalAlignment="Bottom" Height="150" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White"/>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000" Opacity="0.8" BorderBrush="{x:Null}" >
+            <TabItem x:Name="deleteNannyTab" Header="מחיקת מטפלת" Height="80" Width="332" FontFamily="Open Sans Hebrew" FontSize="20" Opacity="0.8" Foreground="#FF0E1842" BorderBrush="{x:Null}" MouseLeftButtonUp="deleteNannyTab_MouseLeftButtonUp">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="labelDeleteNanny" Content="בחר/י מטפלת למחיקה" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" />
+                    <ComboBox x:Name="comboBoxNanny" Grid.Row="1" Margin="300,40" />
+                    <Button x:Name="buttonDeleteNanny" Content="מחק" Grid.Row="2" Margin="300,40" Click="buttonDeleteNanny_Click" />
+                </Grid>
             </TabItem>
+
             <TabItem Header="עדכון מטפלת" Width="332" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Opacity="0.8" Foreground="#FF0E1842" BorderBrush="{x:Null}">
                 <Grid Background="#FFFF" Opacity="0.4"/>
             </TabItem>
 
-            <TabItem Header="הוספת מטפלת" Width="332" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Opacity="0.8" Foreground="#FF0E1842" BorderBrush="{x:Null}">
+            <TabItem x:Name="addNannyTab" Header="הוספת מטפלת" Width="332" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Opacity="0.8" Foreground="#FF0E1842" BorderBrush="{x:Null}" MouseLeftButtonUp="addNannyTab_MouseLeftButtonUp" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -38,7 +47,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+
                     </Grid.RowDefinitions>
 
                     <Grid x:Name="grid1"  >
@@ -59,13 +68,13 @@
                         <CheckBox x:Name="elevatorNannyCheckBox" VerticalAlignment="Center" Grid.Row="0" Margin="3" IsChecked="{Binding elevatorNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="0" Content=""/>
                         <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="קומה:" FontSize="16"/>
                         <TextBox x:Name="floorNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding floorNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="0"/>
-                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="לפי שעה:" FontSize="16"/>
+                         <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="לפי שעה:"/>
                         <CheckBox x:Name="isByHourNannyCheckBox" VerticalAlignment="Center" Grid.Row="2" Margin="3" IsChecked="{Binding isByHourNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="0" Content=""/>
                         <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="שכר לשעה:" FontSize="16"/>
                         <TextBox x:Name="rateHourNannyTextBox" Width="120" VerticalAlignment="Center"  Text="{Binding rateHourNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="0"/>
                         <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="שכר לחודש:" FontSize="16"/>
                         <TextBox x:Name="rateMonthNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding rateMonthNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="0"/>
-                        <Button x:Name="button" Content="הוסף" Grid.Row="5"  Grid.ColumnSpan="2" Margin="18,140,-17.8,-140.8" Click="button_Click_1" />
+                        <Button x:Name="buttonAddNanny" Content="הוסף" Grid.Row="5"  Grid.ColumnSpan="2" Click="button_Click_buttonAddNanny" />
 
                     </Grid>
                     <Grid x:Name="grid2" Grid.Column="1" >
@@ -174,7 +183,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="button1" Content="חזרה לתפריט ראשי" HorizontalAlignment="Left" Margin="40,0,0,20" VerticalAlignment="Bottom" Width="200" Height="50" Click="button_Click" Background="White" Opacity="0.6" BorderBrush="{x:Null}"/>
+        <Button x:Name="buttonBackMainWindow" Content="חזרה לתפריט ראשי" HorizontalAlignment="Left" Margin="40,0,0,40" VerticalAlignment="Bottom" Width="200" Height="50" Click="button_buttonBackMainWindow" Background="White" Opacity="0.6" BorderBrush="{x:Null}"/>
 
     </Grid>
 </Window>

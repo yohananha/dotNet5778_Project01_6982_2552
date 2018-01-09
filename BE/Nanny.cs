@@ -32,6 +32,7 @@ namespace BE
         public double diff { get; set; }
         public int Distance { get; set; }
 
+        public string fullName { get { return firstNameNanny + " " + lastNameNanny; } }
         //public override string ToString()
         //{
         //    return base.ToString();
