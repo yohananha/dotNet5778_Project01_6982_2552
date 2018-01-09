@@ -6,13 +6,11 @@
         xmlns:local="clr-namespace:PLWPF"
          xmlns:BE="clr-namespace:BE;assembly=BE" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="PLWPF.NannyWindow"
         mc:Ignorable="d"
-        Title="NannyWindow" Height="700" Width="1000" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="NannyWindow" Height="700" Width="1000" WindowStyle="None" WindowStartupLocation="CenterScreen" >
 
-    <Window.Resources>
-        <CollectionViewSource x:Key="nannyViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Nanny}, CreateList=True}"/>
-    </Window.Resources>
+   
 
-    <Grid DataContext="{StaticResource nannyViewSource}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="5*"/>
