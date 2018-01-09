@@ -16,15 +16,24 @@
         <Image x:Name="BGMain" Source="images/nanny.jpg" Stretch="Fill" Width="1000" Height="700" Grid.ColumnSpan="2" Margin="0,0,-6.4,-6.4" Grid.RowSpan="4" />
         <Label x:Name="label" Content="מסך המטפלות" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,45,0,0" VerticalAlignment="Bottom" Height="150" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White"/>
         <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000" Opacity="0.8" BorderBrush="{x:Null}" >
-            <TabItem Header="מחיקת מטפלת" Height="80" Width="332" FontFamily="Open Sans Hebrew" FontSize="20" Opacity="0.8" Foreground="#FF0E1842" BorderBrush="{x:Null}">
-
-                <Grid Background="#FFFF" Opacity="0.4"/>
+            <TabItem x:Name="deleteNannyTab" Header="מחיקת מטפלת" Height="80" Width="332" FontFamily="Open Sans Hebrew" FontSize="20" Opacity="0.8" Foreground="#FF0E1842" BorderBrush="{x:Null}" MouseLeftButtonUp="deleteNannyTab_MouseLeftButtonUp">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="labelDeleteNanny" Content="בחר/י מטפלת למחיקה" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" />
+                    <ComboBox x:Name="comboBoxNanny" Grid.Row="1" Margin="300,40" />
+                    <Button x:Name="buttonDeleteNanny" Content="מחק" Grid.Row="2" Margin="300,40" Click="buttonDeleteNanny_Click" />
+                </Grid>
             </TabItem>
+
             <TabItem Header="עדכון מטפלת" Width="332" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Opacity="0.8" Foreground="#FF0E1842" BorderBrush="{x:Null}">
                 <Grid Background="#FFFF" Opacity="0.4"/>
             </TabItem>
 
-            <TabItem Header="הוספת מטפלת" Width="332" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Opacity="0.8" Foreground="#FF0E1842" BorderBrush="{x:Null}">
+            <TabItem x:Name="addNannyTab" Header="הוספת מטפלת" Width="332" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Opacity="0.8" Foreground="#FF0E1842" BorderBrush="{x:Null}" MouseLeftButtonUp="addNannyTab_MouseLeftButtonUp" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -34,7 +43,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+
                     </Grid.RowDefinitions>
 
                     <Grid x:Name="grid1"  >
@@ -55,13 +64,13 @@
                         <CheckBox x:Name="elevatorNannyCheckBox" VerticalAlignment="Center" Grid.Row="0" Margin="3" IsChecked="{Binding elevatorNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="0" Content=""/>
                         <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="קומה:"/>
                         <TextBox x:Name="floorNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding floorNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="0"/>
-                         <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="לפי שעה:"/>
+                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="לפי שעה:"/>
                         <CheckBox x:Name="isByHourNannyCheckBox" VerticalAlignment="Center" Grid.Row="2" Margin="3" IsChecked="{Binding isByHourNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="0" Content=""/>
                         <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="שכר לשעה:"/>
                         <TextBox x:Name="rateHourNannyTextBox" Width="120" VerticalAlignment="Center"  Text="{Binding rateHourNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="0"/>
                         <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="שכר לחודש:"/>
                         <TextBox x:Name="rateMonthNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding rateMonthNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="0"/>
-                        <Button x:Name="button" Content="הוסף" Grid.Row="5"  Grid.ColumnSpan="2" />
+                        <Button x:Name="buttonAddNanny" Content="הוסף" Grid.Row="5"  Grid.ColumnSpan="2" Click="button_Click_buttonAddNanny" />
 
                     </Grid>
                     <Grid x:Name="grid2" Grid.Column="1" >
@@ -72,7 +81,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
-                            
+
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -106,7 +115,7 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="תעודת זהות:"/>
+                        <Label  Grid.Row="0" VerticalContentAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="1" Content="תעודת זהות"/>
                         <TextBox x:Name="nannyIdTextBox" Width="120" VerticalAlignment="Center" Text="{Binding nannyId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="0"/>
                         <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="שם פרטי:"/>
                         <TextBox x:Name="firstNameNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding firstNameNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="0"/>
@@ -137,9 +146,9 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label x:Name="DayLabel" Grid.Row="1" Grid.Column="6" FontSize="20" HorizontalAlignment="Right" Content="יום"/>
-                        <Label x:Name="StartHourLabel" FontSize="20" Grid.Row="2" Grid.Column="6" HorizontalAlignment="Right" Content="שעת התחלה"/>
-                        <Label x:Name="EndHourLabel"  FontSize="20" Grid.Row="3" Grid.Column="6"  HorizontalAlignment="Right" Content="שעת סיום"/>
+                        <Label x:Name="DayLabel" Grid.Row="1" Grid.Column="6" FontSize="16" HorizontalAlignment="Right" Content="יום"/>
+                        <Label x:Name="StartHourLabel" FontSize="16" Grid.Row="2" Grid.Column="6" HorizontalAlignment="Right" Content="שעת התחלה"/>
+                        <Label x:Name="EndHourLabel"  FontSize="16" Grid.Row="3" Grid.Column="6"  HorizontalAlignment="Right" Content="שעת סיום"/>
                         <Label x:Name="Sun" FontSize="20" Grid.Column="5" HorizontalAlignment="Center" Content="א"/>
                         <Label x:Name="Mon" FontSize="20" Grid.Column="4" HorizontalAlignment="Center" Content="ב"/>
                         <Label x:Name="Tue" FontSize="20" Grid.Column="3" HorizontalAlignment="Center" Content="ג"/>
@@ -166,11 +175,11 @@
                         <xctk:TimePicker x:Name="FriStart" Format="ShortTime"  Value="{Binding startHour[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=FriCheck}"  Grid.Row="2"/>
                     </Grid>
 
-                   
+
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="buttonBackMainWindow" Content="חזרה לתפריט ראשי" HorizontalAlignment="Left" Margin="40,0,0,40" VerticalAlignment="Bottom" Width="200" Height="50" Click="button_Click" Background="White" Opacity="0.6" BorderBrush="{x:Null}"/>
+        <Button x:Name="buttonBackMainWindow" Content="חזרה לתפריט ראשי" HorizontalAlignment="Left" Margin="40,0,0,40" VerticalAlignment="Bottom" Width="200" Height="50" Click="button_buttonBackMainWindow" Background="White" Opacity="0.6" BorderBrush="{x:Null}"/>
 
     </Grid>
 </Window>
