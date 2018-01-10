@@ -20,7 +20,7 @@ namespace PLWPF
     /// </summary>
     public partial class NannyWindow : Window
     {
-        public BE.Nanny nannyToAdd;
+        public BE.Nanny nanny;
         public BL.Ibl bl;
 
         public NannyWindow()
@@ -39,9 +39,9 @@ namespace PLWPF
         {
             try
             {
-                bl.addNanny(nannyToAdd);
-                nannyToAdd = new BE.Nanny();
-                addNannyTab.DataContext = nannyToAdd;
+                bl.addNanny(nanny);
+                nanny = new BE.Nanny();
+                addNannyTab.DataContext = nanny;
                 MessageBox.Show("המטפלת הוספה בהצלחה");
             }
             catch (Exception Ex)
@@ -52,22 +52,24 @@ namespace PLWPF
 
         private void addNannyTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            nannyToAdd = new BE.Nanny();
-            nannyToAdd.startHour = new DateTime[6];
-            nannyToAdd.endHour = new DateTime[6];
-            nannyToAdd.daysWorkNanny = new bool[6];
-            addNannyTab.DataContext = nannyToAdd;
+            nanny = new BE.Nanny();
+            nanny.startHour = new DateTime[6];
+            nanny.endHour = new DateTime[6];
+            nanny.daysWorkNanny = new bool[6];
+            addNannyTab.DataContext = nanny;
         }
 
 
 
         #endregion
 
+        #region deleteNannyEvent
         private void deleteNannyTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             comboBoxNanny.ItemsSource = bl.getAllNanny();
             comboBoxNanny.DisplayMemberPath = "fullName";
             comboBoxNanny.SelectedValuePath = "nannyId";
+            comboBoxNanny.SelectedIndex = -1;
         }
 
         private void buttonDeleteNanny_Click(object sender, RoutedEventArgs e)
@@ -77,6 +79,36 @@ namespace PLWPF
                 bl.deleteNanny(Convert.ToInt64(comboBoxNanny.SelectedValue));
                 MessageBox.Show("מטפלת נמחקה בהצלחה");
                 comboBoxNanny.Items.Refresh();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+
+        #endregion
+
+        private void TabItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            comboBoxNannyUpdate.ItemsSource = bl.getAllNanny();
+            comboBoxNannyUpdate.DisplayMemberPath = "fullName";
+            comboBoxNannyUpdate.SelectedIndex = -1;
+        }
+
+        private void comboBoxNannyUpdate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            nanny = (BE.Nanny)comboBoxNannyUpdate.SelectedItem;
+            updateNannyTab.DataContext = nanny;
+        }
+
+        private void buttonUpdateNanny_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bl.updateNanny(nanny);
+                MessageBox.Show("פרטי המטפלת עודכנו");
+                comboBoxNannyUpdate.Items.Refresh();
+
             }
             catch (Exception Ex)
             {
