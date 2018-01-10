@@ -88,6 +88,7 @@ namespace PLWPF
 
         #endregion
 
+        #region updateNannyEvent
         private void TabItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             comboBoxNannyUpdate.ItemsSource = bl.getAllNanny();
@@ -115,5 +116,6 @@ namespace PLWPF
                 MessageBox.Show(Ex.Message);
             }
         }
+        #endregion
     }
 }
