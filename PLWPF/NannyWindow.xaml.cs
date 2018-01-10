@@ -83,5 +83,10 @@ namespace PLWPF
                 MessageBox.Show(Ex.Message);
             }
         }
+
+        private void comboBoxNanny_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

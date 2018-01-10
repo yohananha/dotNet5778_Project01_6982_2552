@@ -26,7 +26,7 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Label x:Name="labelDeleteNanny" Content="בחר/י מטפלת למחיקה" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" />
-                    <ComboBox x:Name="comboBoxNanny" Grid.Row="1" Margin="300,40" />
+                    <ComboBox x:Name="comboBoxNanny" Grid.Row="1" Margin="300,40" SelectionChanged="comboBoxNanny_SelectionChanged" />
                     <Button x:Name="buttonDeleteNanny" Content="מחק" Grid.Row="2" Margin="300,40" Click="buttonDeleteNanny_Click" />
                 </Grid>
             </TabItem>
