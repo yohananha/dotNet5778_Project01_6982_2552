@@ -104,7 +104,7 @@ namespace BL
             }
         }
 
-        public void deleteContract(int idChildContractDel)
+        public void deleteContract(long idChildContractDel)
         {
             dal.deleteContract(idChildContractDel);
         }

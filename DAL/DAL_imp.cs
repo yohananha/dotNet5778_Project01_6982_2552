@@ -92,7 +92,7 @@ namespace DAL
 
         }
 
-        public void deleteContract(int idChildContractDel)
+        public void deleteContract(long idChildContractDel)
         {
             int index = DataSource.contractList.FindIndex(cl => cl.idChild == idChildContractDel);
             if (index == -1)
