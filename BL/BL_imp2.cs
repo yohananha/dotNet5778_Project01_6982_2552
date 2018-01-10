@@ -1555,6 +1555,7 @@ namespace BL
                 idChild = idChildArray[0],
                 idMom = idMotherArray[0],
                 firstName = "נדב",
+                lastName = "פולק",
                 birthdayKid = new DateTime(2017, 8, 26),
                 isSpecialNeed = false,
             };
@@ -1563,6 +1564,7 @@ namespace BL
                 idChild = idChildArray[1],
                 idMom = idMotherArray[1],
                 firstName = "מוטי",
+                lastName = "לוי",
                 birthdayKid = new DateTime(2017, 9, 8),
                 isSpecialNeed = false,
             };
@@ -1571,6 +1573,7 @@ namespace BL
                 idChild = idChildArray[2],
                 idMom = idMotherArray[2],
                 firstName = "אתי",
+                lastName = "שקד",
                 birthdayKid = new DateTime(2017, 5, 29),
                 isSpecialNeed = false,
             };
@@ -1579,6 +1582,7 @@ namespace BL
                 idChild = idChildArray[3],
                 idMom = idMotherArray[3],
                 firstName = "הלל",
+                lastName = "בנט",
                 birthdayKid = new DateTime(2017, 1, 22),
                 isSpecialNeed = false,
             };
@@ -1587,6 +1591,7 @@ namespace BL
                 idChild = idChildArray[4],
                 idMom = idMotherArray[4],
                 firstName = "דוד",
+                lastName = "קופביץ",
                 birthdayKid = new DateTime(2017, 2, 9),
                 isSpecialNeed = false,
             };
@@ -1595,6 +1600,7 @@ namespace BL
                 idChild = idChildArray[5],
                 idMom = idMotherArray[4],
                 firstName = "יעל",
+                lastName = "קופביץ",
                 birthdayKid = new DateTime(2017, 2, 24),
                 isSpecialNeed = false,
             };
@@ -1603,6 +1609,7 @@ namespace BL
                 idChild = idChildArray[6],
                 idMom = idMotherArray[5],
                 firstName = "נעמה",
+                lastName = "גבריאלוב",
                 birthdayKid = new DateTime(2017, 3, 1),
                 isSpecialNeed = false,
             };
@@ -1611,6 +1618,7 @@ namespace BL
                 idChild = idChildArray[7],
                 idMom = idMotherArray[6],
                 firstName = "הילה",
+                lastName = "שחק",
                 birthdayKid = new DateTime(2017, 2, 2),
                 isSpecialNeed = false,
             };
@@ -1619,6 +1627,7 @@ namespace BL
                 idChild = idChildArray[8],
                 idMom = idMotherArray[7],
                 firstName = "מיכל",
+                lastName = "שובי",
                 birthdayKid = new DateTime(2017, 5, 29),
                 isSpecialNeed = false,
             };
@@ -1627,6 +1636,7 @@ namespace BL
                 idChild = idChildArray[9],
                 idMom = idMotherArray[7],
                 firstName = "עדי ",
+                lastName = "שובי",
                 birthdayKid = new DateTime(2017, 1, 9),
                 isSpecialNeed = false,
             };
@@ -1635,6 +1645,7 @@ namespace BL
                 idChild = idChildArray[10],
                 idMom = idMotherArray[7],
                 firstName = "רעות",
+                lastName = "שובי",
                 birthdayKid = new DateTime(2017, 4, 2),
                 isSpecialNeed = false,
             };
@@ -1643,6 +1654,7 @@ namespace BL
                 idChild = idChildArray[11],
                 idMom = idMotherArray[8],
                 firstName = "אפי",
+                lastName = "יודקביץ",
                 birthdayKid = new DateTime(2017, 4, 12),
                 isSpecialNeed = false,
             };
@@ -1651,6 +1663,7 @@ namespace BL
                 idChild = idChildArray[12],
                 idMom = idMotherArray[8],
                 firstName = "נעה",
+                lastName = "יודקביץ",
                 birthdayKid = new DateTime(2017, 5, 1),
                 isSpecialNeed = false,
             };
@@ -1659,6 +1672,7 @@ namespace BL
                 idChild = idChildArray[13],
                 idMom = idMotherArray[9],
                 firstName = "שירה",
+                lastName = "אורבך",
                 birthdayKid = new DateTime(2017, 5, 29),
                 isSpecialNeed = false,
             };
@@ -1667,6 +1681,7 @@ namespace BL
                 idChild = idChildArray[14],
                 idMom = idMotherArray[10],
                 firstName = "מוריה",
+                lastName = "קליין",
                 birthdayKid = new DateTime(2017, 6, 2),
                 isSpecialNeed = false,
             };
@@ -1675,6 +1690,7 @@ namespace BL
                 idChild = idChildArray[15],
                 idMom = idMotherArray[10],
                 firstName = "שרי",
+                lastName = "קליין",
                 birthdayKid = new DateTime(2017, 6, 9),
                 isSpecialNeed = false,
             };
@@ -1683,6 +1699,7 @@ namespace BL
                 idChild = idChildArray[16],
                 idMom = idMotherArray[11],
                 firstName = "יהודה",
+                lastName = "לנדאו",
                 birthdayKid = new DateTime(2017, 6, 29),
                 isSpecialNeed = false,
             };
@@ -1691,6 +1708,7 @@ namespace BL
                 idChild = idChildArray[17],
                 idMom = idMotherArray[12],
                 firstName = "איציק",
+                lastName = "סלמון",
                 birthdayKid = new DateTime(2017, 8, 11),
                 isSpecialNeed = false,
             };
@@ -1699,6 +1717,7 @@ namespace BL
                 idChild = idChildArray[18],
                 idMom = idMotherArray[13],
                 firstName = "פנחס",
+                lastName = "שטרן",
                 birthdayKid = new DateTime(2017, 7, 3),
                 isSpecialNeed = false,
             };
@@ -1707,6 +1726,7 @@ namespace BL
                 idChild = idChildArray[19],
                 idMom = idMotherArray[14],
                 firstName = "אורי",
+                lastName = "סורוצקין",
                 birthdayKid = new DateTime(2017, 6, 2),
                 isSpecialNeed = false,
             };
@@ -1715,6 +1735,7 @@ namespace BL
                 idChild = idChildArray[20],
                 idMom = idMotherArray[15],
                 firstName = "אליהו",
+                lastName = "רייכנר",
                 birthdayKid = new DateTime(2017, 6, 2),
                 isSpecialNeed = false,
             };
@@ -1723,6 +1744,7 @@ namespace BL
                 idChild = idChildArray[21],
                 idMom = idMotherArray[15],
                 firstName = "אלי",
+                lastName = "רייכנר",
                 birthdayKid = new DateTime(2017, 9, 9),
                 isSpecialNeed = false,
             };
@@ -1731,6 +1753,7 @@ namespace BL
                 idChild = idChildArray[22],
                 idMom = idMotherArray[16],
                 firstName = "יוסף",
+                lastName = "חובב",
                 birthdayKid = new DateTime(2017, 10, 22),
                 isSpecialNeed = false,
             };
@@ -1739,6 +1762,7 @@ namespace BL
                 idChild = idChildArray[23],
                 idMom = idMotherArray[17],
                 firstName = "ארי",
+                lastName = "אלבז",
                 birthdayKid = new DateTime(2017, 11, 29),
                 isSpecialNeed = false,
             };
@@ -1747,6 +1771,7 @@ namespace BL
                 idChild = idChildArray[24],
                 idMom = idMotherArray[17],
                 firstName = "שוקי",
+                lastName = "אלבז",
                 birthdayKid = new DateTime(2017, 12, 2),
                 isSpecialNeed = false,
             };
@@ -1755,6 +1780,7 @@ namespace BL
                 idChild = idChildArray[25],
                 idMom = idMotherArray[17],
                 firstName = "איתמר",
+                lastName = "אלבז",
                 birthdayKid = new DateTime(2017, 5, 2),
                 isSpecialNeed = false,
             };
@@ -1763,6 +1789,7 @@ namespace BL
                 idChild = idChildArray[26],
                 idMom = idMotherArray[18],
                 firstName = "יוני",
+                lastName = "זקב",
                 birthdayKid = new DateTime(2017, 10, 14),
                 isSpecialNeed = false,
             };
@@ -1771,6 +1798,7 @@ namespace BL
                 idChild = idChildArray[27],
                 idMom = idMotherArray[19],
                 firstName = "מויישי",
+                lastName = "טייב",
                 birthdayKid = new DateTime(2017, 3, 19),
                 isSpecialNeed = false,
             };
@@ -1779,6 +1807,7 @@ namespace BL
                 idChild = idChildArray[28],
                 idMom = idMotherArray[19],
                 firstName = "אבריימי",
+                lastName = "טייב",
                 birthdayKid = new DateTime(2017, 11, 9),
                 isSpecialNeed = false,
             };
@@ -1787,6 +1816,7 @@ namespace BL
                 idChild = idChildArray[29],
                 idMom = idMotherArray[20],
                 firstName = "יוסי",
+                lastName = "הוכמן",
                 birthdayKid = new DateTime(2017, 12, 2),
                 isSpecialNeed = false,
             };
