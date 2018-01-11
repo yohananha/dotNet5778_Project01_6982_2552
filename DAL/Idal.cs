@@ -24,18 +24,18 @@ namespace DAL
         
 
         void addContract(Contract contract);
-        void deleteContract(int idChildContractDel);
+        void deleteContract(long idChildContractDel);
         void updateContract(Contract contract);
 
         IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate=null);
         IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null);
-        IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null);
+        IEnumerable<Child> getKids(Func<Child, bool> Predicate = null);
         IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null);
 
         //getters by id
         Nanny getNanny(long idNanny);
         Mother getMom(long idMom);
         Child getChild(long idChild);
-        Contract getContract(int idContract);
+        Contract getContract(long idChildContract);
     }
 }

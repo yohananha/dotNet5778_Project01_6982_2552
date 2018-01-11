@@ -7,13 +7,18 @@
         mc:Ignorable="d"
         Title="DataWindow" Height="700" Width="1000" WindowStyle="None" WindowStartupLocation="CenterScreen">
 
+    <Window.Resources>
+        <local:NotBooleanToVisibilityConverter  
+            x:Key="notBooleanToVisibilityConverter" />
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <Label x:Name="label" Content="חיפוש בבסיס נתונים" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,45,0,0" VerticalAlignment="Bottom" Height="150" Width="600" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000">
+        <TabControl x:Name="tabControl" FlowDirection="RightToLeft" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000">
             <TabItem Header="חיפוש חוזה" Height="80" FontFamily="Open Sans Hebrew" FontSize="20" Width="246">
 
                 <Grid Background="#FFFF" Opacity="0.4"/>
@@ -21,10 +26,39 @@
             <TabItem Header="חיפוש מטפלות" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Margin="0.4,-2,0.4,0" VerticalAlignment="Top" Width="246">
                 <Grid Background="#FFFF" Opacity="0.4"/>
             </TabItem>
-            <TabItem Header="חיפוש ילדים" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Width="246">
-                <Grid Background="#FFFF" Opacity="0.4"/>
+            <TabItem Header="חיפוש ילדים" FlowDirection="LeftToRight" FontFamily="Open Sans Hebrew" Height="80" Width="246" FontSize="20" MouseLeftButtonUp="TabItem_MouseLeftButtonUp">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32*"/>
+                        <RowDefinition Height="31*"/>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="108*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="199*"/>
+                        <ColumnDefinition Width="277*"/>
+                        <ColumnDefinition Width="121*"/>
+                        <ColumnDefinition Width="398*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dataGridDetailsChild" AutoGenerateColumns="False" FlowDirection="RightToLeft" Grid.ColumnSpan="4" Grid.Row="3" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
+                            <DataGridTextColumn Header="תעודת זהות" Binding="{Binding idChild}" />
+                            <DataGridTextColumn Header="תאריך לידה" Binding="{Binding birthdayKid}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="buttonSearchChild" Content="חפש ילדים" Margin="30,30,29.667,30" Grid.RowSpan="3" Click="buttonSearchChild_Click"/>
+                    <Label x:Name="label1" Content="ילדים לפי אמא" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="138,13"/>
+                    <Label x:Name="label2" Content="ילדים ללא מסגרת" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Margin="126,12"/>
+                    <Label x:Name="label3" Content="ילדים עם צרכים מיוחדים" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Margin="100,16"/>
+                    <ComboBox x:Name="comboBoxChildByMom" Visibility="{Binding ElementName=checkBoxChildByMom, Path=IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}}" Grid.Column="1"  Margin="40.333,15,39.333,15" SelectionChanged="comboBoxChildByMom_SelectionChanged" />
+                    <CheckBox x:Name="checkBoxNotNanny" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                    <CheckBox x:Name="checkBoxWithSpaiclNeed" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                    <CheckBox x:Name="checkBoxChildByMom" IsChecked="False" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+
+                </Grid>
             </TabItem>
-            <TabItem Header="חיפוש אמהת" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Width="246">
+            <TabItem Header="חיפוש אמהות" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Width="246">
                 <Grid Background="#FFFF" Opacity="0.4"/>
             </TabItem>
         </TabControl>

@@ -57,7 +57,7 @@ namespace DAL
             DataSource.childList[index] = child.duplication();
         }
 
-        public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
+        public IEnumerable<Child> getKids(Func<Child, bool> Predicate = null)
         {
             if (Predicate == null)
                 return DataSource.childList.AsEnumerable();
@@ -68,7 +68,7 @@ namespace DAL
 
         #region contract funcs
 
-        public Contract getContract(int idChild)
+        public Contract getContract(long idChild)
         {
             var contract = DataSource.contractList.FirstOrDefault(cl => cl.idChild == idChild);
             if (contract == null)
@@ -92,7 +92,7 @@ namespace DAL
 
         }
 
-        public void deleteContract(int idChildContractDel)
+        public void deleteContract(long idChildContractDel)
         {
             int index = DataSource.contractList.FindIndex(cl => cl.idChild == idChildContractDel);
             if (index == -1)

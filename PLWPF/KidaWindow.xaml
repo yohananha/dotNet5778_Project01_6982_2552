@@ -16,8 +16,8 @@
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <Label x:Name="label" Content="מסך הילדים" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,45,0,0" VerticalAlignment="Bottom" Height="150" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000">
-            <TabItem x:Name="addChildTab" Header="הוספת ילד" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" MouseLeftButtonUp="addChildTab_MouseLeftButtonUp">
+        <TabControl x:Name="tabControl" FlowDirection="RightToLeft" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000">
+            <TabItem x:Name="addChildTab" FlowDirection="LeftToRight" Header="הוספת ילד" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" MouseLeftButtonUp="addChildTab_MouseLeftButtonUp">
                 <Grid x:Name="grid1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -52,7 +52,7 @@
 
             </TabItem>
 
-            <TabItem x:Name="updateChildTab" Header="עדכון ילד" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" MouseLeftButtonUp="updateChildTab_MouseLeftButtonUp_1">
+            <TabItem x:Name="updateChildTab" FlowDirection="LeftToRight" Header="עדכון ילד" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" MouseLeftButtonUp="updateChildTab_MouseLeftButtonUp_1">
 
                 <Grid x:Name="grid2">
                     <Grid.ColumnDefinitions>
@@ -91,7 +91,7 @@
 
             </TabItem>
 
-            <TabItem Header="מחיקת ילד" Height="80" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" MouseLeftButtonUp="TabItem_MouseLeftButtonUp">
+            <TabItem Header="מחיקת ילד" FlowDirection="LeftToRight" Height="80" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" MouseLeftButtonUp="TabItem_MouseLeftButtonUp">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="249*"/>

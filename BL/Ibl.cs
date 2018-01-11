@@ -26,14 +26,14 @@ namespace BL
         Child getChild(long idChild);
 
         void addContract(Contract contract);
-        void deleteContract(int idChildContractDel);
+        void deleteContract(long idChildContractDel);
         void updateContract(Contract contract);
         double getSalary(long idChild, long idNanny, bool isHour);
-        Contract getContract(int idChildContract);
+        Contract getContract(long idChildContract);
 
         IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate = null);
         IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null);
-        IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null);
+        IEnumerable<Child> getKids(Func<Child, bool> Predicate = null);
         IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null);
 
         //other metod

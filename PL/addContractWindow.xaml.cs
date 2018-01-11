@@ -42,7 +42,7 @@ namespace PL
             {
 
                 mom = bl.getMother(Convert.ToInt64(textBoxMom.Text));
-                childList = bl.getKidsByMoms(a => a.idMom == mom.IdMom);
+                childList = bl.getKids(a => a.idMom == mom.IdMom);
                 dataGridChildList.ItemsSource = childList;
 
                 nannyList = bl.getAllCompatibleNanny(mom);

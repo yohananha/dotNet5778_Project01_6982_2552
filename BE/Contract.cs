@@ -1,23 +1,92 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Contract
+    public class Contract: INotifyPropertyChanged
     {
         public int idContract { get; set; }
-        public long idNanny { get; set; }
-        public long idChild { get; set; }
+
+        private long _idNanny;
+        public long idNanny  
+        {
+            get { return _idNanny; }
+            set
+            {
+                _idNanny = value;
+
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("idNanny"));
+                }
+            }
+        }
+        private long _idChild;
+        public long idChild
+        {
+            get { return _idChild; }
+            set
+            {
+                _idChild = value;
+
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("idChild"));
+                }
+            }
+        }
         public bool isMet { get; set; }
         public bool isContract { get; set; }
-        public double salaryPerHour { get; set; }
-        public double salaryPerMonth { get; set; }
-        public bool isHour { get; set; }
+        private double _salaryPerHour;
+        public double salaryPerHour
+        {
+            get { return _salaryPerHour; }
+            set
+            {
+                _salaryPerHour = value;
+
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("salaryPerHour"));
+                }
+            }
+        }
+        private double _salaryPerMonth;
+        public double salaryPerMonth
+        {
+            get { return _salaryPerMonth; }
+            set
+            {
+                _salaryPerMonth = value;
+
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("salaryPerMonth"));
+                }
+            }
+        }
+        private bool _isHour;
+        public bool isHour
+        {
+            get { return _isHour; }
+            set
+            {
+                _isHour = value;
+
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("isHour"));
+                }
+            }
+        }
         public DateTime workBegin { get; set; }
         public DateTime workEnd { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         //public override string ToString()
         //{

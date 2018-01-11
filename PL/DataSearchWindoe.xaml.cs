@@ -55,7 +55,7 @@ namespace PL
                     throw new Exception();
                 else
                 {
-                    childList = bl.getKidsByMoms(a=>a.idMom == Convert.ToInt64(idMomTextBox.Text));
+                    childList = bl.getKids(a=>a.idMom == Convert.ToInt64(idMomTextBox.Text));
                     if (childList == null)
                         MessageBox.Show("לא נמצאו ילדים לאמא");
                     else dataGrid.ItemsSource = childList;
