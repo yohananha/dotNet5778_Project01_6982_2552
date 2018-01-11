@@ -17,14 +17,16 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="label" Content="חיפוש בבסיס נתונים" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,45,0,0" VerticalAlignment="Bottom" Height="150" Width="600" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TabControl x:Name="tabControl" FlowDirection="RightToLeft" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000">
+        <Image x:Name="image" HorizontalAlignment="Left" Source="images/db.jpg" Height="700" VerticalAlignment="Top" Width="1000" Margin="0,0,0,0" Grid.RowSpan="2"/>
+
+        <Label x:Name="label" Content="חיפוש בבסיס נתונים" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Bottom" Height="100" Width="500" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TabControl x:Name="tabControl" FlowDirection="RightToLeft" Opacity="0.8" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000">
             <TabItem Header="חיפוש חוזה" Height="80" FontFamily="Open Sans Hebrew" FontSize="20" Width="246">
 
-                <Grid Background="#FFFF" Opacity="0.4"/>
+                <Grid Background="#FFFF" />
             </TabItem>
             <TabItem Header="חיפוש מטפלות" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Margin="0.4,-2,0.4,0" VerticalAlignment="Top" Width="246">
-                <Grid Background="#FFFF" Opacity="0.4"/>
+                <Grid Background="#FFFF" />
             </TabItem>
             <TabItem Header="חיפוש ילדים" FlowDirection="LeftToRight" FontFamily="Open Sans Hebrew" Height="80" Width="246" FontSize="20" MouseLeftButtonUp="TabItem_MouseLeftButtonUp">
                 <Grid>
@@ -51,7 +53,7 @@
                     <Label x:Name="label1" Content="ילדים לפי אמא" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="138,13"/>
                     <Label x:Name="label2" Content="ילדים ללא מסגרת" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Margin="126,12"/>
                     <Label x:Name="label3" Content="ילדים עם צרכים מיוחדים" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Margin="100,16"/>
-                    <ComboBox x:Name="comboBoxChildByMom" Visibility="{Binding ElementName=checkBoxChildByMom, Path=IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}}" Grid.Column="1"  Margin="40.333,15,39.333,15" SelectionChanged="comboBoxChildByMom_SelectionChanged" />
+                    <ComboBox x:Name="comboBoxChildByMom" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxChildByMom}" Grid.Column="1"  Margin="40.333,15,39.333,15" SelectionChanged="comboBoxChildByMom_SelectionChanged" />
                     <CheckBox x:Name="checkBoxNotNanny" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
                     <CheckBox x:Name="checkBoxWithSpaiclNeed" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
                     <CheckBox x:Name="checkBoxChildByMom" IsChecked="False" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"  />
@@ -62,7 +64,7 @@
                 <Grid Background="#FFFF" Opacity="0.4"/>
             </TabItem>
         </TabControl>
-        <Button x:Name="button" Content="חזרה לתפריט ראשי" HorizontalAlignment="Left" Margin="40,00,0,40" VerticalAlignment="Bottom" Width="200" Height="50" Click="button_Click"/>
+        <Button x:Name="button" Content="חזרה לתפריט ראשי" HorizontalAlignment="Left" Opacity="0.8" Margin="40,00,0,20" VerticalAlignment="Bottom" Width="200" Height="50" Click="button_Click"/>
 
     </Grid>
 </Window>

@@ -17,8 +17,10 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="label" Content="מסך החוזים" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Bottom" Height="150" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TabControl x:Name="tabControl" FlowDirection="RightToLeft" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000">
+        <Image x:Name="contractBG" HorizontalAlignment="center" Source="images/contracts.jpg" Height="700" Margin="0,0,0,0" Grid.RowSpan="2" VerticalAlignment="Center" Width="1000"/>
+
+        <Label x:Name="label" Content="מסך החוזים" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Bottom" Height="100" Foreground="White" Width="300" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TabControl x:Name="tabControl" FlowDirection="RightToLeft" HorizontalAlignment="Center" Opacity="0.8" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000">
             <TabItem x:Name="addContractTab" Header="הוספת חוזה" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" MouseLeftButtonUp="addContractTab_MouseLeftButtonUp">
 
                 <Grid>
@@ -215,7 +217,7 @@
 
 
         </TabControl>
-        <Button x:Name="button" Content="חזרה לתפריט ראשי" HorizontalAlignment="Left" Margin="40,0,0,40" VerticalAlignment="Bottom" Width="200" Height="50" Click="button_Click"/>
+        <Button x:Name="button" Content="חזרה לתפריט ראשי" HorizontalAlignment="Left" Margin="40,0,0,20" Opacity="0.6" VerticalAlignment="Bottom" Width="200" Height="50" Click="button_Click"/>
 
     </Grid>
 </Window>

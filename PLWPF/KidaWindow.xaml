@@ -15,9 +15,11 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="label" Content="מסך הילדים" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,45,0,0" VerticalAlignment="Bottom" Height="150" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TabControl x:Name="tabControl" FlowDirection="RightToLeft" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000">
-            <TabItem x:Name="addChildTab" FlowDirection="LeftToRight" Header="הוספת ילד" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" MouseLeftButtonUp="addChildTab_MouseLeftButtonUp">
+        <Image x:Name="image" Source="images/baby.jpg" HorizontalAlignment="Center" Height="700" Grid.RowSpan="2" VerticalAlignment="Center" Width="1000"/>
+
+        <Label x:Name="label" Content="מסך הילדים" FontSize="50" FontFamily="Open Sans Hebrew" Foreground="White" HorizontalAlignment="Right" Margin="0,45,0,0" VerticalAlignment="Bottom" Height="100"  Width="300" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TabControl x:Name="tabControl"  FlowDirection="RightToLeft" Opacity="0.7" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000">
+            <TabItem x:Name="addChildTab" FlowDirection="LeftToRight" Header="הוספת ילד"  Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" MouseLeftButtonUp="addChildTab_MouseLeftButtonUp">
                 <Grid x:Name="grid1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -110,7 +112,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="button" Content="חזרה לתפריט ראשי" HorizontalAlignment="Left" Margin="40,0,0,040" VerticalAlignment="Bottom" Width="200" Height="50" Click="button_Click"/>
+        <Button x:Name="button" Content="חזרה לתפריט ראשי" HorizontalAlignment="Left" Margin="40,0,0,20" VerticalAlignment="Bottom" Width="200" Height="50" Click="button_Click"/>
 
     </Grid>
 </Window>
