@@ -129,7 +129,7 @@ namespace PLWPF
 
                 if (checkBoxContractByMom.IsChecked == true)
                 {
-                    contractList = from a in bl.getKids(a => a.idMom == (long)comboBoxContractByMom.SelectedValue)
+                    contractList = from a in bl.getKids(a => a.idMom == mom.IdMom)
                                    let x = a.idChild
                                    from b in bl.getContracts()
                                    where x == b.idChild
@@ -138,11 +138,22 @@ namespace PLWPF
                 else
                 {
                     if (checkBoxContractByNanny.IsChecked == true)
-                        contractList = bl.getContracts(a => a.idNanny == (long)comboBoxContractByNanny.SelectedValue);
+                        contractList = bl.getContracts(a => a.idNanny == nanny.nannyId);
                     else
                         contractList = bl.getContracts();
                 }
 
+                if (checkBoxContractBySalery.IsChecked == true)
+                    contractList = from a in contractList
+                                   where ((a.salaryAgreed >= double.Parse(minTextBox.Text)) && (a.salaryAgreed <= double.Parse(maxTextBox.Text)))
+                                   select a;
+
+                if (checkBoxContractByHour.IsChecked == true)
+                    contractList = from a in contractList
+                                   where a.isHour == true
+                                   select a;
+
+                dataGridContractDetails.ItemsSource = contractList;
 
             }
             catch (Exception Ex)
