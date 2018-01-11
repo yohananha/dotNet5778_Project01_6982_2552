@@ -10,7 +10,8 @@ namespace BE
     public class Contract: INotifyPropertyChanged
     {
         public int idContract { get; set; }
-
+        public string nameChild { get; set; }
+        public string nameNanny { get; set; }
         private long _idNanny;
         public long idNanny  
         {
@@ -69,6 +70,20 @@ namespace BE
                 }
             }
         }
+        private double _salaryAgreed;
+        public double salaryAgreed
+        {
+            get { return _salaryAgreed; }
+            set
+            {
+                _salaryAgreed = value;
+
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("salaryAgreed"));
+                }
+            }
+        }
         private bool _isHour;
         public bool isHour
         {
@@ -107,6 +122,9 @@ namespace BE
             duplicationContract.isHour = this.isHour;
             duplicationContract.workBegin = this.workBegin;
             duplicationContract.workEnd = this.workEnd;
+            duplicationContract.nameChild = this.nameChild;
+            duplicationContract.nameNanny = this.nameNanny;
+            duplicationContract.salaryAgreed = this.salaryAgreed;
 
             return duplicationContract;
         }

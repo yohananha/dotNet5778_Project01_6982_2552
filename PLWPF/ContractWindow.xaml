@@ -107,7 +107,6 @@
                     <Label x:Name="label6" Content="שינוי שעות אמא" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
                     <Button x:Name="buttonUpdateMomhour" Content="עדכן שעות" Grid.Column="2" HorizontalAlignment="Center" Margin="3" Grid.Row="4" VerticalAlignment="Center" Click="buttonUpdateMomhour_Click" />
                     <Button x:Name="buttonUpdateContract" Content="עדכן חוזה" Grid.Column="1" HorizontalAlignment="Center" Margin="3" Grid.Row="4" VerticalAlignment="Center" Click="buttonUpdateContract_Click" />
-                    <Label x:Name="label7" Content="פרטי חוזה" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center"/>
 
                     <Grid x:Name="gridHourMom" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Grid.ColumnSpan="2"   >
                         <Grid.RowDefinitions>
@@ -153,12 +152,13 @@
                         <xctk:TimePicker x:Name="FriEnd" Format="ShortTime" Value="{Binding endHour[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=FriCheck}" Grid.Row="3"/>
                         <xctk:TimePicker x:Name="FriStart" Format="ShortTime"  Value="{Binding startHour[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=FriCheck}"  Grid.Row="2"/>
                     </Grid>
-                    <Grid x:Name="gridDetalisContract" Margin="3" Grid.Row="1" Grid.RowSpan="4">
+                    <Grid x:Name="gridDetalisContract" Margin="3"  Grid.RowSpan="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -178,18 +178,20 @@
                         <TextBox x:Name="idNannyTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding idNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                         <Label Content="יש חוזה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="3" VerticalAlignment="Center" FontSize="15"/>
                         <CheckBox x:Name="isContractCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding isContract, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-                        <Label Content="לפי שעה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="5" VerticalAlignment="Center" FontSize="15"/>
-                        <CheckBox x:Name="isHourCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding isHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+                        <Label Content="לפי שעה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="6" VerticalAlignment="Center" FontSize="15"/>
+                        <CheckBox x:Name="isHourCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding isHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
                         <Label Content="נפגשו" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="4" VerticalAlignment="Center" FontSize="15"/>
                         <CheckBox x:Name="isMetCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding isMet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-                        <Label Content="משכורת חודשית לפי שעה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="6" VerticalAlignment="Center" FontSize="15"/>
-                        <TextBox x:Name="salaryPerHourTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="משכורת לפי חודשית" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="7" VerticalAlignment="Center" FontSize="15"/>
-                        <TextBox x:Name="salaryPerMonthTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="7" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="תחילת החוזה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="8" VerticalAlignment="Center" FontSize="15"/>
-                        <DatePicker x:Name="workBeginDatePicker1" HorizontalAlignment="Left" Margin="3" Grid.Row="8" SelectedDate="{Binding workBegin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
-                        <Label Content="סיום החוזה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="9" VerticalAlignment="Center" FontSize="15"/>
-                        <DatePicker x:Name="workEndDatePicker1" HorizontalAlignment="Left" Margin="3" Grid.Row="9" SelectedDate="{Binding workEnd, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+                        <Label Content="משכורת חודשית לפי שעה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="7" VerticalAlignment="Center" FontSize="15"/>
+                        <TextBox x:Name="salaryPerHourTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="7" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="משכורת לפי חודשית" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="8" VerticalAlignment="Center" FontSize="15"/>
+                        <TextBox x:Name="salaryPerMonthTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="תחילת החוזה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="9" VerticalAlignment="Center" FontSize="15"/>
+                        <DatePicker x:Name="workBeginDatePicker1" HorizontalAlignment="Left" Margin="3" Grid.Row="9" SelectedDate="{Binding workBegin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+                        <Label Content="סיום החוזה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="10" VerticalAlignment="Center" FontSize="15"/>
+                        <DatePicker x:Name="workEndDatePicker1" HorizontalAlignment="Left" Margin="3" Grid.Row="10" SelectedDate="{Binding workEnd, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+                        <Label x:Name="label7" Content="שכר שסוכם" Grid.Column="1" HorizontalAlignment="Right"  Grid.Row="5" VerticalAlignment="Center" FontSize="15"/>
+                        <TextBox x:Name="salryAgreedTextBox" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding salaryAgreed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                     </Grid>
 
                 </Grid>

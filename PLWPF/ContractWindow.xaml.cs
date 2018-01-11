@@ -91,6 +91,12 @@ namespace PLWPF
         {
             try
             {
+                contract.nameChild = (bl.getChild(contract.idChild)).fullName;
+                contract.nameNanny = nanny.fullName;
+                if (contract.isHour)
+                    contract.salaryAgreed = contract.salaryPerHour;
+                else
+                    contract.salaryAgreed = contract.salaryPerMonth;
                 bl.addContract(contract);
                 MessageBox.Show("חוזה נחתם בהצלחה");
                 dataGridDetalis.ItemsSource = null;
@@ -212,6 +218,10 @@ namespace PLWPF
         {
             try
             {
+                if (contract.isHour)
+                    contract.salaryAgreed = contract.salaryPerHour;
+                else
+                    contract.salaryAgreed = contract.salaryPerMonth;
                 bl.updateContract(contract);
                 MessageBox.Show("חוזה עודכן בהצלחה");
                 comboBoxChooseChildUpdate.SelectedIndex = -1;
