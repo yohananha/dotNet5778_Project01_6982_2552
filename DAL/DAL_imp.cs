@@ -161,7 +161,7 @@ namespace DAL
                                     select item;
      
             //the metod deleteChild delete also the contract child
-            foreach (var item in listChildToDelete)
+            foreach (Child item in listChildToDelete)
                 deleteChild(item.idChild);
         }
 
