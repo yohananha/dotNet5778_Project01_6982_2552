@@ -152,6 +152,18 @@ namespace PLWPF
         #endregion
 
         #region UpdateContractEvent
+        private void updateContracTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (comboBoxchooseMomUPdate.SelectedIndex == -1)
+            {
+                comboBoxchooseMomUPdate.ItemsSource = bl.getAllMothers();
+                comboBoxchooseMomUPdate.DisplayMemberPath = "fullName";
+                comboBoxchooseMomUPdate.SelectedValuePath = "IdMom";
+                comboBoxchooseMomUPdate.SelectedIndex = -1;
+            }
+
+        }
+
         private void comboBoxchooseMomUPdate_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBoxchooseMomUPdate.SelectedIndex != -1)
@@ -217,16 +229,6 @@ namespace PLWPF
 
         #endregion
 
-        private void updateContracTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            if (comboBoxchooseMomUPdate.SelectedIndex == -1)
-            {
-                comboBoxchooseMomUPdate.ItemsSource = bl.getAllMothers();
-                comboBoxchooseMomUPdate.DisplayMemberPath = "fullName";
-                comboBoxchooseMomUPdate.SelectedValuePath = "IdMom";
-                comboBoxchooseMomUPdate.SelectedIndex = -1;
-            }
-
-        }
+       
     }
 }
