@@ -29,7 +29,7 @@ namespace BL
         void deleteContract(long idChildContractDel);
         void updateContract(Contract contract);
         double getSalary(long idChild, long idNanny, bool isHour);
-        Contract getContract(int idChildContract);
+        Contract getContract(long idChildContract);
 
         IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate = null);
         IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null);

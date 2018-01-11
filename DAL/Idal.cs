@@ -36,6 +36,6 @@ namespace DAL
         Nanny getNanny(long idNanny);
         Mother getMom(long idMom);
         Child getChild(long idChild);
-        Contract getContract(int idContract);
+        Contract getContract(long idChildContract);
     }
 }

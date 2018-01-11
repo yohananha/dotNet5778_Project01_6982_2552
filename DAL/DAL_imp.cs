@@ -68,7 +68,7 @@ namespace DAL
 
         #region contract funcs
 
-        public Contract getContract(int idChild)
+        public Contract getContract(long idChild)
         {
             var contract = DataSource.contractList.FirstOrDefault(cl => cl.idChild == idChild);
             if (contract == null)

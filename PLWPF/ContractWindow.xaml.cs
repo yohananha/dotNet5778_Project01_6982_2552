@@ -22,40 +22,52 @@ namespace PLWPF
         public BE.Nanny nanny;
         public BE.Child child;
         public BE.Contract contract;
+        public BE.Mother mom;
         public BL.Ibl bl;
 
         public ContractWindow()
         {
             InitializeComponent();
             bl = BL.FactoryBL.GetBL();
-            comboBoxChooseMom.ItemsSource = bl.getAllMothers();
-            comboBoxChooseMom.DisplayMemberPath = "fullName";
-            comboBoxChooseMom.SelectedValuePath = "IdMom";
-            comboBoxChooseMom.SelectedIndex = -1;
         }
-
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
         #region addContractEvent
+        private void addContractTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (comboBoxChooseChild.SelectedIndex == -1)
+            {
+                comboBoxChooseMom.ItemsSource = bl.getAllMothers();
+                comboBoxChooseMom.DisplayMemberPath = "fullName";
+                comboBoxChooseMom.SelectedValuePath = "IdMom";
+                comboBoxChooseMom.SelectedIndex = -1;
+            }
+        }
+
         private void comboBoxChooseMom_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            comboBoxChooseChild.ItemsSource = bl.getKidsByMoms(a => a.idMom == Convert.ToInt64(comboBoxChooseMom.SelectedValue));
-            comboBoxChooseChild.DisplayMemberPath = "fullName";
-            comboBoxChooseChild.SelectedValuePath = "idChild";
-            comboBoxChooseChild.SelectedIndex = -1;
-            contract = new BE.Contract();
-            addContractTab.DataContext = contract;
-           
+            if (comboBoxChooseMom.SelectedIndex != -1)
+            {
+                comboBoxChooseChild.ItemsSource = bl.getKidsByMoms(a => a.idMom == Convert.ToInt64(comboBoxChooseMom.SelectedValue));
+                comboBoxChooseChild.DisplayMemberPath = "fullName";
+                comboBoxChooseChild.SelectedValuePath = "idChild";
+                comboBoxChooseChild.SelectedIndex = -1;
+                contract = new BE.Contract();
+                addContractTab.DataContext = contract;
+            }
         }
 
         private void comboBoxChooseChild_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            contract.idChild = (long)comboBoxChooseChild.SelectedValue;
-            dataGridDetalis.ItemsSource = bl.getAllCompatibleNanny((BE.Mother)comboBoxChooseMom.SelectedItem);
-            dataGridDetalis.SelectedValuePath = "nannyId";
+            if (comboBoxChooseChild.SelectedIndex != -1)
+            {
+                contract.idChild = (long)comboBoxChooseChild.SelectedValue;
+                dataGridDetalis.ItemsSource = bl.getAllCompatibleNanny((BE.Mother)comboBoxChooseMom.SelectedItem);
+                dataGridDetalis.SelectedValuePath = "nannyId";
+            }
         }
 
         private void dataGridDetalis_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -81,11 +93,11 @@ namespace PLWPF
             {
                 bl.addContract(contract);
                 MessageBox.Show("חוזה נחתם בהצלחה");
-                contract = new BE.Contract();
-                addContractTab.DataContext = contract;
                 dataGridDetalis.ItemsSource = null;
                 comboBoxChooseChild.SelectedIndex = -1;
                 comboBoxChooseMom.SelectedIndex = -1;
+                contract = new BE.Contract();
+                addContractTab.DataContext = contract;
 
             }
             catch (Exception Ex)
@@ -135,8 +147,86 @@ namespace PLWPF
             }
         }
 
+
+
         #endregion
 
+        #region UpdateContractEvent
+        private void comboBoxchooseMomUPdate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxchooseMomUPdate.SelectedIndex != -1)
+            {
+                comboBoxChooseChildUpdate.ItemsSource = bl.getKidsByMoms(a => a.idMom == Convert.ToInt64(comboBoxchooseMomUPdate.SelectedValue));
+                comboBoxChooseChildUpdate.DisplayMemberPath = "fullName";
+                comboBoxChooseChildUpdate.SelectedValuePath = "idChild";
+                comboBoxChooseChildUpdate.SelectedIndex = -1;
+            }
+        }
 
+        private void comboBoxChooseChildUpdate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (comboBoxChooseChildUpdate.SelectedIndex != -1)
+                {
+                    contract = bl.getContract((long)comboBoxChooseChildUpdate.SelectedValue);
+                    gridDetalisContract.DataContext = contract;
+                    mom = bl.getMother((long)comboBoxchooseMomUPdate.SelectedValue);
+                    gridHourMom.DataContext = mom;
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+        private void buttonUpdateMomhour_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (!bl.checkSchedule(bl.getNanny(contract.idNanny), mom))
+                    throw new Exception("המטפלת לא עובדת בשעות הנדרשות");
+
+                if (contract.isHour == true)
+                    contract.salaryPerHour = bl.getSalary(contract.idChild, contract.idNanny, true);
+                contract.salaryPerMonth = bl.getSalary(contract.idChild, contract.idNanny, false);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+        private void buttonUpdateContract_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bl.updateContract(contract);
+                MessageBox.Show("חוזה עודכן בהצלחה");
+                comboBoxChooseChildUpdate.SelectedIndex = -1;
+                comboBoxchooseMomUPdate.SelectedIndex = -1;
+                contract = new BE.Contract();
+                gridDetalisContract.DataContext = contract;
+                mom = new BE.Mother();
+                gridHourMom.DataContext = mom;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+
+        #endregion
+
+        private void updateContracTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (comboBoxchooseMomUPdate.SelectedIndex == -1)
+            {
+                comboBoxchooseMomUPdate.ItemsSource = bl.getAllMothers();
+                comboBoxchooseMomUPdate.DisplayMemberPath = "fullName";
+                comboBoxchooseMomUPdate.SelectedValuePath = "IdMom";
+                comboBoxchooseMomUPdate.SelectedIndex = -1;
+            }
+
+        }
     }
 }

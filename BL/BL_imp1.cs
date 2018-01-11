@@ -58,7 +58,7 @@ namespace BL
 
         #region contract metod
 
-        public Contract getContract(int idChildContract)
+        public Contract getContract(long idChildContract)
         {
             return dal.getContract(idChildContract);
         }
