@@ -57,7 +57,7 @@ namespace DAL
             DataSource.childList[index] = child.duplication();
         }
 
-        public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
+        public IEnumerable<Child> getKids(Func<Child, bool> Predicate = null)
         {
             if (Predicate == null)
                 return DataSource.childList.AsEnumerable();

@@ -18,27 +18,73 @@
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <Label x:Name="label" Content="מסך החוזים" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Bottom" Height="150" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000">
-            <TabItem x:Name="deleteContractTab" Header="מחיקת חוזה" Height="80" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" MouseLeftButtonUp="deleteContractTab_MouseLeftButtonUp">
+        <TabControl x:Name="tabControl" FlowDirection="RightToLeft" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000">
+            <TabItem x:Name="addContractTab" Header="הוספת חוזה" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" MouseLeftButtonUp="addContractTab_MouseLeftButtonUp">
+
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
+                        <RowDefinition Height="5*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="buttonDeleteContract" Content="מחק/י חוזה" Margin="300,40" Grid.ColumnSpan="2"  Grid.Row="2" Click="buttonDeleteContract_Click" />
-                    <ComboBox x:Name="comboBoxChooseMomdelete"   Margin="150,50" SelectionChanged="comboBoxChooseMomdelete_SelectionChanged" />
-                    <ComboBox x:Name="comboBoxchooseChildDelete" Margin="150,50" Grid.Row="1" SelectionChanged="comboBoxchooseChildDelete_SelectionChanged" />
-                    <Label x:Name="label2" Content="בחר/י אמא" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    <Label x:Name="label3" Content="בחר/י ילד" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" />
-
+                    <Grid x:Name="gridDetailsContract" Grid.RowSpan="4" Grid.Column="2" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Right" Content="תעודת זהות ילד" FontSize="18"/>
+                        <TextBox x:Name="idChildTextBox" Width="120" VerticalAlignment="Center" Text="{Binding idChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Center" Grid.Column="1"/>
+                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Content="תעודת זהות מטפלת" FontSize="18"/>
+                        <TextBox x:Name="idNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding idNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Center" Grid.Column="1"/>
+                        <Label VerticalAlignment="Center" Grid.Row="8" Margin="3" HorizontalAlignment="Right" Content="האם נחתם חוזה" FontSize="18"/>
+                        <CheckBox x:Name="isContractCheckBox" VerticalAlignment="Center" Grid.Row="8" Margin="3" IsChecked="{Binding isContract, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content="" Grid.Column="1"/>
+                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Right" Content="לפי שעה" FontSize="18"/>
+                        <CheckBox x:Name="isHourCheckBox" VerticalAlignment="Center" Grid.Row="3" Margin="3" IsChecked="{Binding isHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content="" Grid.Column="1"/>
+                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Content="נפגשו" FontSize="18"/>
+                        <CheckBox x:Name="isMetCheckBox" VerticalAlignment="Center" Grid.Row="2" Margin="3" IsChecked="{Binding isMet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content="" Grid.Column="1"/>
+                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Right" Content="משכורת לפי לשעה" FontSize="18"/>
+                        <TextBox x:Name="salaryPerHourTextBox" Width="120" VerticalAlignment="Center" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Center" Grid.Column="1"/>
+                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Right" Content="משכורת לפי לחודש" FontSize="18"/>
+                        <TextBox x:Name="salaryPerMonthTextBox" Width="120" VerticalAlignment="Center" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Center" Grid.Column="1"/>
+                        <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Right" Content="תחילת חוזה" FontSize="18"/>
+                        <DatePicker x:Name="workBeginDatePicker" VerticalAlignment="Center" SelectedDate="{Binding workBegin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" HorizontalAlignment="Center" Grid.Column="1"/>
+                        <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Right" Content="סוף חוזה" FontSize="18"/>
+                        <DatePicker x:Name="workEndDatePicker" VerticalAlignment="Center" SelectedDate="{Binding workEnd, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" HorizontalAlignment="Center" Grid.Column="1"/>
+                        <Button x:Name="buttonAddContract" Grid.ColumnSpan="2" Content="הוסף חוזה" Grid.Row="9" Click="buttonAddContract_Click" Grid.Column="1"/>
+                    </Grid>
+                    <ComboBox x:Name="comboBoxChooseMom" Margin="3" Grid.Row="1" SelectionChanged="comboBoxChooseMom_SelectionChanged" />
+                    <ComboBox x:Name="comboBoxChooseChild"  Margin="3" Grid.Row="1" SelectionChanged="comboBoxChooseChild_SelectionChanged" Grid.Column="1"/>
+                    <DataGrid x:Name="dataGridDetalis" Margin="3" FlowDirection="RightToLeft" AutoGenerateColumns="False" Grid.ColumnSpan="2"  Grid.Row="3" SelectionChanged="dataGridDetalis_SelectionChanged" Grid.Column="0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding fullName}" />
+                            <DataGridTextColumn Header="Address" Binding="{Binding addressNanny}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label x:Name="labelChooseMom" Content="בחר/י אמא" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Label x:Name="labelChooseChild" Content="בחר/י ילד/ה" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" />
+                    <Label x:Name="label1" Content="רשימת מטפלות מתאימות" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="2"  VerticalAlignment="Center" Grid.Column="0"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="updateContracTab" Header="עדכון חוזה" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" MouseLeftButtonUp="updateContracTab_MouseLeftButtonUp">
+
+            <TabItem x:Name="updateContracTab" FlowDirection="LeftToRight"  Header="עדכון חוזה" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" MouseLeftButtonUp="updateContracTab_MouseLeftButtonUp">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.5*"/>
@@ -147,70 +193,26 @@
                 </Grid>
             </TabItem>
 
-            <TabItem x:Name="addContractTab" Header="הוספת חוזה" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" MouseLeftButtonUp="addContractTab_MouseLeftButtonUp">
-
+            <TabItem x:Name="deleteContractTab" FlowDirection="LeftToRight" Header="מחיקת חוזה" Height="80" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" MouseLeftButtonUp="deleteContractTab_MouseLeftButtonUp">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
-                        <RowDefinition Height="5*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid x:Name="gridDetailsContract" Grid.RowSpan="4" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="תעודת זהות ילד" FontSize="18"/>
-                        <TextBox x:Name="idChildTextBox" Width="120" VerticalAlignment="Center" Text="{Binding idChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Center"/>
-                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="תעודת זהות מטפלת" FontSize="18"/>
-                        <TextBox x:Name="idNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding idNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Center"/>
-                        <Label VerticalAlignment="Center" Grid.Row="8" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="האם נחתם חוזה" FontSize="18"/>
-                        <CheckBox x:Name="isContractCheckBox" VerticalAlignment="Center" Grid.Row="8" Margin="3" IsChecked="{Binding isContract, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content=""/>
-                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="לפי שעה" FontSize="18"/>
-                        <CheckBox x:Name="isHourCheckBox" VerticalAlignment="Center" Grid.Row="3" Margin="3" IsChecked="{Binding isHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content=""/>
-                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="נפגשו" FontSize="18"/>
-                        <CheckBox x:Name="isMetCheckBox" VerticalAlignment="Center" Grid.Row="2" Margin="3" IsChecked="{Binding isMet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content=""/>
-                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="משכורת לפי לשעה" FontSize="18"/>
-                        <TextBox x:Name="salaryPerHourTextBox" Width="120" VerticalAlignment="Center" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Center"/>
-                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="משכורת לפי לחודש" FontSize="18"/>
-                        <TextBox x:Name="salaryPerMonthTextBox" Width="120" VerticalAlignment="Center" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Center"/>
-                        <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="תחילת חוזה" FontSize="18"/>
-                        <DatePicker x:Name="workBeginDatePicker" VerticalAlignment="Center" SelectedDate="{Binding workBegin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" HorizontalAlignment="Center"/>
-                        <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Right" Grid.Column="1" Content="סוף חוזה" FontSize="18"/>
-                        <DatePicker x:Name="workEndDatePicker" VerticalAlignment="Center" SelectedDate="{Binding workEnd, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" HorizontalAlignment="Center"/>
-                        <Button x:Name="buttonAddContract" Grid.ColumnSpan="2" Content="הוסף חוזה" Grid.Row="9" Click="buttonAddContract_Click"/>
-                    </Grid>
-                    <ComboBox x:Name="comboBoxChooseMom" Grid.Column="2" Margin="3" Grid.Row="1" SelectionChanged="comboBoxChooseMom_SelectionChanged" />
-                    <ComboBox x:Name="comboBoxChooseChild" Grid.Column="1"  Margin="3" Grid.Row="1" SelectionChanged="comboBoxChooseChild_SelectionChanged"/>
-                    <DataGrid x:Name="dataGridDetalis" Margin="3" AutoGenerateColumns="False" Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="3" SelectionChanged="dataGridDetalis_SelectionChanged">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Binding="{Binding fullName}" />
-                            <DataGridTextColumn Header="Address" Binding="{Binding addressNanny}" />
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <Label x:Name="labelChooseMom" Content="בחר/י אמא" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <Label x:Name="labelChooseChild" Content="בחר/י ילד/ה" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    <Label x:Name="label1" Content="רשימת מטפלות מתאימות" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="2"  VerticalAlignment="Center"/>
+                    <Button x:Name="buttonDeleteContract" Content="מחק/י חוזה" Margin="300,40" Grid.ColumnSpan="2"  Grid.Row="2" Click="buttonDeleteContract_Click" />
+                    <ComboBox x:Name="comboBoxChooseMomdelete"   Margin="150,50" SelectionChanged="comboBoxChooseMomdelete_SelectionChanged" />
+                    <ComboBox x:Name="comboBoxchooseChildDelete" Margin="150,50" Grid.Row="1" SelectionChanged="comboBoxchooseChildDelete_SelectionChanged" />
+                    <Label x:Name="label2" Content="בחר/י אמא" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <Label x:Name="label3" Content="בחר/י ילד" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" />
+
                 </Grid>
             </TabItem>
+
 
         </TabControl>
         <Button x:Name="button" Content="חזרה לתפריט ראשי" HorizontalAlignment="Left" Margin="40,0,0,40" VerticalAlignment="Bottom" Width="200" Height="50" Click="button_Click"/>

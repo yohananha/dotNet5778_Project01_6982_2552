@@ -51,7 +51,7 @@ namespace PLWPF
         {
             if (comboBoxChooseMom.SelectedIndex != -1)
             {
-                comboBoxChooseChild.ItemsSource = bl.getKidsByMoms(a => a.idMom == Convert.ToInt64(comboBoxChooseMom.SelectedValue));
+                comboBoxChooseChild.ItemsSource = bl.getKids(a => a.idMom == Convert.ToInt64(comboBoxChooseMom.SelectedValue));
                 comboBoxChooseChild.DisplayMemberPath = "fullName";
                 comboBoxChooseChild.SelectedValuePath = "idChild";
                 comboBoxChooseChild.SelectedIndex = -1;
@@ -121,7 +121,7 @@ namespace PLWPF
 
         private void comboBoxChooseMomdelete_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            comboBoxchooseChildDelete.ItemsSource = bl.getKidsByMoms(a => a.idMom == Convert.ToInt64(comboBoxChooseMomdelete.SelectedValue));
+            comboBoxchooseChildDelete.ItemsSource = bl.getKids(a => a.idMom == Convert.ToInt64(comboBoxChooseMomdelete.SelectedValue));
             comboBoxchooseChildDelete.DisplayMemberPath = "fullName";
             comboBoxchooseChildDelete.SelectedValuePath = "idChild";
             comboBoxchooseChildDelete.SelectedIndex = -1;
@@ -168,7 +168,7 @@ namespace PLWPF
         {
             if (comboBoxchooseMomUPdate.SelectedIndex != -1)
             {
-                comboBoxChooseChildUpdate.ItemsSource = bl.getKidsByMoms(a => a.idMom == Convert.ToInt64(comboBoxchooseMomUPdate.SelectedValue));
+                comboBoxChooseChildUpdate.ItemsSource = bl.getKids(a => a.idMom == Convert.ToInt64(comboBoxchooseMomUPdate.SelectedValue));
                 comboBoxChooseChildUpdate.DisplayMemberPath = "fullName";
                 comboBoxChooseChildUpdate.SelectedValuePath = "idChild";
                 comboBoxChooseChildUpdate.SelectedIndex = -1;

@@ -42,11 +42,11 @@ namespace BL
             dal.deleteChild(idChildDel);
         }
 
-        public IEnumerable<Child> getKidsByMoms(Func<Child, bool> Predicate = null)
+        public IEnumerable<Child> getKids(Func<Child, bool> Predicate = null)
         {
             if (Predicate == null)
-                return dal.getKidsByMoms();
-            return dal.getKidsByMoms(Predicate);
+                return dal.getKids();
+            return dal.getKids(Predicate);
         }
 
         public void updateChild(Child child)
@@ -65,7 +65,7 @@ namespace BL
 
         public int MomsKidsByNanny(Child child, Nanny nanny)
         {
-            var kidsMom = dal.getKidsByMoms(a => a.idMom == child.idMom);
+            var kidsMom = dal.getKids(a => a.idMom == child.idMom);
             var nannycontract = dal.getContracts(a => a.idNanny == nanny.nannyId);
 
             var finalList = from a in kidsMom
@@ -295,8 +295,8 @@ namespace BL
         public IEnumerable<Child> getAllChildWithoutNanny()
         {
             if (dal.getContracts().Count() == 0)
-                return dal.getKidsByMoms();
-            return from a in dal.getKidsByMoms()
+                return dal.getKids();
+            return from a in dal.getKids()
                    let idChild = a.idChild
                    from b in dal.getContracts()
                    where idChild != b.idChild

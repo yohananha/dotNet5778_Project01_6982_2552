@@ -21,137 +21,8 @@
         </Grid.RowDefinitions>
         <Image x:Name="bgMom" Source="images/mother.jpg" Height="700" Width="1000" Stretch="Fill" Grid.ColumnSpan="2"  Grid.RowSpan="4"/>
         <Label x:Name="label" Content="מסך האם" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,45,0,0" VerticalAlignment="Bottom" Height="100" Width="300" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White"/>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" Opacity="0.8" VerticalAlignment="Center" Width="1000" SelectedIndex="{Binding Mode=OneWay }" >
-            <TabItem Header="מחיקת אם" Height="80" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" BorderBrush="{x:Null}">
-
-                <Grid Background="#FFFF" Opacity="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="95*"/>
-                        <RowDefinition Height="8*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="331*"/>
-                        <ColumnDefinition Width="250*"/>
-                        <ColumnDefinition Width="450*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid HorizontalAlignment="Center" Height="400" Margin="-3,0,-2.6,0" VerticalAlignment="Bottom" Width="1000" Grid.ColumnSpan="3" Grid.RowSpan="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="20*"/>
-                            <RowDefinition Height="360*"/>
-                            <RowDefinition Height="20*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="497*"/>
-                            <ColumnDefinition Width="452*"/>
-                            <ColumnDefinition Width="20*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="button5" Content="מחיקה" HorizontalAlignment="Left" Margin="38,0,0,11" VerticalAlignment="Bottom" Width="150" Height="60" Grid.Column="1" Grid.Row="1"/>
-                    </Grid>
-                    <DataGrid x:Name="dataGrid1" Grid.Column="1" HorizontalAlignment="Left" Margin="29.8,80,0,0" VerticalAlignment="Top" Height="300" Width="600" Grid.ColumnSpan="2"/>
-                    <Button x:Name="button4" Content="חיפוש לפי תז" Grid.Column="1" HorizontalAlignment="Left" Margin="29.8,25,0,0" VerticalAlignment="Top" Width="188" BorderBrush="{x:Null}"/>
-                    <TextBox x:Name="textBox1" Grid.Column="2" HorizontalAlignment="Left" Height="35" Margin="19,24,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="368"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="עדכון אם" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" BorderBrush="{x:Null}">
-                <Grid Background="#FFFF" Opacity="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="71*"/>
-                        <RowDefinition Height="341*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="350*"/>
-                        <ColumnDefinition Width="350*"/>
-                        <ColumnDefinition Width="300*"/>
-                    </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Center" Margin="25,25,25,25" VerticalAlignment="Center" Height="300" Width="0250" Grid.Row="1" Grid.Column="2"/>
-                    <TextBox x:Name="textBox" Grid.Column="2" HorizontalAlignment="Right" Height="33" Margin="0,19,25.4,19.2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="155"/>
-                    <Button x:Name="button2" Content="חיפוש תז" Grid.Column="2" HorizontalAlignment="Left" Margin="28,20,0,20.2" VerticalAlignment="Center" Width="75" BorderBrush="{x:Null}" Height="31"/>
-                    <Grid x:Name="grid3" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Height="192" Width="255" Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Label Content="כתובת האם" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="3" VerticalAlignment="Center" FontSize="16"/>
-                        <TextBox x:Name="addressMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding AddressMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="שם פרטי" Grid.Column="1" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center" FontSize="16"/>
-                        <TextBox x:Name="firstNameMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Text="{Binding FirstNameMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="שם משפחה" Grid.Column="1" HorizontalAlignment="Right"  Margin="3" Grid.Row="1" VerticalAlignment="Center" FontSize="16"/>
-                        <TextBox x:Name="lasNameMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding LasNameMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="טלפון" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="2" VerticalAlignment="Center" FontSize="16"/>
-                        <TextBox x:Name="phoneMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding PhoneMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    </Grid>
-                    <Grid x:Name="grid4_Copy" HorizontalAlignment="Right" Margin="0,118.8,90.6,88" Grid.Row="1" Width="545" Grid.ColumnSpan="2" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Label x:Name="DayLabel1" Grid.Row="1" Grid.Column="6" FontSize="16" HorizontalAlignment="Right" Content="יום"/>
-                        <Label x:Name="StartHourLabel1" FontSize="16" Grid.Row="2" Grid.Column="6" HorizontalAlignment="Right" Content="שעת התחלה"/>
-                        <Label x:Name="EndHourLabel1"  FontSize="16" Grid.Row="3" Grid.Column="6"  HorizontalAlignment="Right" Content="שעת סיום"/>
-                        <Label x:Name="Sun1" FontSize="20" Grid.Column="5" HorizontalAlignment="Center" Content="א"/>
-                        <Label x:Name="Mon1" FontSize="20" Grid.Column="4" HorizontalAlignment="Center" Content="ב"/>
-                        <Label x:Name="Tue1" FontSize="20" Grid.Column="3" HorizontalAlignment="Center" Content="ג"/>
-                        <Label x:Name="wed1" FontSize="20" Grid.Column="2" HorizontalAlignment="Center" Content="ד"/>
-                        <Label x:Name="Thu1" FontSize="20" Grid.Column="1" HorizontalAlignment="Center" Content="ה"/>
-                        <Label x:Name="Fri1" FontSize="20" Grid.Column="0" HorizontalAlignment="Center" Content="ו"/>
-                        <CheckBox x:Name="SunCheck1" IsChecked="{Binding daysWorkNanny[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="5" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Content=""/>
-                        <CheckBox x:Name="MonCheck1" IsChecked="{Binding daysWorkNanny[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="4" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Content=""/>
-                        <CheckBox x:Name="TueCheck1"  IsChecked="{Binding daysWorkNanny[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="3" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Content=""/>
-                        <CheckBox x:Name="WedCheck1"  IsChecked="{Binding daysWorkNanny[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Content=""/>
-                        <CheckBox x:Name="ThuCheck1"  IsChecked="{Binding daysWorkNanny[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Content=""/>
-                        <CheckBox x:Name="FriCheck1"  IsChecked="{Binding daysWorkNanny[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content=""/>
-                        <xctk:TimePicker x:Name="SunEnd1" Format="ShortTime" Value="{Binding endHour[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=SunCheck}" Grid.Column="5" Grid.Row="3" FontSize="16" />
-                        <xctk:TimePicker x:Name="SunStart1" Format="ShortTime" Value="{Binding startHour[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=SunCheck}"  Grid.Column="5" Grid.Row="2" FontSize="16" />
-                        <xctk:TimePicker x:Name="MonEnd1" Format="ShortTime" Value="{Binding endHour[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsEnabled="{Binding IsChecked, ElementName=MonCheck}" Grid.Column="4" Grid.Row="3" FontSize="16" />
-                        <xctk:TimePicker x:Name="MonStart1" Format="ShortTime"   Value="{Binding startHour[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"   IsEnabled="{Binding IsChecked, ElementName=MonCheck}"  Grid.Column="4" Grid.Row="2" FontSize="16" />
-                        <xctk:TimePicker x:Name="TueEnd1" Format="ShortTime" Value="{Binding endHour[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=TueCheck}" Grid.Column="3" Grid.Row="3" FontSize="16" />
-                        <xctk:TimePicker x:Name="TueStart1" Format="ShortTime"   Value="{Binding startHour[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"   IsEnabled="{Binding IsChecked, ElementName=TueCheck}"  Grid.Column="3" Grid.Row="2" FontSize="16"/>
-                        <xctk:TimePicker x:Name="WedEnd1" Format="ShortTime" Value="{Binding endHour[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=WedCheck}"  Grid.Column="2" Grid.Row="3" FontSize="16"/>
-                        <xctk:TimePicker x:Name="WedStart1" Format="ShortTime"   Value="{Binding startHour[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"   IsEnabled="{Binding IsChecked, ElementName=WedCheck}"   Grid.Column="2" Grid.Row="2" FontSize="16" />
-                        <xctk:TimePicker x:Name="ThuEnd1" Format="ShortTime" Value="{Binding endHour[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsEnabled="{Binding IsChecked, ElementName=ThuCheck}"  Grid.Column="1" Grid.Row="3" FontSize="16"/>
-                        <xctk:TimePicker x:Name="ThuStart1" Format="ShortTime"  Value="{Binding startHour[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=ThuCheck}" Grid.Column="1" Grid.Row="2" FontSize="16"/>
-                        <xctk:TimePicker x:Name="FriEnd1" Format="ShortTime" Value="{Binding endHour[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=FriCheck}" Grid.Row="3" FontSize="16"/>
-                        <xctk:TimePicker x:Name="FriStart1" Format="ShortTime"  Value="{Binding startHour[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=FriCheck}"  Grid.Row="2" FontSize="16"/>
-                    </Grid>
-                    <Grid x:Name="grid5" HorizontalAlignment="Left" Margin="54,31,0,0" VerticalAlignment="Top" Grid.RowSpan="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Label Content="כתובת עבור המטפלת" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="1" VerticalAlignment="Center" FontSize="16"/>
-                        <TextBox x:Name="addressForNannyTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding AddressForNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="כתובת האם" Grid.Column="1" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center" FontSize="16"/>
-                        <TextBox x:Name="addressMomTextBox2" HorizontalAlignment="Left" Height="23" Margin="3" Text="{Binding AddressMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="הערות" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="2" VerticalAlignment="Center" FontSize="16"/>
-                        <TextBox x:Name="nothMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding nothMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    </Grid>
-                    <Button x:Name="button3" Content="עדכון" HorizontalAlignment="Left" Margin="65,278.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118" Height="41" BorderBrush="{x:Null}" Background="#FFE8E8E8"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="הוספת אם" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" BorderBrush="{x:Null}">
+        <TabControl x:Name="tabControl" FlowDirection="RightToLeft" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" Opacity="0.8" VerticalAlignment="Center" Width="1000" SelectedIndex="{Binding Mode=OneWay }" >
+            <TabItem Header="הוספת אם" FlowDirection="LeftToRight" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" BorderBrush="{x:Null}">
                 <Grid Height="400" Width="1000" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -249,6 +120,138 @@
                 </Grid>
 
             </TabItem>
+
+            <TabItem Header="עדכון אם" FlowDirection="LeftToRight" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" BorderBrush="{x:Null}">
+                <Grid Background="#FFFF" Opacity="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="71*"/>
+                        <RowDefinition Height="341*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="350*"/>
+                        <ColumnDefinition Width="350*"/>
+                        <ColumnDefinition Width="300*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Center" Margin="25,25,25,25" VerticalAlignment="Center" Height="300" Width="0250" Grid.Row="1" Grid.Column="2"/>
+                    <TextBox x:Name="textBox" Grid.Column="2" HorizontalAlignment="Right" Height="33" Margin="0,19,25.4,19.2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="155"/>
+                    <Button x:Name="button2" Content="חיפוש תז" Grid.Column="2" HorizontalAlignment="Left" Margin="28,20,0,20.2" VerticalAlignment="Center" Width="75" BorderBrush="{x:Null}" Height="31"/>
+                    <Grid x:Name="grid3" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Height="192" Width="255" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="כתובת האם" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="3" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox x:Name="addressMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding AddressMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="שם פרטי" Grid.Column="1" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox x:Name="firstNameMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Text="{Binding FirstNameMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="שם משפחה" Grid.Column="1" HorizontalAlignment="Right"  Margin="3" Grid.Row="1" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox x:Name="lasNameMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding LasNameMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="טלפון" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="2" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox x:Name="phoneMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding PhoneMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                    </Grid>
+                    <Grid x:Name="grid4_Copy" HorizontalAlignment="Right" Margin="0,118.8,90.6,88" Grid.Row="1" Width="545" Grid.ColumnSpan="2" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="DayLabel1" Grid.Row="1" Grid.Column="6" FontSize="16" HorizontalAlignment="Right" Content="יום"/>
+                        <Label x:Name="StartHourLabel1" FontSize="16" Grid.Row="2" Grid.Column="6" HorizontalAlignment="Right" Content="שעת התחלה"/>
+                        <Label x:Name="EndHourLabel1"  FontSize="16" Grid.Row="3" Grid.Column="6"  HorizontalAlignment="Right" Content="שעת סיום"/>
+                        <Label x:Name="Sun1" FontSize="20" Grid.Column="5" HorizontalAlignment="Center" Content="א"/>
+                        <Label x:Name="Mon1" FontSize="20" Grid.Column="4" HorizontalAlignment="Center" Content="ב"/>
+                        <Label x:Name="Tue1" FontSize="20" Grid.Column="3" HorizontalAlignment="Center" Content="ג"/>
+                        <Label x:Name="wed1" FontSize="20" Grid.Column="2" HorizontalAlignment="Center" Content="ד"/>
+                        <Label x:Name="Thu1" FontSize="20" Grid.Column="1" HorizontalAlignment="Center" Content="ה"/>
+                        <Label x:Name="Fri1" FontSize="20" Grid.Column="0" HorizontalAlignment="Center" Content="ו"/>
+                        <CheckBox x:Name="SunCheck1" IsChecked="{Binding daysWorkNanny[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="5" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Content=""/>
+                        <CheckBox x:Name="MonCheck1" IsChecked="{Binding daysWorkNanny[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="4" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Content=""/>
+                        <CheckBox x:Name="TueCheck1"  IsChecked="{Binding daysWorkNanny[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="3" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Content=""/>
+                        <CheckBox x:Name="WedCheck1"  IsChecked="{Binding daysWorkNanny[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Content=""/>
+                        <CheckBox x:Name="ThuCheck1"  IsChecked="{Binding daysWorkNanny[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Content=""/>
+                        <CheckBox x:Name="FriCheck1"  IsChecked="{Binding daysWorkNanny[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content=""/>
+                        <xctk:TimePicker x:Name="SunEnd1" Format="ShortTime" Value="{Binding endHour[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=SunCheck}" Grid.Column="5" Grid.Row="3" FontSize="16" />
+                        <xctk:TimePicker x:Name="SunStart1" Format="ShortTime" Value="{Binding startHour[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=SunCheck}"  Grid.Column="5" Grid.Row="2" FontSize="16" />
+                        <xctk:TimePicker x:Name="MonEnd1" Format="ShortTime" Value="{Binding endHour[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsEnabled="{Binding IsChecked, ElementName=MonCheck}" Grid.Column="4" Grid.Row="3" FontSize="16" />
+                        <xctk:TimePicker x:Name="MonStart1" Format="ShortTime"   Value="{Binding startHour[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"   IsEnabled="{Binding IsChecked, ElementName=MonCheck}"  Grid.Column="4" Grid.Row="2" FontSize="16" />
+                        <xctk:TimePicker x:Name="TueEnd1" Format="ShortTime" Value="{Binding endHour[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=TueCheck}" Grid.Column="3" Grid.Row="3" FontSize="16" />
+                        <xctk:TimePicker x:Name="TueStart1" Format="ShortTime"   Value="{Binding startHour[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"   IsEnabled="{Binding IsChecked, ElementName=TueCheck}"  Grid.Column="3" Grid.Row="2" FontSize="16"/>
+                        <xctk:TimePicker x:Name="WedEnd1" Format="ShortTime" Value="{Binding endHour[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=WedCheck}"  Grid.Column="2" Grid.Row="3" FontSize="16"/>
+                        <xctk:TimePicker x:Name="WedStart1" Format="ShortTime"   Value="{Binding startHour[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"   IsEnabled="{Binding IsChecked, ElementName=WedCheck}"   Grid.Column="2" Grid.Row="2" FontSize="16" />
+                        <xctk:TimePicker x:Name="ThuEnd1" Format="ShortTime" Value="{Binding endHour[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsEnabled="{Binding IsChecked, ElementName=ThuCheck}"  Grid.Column="1" Grid.Row="3" FontSize="16"/>
+                        <xctk:TimePicker x:Name="ThuStart1" Format="ShortTime"  Value="{Binding startHour[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=ThuCheck}" Grid.Column="1" Grid.Row="2" FontSize="16"/>
+                        <xctk:TimePicker x:Name="FriEnd1" Format="ShortTime" Value="{Binding endHour[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=FriCheck}" Grid.Row="3" FontSize="16"/>
+                        <xctk:TimePicker x:Name="FriStart1" Format="ShortTime"  Value="{Binding startHour[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=FriCheck}"  Grid.Row="2" FontSize="16"/>
+                    </Grid>
+                    <Grid x:Name="grid5" HorizontalAlignment="Left" Margin="54,31,0,0" VerticalAlignment="Top" Grid.RowSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="כתובת עבור המטפלת" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="1" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox x:Name="addressForNannyTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding AddressForNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="כתובת האם" Grid.Column="1" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox x:Name="addressMomTextBox2" HorizontalAlignment="Left" Height="23" Margin="3" Text="{Binding AddressMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="הערות" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="2" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox x:Name="nothMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding nothMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                    </Grid>
+                    <Button x:Name="button3" Content="עדכון" HorizontalAlignment="Left" Margin="65,278.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118" Height="41" BorderBrush="{x:Null}" Background="#FFE8E8E8"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="מחיקת אם" FlowDirection="LeftToRight" Height="80" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" BorderBrush="{x:Null}">
+
+                <Grid Background="#FFFF" Opacity="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="95*"/>
+                        <RowDefinition Height="8*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="331*"/>
+                        <ColumnDefinition Width="250*"/>
+                        <ColumnDefinition Width="450*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid HorizontalAlignment="Center" Height="400" Margin="-3,0,-2.6,0" VerticalAlignment="Bottom" Width="1000" Grid.ColumnSpan="3" Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="360*"/>
+                            <RowDefinition Height="20*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="497*"/>
+                            <ColumnDefinition Width="452*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="button5" Content="מחיקה" HorizontalAlignment="Left" Margin="38,0,0,11" VerticalAlignment="Bottom" Width="150" Height="60" Grid.Column="1" Grid.Row="1"/>
+                    </Grid>
+                    <DataGrid x:Name="dataGrid1" Grid.Column="1" HorizontalAlignment="Left" Margin="29.8,80,0,0" VerticalAlignment="Top" Height="300" Width="600" Grid.ColumnSpan="2"/>
+                    <Button x:Name="button4" Content="חיפוש לפי תז" Grid.Column="1" HorizontalAlignment="Left" Margin="29.8,25,0,0" VerticalAlignment="Top" Width="188" BorderBrush="{x:Null}"/>
+                    <TextBox x:Name="textBox1" Grid.Column="2" HorizontalAlignment="Left" Height="35" Margin="19,24,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="368"/>
+                </Grid>
+            </TabItem>
+
         </TabControl>
         <Button x:Name="button" Content="חזרה לתפריט ראשי" HorizontalAlignment="Left" Opacity="0.6" Margin="40,0,0,20" VerticalAlignment="Bottom" Width="200" Height="50" Click="button_Click"/>
 
