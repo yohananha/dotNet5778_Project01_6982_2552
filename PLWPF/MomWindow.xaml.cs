@@ -34,12 +34,15 @@ namespace PLWPF
             Close();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        #region addMomTab
+        private void addMomTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            mother = new BE.Mother();
+            mother.startHour = new DateTime[6];
+            mother.endHour = new DateTime[6];
+            mother.DaysRequestMom = new bool[6];
+            addMomTab.DataContext = mother;
 
-            System.Windows.Data.CollectionViewSource motherViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("motherViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // motherViewSource.Source = [generic data source]
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -56,21 +59,26 @@ namespace PLWPF
                 MessageBox.Show(Ex.Message);
             }
         }
+        #endregion
 
-        private void TabItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        #region updateMomTab
+        private void updateMomTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            mother = new BE.Mother();
-            mother.startHour = new DateTime[6];
-            mother.endHour = new DateTime[6];
-            mother.DaysRequestMom = new bool[6];
-            addMomTab.DataContext = mother;
-
+            if (motherUpdateCombo.SelectedIndex == -1)
+            {
+                motherUpdateCombo.ItemsSource = bl.getAllMothers();
+                motherUpdateCombo.DisplayMemberPath = "fullName";
+                motherUpdateCombo.SelectedIndex = -1;
+            }
         }
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            mother = (BE.Mother)motherUpdateCombo.SelectedItem;
-            updateMomTab.DataContext = mother;
+            if (motherUpdateCombo.SelectedIndex != -1)
+            {
+                mother = (BE.Mother)motherUpdateCombo.SelectedItem;
+                updateMomTab.DataContext = mother;
+            }
         }
 
         private void button3_Click(object sender, RoutedEventArgs e)
@@ -79,8 +87,9 @@ namespace PLWPF
             {
                 bl.updateMother(mother);
                 MessageBox.Show("פרטי האם עודכנו");
-                motherUpdateCombo.Items.Refresh();
-
+                motherUpdateCombo.SelectedIndex = -1;
+                mother = new BE.Mother();
+                updateMomTab.DataContext = mother;
             }
             catch (Exception Ex)
             {
@@ -88,10 +97,26 @@ namespace PLWPF
             }
         }
 
+        #endregion
+
+        #region deleteMomTab
+        private void delMomTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (deleteMomCombo.SelectedIndex == -1)
+            {
+                deleteMomCombo.ItemsSource = bl.getAllMothers();
+                deleteMomCombo.DisplayMemberPath = "fullName";
+                deleteMomCombo.SelectedIndex = -1;
+            }
+        }
+
+
         private void deleteMomCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            mother = (BE.Mother)deleteMomCombo.SelectedItem;
-            delMomTab.DataContext = mother;
+            if (deleteMomCombo.SelectedIndex != -1)
+            {
+                mother = (BE.Mother)deleteMomCombo.SelectedItem;
+            }
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
@@ -100,7 +125,7 @@ namespace PLWPF
             {
                 bl.deleteMother(mother.IdMom);
                 MessageBox.Show("אם נמחקה מהמערכת");
-                motherUpdateCombo.Items.Refresh();
+                deleteMomCombo.Items.Refresh();
             }
             catch (Exception Ex)
             {
@@ -108,18 +133,7 @@ namespace PLWPF
             }
         }
 
-        private void updateMomTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            motherUpdateCombo.ItemsSource = bl.getAllMothers();
-            motherUpdateCombo.DisplayMemberPath = "fullName";
-            motherUpdateCombo.SelectedIndex = -1;
-        }
+        #endregion
 
-        private void delMomTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            deleteMomCombo.ItemsSource = bl.getAllMothers();
-            deleteMomCombo.DisplayMemberPath = "fullName";
-            deleteMomCombo.SelectedIndex = -1;
-        }
     }
 }

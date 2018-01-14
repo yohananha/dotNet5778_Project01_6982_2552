@@ -156,9 +156,9 @@ namespace DAL
         //metod 
         private void deleteAllChildtMother(long idMotherDel)
         {
-            var listChildToDelete = from item in DataSource.childList
+            var listChildToDelete = (from item in DataSource.childList
                                     where item.idMom == idMotherDel
-                                    select item;
+                                    select item).ToList();
      
             //the metod deleteChild delete also the contract child
             foreach (Child item in listChildToDelete)

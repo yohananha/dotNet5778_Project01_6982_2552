@@ -80,9 +80,9 @@ namespace PLWPF
                 contract.isHour = nanny.isByHourNanny;
                 if (nanny.isByHourNanny)
                 {
-                    contract.salaryPerHour = bl.getSalary(contract.idChild, nanny.nannyId, true);
+                    contract.salaryPerHour = bl.getSalary(contract.idChild, nanny.nannyId, true, false);
                 }
-                contract.salaryPerMonth = bl.getSalary(contract.idChild, nanny.nannyId, false);
+                contract.salaryPerMonth = bl.getSalary(contract.idChild, nanny.nannyId, false, false);
                 contract.idNanny = nanny.nannyId;
             }
         }
@@ -206,8 +206,8 @@ namespace PLWPF
                     throw new Exception("המטפלת לא עובדת בשעות הנדרשות");
 
                 if (contract.isHour == true)
-                    contract.salaryPerHour = bl.getSalary(contract.idChild, contract.idNanny, true);
-                contract.salaryPerMonth = bl.getSalary(contract.idChild, contract.idNanny, false);
+                    contract.salaryPerHour = bl.getSalary(contract.idChild, contract.idNanny, true, true);
+                contract.salaryPerMonth = bl.getSalary(contract.idChild, contract.idNanny, false, true);
             }
             catch (Exception Ex)
             {

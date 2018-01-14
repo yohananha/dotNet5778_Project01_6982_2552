@@ -79,7 +79,7 @@ namespace BL
             Child contractChild = dal.getChild(contract.idChild);
             Nanny contractNanny = dal.getNanny(contract.idNanny);
             Mother contractMother = dal.getMom(contractChild.idMom);
-            double discountRate = MomsKidsByNanny(contractChild, contractNanny) * 0.02 * contractNanny.rateMonthNanny;
+            //double discountRate = MomsKidsByNanny(contractChild, contractNanny) * 0.02 * contractNanny.rateMonthNanny;
             DateTime today = DateTime.Today;
             if (today.Year - contractChild.birthdayKid.Year < 1 && today.Month - contractChild.birthdayKid.Month < 3)
                 throw new Exception("Child is too small");
@@ -89,13 +89,15 @@ namespace BL
             dal.addContract(contract);
         }
 
-        public double getSalary(long idChild, long idNanny, bool isHour)
+        public double getSalary(long idChild, long idNanny, bool isHour, bool isUpdate)
         {
 
             Child contractChild = dal.getChild(idChild);
             Nanny contractNanny = dal.getNanny(idNanny);
             Mother contractMother = dal.getMom(contractChild.idMom);
-            double discountRate = MomsKidsByNanny(contractChild, contractNanny) * 0.02 * contractNanny.rateMonthNanny;
+            double discountRate = MomsKidsByNanny(contractChild, contractNanny) * 0.02;
+            if (isUpdate == true)
+                discountRate -= 0.02;
             if (isHour == false)
                 return (contractNanny.rateMonthNanny - contractNanny.rateMonthNanny * discountRate);
             else
