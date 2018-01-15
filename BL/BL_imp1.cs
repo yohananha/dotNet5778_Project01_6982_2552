@@ -243,7 +243,7 @@ namespace BL
         {
             // copy the list into new one
             var nannyList = from a in dal.getAllNanny()
-                            select a.duplication();
+                            select a.duplicate();
 
             foreach (var a in nannyList)
             {
@@ -326,7 +326,7 @@ namespace BL
 
             // copy the list into new one
             var nannyList = from a in dal.getAllNanny()
-                            select a.duplication();
+                            select a.duplicate();
 
             foreach (var a in nannyList)
             {
@@ -355,7 +355,7 @@ namespace BL
 
             //if is sort first get all nanny and clac the distance and after return by grouping with order
             var nannyList = from a in dal.getAllNanny()
-                            select a.duplication();
+                            select a.duplicate();
 
             foreach (var a in nannyList)
             {

@@ -190,14 +190,14 @@ namespace DAL
             var nanny = DataSource.nannyList.FirstOrDefault(nl => nl.nannyId == idNanny);
             if (nanny == null)
                 throw new Exception("id doesn't exist");
-            return nanny.duplication();
+            return nanny.duplicate();
         }
 
         public void addNanny(Nanny nanny)
         {
             if (DataSource.nannyList.Exists(nl => nl.nannyId == nanny.nannyId))
                 throw new Exception("Nanny is already exist in system");
-            DataSource.nannyList.Add(nanny.duplication());
+            DataSource.nannyList.Add(nanny.duplicate());
         }
 
         public void updateNanny(Nanny nanny)
@@ -205,7 +205,7 @@ namespace DAL
             int nanindex = DataSource.nannyList.FindIndex(nl => nl.nannyId == nanny.nannyId);
             if (nanindex == -1)
                 throw new Exception("Nanny is not exist in system");
-            DataSource.nannyList[nanindex] = nanny.duplication();
+            DataSource.nannyList[nanindex] = nanny.duplicate();
         }
 
 

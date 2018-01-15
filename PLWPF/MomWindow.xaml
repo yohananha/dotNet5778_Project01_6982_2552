@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
         <Image x:Name="bgMom" Source="images/mother.jpg" Height="700" Width="1000" Stretch="Fill"  Grid.RowSpan="6" Margin="0,0,-6.4,-6.151"/>
         <Label x:Name="label" Content="מסך האם" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,0,-1.4,34.2" VerticalAlignment="Bottom" Height="100" Width="300" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" Grid.RowSpan="2"/>
-        <TabControl x:Name="tabControl" FlowDirection="RightToLeft" HorizontalAlignment="Center" Height="500" Margin="-3,196,-3.4,-2.151" Opacity="0.8" VerticalAlignment="Center" Width="1000" SelectedIndex="{Binding Mode=OneWay }" Grid.RowSpan="6" >
+        <TabControl x:Name="tabControl" FlowDirection="RightToLeft" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Opacity="0.8" VerticalAlignment="Bottom" Width="1000" SelectedIndex="{Binding Mode=OneWay }" Grid.RowSpan="6" >
             <TabItem x:Name="addMomTab" Header="הוספת אם" FlowDirection="LeftToRight" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" BorderBrush="{x:Null}" MouseLeftButtonUp="addMomTab_MouseLeftButtonUp">
                 <Grid Height="400" Width="1000" >
                     <Grid.ColumnDefinitions>

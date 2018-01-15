@@ -8,18 +8,23 @@ namespace BE
 
     public class Nanny
     {
+        //private data
         public long nannyId { get; set; }
         public string lastNameNanny { get; set; }
         public string firstNameNanny { get; set; }
         public DateTime dateNanny { get; set; }
         public long phoneNanny { get; set; }
         public string addressNanny { get; set; }
+
+        //work conditions
         public bool elevatorNanny { get; set; }
         public int floorNanny { get; set; }
         public int experienceNanny { get; set; }
         public int maxChildNanny { get; set; }
         public int minAgeChildNanny { get; set; }
         public int maxAgeChildNanny { get; set; }
+
+        //contract data
         public bool isByHourNanny { get; set; }
         public int rateHourNanny { get; set; }
         public int rateMonthNanny { get; set; }
@@ -29,6 +34,8 @@ namespace BE
         public int currentChildren { get; set; }
         public DateTime[] startHour { get; set; }
         public DateTime[] endHour { get; set; }
+
+        //other data
         public double diff { get; set; }
         public int Distance { get; set; }
 
@@ -38,7 +45,7 @@ namespace BE
         //    return base.ToString();
         //}
 
-        public Nanny duplication()
+        public Nanny duplicate()
         {
             Nanny duplicationNanny = new Nanny();
 
