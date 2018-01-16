@@ -52,8 +52,8 @@
                             <DataGridTextColumn Header="ילד/ה" Binding="{Binding nameChild}" />
                             <DataGridTextColumn Header="מטפלת" Binding="{Binding nameNanny}" />
                             <DataGridTextColumn Header="שכר" Binding="{Binding salaryAgreed}" />
-                            <DataGridTextColumn Header="התחלת חוזה" Binding="{Binding workBegin}" />
-                            <DataGridTextColumn Header="סיום חוזה" Binding="{Binding workEnd}" />
+                            <DataGridTextColumn Header="התחלת חוזה" Binding="{Binding workBegin , StringFormat='dd/MM/yyyy' }" />
+                            <DataGridTextColumn Header="סיום חוזה" Binding="{Binding workEnd , StringFormat='dd/MM/yyyy' }" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button x:Name="buttonSearchContract" Grid.ColumnSpan="2" Content="חפש חוזים" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center" Click="buttonSearchContract_Click"/>
@@ -69,7 +69,35 @@
                 </Grid>
             </TabItem>
             <TabItem Header="חיפוש מטפלות" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Margin="0" VerticalAlignment="Top" Width="246">
-                <Grid Background="#FFFF" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="408*"/>
+                        <ColumnDefinition Width="87*"/>
+                        <ColumnDefinition Width="289*"/>
+                        <ColumnDefinition Width="210*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="label11" Content="מטפלות לפי תמת" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                    <Label x:Name="label12" Content="מטפלות לפי שעה" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
+                    <Label x:Name="label13" Content="מטפלות לפי מרחק מאמא" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="checkBoxNannyByTamt" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="checkBoxNannyByHour" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="checkBoxNannyByMom" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Checked="checkBoxNannyByMom_Checked"/>
+                    <ComboBox x:Name="comboBoxChoosMomNanny" Grid.Column="2" Margin="4" Grid.Row="2" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxNannyByMom}"/>
+                    <Button x:Name="buttonSearchNanny" Content="חפש" Grid.Column="3" HorizontalAlignment="Center" Grid.RowSpan="3" VerticalAlignment="Center" Height="80" Width="80" Click="buttonSearchNanny_Click"/>
+                    <DataGrid x:Name="dataGridNannyDetails" AutoGenerateColumns="False" Grid.ColumnSpan="4" Grid.Row="3">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
+                            <DataGridTextColumn Header="תעודת זהות" Binding="{Binding nannyId}" />
+                            <DataGridTextColumn Header="כתובת" Binding="{Binding addressNanny}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
             <TabItem x:Name="dataChildTab" Header="חיפוש ילדים" FlowDirection="LeftToRight" FontFamily="Open Sans Hebrew" Height="80" Width="246" FontSize="20" MouseLeftButtonUp="dataChildTab_MouseLeftButtonUp">
                 <Grid>
@@ -89,7 +117,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
                             <DataGridTextColumn Header="תעודת זהות" Binding="{Binding idChild}" />
-                            <DataGridTextColumn Header="תאריך לידה" Binding="{Binding birthdayKid}" />
+                            <DataGridTextColumn Header="תאריך לידה" Binding="{Binding birthdayKid , StringFormat='dd/MM/yyyy' }" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button x:Name="buttonSearchChild" Content="חפש ילדים" Margin="30,30,29.667,30" Grid.RowSpan="3" Click="buttonSearchChild_Click"/>
@@ -103,7 +131,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem x:Name="dataMomTab" Header="חיפוש אמהות" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Width="246">
+            <TabItem x:Name="dataMomTab" Header="חיפוש אמהות" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Width="246" Margin="0,-1,0,1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -118,7 +146,13 @@
                         <RowDefinition Height="5*"/>
                     </Grid.RowDefinitions>
                     <Button x:Name="buttonSearchMom" Content="חפש" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="80" Grid.RowSpan="3" Click="buttonSearchMom_Click"/>
-                    <DataGrid x:Name="dataGridMomDetails" Grid.Row="3" Grid.ColumnSpan="4"/>
+                    <DataGrid x:Name="dataGridMomDetails" AutoGenerateColumns="False" Grid.Row="3" Grid.ColumnSpan="4">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
+                            <DataGridTextColumn Header="תעודת זהות" Binding="{Binding IdMom}" />
+                            <DataGridTextColumn Header="כתובת" Binding="{Binding AddressMom}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                     <Label x:Name="label8" Content="אמהות מסודרות" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
                     <Label x:Name="label9" Content="אמהות לא מסודרות" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
                     <Label x:Name="label10" Content="אמהות לפי מספר ילדים" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center"/>

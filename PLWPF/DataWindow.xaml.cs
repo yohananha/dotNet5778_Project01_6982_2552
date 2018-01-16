@@ -165,6 +165,7 @@ namespace PLWPF
         }
         #endregion
 
+        #region momEventTab
         private void buttonSearchMom_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -198,6 +199,48 @@ namespace PLWPF
                               select a;
 
                 dataGridMomDetails.ItemsSource = momList;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+
+        #endregion
+
+        private void checkBoxNannyByMom_Checked(object sender, RoutedEventArgs e)
+        {
+
+            if (comboBoxChoosMomNanny.SelectedIndex == -1)
+            {
+                comboBoxChoosMomNanny.ItemsSource = bl.getAllMothers();
+                comboBoxChoosMomNanny.DisplayMemberPath = "fullName";
+                comboBoxChoosMomNanny.SelectedValuePath = "AddressMom";
+                comboBoxChoosMomNanny.SelectedIndex = -1;
+            }
+        }
+
+        private void buttonSearchNanny_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                nannyList = bl.getAllNanny();
+
+                if (checkBoxNannyByTamt.IsChecked == true)
+                    nannyList = from a in nannyList
+                                where a.isTamatNanny == true
+                                select a;
+
+                if (checkBoxNannyByHour.IsChecked == true)
+                    nannyList = from a in nannyList
+                                where a.isByHourNanny == true
+                                select a;
+
+                dataGridNannyDetails.ItemsSource = nannyList;
+
+                if (checkBoxNannyByMom.IsChecked == true)
+                    dataGridNannyDetails.ItemsSource = bl.getChildByAgeRange(false, false);
+                    //dataGridNannyDetails.ItemsSource = bl.getNannyByDistance((string)comboBoxChoosMomNanny.SelectedValue, false);
             }
             catch (Exception Ex)
             {
