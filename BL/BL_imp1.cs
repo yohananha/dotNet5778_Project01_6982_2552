@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using BE;
 using GoogleMapsApi;
 using GoogleMapsApi.Entities.Directions.Request;
@@ -11,19 +13,28 @@ using GoogleMapsApi.Entities.Directions.Response;
 
 namespace BL
 {
-   partial class BL_imp : Ibl
+   partial class xmlInitilizer : Ibl
     {
         DAL.Idal dal;
         static Random r = new Random();
 
         //CTOR creating factory
-        public BL_imp()
+        public xmlInitilizer()
         {
             dal = DAL.factoryDal.getDal();
             initilizeArray();
             NannyInitilize();
             MotherInitilize();
             ChildInitilize();
+            var mother = dal.getAllMothers();
+            var nanny = dal.getAllNanny();
+            var child = dal.getKids();
+
+            SaveToXML(mother, "mother.xml");
+            SaveToXML(nanny, "nanny.xml");
+            SaveToXML(child, "child.xml");
+
+
         }
         #region child metod
 
@@ -387,5 +398,14 @@ namespace BL
                        group a by a.minAgeChildNanny / 3;
         }
         #endregion
+
+     
+        public static void SaveToXML<T>(T source, string path)
+        {
+            FileStream file = new FileStream(path, FileMode.Create);
+            XmlSerializer xmlSerializer = new XmlSerializer(source.GetType());
+            xmlSerializer.Serialize(file, source);
+            file.Close();
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace BE
         //    return base.ToString();
         //}
 
-        public Child duplication()
+        public Child duplicate()
         {
             Child duplicationChild = new Child();
 

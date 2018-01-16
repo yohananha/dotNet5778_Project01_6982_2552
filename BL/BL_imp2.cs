@@ -11,7 +11,7 @@ using GoogleMapsApi.Entities.Directions.Response;
 
 namespace BL
 {
-    partial class BL_imp : Ibl
+    partial class xmlInitilizer : Ibl
     {
         static long[] idMotherArray = new long[21];
         static long[] idNannyArray = new long[20];
