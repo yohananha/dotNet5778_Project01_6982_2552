@@ -30,14 +30,14 @@ namespace DAL
             var child = DataSource.childList.FirstOrDefault(_child => _child.idChild == idChild);
             if (child == null)
                 throw new Exception("id doesn't exist");
-            return child.duplication();
+            return child.duplicate();
         }
 
         public void addChild(Child child)
         {
             if (DataSource.childList.Exists(c => c.idChild == child.idChild))//no child found
                 throw new Exception("Child is already exist in system");
-            DataSource.childList.Add(child.duplication());
+            DataSource.childList.Add(child.duplicate());
         }
 
         public void deleteChild(long idChildDel)
@@ -54,7 +54,7 @@ namespace DAL
             int index = DataSource.childList.FindIndex(c => c.idChild == child.idChild);
             if (index == -1)//no child found
                 throw new Exception("Child is not appear in system");
-            DataSource.childList[index] = child.duplication();
+            DataSource.childList[index] = child.duplicate();
         }
 
         public IEnumerable<Child> getKids(Func<Child, bool> Predicate = null)

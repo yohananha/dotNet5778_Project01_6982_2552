@@ -13,7 +13,7 @@ namespace BL
         public static Ibl GetBL()
         {
             if (bl == null)
-                bl = new BL_imp();
+                bl = new xmlInitilizer();
             return bl;
         }
     }

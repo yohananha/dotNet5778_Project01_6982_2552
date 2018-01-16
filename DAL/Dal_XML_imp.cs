@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using BE;
 using DS;
 
@@ -12,14 +14,24 @@ namespace DAL
 {
     class Dal_XML_imp : Idal
     {
-        XElement nannysFile;
-        string nannyPath = @"C:\files\nanny.xml";
+        private XElement nannysFile, motherFile, childFile, contractFile;
+        string nannyPath = "nanny.xml";
+        string momPath = "mother.xml";
+        string kidPath = "child.xml";
+        string contractPath = "contract.xml";
 
 
         public Dal_XML_imp()
         {
             new DataSource();
-
+            if (!File.Exists(nannyPath))
+                createFile(nannyPath, "Nannies");
+            if (!File.Exists(momPath))
+                createFile(momPath, "Mothers");
+            if (!File.Exists(kidPath))
+                createFile(kidPath, "Children");
+            if (!File.Exists(contractPath))
+                createFile(contractPath, "Contracts");
 
         }
 
@@ -76,7 +88,32 @@ namespace DAL
 
         public Mother getMom(long idMom)
         {
-            throw new NotImplementedException();
+            LoadData("mother");
+            Mother mother = null;
+            mother.DaysRequestMom = new bool[6];
+            mother.startHour = new DateTime[6];
+            mother.endHour = new DateTime[6];
+            try
+            {
+                mother = (from mom in motherFile.Elements()
+                          where long.Parse(mom.Element("id").Value) == idMom
+
+                          select new Mother()
+                          {
+                              IdMom = long.Parse(mom.Element("IdMom").Value),
+                              FirstNameMom = mom.Element("name").Element("FirstNameMom").Value,
+                              LasNameMom = mom.Element("name").Element("LasNameMom").Value,
+                              PhoneMom = long.Parse(mom.Element("PhoneMom").Value),
+                              AddressMom = mom.Element("AddressMom").Value,
+                              AddressForNanny = mom.Element("AddressForNanny").Value,
+                          }).FirstOrDefault(); 
+            }
+            catch
+            {
+                mother = null;
+            }
+            return mother;
+
         }
 
         #endregion
@@ -141,21 +178,100 @@ namespace DAL
 
         #region other funcs
 
-        public void SaveNannyListLinq(List<Nanny> studentList)
+        public void createFile(string path, string elementName)
         {
-            nannysFile = new XElement("Nannies",
-                from p in DS.DataSource.nannyList
-                select new XElement("Nanny",
-                    new XElement("id", p.nannyId),
-                    new XElement("name",
-                        new XElement("firstName", p.firstNameNanny),
-                        new XElement("lastName", p.lastNameNanny)
-                    )
-                )
-            );
-            nannysFile.Save(nannyPath);
+            var fileToCreate = new XElement(elementName);
+            fileToCreate.Save(path);
         }
 
+        public static void SaveToXML<T>(T source, string path)
+        {
+            FileStream file = new FileStream(path, FileMode.Create);
+            XmlSerializer xmlSerializer = new XmlSerializer(source.GetType());
+            xmlSerializer.Serialize(file, source);
+            file.Close();
+        }
+
+        public static T LoadFromXML<T>(string path)
+        {
+            FileStream file = new FileStream(path, FileMode.Open);
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+            T result = (T)xmlSerializer.Deserialize(file);
+            file.Close();
+            return result;
+        }
+
+        private void LoadData(string person)
+        {
+            try
+            {
+                switch (person)
+                {
+                    case "mother":
+                        motherFile = XElement.Load(momPath);
+                        break;
+                    case "child":
+                        childFile = XElement.Load(kidPath);
+                        break;
+                    case "nanny":
+                        nannysFile = XElement.Load(nannyPath);
+                        break;
+                    case "contract":
+                        contractFile = XElement.Load(contractPath);
+                        break;
+                    default:
+                        throw new Exception("File upload problem");
+                }
+            }
+            catch
+            {
+                throw new Exception("File upload problem");
+            }
+        }
+
+        public void SaveChildListLinq(List<Child> childList)
+        {
+            childFile = new XElement("Childern",
+                from p in DS.DataSource.childList
+                select new XElement("Child",
+                    new XElement("id", p.idChild),
+                    new XElement("name",
+                        new XElement("firstName", p.firstName),
+                        new XElement("lastName", p.lastName)),
+                    new XElement("birthday", p.birthdayKid),
+                    new XElement("momID", p.idMom),
+                    new XElement("specialNeeds",
+                        new XElement("isNeed", p.isSpecialNeed),
+                        new XElement("needs", p.specialNeeds))
+                    )
+                );
+            childFile.Save(kidPath);
+        }
+
+        public List<Child> GetChildList()
+        {
+            LoadData("child");
+            List<Child> children;
+            try
+            {
+                children = (from kid in childFile.Elements()
+                            select new Child()
+                            {
+                                idChild = int.Parse(kid.Element("id").Value),
+                                firstName = kid.Element("name").Element("firstName").Value,
+                                lastName = kid.Element("name").Element("lastName").Value,
+                                birthdayKid = DateTime.Parse(kid.Element("birthday").Value),
+                                idMom = int.Parse(kid.Element("momID").Value),
+                                isSpecialNeed = bool.Parse(kid.Element("specialNeeds").Element("isNeed").Value),
+                                specialNeeds = kid.Element("specialNeeds").Element("needs").Value
+                            }).ToList();
+            }
+            catch
+            {
+                children = null;
+            }
+            return children;
+        }
         #endregion
     }
 }
