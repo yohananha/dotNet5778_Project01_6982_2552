@@ -9,7 +9,7 @@ namespace BL
 {
     public class FactoryBL
     {
-        public static Ibl bl = null;
+        private static Ibl bl = null;
         public static Ibl GetBL()
         {
             if (bl == null)

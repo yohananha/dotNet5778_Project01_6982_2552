@@ -8,9 +8,13 @@ namespace DAL
 {
     public class factoryDal
     {
+        private static Idal dal = null;
+
         public static Idal getDal()
         {
-            return new DAL_imp();
+            if (dal == null)
+                dal = new DAL_imp();
+            return dal;
         }
     }
 }
