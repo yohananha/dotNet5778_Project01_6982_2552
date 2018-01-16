@@ -68,7 +68,7 @@
                     <CheckBox x:Name="checkBoxContractBySalery" IsChecked="False" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="חיפוש מטפלות" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Margin="0.4,-2,0.4,0" VerticalAlignment="Top" Width="246">
+            <TabItem Header="חיפוש מטפלות" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Margin="0" VerticalAlignment="Top" Width="246">
                 <Grid Background="#FFFF" />
             </TabItem>
             <TabItem x:Name="dataChildTab" Header="חיפוש ילדים" FlowDirection="LeftToRight" FontFamily="Open Sans Hebrew" Height="80" Width="246" FontSize="20" MouseLeftButtonUp="dataChildTab_MouseLeftButtonUp">
@@ -103,8 +103,33 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="חיפוש אמהות" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Width="246">
-                <Grid Background="#FFFF" Opacity="0.4"/>
+            <TabItem x:Name="dataMomTab" Header="חיפוש אמהות" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Width="246">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="buttonSearchMom" Content="חפש" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="80" Grid.RowSpan="3" Click="buttonSearchMom_Click"/>
+                    <DataGrid x:Name="dataGridMomDetails" Grid.Row="3" Grid.ColumnSpan="4"/>
+                    <Label x:Name="label8" Content="אמהות מסודרות" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                    <Label x:Name="label9" Content="אמהות לא מסודרות" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
+                    <Label x:Name="label10" Content="אמהות לפי מספר ילדים" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="CheckBoxArrangedMom" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="checkBoxNotArrangedMom" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="checkBoxMomByNumChild" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center"/>
+                    <DockPanel VerticalAlignment="Center" Grid.Column="2" Grid.Row="2"  Margin="3" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxMomByNumChild}">
+                        <TextBox x:Name="numChildTextBox" Text="{Binding ElementName=sliderNum, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="50" />
+                        <Slider Maximum="10" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Name="sliderNum" />
+                    </DockPanel>
+                </Grid>
             </TabItem>
         </TabControl>
         <Button x:Name="button" Content="חזרה לתפריט ראשי" HorizontalAlignment="Left" Opacity="0.8" Margin="40,00,0,20" VerticalAlignment="Bottom" Width="200" Height="50" Click="button_Click"/>

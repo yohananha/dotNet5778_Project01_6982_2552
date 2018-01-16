@@ -90,6 +90,8 @@ namespace PLWPF
 
         #endregion
 
+        #region ConractTabEvent
+
         private void dataContractTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (comboBoxContractByNanny.SelectedIndex == -1)
@@ -155,6 +157,47 @@ namespace PLWPF
 
                 dataGridContractDetails.ItemsSource = contractList;
 
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+        #endregion
+
+        private void buttonSearchMom_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                momList = bl.getAllMothers();
+
+                if (CheckBoxArrangedMom.IsChecked == true)
+                    momList = from a in momList
+                              let x = a.IdMom
+                              where ((bl.getKids(a => a.idMom == x)).ToList().Count) == (from k in bl.getKids(a => a.idMom == x)
+                                                                                         let y = k.idChild
+                                                                                         from c in bl.getContracts()
+                                                                                         where y == c.idChild
+                                                                                         select k).ToList().Count
+                              select a;
+
+                if (checkBoxNotArrangedMom.IsChecked == true)
+                    momList = from a in momList
+                              let x = a.IdMom
+                              where ((bl.getKids(a => a.idMom == x)).ToList().Count) != (from k in bl.getKids(a => a.idMom == x)
+                                                                                         let y = k.idChild
+                                                                                         from c in bl.getContracts()
+                                                                                         where y == c.idChild
+                                                                                         select k).ToList().Count
+                              select a;
+
+                if (checkBoxMomByNumChild.IsChecked == true)
+                    momList = from a in momList
+                              let x = a.IdMom
+                              where bl.getKids(a => a.idMom == x).ToList().Count == int.Parse(numChildTextBox.Text)
+                              select a;
+
+                dataGridMomDetails.ItemsSource = momList;
             }
             catch (Exception Ex)
             {
