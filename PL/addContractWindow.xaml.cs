@@ -76,11 +76,11 @@ namespace PL
                 isHourCheckBox.IsChecked = nanny.isByHourNanny;
                 if (nanny.isByHourNanny)
                 {
-                    salaryPerHourTextBox.Text = Convert.ToString(bl.getSalary(child.idChild, nanny.nannyId, true));
-                    contract.salaryPerHour = bl.getSalary(child.idChild, nanny.nannyId, true);
+                    salaryPerHourTextBox.Text = Convert.ToString(bl.getSalary(child.idChild, nanny.nannyId, true, false));
+                    contract.salaryPerHour = bl.getSalary(child.idChild, nanny.nannyId, true, false);
                 }
-                salaryPerMonthTextBox.Text = Convert.ToString(bl.getSalary(child.idChild, nanny.nannyId, false));
-                contract.salaryPerMonth = bl.getSalary(child.idChild, nanny.nannyId, false);
+                salaryPerMonthTextBox.Text = Convert.ToString(bl.getSalary(child.idChild, nanny.nannyId, false, false));
+                contract.salaryPerMonth = bl.getSalary(child.idChild, nanny.nannyId, false, false);
                 contract.idNanny = nanny.nannyId;
             }
         }
