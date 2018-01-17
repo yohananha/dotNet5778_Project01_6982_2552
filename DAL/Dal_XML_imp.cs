@@ -39,7 +39,9 @@ namespace DAL
 
         public void addNanny(Nanny nanny)
         {
-            throw new NotImplementedException();
+                if (DataSource.nannyList.Exists(nl => nl.nannyId == nanny.nannyId))
+                throw new Exception("Nanny is already exist in system");
+            DataSource.nannyList.Add(nanny.duplicate());
         }
 
         public void deleteNanny(long idNannyDel)
@@ -59,7 +61,66 @@ namespace DAL
 
         public Nanny getNanny(long idNanny)
         {
-            throw new NotImplementedException();
+            
+        //public string lastNameNanny { get; set; }
+        //public string firstNameNanny { get; set; }
+        //public DateTime dateNanny { get; set; }
+        //public long phoneNanny { get; set; }
+        //public string addressNanny { get; set; }
+
+        ////work conditions
+        //public bool elevatorNanny { get; set; }
+        //public int floorNanny { get; set; }
+        //public int experienceNanny { get; set; }
+        //public int maxChildNanny { get; set; }
+        //public int minAgeChildNanny { get; set; }
+        //public int maxAgeChildNanny { get; set; }
+
+        ////contract data
+        //public bool isByHourNanny { get; set; }
+        //public int rateHourNanny { get; set; }
+        //public int rateMonthNanny { get; set; }
+        //public bool[] daysWorkNanny { get; set; }
+        //public bool isTamatNanny { get; set; }
+        //public string recommendationsNanny { get; set; }
+        //public int currentChildren { get; set; }
+        //public DateTime[] startHour { get; set; }
+        //public DateTime[] endHour { get; set; }
+
+            LoadData("nanny");
+            Nanny nanny;
+            try
+            {
+                nanny = (from a in nannysFile.Elements()
+                           where int.Parse(a.Element("id").Value) == idNanny
+                           select new Nanny()
+                           {
+            nannyId = long.Parse(a.Element("nannyId").Value),
+                               lastNameNanny = a.Element("lastNameNanny").Value,
+                               firstNameNanny = a.Element("firstNameNanny").Value,
+                               dateNanny = DateTime.Parse(a.Element("dateNanny").Value),
+                               phoneNanny = long.Parse(a.Element("phoneNanny").Value),
+                               addressNanny = a.Element("addressNanny").Value,
+                               elevatorNanny = bool.Parse(a.Element("elevatorNanny").Value),
+                               floorNanny = int.Parse(a.Element("floorNanny").Value),
+                               experienceNanny = int.Parse(a.Element("experienceNanny").Value),
+                               maxChildNanny = int.Parse(a.Element("maxChildNanny").Value),
+                               minAgeChildNanny = int.Parse(a.Element("minAgeChildNanny").Value),
+                               maxAgeChildNanny = int.Parse(a.Element("maxAgeChildNanny").Value),
+                               isByHourNanny = bool.Parse(a.Element("isByHourNanny").Value),
+                               rateHourNanny = int.Parse(a.Element("rateHourNanny").Value),
+                               rateMonthNanny = int.Parse(a.Element("rateMonthNanny").Value),
+                               daysWorkNanny = new [] bool {bool.Parse(a.Element("daysWorkNanny").Element("sunwork")) }
+                                            firstNameNanny = a.Element("firstNameNanny").Value,
+                                             firstNameNanny = a.Element("firstNameNanny").Value,
+                                              firstNameNanny = a.Element("firstNameNanny").Value
+                           }).FirstOrDefault();
+            }
+            catch
+            {
+                nanny = null;
+            }
+            return nanny;
         }
 
         #endregion
