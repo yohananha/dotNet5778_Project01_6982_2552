@@ -68,18 +68,6 @@ namespace DAL
 
         public void addMom(Mother mother)
         {
-
-            //public long IdMom { get; set; }
-            //public string LasNameMom { get; set; }
-            //public string FirstNameMom { get; set; }
-            //public long PhoneMom { get; set; }
-            //public string AddressMom { get; set; }
-            //public string AddressForNanny { get; set; }
-            //public bool[] DaysRequestMom { get; set; }
-            //public DateTime[] startHour { get; set; }
-            //public DateTime[] endHour { get; set; }
-            //public string nothMom { get; set; }
-
             XElement id = new XElement("id", mother.IdMom);
             XElement firstName = new XElement("firstName", mother.FirstNameMom);
             XElement lastName = new XElement("lastName", mother.LasNameMom);
@@ -110,34 +98,122 @@ namespace DAL
             XElement endHour = new XElement("endHour", sunEnd, monEnd, tueEnd, wedEnd, thuEnd, friEnd);
             XElement note = new XElement("note", mother.nothMom);
 
+            motherFile.Add(new XElement("mother", id, name, phone, address, addressForNanny, daysRequest, startHour, endHour, note));
 
-
-            motherFile.Add(new XElement("mother", id, name, phone, address,addressForNanny, daysRequest,startHour,endHour,note));
-            motherFile.Save(momPath); 
+            motherFile.Save(momPath);
         }
 
         public void deleteMother(long idMotherDel)
         {
-            throw new NotImplementedException();
+            XElement motherElement;
+            try
+            {
+                motherElement = (from mom in motherFile.Elements()
+                                 where int.Parse(mom.Element("id").Value) == idMotherDel
+                                 select mom).FirstOrDefault();
+                motherElement.Remove();
+                motherFile.Save(momPath);
+            }
+            catch
+            {
+                throw new Exception("Delete mothe problem");
+            }
         }
 
         public void updateMother(Mother mother)
         {
-            throw new NotImplementedException();
+
+            XElement motherElement = (from mom in motherFile.Elements()
+                                      where int.Parse(mom.Element("id").Value) == mother.IdMom
+                                      select mom).FirstOrDefault();
+
+            motherElement.Element("name").Element("firstName").Value = mother.FirstNameMom;
+            motherElement.Element("name").Element("lastName").Value = mother.LasNameMom;
+            motherElement.Element("phone").Value = mother.PhoneMom.ToString();
+            motherElement.Element("address").Value = mother.AddressMom;
+            motherElement.Element("addressForNanny").Value = mother.AddressForNanny;
+            motherElement.Element("daysRequest").Element("sunReq").Value = mother.DaysRequestMom[0].ToString();
+            motherElement.Element("daysRequest").Element("monReq").Value = mother.DaysRequestMom[1].ToString();
+            motherElement.Element("daysRequest").Element("tueReq").Value = mother.DaysRequestMom[2].ToString();
+            motherElement.Element("daysRequest").Element("wedReq").Value = mother.DaysRequestMom[3].ToString();
+            motherElement.Element("daysRequest").Element("thuReq").Value = mother.DaysRequestMom[4].ToString();
+            motherElement.Element("daysRequest").Element("friReq").Value = mother.DaysRequestMom[5].ToString();
+            motherElement.Element("startHour").Element("sunStart").Value = mother.startHour[0].ToString();
+            motherElement.Element("startHour").Element("monStart").Value = mother.startHour[1].ToString();
+            motherElement.Element("startHour").Element("tueStart").Value = mother.startHour[2].ToString();
+            motherElement.Element("startHour").Element("wedStart").Value = mother.startHour[3].ToString();
+            motherElement.Element("startHour").Element("thuStart").Value = mother.startHour[4].ToString();
+            motherElement.Element("startHour").Element("friStart").Value = mother.startHour[5].ToString();
+
+            motherElement.Element("sunEnd").Element("sunEnd").Value = mother.endHour[0].ToString();
+            motherElement.Element("sunEnd").Element("monEnd").Value = mother.endHour[1].ToString();
+            motherElement.Element("sunEnd").Element("tueEnd").Value = mother.endHour[2].ToString();
+            motherElement.Element("sunEnd").Element("wedEnd").Value = mother.endHour[3].ToString();
+            motherElement.Element("sunEnd").Element("thuEnd").Value = mother.endHour[4].ToString();
+            motherElement.Element("sunEnd").Element("friEnd").Value = mother.endHour[5].ToString();
+
+            motherElement.Element("note").Value = mother.nothMom;
+
+            motherFile.Save(momPath);
         }
 
         public IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            LoadData("mother");
+            List<Mother> students;
+            try
+            {
+                students = (from mom in motherFile.Elements()
+                            select new Mother()
+                            {
+                                IdMom = long.Parse(mom.Element("IdMom").Value),
+                                FirstNameMom = mom.Element("name").Element("FirstNameMom").Value,
+                                LasNameMom = mom.Element("name").Element("LasNameMom").Value,
+                                PhoneMom = long.Parse(mom.Element("PhoneMom").Value),
+                                AddressMom = mom.Element("AddressMom").Value,
+                                AddressForNanny = mom.Element("AddressForNanny").Value,
+                                DaysRequestMom = new bool[6]
+                                {
+                            bool.Parse(mom.Element("daysRequest").Element("sunReq").Value),
+                            bool.Parse(mom.Element("daysRequest").Element("monReq").Value),
+                            bool.Parse(mom.Element("daysRequest").Element("tueReq").Value),
+                            bool.Parse(mom.Element("daysRequest").Element("wedReq").Value),
+                            bool.Parse(mom.Element("daysRequest").Element("thuReq").Value),
+                            bool.Parse(mom.Element("daysRequest").Element("friReq").Value)
+                                },
+                                startHour = new DateTime[6]
+                                {
+                            DateTime.Parse(mom.Element("startHour").Element("sunStart").Value),
+                            DateTime.Parse(mom.Element("startHour").Element("monStart").Value),
+                            DateTime.Parse(mom.Element("startHour").Element("tueStart").Value),
+                            DateTime.Parse(mom.Element("startHour").Element("wedStart").Value),
+                            DateTime.Parse(mom.Element("startHour").Element("thuStart").Value),
+                            DateTime.Parse(mom.Element("startHour").Element("friStart").Value),
+                                },
+                                endHour = new DateTime[6]
+                                {
+                            DateTime.Parse(mom.Element("endHour").Element("sunEnd").Value),
+                            DateTime.Parse(mom.Element("endHour").Element("monEnd").Value),
+                            DateTime.Parse(mom.Element("endHour").Element("tueEnd").Value),
+                            DateTime.Parse(mom.Element("endHour").Element("wedEnd").Value),
+                            DateTime.Parse(mom.Element("endHour").Element("thuEnd").Value),
+                            DateTime.Parse(mom.Element("endHour").Element("friEnd").Value),
+                                },
+                                nothMom = mom.Element("note").Value
+                            }).ToList();
+            }
+            catch
+            {
+                students = null;
+            }
+            return students;
         }
 
         public Mother getMom(long idMom)
         {
             LoadData("mother");
-            Mother mother = null;
-            mother.DaysRequestMom = new bool[6];
-            mother.startHour = new DateTime[6];
-            mother.endHour = new DateTime[6];
+            Mother mother;
+
             try
             {
                 mother = (from mom in motherFile.Elements()
@@ -151,8 +227,34 @@ namespace DAL
                               PhoneMom = long.Parse(mom.Element("PhoneMom").Value),
                               AddressMom = mom.Element("AddressMom").Value,
                               AddressForNanny = mom.Element("AddressForNanny").Value,
-                              DaysRequestMom = new bool[6] { bool.Parse(mom.Element("DaysRequestMom").Element()) }
-
+                              DaysRequestMom = new bool[6]
+                              {
+                                  bool.Parse(mom.Element("daysRequest").Element("sunReq").Value),
+                                  bool.Parse(mom.Element("daysRequest").Element("monReq").Value),
+                                  bool.Parse(mom.Element("daysRequest").Element("tueReq").Value),
+                                  bool.Parse(mom.Element("daysRequest").Element("wedReq").Value),
+                                  bool.Parse(mom.Element("daysRequest").Element("thuReq").Value),
+                                  bool.Parse(mom.Element("daysRequest").Element("friReq").Value)
+                              },
+                              startHour = new DateTime[6]
+                              {
+                                  DateTime.Parse(mom.Element("startHour").Element("sunStart").Value),
+                                  DateTime.Parse(mom.Element("startHour").Element("monStart").Value),
+                                  DateTime.Parse(mom.Element("startHour").Element("tueStart").Value),
+                                  DateTime.Parse(mom.Element("startHour").Element("wedStart").Value),
+                                  DateTime.Parse(mom.Element("startHour").Element("thuStart").Value),
+                                  DateTime.Parse(mom.Element("startHour").Element("friStart").Value),
+                              },
+                              endHour = new DateTime[6]
+                              {
+                              DateTime.Parse(mom.Element("endHour").Element("sunEnd").Value),
+                              DateTime.Parse(mom.Element("endHour").Element("monEnd").Value),
+                              DateTime.Parse(mom.Element("endHour").Element("tueEnd").Value),
+                              DateTime.Parse(mom.Element("endHour").Element("wedEnd").Value),
+                              DateTime.Parse(mom.Element("endHour").Element("thuEnd").Value),
+                              DateTime.Parse(mom.Element("endHour").Element("friEnd").Value),
+                              },
+                              nothMom = mom.Element("note").Value
                           }).FirstOrDefault();
             }
             catch
