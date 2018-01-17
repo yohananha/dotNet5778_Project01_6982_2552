@@ -26,6 +26,7 @@ namespace BE
         public string nothMom { get; set; }
 
         public string fullName { get { return FirstNameMom + " " + LasNameMom; } }
+        
         //public override string ToString()
         //{
         //    throw new System.NotImplementedException();

@@ -68,7 +68,52 @@ namespace DAL
 
         public void addMom(Mother mother)
         {
-            throw new NotImplementedException();
+
+            //public long IdMom { get; set; }
+            //public string LasNameMom { get; set; }
+            //public string FirstNameMom { get; set; }
+            //public long PhoneMom { get; set; }
+            //public string AddressMom { get; set; }
+            //public string AddressForNanny { get; set; }
+            //public bool[] DaysRequestMom { get; set; }
+            //public DateTime[] startHour { get; set; }
+            //public DateTime[] endHour { get; set; }
+            //public string nothMom { get; set; }
+
+            XElement id = new XElement("id", mother.IdMom);
+            XElement firstName = new XElement("firstName", mother.FirstNameMom);
+            XElement lastName = new XElement("lastName", mother.LasNameMom);
+            XElement name = new XElement("name", firstName, lastName);
+            XElement phone = new XElement("phone", mother.PhoneMom);
+            XElement address = new XElement("address", mother.AddressMom);
+            XElement addressForNanny = new XElement("addressForNanny", mother.AddressForNanny);
+            XElement sunReq = new XElement("sunReq", mother.DaysRequestMom[0]);
+            XElement monReq = new XElement("monReq", mother.DaysRequestMom[1]);
+            XElement tueReq = new XElement("tueReq", mother.DaysRequestMom[2]);
+            XElement wedReq = new XElement("wedReq", mother.DaysRequestMom[3]);
+            XElement thuReq = new XElement("thuReq", mother.DaysRequestMom[4]);
+            XElement friReq = new XElement("friReq", mother.DaysRequestMom[5]);
+            XElement daysRequest = new XElement("daysRequest", sunReq, monReq, tueReq, wedReq, thuReq, friReq);
+            XElement sunStart = new XElement("sunStart", mother.startHour[0]);
+            XElement monStart = new XElement("monStart", mother.startHour[1]);
+            XElement tueStart = new XElement("tueStart", mother.startHour[2]);
+            XElement wedStart = new XElement("wedStart", mother.startHour[3]);
+            XElement thuStart = new XElement("thuStart", mother.startHour[4]);
+            XElement friStart = new XElement("friStart", mother.startHour[5]);
+            XElement startHour = new XElement("startHour", sunStart, monStart, tueStart, wedStart, thuStart, friStart);
+            XElement sunEnd = new XElement("sunEnd", mother.endHour[0]);
+            XElement monEnd = new XElement("monEnd", mother.endHour[1]);
+            XElement tueEnd = new XElement("tueEnd", mother.endHour[2]);
+            XElement wedEnd = new XElement("wedEnd", mother.endHour[3]);
+            XElement thuEnd = new XElement("thuEnd", mother.endHour[4]);
+            XElement friEnd = new XElement("friEnd", mother.endHour[5]);
+            XElement endHour = new XElement("endHour", sunEnd, monEnd, tueEnd, wedEnd, thuEnd, friEnd);
+            XElement note = new XElement("note", mother.nothMom);
+
+
+
+            motherFile.Add(new XElement("mother", id, name, phone, address,addressForNanny, daysRequest,startHour,endHour,note));
+            motherFile.Save(momPath); 
         }
 
         public void deleteMother(long idMotherDel)
@@ -106,7 +151,9 @@ namespace DAL
                               PhoneMom = long.Parse(mom.Element("PhoneMom").Value),
                               AddressMom = mom.Element("AddressMom").Value,
                               AddressForNanny = mom.Element("AddressForNanny").Value,
-                          }).FirstOrDefault(); 
+                              DaysRequestMom = new bool[6] { bool.Parse(mom.Element("DaysRequestMom").Element()) }
+
+                          }).FirstOrDefault();
             }
             catch
             {
