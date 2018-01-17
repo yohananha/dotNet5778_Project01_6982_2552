@@ -246,6 +246,7 @@ namespace DAL
 
         public void addMom(Mother mother)
         {
+
             XElement id = new XElement("id", mother.IdMom);
             XElement firstName = new XElement("firstName", mother.FirstNameMom);
             XElement lastName = new XElement("lastName", mother.LasNameMom);
@@ -283,6 +284,8 @@ namespace DAL
 
         public void deleteMother(long idMotherDel)
         {
+            LoadData("mother");
+
             XElement motherElement;
             try
             {
@@ -300,6 +303,7 @@ namespace DAL
 
         public void updateMother(Mother mother)
         {
+            LoadData("mother");
 
             XElement motherElement = (from mom in motherFile.Elements()
                                       where int.Parse(mom.Element("id").Value) == mother.IdMom
@@ -338,53 +342,53 @@ namespace DAL
         public IEnumerable<Mother> getAllMothers(Func<Mother, bool> Predicate = null)
         {
             LoadData("mother");
-            List<Mother> students;
+            List<Mother> mothers;
             try
             {
-                students = (from mom in motherFile.Elements()
-                            select new Mother()
-                            {
-                                IdMom = long.Parse(mom.Element("IdMom").Value),
-                                FirstNameMom = mom.Element("name").Element("FirstNameMom").Value,
-                                LasNameMom = mom.Element("name").Element("LasNameMom").Value,
-                                PhoneMom = long.Parse(mom.Element("PhoneMom").Value),
-                                AddressMom = mom.Element("AddressMom").Value,
-                                AddressForNanny = mom.Element("AddressForNanny").Value,
-                                DaysRequestMom = new bool[6]
-                                {
+                mothers = (from mom in motherFile.Elements()
+                           select new Mother()
+                           {
+                               IdMom = long.Parse(mom.Element("IdMom").Value),
+                               FirstNameMom = mom.Element("name").Element("FirstNameMom").Value,
+                               LasNameMom = mom.Element("name").Element("LasNameMom").Value,
+                               PhoneMom = long.Parse(mom.Element("PhoneMom").Value),
+                               AddressMom = mom.Element("AddressMom").Value,
+                               AddressForNanny = mom.Element("AddressForNanny").Value,
+                               DaysRequestMom = new bool[6]
+                               {
                             bool.Parse(mom.Element("daysRequest").Element("sunReq").Value),
                             bool.Parse(mom.Element("daysRequest").Element("monReq").Value),
                             bool.Parse(mom.Element("daysRequest").Element("tueReq").Value),
                             bool.Parse(mom.Element("daysRequest").Element("wedReq").Value),
                             bool.Parse(mom.Element("daysRequest").Element("thuReq").Value),
                             bool.Parse(mom.Element("daysRequest").Element("friReq").Value)
-                                },
-                                startHour = new DateTime[6]
-                                {
+                               },
+                               startHour = new DateTime[6]
+                               {
                             DateTime.Parse(mom.Element("startHour").Element("sunStart").Value),
                             DateTime.Parse(mom.Element("startHour").Element("monStart").Value),
                             DateTime.Parse(mom.Element("startHour").Element("tueStart").Value),
                             DateTime.Parse(mom.Element("startHour").Element("wedStart").Value),
                             DateTime.Parse(mom.Element("startHour").Element("thuStart").Value),
                             DateTime.Parse(mom.Element("startHour").Element("friStart").Value),
-                                },
-                                endHour = new DateTime[6]
-                                {
+                               },
+                               endHour = new DateTime[6]
+                               {
                             DateTime.Parse(mom.Element("endHour").Element("sunEnd").Value),
                             DateTime.Parse(mom.Element("endHour").Element("monEnd").Value),
                             DateTime.Parse(mom.Element("endHour").Element("tueEnd").Value),
                             DateTime.Parse(mom.Element("endHour").Element("wedEnd").Value),
                             DateTime.Parse(mom.Element("endHour").Element("thuEnd").Value),
                             DateTime.Parse(mom.Element("endHour").Element("friEnd").Value),
-                                },
-                                nothMom = mom.Element("note").Value
-                            }).ToList();
+                               },
+                               nothMom = mom.Element("note").Value
+                           }).ToList();
             }
             catch
             {
-                students = null;
+                mothers = null;
             }
-            return students;
+            return mothers;
         }
 
         public Mother getMom(long idMom)
@@ -449,27 +453,108 @@ namespace DAL
 
         public void addChild(Child child)
         {
-            throw new NotImplementedException();
+            XElement idMom = new XElement("idMom", child.idMom);
+            XElement idChild = new XElement("idChild", child.idChild);
+            XElement firstName = new XElement("firstName", child.firstName);
+            XElement lastName = new XElement("lastName", child.lastName);
+            XElement name = new XElement("name", firstName, lastName);
+            XElement birthday = new XElement("birthday", child.birthdayKid);
+            XElement isSpeacial = new XElement("isSpecial", child.isSpecialNeed);
+            XElement needs = new XElement("needs", child.specialNeeds);
+            childFile.Add(new XElement("mother", idMom, idChild, name, birthday, isSpeacial, needs));
+
+            childFile.Save(momPath);
         }
 
         public void deleteChild(long idChildDel)
         {
-            throw new NotImplementedException();
+            LoadData("child");
+
+            XElement childElement;
+            try
+            {
+                childElement = (from kid in childFile.Elements()
+                                where int.Parse(kid.Element("id").Value) == idChildDel
+                                select kid).FirstOrDefault();
+                childElement.Remove();
+                motherFile.Save(momPath);
+            }
+            catch
+            {
+                throw new Exception("Delete mothe problem");
+            }
         }
 
         public void updateChild(Child child)
         {
-            throw new NotImplementedException();
+            LoadData("child");
+
+            XElement childElement = (from kid in childFile.Elements()
+                                     where int.Parse(kid.Element("id").Value) == child.idChild
+                                     select kid).FirstOrDefault();
+
+            childElement.Element("name").Element("firstName").Value = child.firstName;
+            childElement.Element("name").Element("lastName").Value = child.lastName;
+            childElement.Element("birthday").Value = child.birthdayKid.ToString();
+            childElement.Element("isSpecial").Value = child.isSpecialNeed.ToString();
+            childElement.Element("needs").Value = child.specialNeeds;
+
+            childFile.Save(momPath);
+
         }
 
         public IEnumerable<Child> getKids(Func<Child, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            LoadData("child");
+            List<Child> kids;
+            try
+            {
+                kids = (from kid in childFile.Elements()
+                        select new Child()
+                        {
+                            idMom = long.Parse(kid.Element("IdMom").Value),
+                            idChild = long.Parse(kid.Element("idChild").Value),
+                            firstName = kid.Element("name").Element("firstName").Value,
+                            lastName = kid.Element("name").Element("lastName").Value,
+                            birthdayKid = DateTime.Parse(kid.Element("birthday").Value),
+                            isSpecialNeed = Convert.ToBoolean(kid.Element("isSpecial").Value),
+                            specialNeeds = kid.Element("needs").Value,
+                        }).ToList();
+            }
+            catch
+            {
+                kids = null;
+            }
+            return kids;
         }
 
         public Child getChild(long idChild)
         {
-            throw new NotImplementedException();
+            LoadData("child");
+            Child child;
+
+            try
+            {
+                child = (from kid in childFile.Elements()
+                    where long.Parse(kid.Element("id").Value) == idChild
+
+                    select new Child()
+                    {
+                        idMom = long.Parse(kid.Element("IdMom").Value),
+                        idChild = long.Parse(kid.Element("idChild").Value),
+                        firstName = kid.Element("name").Element("firstName").Value,
+                        lastName = kid.Element("name").Element("lastName").Value,
+                        birthdayKid = DateTime.Parse(kid.Element("birthday").Value),
+                        isSpecialNeed = Convert.ToBoolean(kid.Element("isSpecial").Value),
+                        specialNeeds = kid.Element("needs").Value,
+                    }).FirstOrDefault();
+            }
+            catch
+            {
+                child = null;
+            }
+            return child;
+
         }
 
         #endregion
