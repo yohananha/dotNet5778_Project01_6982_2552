@@ -39,14 +39,72 @@ namespace DAL
 
         public void addNanny(Nanny nanny)
         {
-                if (DataSource.nannyList.Exists(nl => nl.nannyId == nanny.nannyId))
+            Nanny nannyCheck = getNanny(nanny.nannyId);
+            if (nannyCheck != null)
                 throw new Exception("Nanny is already exist in system");
-            DataSource.nannyList.Add(nanny.duplicate());
+            XElement id = new XElement("id", nanny.nannyId);
+            XElement lastName = new XElement("lastName", nanny.lastNameNanny);
+            XElement firstName = new XElement("firstName", nanny.firstNameNanny);
+            XElement name = new XElement("name", firstName, lastName);
+            XElement date = new XElement("date", nanny.dateNanny);
+            XElement phone = new XElement("phone", nanny.phoneNanny);
+            XElement address = new XElement("address", nanny.addressNanny);
+            XElement elevatorNanny = new XElement("elevatorNanny", nanny.elevatorNanny);
+            XElement floorNanny = new XElement("floorNanny", nanny.floorNanny);
+            XElement experienceNanny = new XElement("experienceNanny", nanny.experienceNanny);
+            XElement maxChildNanny = new XElement("maxChildNanny", nanny.maxChildNanny);
+            XElement minAgeChildNanny = new XElement("minAgeChildNanny", nanny.minAgeChildNanny);
+            XElement maxAgeChildNanny = new XElement("maxAgeChildNanny", nanny.maxAgeChildNanny);
+            XElement isByHourNanny = new XElement("isByHourNanny", nanny.isByHourNanny);
+            XElement rateHourNanny = new XElement("rateHourNanny", nanny.rateHourNanny);
+            XElement rateMonthNanny = new XElement("rateMonthNanny", nanny.rateMonthNanny);
+            XElement sunWork = new XElement("sunWork", nanny.daysWorkNanny[0]);
+            XElement monWork = new XElement("monWork", nanny.daysWorkNanny[1]);
+            XElement tueWork = new XElement("tueWork", nanny.daysWorkNanny[2]);
+            XElement wedWork = new XElement("wedWork", nanny.daysWorkNanny[3]);
+            XElement thuWork = new XElement("thuWork", nanny.daysWorkNanny[4]);
+            XElement friWork = new XElement("friWork", nanny.daysWorkNanny[5]);
+            XElement daysWork = new XElement("daysWorkNanny", sunWork, monWork, tueWork, wedWork, thuWork, friWork);
+            XElement isTamatNanny = new XElement("isTamatNanny", nanny.isTamatNanny);
+            XElement recommendationsNanny = new XElement("recommendationsNanny", nanny.recommendationsNanny);
+            XElement currentChildren = new XElement("currentChildren", nanny.currentChildren);
+            XElement sunStart = new XElement("sunStart", nanny.startHour[0]);
+            XElement monStart = new XElement("monStart", nanny.startHour[1]);
+            XElement tueStart = new XElement("tueStart", nanny.startHour[2]);
+            XElement wedStart = new XElement("wedStart", nanny.startHour[3]);
+            XElement thuStart = new XElement("thuStart", nanny.startHour[4]);
+            XElement friStart = new XElement("friStart", nanny.startHour[5]);
+            XElement startHour = new XElement("startHour", sunStart, monStart, tueStart, wedStart, thuStart, friStart);
+            XElement sunEnd = new XElement("sunEnd", nanny.endHour[0]);
+            XElement monEnd = new XElement("monEnd", nanny.endHour[1]);
+            XElement tueEnd = new XElement("tueEnd", nanny.endHour[2]);
+            XElement wedEnd = new XElement("wedEnd", nanny.endHour[3]);
+            XElement thuEnd = new XElement("thuEnd", nanny.endHour[4]);
+            XElement friEnd = new XElement("friEnd", nanny.endHour[5]);
+            XElement endHour = new XElement("endHour", sunEnd, monEnd, tueEnd, wedEnd, thuEnd, friEnd);
+
+            nannysFile.Add(new XElement("nanny", id, name, date, phone, address, elevatorNanny, floorNanny, experienceNanny,
+                                        maxChildNanny, minAgeChildNanny, maxAgeChildNanny, isByHourNanny, rateHourNanny, rateMonthNanny,
+                                        daysWork, isTamatNanny, recommendationsNanny, currentChildren, startHour, endHour));
+
+            nannysFile.Save(nannyPath);
         }
 
         public void deleteNanny(long idNannyDel)
         {
-            throw new NotImplementedException();
+            XElement nannyElement;
+            try
+            {
+                nannyElement = (from nan in nannysFile.Elements()
+                                 where int.Parse(nan.Element("id").Value) == idNannyDel
+                                 select nan).FirstOrDefault();
+                nannyElement.Remove();
+                motherFile.Save(momPath);
+            }
+            catch
+            {
+                throw new Exception("Delete mothe problem");
+            }
         }
 
         public void updateNanny(Nanny nannye)
@@ -56,65 +114,124 @@ namespace DAL
 
         public IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate = null)
         {
-            throw new NotImplementedException();
+            LoadData("nanny");
+            List<Nanny> nannyList;
+            try
+            {
+                nannyList = (from nan in nannysFile.Elements()
+                             select new Nanny()
+                             {
+                                 nannyId = long.Parse(nan.Element("id").Value),
+                                 lastNameNanny = nan.Element("name").Element("lastName").Value,
+                                 firstNameNanny = nan.Element("name").Element("firstName").Value,
+                                 dateNanny = DateTime.Parse(nan.Element("date").Value),
+                                 phoneNanny = long.Parse(nan.Element("phone").Value),
+                                 addressNanny = nan.Element("address").Value,
+                                 elevatorNanny = bool.Parse(nan.Element("elevatorNanny").Value),
+                                 floorNanny = int.Parse(nan.Element("floorNanny").Value),
+                                 experienceNanny = int.Parse(nan.Element("experienceNanny").Value),
+                                 maxChildNanny = int.Parse(nan.Element("maxChildNanny").Value),
+                                 minAgeChildNanny = int.Parse(nan.Element("minAgeChildNanny").Value),
+                                 maxAgeChildNanny = int.Parse(nan.Element("maxAgeChildNanny").Value),
+                                 isByHourNanny = bool.Parse(nan.Element("isByHourNanny").Value),
+                                 rateHourNanny = int.Parse(nan.Element("rateHourNanny").Value),
+                                 rateMonthNanny = int.Parse(nan.Element("rateMonthNanny").Value),
+                                 daysWorkNanny = new bool[6]{
+                            bool.Parse(nan.Element("daysWorkNanny").Element("sunWork").Value),
+                            bool.Parse(nan.Element("daysWorkNanny").Element("monWork").Value),
+                            bool.Parse(nan.Element("daysWorkNanny").Element("tueWork").Value),
+                            bool.Parse(nan.Element("daysWorkNanny").Element("wedWork").Value),
+                            bool.Parse(nan.Element("daysWorkNanny").Element("thuWork").Value),
+                            bool.Parse(nan.Element("daysWorkNanny").Element("friWork").Value)
+                                },
+                                 isTamatNanny = bool.Parse(nan.Element("isTamatNanny").Value),
+                                 recommendationsNanny = nan.Element("recommendationsNanny").Value,
+                                 currentChildren = int.Parse(nan.Element("currentChildren").Value),
+                                 startHour = new DateTime[6]
+                                    {
+                            DateTime.Parse(nan.Element("startHour").Element("sunStart").Value),
+                            DateTime.Parse(nan.Element("startHour").Element("monStart").Value),
+                            DateTime.Parse(nan.Element("startHour").Element("tueStart").Value),
+                            DateTime.Parse(nan.Element("startHour").Element("wedStart").Value),
+                            DateTime.Parse(nan.Element("startHour").Element("thuStart").Value),
+                            DateTime.Parse(nan.Element("startHour").Element("friStart").Value),
+                                    },
+                                 endHour = new DateTime[6]
+                                    {
+                            DateTime.Parse(nan.Element("endHour").Element("sunEnd").Value),
+                            DateTime.Parse(nan.Element("endHour").Element("monEnd").Value),
+                            DateTime.Parse(nan.Element("endHour").Element("tueEnd").Value),
+                            DateTime.Parse(nan.Element("endHour").Element("wedEnd").Value),
+                            DateTime.Parse(nan.Element("endHour").Element("thuEnd").Value),
+                            DateTime.Parse(nan.Element("endHour").Element("friEnd").Value),
+                                    }
+                             }).ToList();
+            }
+            catch
+            {
+                nannyList = null;
+            }
+            if (Predicate == null)
+                return nannyList;
+
+            return nannyList.Where(Predicate);
         }
 
         public Nanny getNanny(long idNanny)
         {
-            
-        //public string lastNameNanny { get; set; }
-        //public string firstNameNanny { get; set; }
-        //public DateTime dateNanny { get; set; }
-        //public long phoneNanny { get; set; }
-        //public string addressNanny { get; set; }
-
-        ////work conditions
-        //public bool elevatorNanny { get; set; }
-        //public int floorNanny { get; set; }
-        //public int experienceNanny { get; set; }
-        //public int maxChildNanny { get; set; }
-        //public int minAgeChildNanny { get; set; }
-        //public int maxAgeChildNanny { get; set; }
-
-        ////contract data
-        //public bool isByHourNanny { get; set; }
-        //public int rateHourNanny { get; set; }
-        //public int rateMonthNanny { get; set; }
-        //public bool[] daysWorkNanny { get; set; }
-        //public bool isTamatNanny { get; set; }
-        //public string recommendationsNanny { get; set; }
-        //public int currentChildren { get; set; }
-        //public DateTime[] startHour { get; set; }
-        //public DateTime[] endHour { get; set; }
-
             LoadData("nanny");
             Nanny nanny;
             try
             {
-                nanny = (from a in nannysFile.Elements()
-                           where int.Parse(a.Element("id").Value) == idNanny
-                           select new Nanny()
-                           {
-            nannyId = long.Parse(a.Element("nannyId").Value),
-                               lastNameNanny = a.Element("lastNameNanny").Value,
-                               firstNameNanny = a.Element("firstNameNanny").Value,
-                               dateNanny = DateTime.Parse(a.Element("dateNanny").Value),
-                               phoneNanny = long.Parse(a.Element("phoneNanny").Value),
-                               addressNanny = a.Element("addressNanny").Value,
-                               elevatorNanny = bool.Parse(a.Element("elevatorNanny").Value),
-                               floorNanny = int.Parse(a.Element("floorNanny").Value),
-                               experienceNanny = int.Parse(a.Element("experienceNanny").Value),
-                               maxChildNanny = int.Parse(a.Element("maxChildNanny").Value),
-                               minAgeChildNanny = int.Parse(a.Element("minAgeChildNanny").Value),
-                               maxAgeChildNanny = int.Parse(a.Element("maxAgeChildNanny").Value),
-                               isByHourNanny = bool.Parse(a.Element("isByHourNanny").Value),
-                               rateHourNanny = int.Parse(a.Element("rateHourNanny").Value),
-                               rateMonthNanny = int.Parse(a.Element("rateMonthNanny").Value),
-                               daysWorkNanny = new [] bool {bool.Parse(a.Element("daysWorkNanny").Element("sunwork")) }
-                                            firstNameNanny = a.Element("firstNameNanny").Value,
-                                             firstNameNanny = a.Element("firstNameNanny").Value,
-                                              firstNameNanny = a.Element("firstNameNanny").Value
-                           }).FirstOrDefault();
+                nanny = (from nan in nannysFile.Elements()
+                         where int.Parse(nan.Element("id").Value) == idNanny
+                         select new Nanny()
+                         {
+                             nannyId = long.Parse(nan.Element("id").Value),
+                             lastNameNanny = nan.Element("name").Element("lastName").Value,
+                             firstNameNanny = nan.Element("name").Element("firstName").Value,
+                             dateNanny = DateTime.Parse(nan.Element("date").Value),
+                             phoneNanny = long.Parse(nan.Element("phone").Value),
+                             addressNanny = nan.Element("address").Value,
+                             elevatorNanny = bool.Parse(nan.Element("elevatorNanny").Value),
+                             floorNanny = int.Parse(nan.Element("floorNanny").Value),
+                             experienceNanny = int.Parse(nan.Element("experienceNanny").Value),
+                             maxChildNanny = int.Parse(nan.Element("maxChildNanny").Value),
+                             minAgeChildNanny = int.Parse(nan.Element("minAgeChildNanny").Value),
+                             maxAgeChildNanny = int.Parse(nan.Element("maxAgeChildNanny").Value),
+                             isByHourNanny = bool.Parse(nan.Element("isByHourNanny").Value),
+                             rateHourNanny = int.Parse(nan.Element("rateHourNanny").Value),
+                             rateMonthNanny = int.Parse(nan.Element("rateMonthNanny").Value),
+                             daysWorkNanny = new bool[6]{
+                            bool.Parse(nan.Element("daysWorkNanny").Element("sunWork").Value),
+                            bool.Parse(nan.Element("daysWorkNanny").Element("monWork").Value),
+                            bool.Parse(nan.Element("daysWorkNanny").Element("tueWork").Value),
+                            bool.Parse(nan.Element("daysWorkNanny").Element("wedWork").Value),
+                            bool.Parse(nan.Element("daysWorkNanny").Element("thuWork").Value),
+                            bool.Parse(nan.Element("daysWorkNanny").Element("friWork").Value)
+                                },
+                             isTamatNanny = bool.Parse(nan.Element("isTamatNanny").Value),
+                             recommendationsNanny = nan.Element("recommendationsNanny").Value,
+                             currentChildren = int.Parse(nan.Element("currentChildren").Value),
+                             startHour = new DateTime[6]
+                                {
+                            DateTime.Parse(nan.Element("startHour").Element("sunStart").Value),
+                            DateTime.Parse(nan.Element("startHour").Element("monStart").Value),
+                            DateTime.Parse(nan.Element("startHour").Element("tueStart").Value),
+                            DateTime.Parse(nan.Element("startHour").Element("wedStart").Value),
+                            DateTime.Parse(nan.Element("startHour").Element("thuStart").Value),
+                            DateTime.Parse(nan.Element("startHour").Element("friStart").Value),
+                                },
+                             endHour = new DateTime[6]
+                                {
+                            DateTime.Parse(nan.Element("endHour").Element("sunEnd").Value),
+                            DateTime.Parse(nan.Element("endHour").Element("monEnd").Value),
+                            DateTime.Parse(nan.Element("endHour").Element("tueEnd").Value),
+                            DateTime.Parse(nan.Element("endHour").Element("wedEnd").Value),
+                            DateTime.Parse(nan.Element("endHour").Element("thuEnd").Value),
+                            DateTime.Parse(nan.Element("endHour").Element("friEnd").Value),
+                                }
+                         }).FirstOrDefault();
             }
             catch
             {
