@@ -236,10 +236,10 @@ namespace PLWPF
                                 where a.isByHourNanny == true
                                 select a;
 
-                dataGridNannyDetails.ItemsSource = nannyList;
+                dataGridNanny.ItemsSource = nannyList;
 
                 if (checkBoxNannyByMom.IsChecked == true)
-                    dataGridNannyDetails.ItemsSource = bl.getChildByAgeRange(false, false);
+                    dataGridNanny.ItemsSource = bl.getChildByAgeRange(false, false);
                     //dataGridNannyDetails.ItemsSource = bl.getNannyByDistance((string)comboBoxChoosMomNanny.SelectedValue, false);
             }
             catch (Exception Ex)

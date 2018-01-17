@@ -90,7 +90,7 @@
                     <CheckBox x:Name="checkBoxNannyByMom" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Checked="checkBoxNannyByMom_Checked"/>
                     <ComboBox x:Name="comboBoxChoosMomNanny" Grid.Column="2" Margin="4" Grid.Row="2" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxNannyByMom}"/>
                     <Button x:Name="buttonSearchNanny" Content="חפש" Grid.Column="3" HorizontalAlignment="Center" Grid.RowSpan="3" VerticalAlignment="Center" Height="80" Width="80" Click="buttonSearchNanny_Click"/>
-                    <DataGrid x:Name="dataGridNannyDetails" AutoGenerateColumns="False" Grid.ColumnSpan="4" Grid.Row="3">
+                    <DataGrid x:Name="dataGridNanny"  AutoGenerateColumns="False"  Grid.Row="3" Grid.ColumnSpan="4" Height="288" Width="995">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
                             <DataGridTextColumn Header="תעודת זהות" Binding="{Binding nannyId}" />
