@@ -109,7 +109,53 @@ namespace DAL
 
         public void updateNanny(Nanny nannye)
         {
-            throw new NotImplementedException();
+            LoadData("nanny");
+
+            XElement nannyElement = (from nan in nannysFile.Elements()
+                                     where int.Parse(nan.Element("id").Value) == nannye.nannyId
+                                     select nan).FirstOrDefault();
+
+
+            nannyElement.Element("name").Element("lastName").Value = nannye.lastNameNanny;
+            nannyElement.Element("name").Element("firstName").Value = nannye.firstNameNanny;
+            nannyElement.Element("date").Value = nannye.dateNanny.ToString();
+            nannyElement.Element("phone").Value = nannye.phoneNanny.ToString();
+            nannyElement.Element("address").Value = nannye.addressNanny;
+            nannyElement.Element("elevatorNanny").Value = nannye.elevatorNanny.ToString();
+            nannyElement.Element("floorNanny").Value = nannye.floorNanny.ToString();
+            nannyElement.Element("experienceNanny").Value = nannye.experienceNanny.ToString();
+            nannyElement.Element("maxChildNanny").Value = nannye.maxChildNanny.ToString();
+            nannyElement.Element("minAgeChildNanny").Value = nannye.minAgeChildNanny.ToString();
+            nannyElement.Element("maxAgeChildNanny").Value = nannye.maxAgeChildNanny.ToString();
+            nannyElement.Element("isByHourNanny").Value = nannye.isByHourNanny.ToString();
+            nannyElement.Element("rateHourNanny").Value = nannye.rateHourNanny.ToString();
+            nannyElement.Element("rateMonthNanny").Value = nannye.rateMonthNanny.ToString();
+            nannyElement.Element("daysWorkNanny").Element("sunWork").Value = nannye.daysWorkNanny[0].ToString();
+            nannyElement.Element("daysWorkNanny").Element("monWork").Value = nannye.daysWorkNanny[1].ToString();
+            nannyElement.Element("daysWorkNanny").Element("tueWork").Value = nannye.daysWorkNanny[2].ToString();
+            nannyElement.Element("daysWorkNanny").Element("wedWork").Value = nannye.daysWorkNanny[3].ToString();
+            nannyElement.Element("daysWorkNanny").Element("thuWork").Value = nannye.daysWorkNanny[4].ToString();
+            nannyElement.Element("daysWorkNanny").Element("friWork").Value = nannye.daysWorkNanny[5].ToString();
+
+            nannyElement.Element("isTamatNanny").Value = nannye.isTamatNanny.ToString();
+            nannyElement.Element("recommendationsNanny").Value = nannye.recommendationsNanny;
+            nannyElement.Element("currentChildren").Value = nannye.currentChildren.ToString();
+
+            nannyElement.Element("startHour").Element("sunStart").Value = nannye.daysWorkNanny[0].ToString();
+            nannyElement.Element("startHour").Element("monStart").Value = nannye.daysWorkNanny[1].ToString();
+            nannyElement.Element("startHour").Element("tueStart").Value = nannye.daysWorkNanny[2].ToString();
+            nannyElement.Element("startHour").Element("wedStart").Value = nannye.daysWorkNanny[3].ToString();
+            nannyElement.Element("startHour").Element("thuStart").Value = nannye.daysWorkNanny[4].ToString();
+            nannyElement.Element("startHour").Element("friStart").Value = nannye.daysWorkNanny[5].ToString();
+
+            nannyElement.Element("endHour").Element("sunEnd").Value = nannye.endHour[0].ToString();
+            nannyElement.Element("endHour").Element("monEnd").Value = nannye.endHour[1].ToString();
+            nannyElement.Element("endHour").Element("tueEnd").Value = nannye.endHour[2].ToString();
+            nannyElement.Element("endHour").Element("wedEnd").Value = nannye.endHour[3].ToString();
+            nannyElement.Element("endHour").Element("thuEnd").Value = nannye.endHour[4].ToString();
+            nannyElement.Element("endHour").Element("friEnd").Value = nannye.endHour[5].ToString();
+
+            nannysFile.Save(nannyPath);
         }
 
         public IEnumerable<Nanny> getAllNanny(Func<Nanny, bool> Predicate = null)
