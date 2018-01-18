@@ -96,8 +96,8 @@ namespace DAL
             try
             {
                 nannyElement = (from nan in nannysFile.Elements()
-                                 where int.Parse(nan.Element("id").Value) == idNannyDel
-                                 select nan).FirstOrDefault();
+                                where int.Parse(nan.Element("id").Value) == idNannyDel
+                                select nan).FirstOrDefault();
                 nannyElement.Remove();
                 motherFile.Save(momPath);
             }
@@ -402,30 +402,30 @@ namespace DAL
                                AddressForNanny = mom.Element("AddressForNanny").Value,
                                DaysRequestMom = new bool[6]
                                {
-                            bool.Parse(mom.Element("daysRequest").Element("sunReq").Value),
-                            bool.Parse(mom.Element("daysRequest").Element("monReq").Value),
-                            bool.Parse(mom.Element("daysRequest").Element("tueReq").Value),
-                            bool.Parse(mom.Element("daysRequest").Element("wedReq").Value),
-                            bool.Parse(mom.Element("daysRequest").Element("thuReq").Value),
-                            bool.Parse(mom.Element("daysRequest").Element("friReq").Value)
+                                    bool.Parse(mom.Element("daysRequest").Element("sunReq").Value),
+                                    bool.Parse(mom.Element("daysRequest").Element("monReq").Value),
+                                    bool.Parse(mom.Element("daysRequest").Element("tueReq").Value),
+                                    bool.Parse(mom.Element("daysRequest").Element("wedReq").Value),
+                                    bool.Parse(mom.Element("daysRequest").Element("thuReq").Value),
+                                    bool.Parse(mom.Element("daysRequest").Element("friReq").Value)
                                },
                                startHour = new DateTime[6]
                                {
-                            DateTime.Parse(mom.Element("startHour").Element("sunStart").Value),
-                            DateTime.Parse(mom.Element("startHour").Element("monStart").Value),
-                            DateTime.Parse(mom.Element("startHour").Element("tueStart").Value),
-                            DateTime.Parse(mom.Element("startHour").Element("wedStart").Value),
-                            DateTime.Parse(mom.Element("startHour").Element("thuStart").Value),
-                            DateTime.Parse(mom.Element("startHour").Element("friStart").Value),
+                                    DateTime.Parse(mom.Element("startHour").Element("sunStart").Value),
+                                    DateTime.Parse(mom.Element("startHour").Element("monStart").Value),
+                                    DateTime.Parse(mom.Element("startHour").Element("tueStart").Value),
+                                    DateTime.Parse(mom.Element("startHour").Element("wedStart").Value),
+                                    DateTime.Parse(mom.Element("startHour").Element("thuStart").Value),
+                                    DateTime.Parse(mom.Element("startHour").Element("friStart").Value)
                                },
                                endHour = new DateTime[6]
                                {
-                            DateTime.Parse(mom.Element("endHour").Element("sunEnd").Value),
-                            DateTime.Parse(mom.Element("endHour").Element("monEnd").Value),
-                            DateTime.Parse(mom.Element("endHour").Element("tueEnd").Value),
-                            DateTime.Parse(mom.Element("endHour").Element("wedEnd").Value),
-                            DateTime.Parse(mom.Element("endHour").Element("thuEnd").Value),
-                            DateTime.Parse(mom.Element("endHour").Element("friEnd").Value),
+                                    DateTime.Parse(mom.Element("endHour").Element("sunEnd").Value),
+                                    DateTime.Parse(mom.Element("endHour").Element("monEnd").Value),
+                                    DateTime.Parse(mom.Element("endHour").Element("tueEnd").Value),
+                                    DateTime.Parse(mom.Element("endHour").Element("wedEnd").Value),
+                                    DateTime.Parse(mom.Element("endHour").Element("thuEnd").Value),
+                                    DateTime.Parse(mom.Element("endHour").Element("friEnd").Value)
                                },
                                nothMom = mom.Element("note").Value
                            }).ToList();
@@ -434,7 +434,11 @@ namespace DAL
             {
                 mothers = null;
             }
-            return mothers;
+
+            if (Predicate == null)
+                return mothers;
+
+            return mothers.Where(Predicate);
         }
 
         public Mother getMom(long idMom)
@@ -475,12 +479,12 @@ namespace DAL
                               },
                               endHour = new DateTime[6]
                               {
-                              DateTime.Parse(mom.Element("endHour").Element("sunEnd").Value),
-                              DateTime.Parse(mom.Element("endHour").Element("monEnd").Value),
-                              DateTime.Parse(mom.Element("endHour").Element("tueEnd").Value),
-                              DateTime.Parse(mom.Element("endHour").Element("wedEnd").Value),
-                              DateTime.Parse(mom.Element("endHour").Element("thuEnd").Value),
-                              DateTime.Parse(mom.Element("endHour").Element("friEnd").Value),
+                                  DateTime.Parse(mom.Element("endHour").Element("sunEnd").Value),
+                                  DateTime.Parse(mom.Element("endHour").Element("monEnd").Value),
+                                  DateTime.Parse(mom.Element("endHour").Element("tueEnd").Value),
+                                  DateTime.Parse(mom.Element("endHour").Element("wedEnd").Value),
+                                  DateTime.Parse(mom.Element("endHour").Element("thuEnd").Value),
+                                  DateTime.Parse(mom.Element("endHour").Element("friEnd").Value),
                               },
                               nothMom = mom.Element("note").Value
                           }).FirstOrDefault();
@@ -582,18 +586,18 @@ namespace DAL
             try
             {
                 child = (from kid in childFile.Elements()
-                    where long.Parse(kid.Element("id").Value) == idChild
+                         where long.Parse(kid.Element("id").Value) == idChild
 
-                    select new Child()
-                    {
-                        idMom = long.Parse(kid.Element("IdMom").Value),
-                        idChild = long.Parse(kid.Element("idChild").Value),
-                        firstName = kid.Element("name").Element("firstName").Value,
-                        lastName = kid.Element("name").Element("lastName").Value,
-                        birthdayKid = DateTime.Parse(kid.Element("birthday").Value),
-                        isSpecialNeed = Convert.ToBoolean(kid.Element("isSpecial").Value),
-                        specialNeeds = kid.Element("needs").Value,
-                    }).FirstOrDefault();
+                         select new Child()
+                         {
+                             idMom = long.Parse(kid.Element("IdMom").Value),
+                             idChild = long.Parse(kid.Element("idChild").Value),
+                             firstName = kid.Element("name").Element("firstName").Value,
+                             lastName = kid.Element("name").Element("lastName").Value,
+                             birthdayKid = DateTime.Parse(kid.Element("birthday").Value),
+                             isSpecialNeed = Convert.ToBoolean(kid.Element("isSpecial").Value),
+                             specialNeeds = kid.Element("needs").Value,
+                         }).FirstOrDefault();
             }
             catch
             {
