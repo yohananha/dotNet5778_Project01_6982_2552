@@ -18,7 +18,7 @@
         <Image x:Name="image" Source="images/baby.jpg" HorizontalAlignment="Center" Height="700" Grid.RowSpan="2" VerticalAlignment="Center" Width="1000"/>
 
         <Label x:Name="label" Content="מסך הילדים" FontSize="50" FontFamily="Open Sans Hebrew" Foreground="White" HorizontalAlignment="Right" Margin="0,45,0,0" VerticalAlignment="Bottom" Height="100"  Width="300" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TabControl x:Name="tabControl"  FlowDirection="RightToLeft" Opacity="0.7" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000">
+        <TabControl x:Name="tabControl"  FlowDirection="RightToLeft" Opacity="0.7" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" SelectedIndex="{Binding Mode=OneWay }" Width="1000">
             <TabItem x:Name="addChildTab" FlowDirection="LeftToRight" Header="הוספת ילד"  Width="330" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" MouseLeftButtonUp="addChildTab_MouseLeftButtonUp">
                 <Grid x:Name="grid1">
                     <Grid.RowDefinitions>
