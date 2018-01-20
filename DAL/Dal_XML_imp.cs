@@ -12,8 +12,11 @@ using DS;
 
 namespace DAL
 {
+
     class Dal_XML_imp : Idal
     {
+        public static int contract_Id = 1;
+
         private XElement nannysFile, motherFile, childFile, contractFile;
         string nannyPath = "nanny.xml";
         string momPath = "mother.xml";
@@ -93,18 +96,19 @@ namespace DAL
         public void deleteNanny(long idNannyDel)
         {
             XElement nannyElement;
-            try
+
+            nannyElement = (from nan in nannysFile.Elements()
+                            where int.Parse(nan.Element("id").Value) == idNannyDel
+                            select nan).FirstOrDefault();
+            if (nannyElement == null)
+                throw new Exception("Nanny is not exist in system");
+            var contractList = getContracts(cl => cl.idNanny == idNannyDel);
+            foreach (var contract in contractList)
             {
-                nannyElement = (from nan in nannysFile.Elements()
-                                where int.Parse(nan.Element("id").Value) == idNannyDel
-                                select nan).FirstOrDefault();
-                nannyElement.Remove();
-                motherFile.Save(momPath);
+                deleteContract(contract.idChild);
             }
-            catch
-            {
-                throw new Exception("Delete mothe problem");
-            }
+            nannyElement.Remove();
+            nannysFile.Save(nannyPath);
         }
 
         public void updateNanny(Nanny nannye)
@@ -114,7 +118,8 @@ namespace DAL
             XElement nannyElement = (from nan in nannysFile.Elements()
                                      where int.Parse(nan.Element("id").Value) == nannye.nannyId
                                      select nan).FirstOrDefault();
-
+            if (nannyElement == null)
+                throw new Exception("Nanny is not exist in system");
 
             nannyElement.Element("name").Element("lastName").Value = nannye.lastNameNanny;
             nannyElement.Element("name").Element("firstName").Value = nannye.firstNameNanny;
@@ -227,28 +232,27 @@ namespace DAL
         {
             LoadData("nanny");
             Nanny nanny;
-            try
-            {
-                nanny = (from nan in nannysFile.Elements()
-                         where int.Parse(nan.Element("id").Value) == idNanny
-                         select new Nanny()
-                         {
-                             nannyId = long.Parse(nan.Element("id").Value),
-                             lastNameNanny = nan.Element("name").Element("lastName").Value,
-                             firstNameNanny = nan.Element("name").Element("firstName").Value,
-                             dateNanny = DateTime.Parse(nan.Element("date").Value),
-                             phoneNanny = long.Parse(nan.Element("phone").Value),
-                             addressNanny = nan.Element("address").Value,
-                             elevatorNanny = bool.Parse(nan.Element("elevatorNanny").Value),
-                             floorNanny = int.Parse(nan.Element("floorNanny").Value),
-                             experienceNanny = int.Parse(nan.Element("experienceNanny").Value),
-                             maxChildNanny = int.Parse(nan.Element("maxChildNanny").Value),
-                             minAgeChildNanny = int.Parse(nan.Element("minAgeChildNanny").Value),
-                             maxAgeChildNanny = int.Parse(nan.Element("maxAgeChildNanny").Value),
-                             isByHourNanny = bool.Parse(nan.Element("isByHourNanny").Value),
-                             rateHourNanny = int.Parse(nan.Element("rateHourNanny").Value),
-                             rateMonthNanny = int.Parse(nan.Element("rateMonthNanny").Value),
-                             daysWorkNanny = new bool[6]{
+
+            nanny = (from nan in nannysFile.Elements()
+                     where int.Parse(nan.Element("id").Value) == idNanny
+                     select new Nanny()
+                     {
+                         nannyId = long.Parse(nan.Element("id").Value),
+                         lastNameNanny = nan.Element("name").Element("lastName").Value,
+                         firstNameNanny = nan.Element("name").Element("firstName").Value,
+                         dateNanny = DateTime.Parse(nan.Element("date").Value),
+                         phoneNanny = long.Parse(nan.Element("phone").Value),
+                         addressNanny = nan.Element("address").Value,
+                         elevatorNanny = bool.Parse(nan.Element("elevatorNanny").Value),
+                         floorNanny = int.Parse(nan.Element("floorNanny").Value),
+                         experienceNanny = int.Parse(nan.Element("experienceNanny").Value),
+                         maxChildNanny = int.Parse(nan.Element("maxChildNanny").Value),
+                         minAgeChildNanny = int.Parse(nan.Element("minAgeChildNanny").Value),
+                         maxAgeChildNanny = int.Parse(nan.Element("maxAgeChildNanny").Value),
+                         isByHourNanny = bool.Parse(nan.Element("isByHourNanny").Value),
+                         rateHourNanny = int.Parse(nan.Element("rateHourNanny").Value),
+                         rateMonthNanny = int.Parse(nan.Element("rateMonthNanny").Value),
+                         daysWorkNanny = new bool[6]{
                             bool.Parse(nan.Element("daysWorkNanny").Element("sunWork").Value),
                             bool.Parse(nan.Element("daysWorkNanny").Element("monWork").Value),
                             bool.Parse(nan.Element("daysWorkNanny").Element("tueWork").Value),
@@ -256,33 +260,31 @@ namespace DAL
                             bool.Parse(nan.Element("daysWorkNanny").Element("thuWork").Value),
                             bool.Parse(nan.Element("daysWorkNanny").Element("friWork").Value)
                                 },
-                             isTamatNanny = bool.Parse(nan.Element("isTamatNanny").Value),
-                             recommendationsNanny = nan.Element("recommendationsNanny").Value,
-                             currentChildren = int.Parse(nan.Element("currentChildren").Value),
-                             startHour = new DateTime[6]
-                                {
+                         isTamatNanny = bool.Parse(nan.Element("isTamatNanny").Value),
+                         recommendationsNanny = nan.Element("recommendationsNanny").Value,
+                         currentChildren = int.Parse(nan.Element("currentChildren").Value),
+                         startHour = new DateTime[6]
+                            {
                             DateTime.Parse(nan.Element("startHour").Element("sunStart").Value),
                             DateTime.Parse(nan.Element("startHour").Element("monStart").Value),
                             DateTime.Parse(nan.Element("startHour").Element("tueStart").Value),
                             DateTime.Parse(nan.Element("startHour").Element("wedStart").Value),
                             DateTime.Parse(nan.Element("startHour").Element("thuStart").Value),
                             DateTime.Parse(nan.Element("startHour").Element("friStart").Value),
-                                },
-                             endHour = new DateTime[6]
-                                {
+                            },
+                         endHour = new DateTime[6]
+                            {
                             DateTime.Parse(nan.Element("endHour").Element("sunEnd").Value),
                             DateTime.Parse(nan.Element("endHour").Element("monEnd").Value),
                             DateTime.Parse(nan.Element("endHour").Element("tueEnd").Value),
                             DateTime.Parse(nan.Element("endHour").Element("wedEnd").Value),
                             DateTime.Parse(nan.Element("endHour").Element("thuEnd").Value),
                             DateTime.Parse(nan.Element("endHour").Element("friEnd").Value),
-                                }
-                         }).FirstOrDefault();
-            }
-            catch
-            {
-                nanny = null;
-            }
+                            }
+                     }).FirstOrDefault();
+            if (nanny == null)
+                throw new Exception("id doesn't exist");
+
             return nanny;
         }
 
@@ -499,6 +501,10 @@ namespace DAL
 
         public void addChild(Child child)
         {
+            Child childCheck = getChild(child.idChild);
+            if (childCheck != null)
+                throw new Exception("Child is already exist in system");
+
             XElement idMom = new XElement("idMom", child.idMom);
             XElement idChild = new XElement("idChild", child.idChild);
             XElement firstName = new XElement("firstName", child.firstName);
@@ -509,7 +515,7 @@ namespace DAL
             XElement needs = new XElement("needs", child.specialNeeds);
             childFile.Add(new XElement("mother", idMom, idChild, name, birthday, isSpeacial, needs));
 
-            childFile.Save(momPath);
+            childFile.Save(kidPath);
         }
 
         public void deleteChild(long idChildDel)
@@ -517,18 +523,15 @@ namespace DAL
             LoadData("child");
 
             XElement childElement;
-            try
-            {
-                childElement = (from kid in childFile.Elements()
-                                where int.Parse(kid.Element("id").Value) == idChildDel
-                                select kid).FirstOrDefault();
-                childElement.Remove();
-                motherFile.Save(momPath);
-            }
-            catch
-            {
-                throw new Exception("Delete mothe problem");
-            }
+
+            childElement = (from kid in childFile.Elements()
+                            where long.Parse(kid.Element("id").Value) == idChildDel
+                            select kid).FirstOrDefault();
+            if (childElement == null)
+                throw new Exception("Child is not appear in system");
+            deleteContract(long.Parse(childElement.Element("id").Value));
+            childElement.Remove();
+            childFile.Save(kidPath);
         }
 
         public void updateChild(Child child)
@@ -538,6 +541,8 @@ namespace DAL
             XElement childElement = (from kid in childFile.Elements()
                                      where int.Parse(kid.Element("id").Value) == child.idChild
                                      select kid).FirstOrDefault();
+            if (childElement == null)
+                throw new Exception("Child is not appear in system");
 
             childElement.Element("name").Element("firstName").Value = child.firstName;
             childElement.Element("name").Element("lastName").Value = child.lastName;
@@ -545,7 +550,7 @@ namespace DAL
             childElement.Element("isSpecial").Value = child.isSpecialNeed.ToString();
             childElement.Element("needs").Value = child.specialNeeds;
 
-            childFile.Save(momPath);
+            childFile.Save(kidPath);
 
         }
 
@@ -571,34 +576,36 @@ namespace DAL
             {
                 kids = null;
             }
-            return kids;
+            if (Predicate == null)
+                return kids;
+            return kids.Where(Predicate);
         }
+
 
         public Child getChild(long idChild)
         {
             LoadData("child");
-            Child child;
+            //Child child;
+            var childList = getKids();
 
-            try
-            {
-                child = (from kid in childFile.Elements()
-                         where long.Parse(kid.Element("id").Value) == idChild
+            var child = childList.FirstOrDefault(_child => _child.idChild == idChild);
+            if (child == null)
+                throw new Exception("id doesn't exist");
 
-                         select new Child()
-                         {
-                             idMom = long.Parse(kid.Element("IdMom").Value),
-                             idChild = long.Parse(kid.Element("idChild").Value),
-                             firstName = kid.Element("name").Element("firstName").Value,
-                             lastName = kid.Element("name").Element("lastName").Value,
-                             birthdayKid = DateTime.Parse(kid.Element("birthday").Value),
-                             isSpecialNeed = Convert.ToBoolean(kid.Element("isSpecial").Value),
-                             specialNeeds = kid.Element("needs").Value,
-                         }).FirstOrDefault();
-            }
-            catch
-            {
-                child = null;
-            }
+            //child = (from kid in childFile.Elements()
+            //             where long.Parse(kid.Element("id").Value) == idChild
+
+            //             select new Child()
+            //             {
+            //                 idMom = long.Parse(kid.Element("IdMom").Value),
+            //                 idChild = long.Parse(kid.Element("idChild").Value),
+            //                 firstName = kid.Element("name").Element("firstName").Value,
+            //                 lastName = kid.Element("name").Element("lastName").Value,
+            //                 birthdayKid = DateTime.Parse(kid.Element("birthday").Value),
+            //                 isSpecialNeed = Convert.ToBoolean(kid.Element("isSpecial").Value),
+            //                 specialNeeds = kid.Element("needs").Value,
+            //             }).FirstOrDefault();
+
             return child;
 
         }
@@ -609,6 +616,18 @@ namespace DAL
 
         public void addContract(Contract contract)
         {
+            var contractList = getContracts().ToList();
+            if (contractList.Exists(c => c.idChild == contract.idChild && c.idNanny == contract.idNanny))
+                throw new Exception("Contract already exist in system, please update the contract");
+            Child contractchild = getChild(contract.idChild);
+            Mother contractMother = getMom(contractchild.idMom);
+            if (contractMother == null)
+                throw new Exception("Mother is not appear in the system");
+            Nanny contractNanny = getNanny(contract.idNanny);
+            if (contractNanny == null)
+                throw new Exception("Nanny is not appear in system");
+            contract.idContract = ++contract_Id;
+
             XElement idContract = new XElement("Id", contract.idContract);
             XElement nameChild = new XElement("name", contract.nameChild);
             XElement idChild = new XElement("Id", contract.idChild);
@@ -636,50 +655,44 @@ namespace DAL
             LoadData("contract");
 
             XElement contractElement;
-            try
-            {
-                contractElement = (from contr in contractFile.Elements()
-                                   where int.Parse(contr.Element("id").Value) == idChildContractDel
-                                   select contr).FirstOrDefault();
-                Nanny contracctNanny = getNanny(long.Parse(contractElement.Element("Nanny").Element("Id").Value));
-                contracctNanny.currentChildren--;
-                updateNanny(contracctNanny);
-                contractElement.Remove();
-                contractFile.Save(contractPath);
-            }
-            catch
-            {
+
+            contractElement = (from contr in contractFile.Elements()
+                               where int.Parse(contr.Element("id").Value) == idChildContractDel
+                               select contr).FirstOrDefault();
+            if (contractElement == null)
                 throw new Exception("Contract is not exist in system");
-            }
+            Nanny contracctNanny = getNanny(long.Parse(contractElement.Element("Nanny").Element("Id").Value));
+            contracctNanny.currentChildren--;
+            updateNanny(contracctNanny);
+            contractElement.Remove();
+            contractFile.Save(contractPath);
+
         }
 
         public void updateContract(Contract contract)
         {
             LoadData("contract");
-            try
-            {
-                XElement contractElement = (from contr in childFile.Elements()
-                                            where int.Parse(contr.Element("id").Value) == contract.idContract
-                                            select contr).FirstOrDefault();
 
-                contractElement.Element("Child").Element("name").Value = contract.nameChild;
-                contractElement.Element("Child").Element("Id").Value = contract.idChild.ToString();
-                contractElement.Element("Nanny").Element("name").Value = contract.nameNanny;
-                contractElement.Element("Nanny").Element("Id").Value = contract.idNanny.ToString();
-                contractElement.Element("isMet").Value = contract.isMet.ToString();
-                contractElement.Element("isContract").Value = contract.isContract.ToString();
-                contractElement.Element("salaryPerHour").Value = contract.salaryPerHour.ToString();
-                contractElement.Element("salaryPerMonth").Value = contract.salaryPerMonth.ToString();
-                contractElement.Element("salaryAgreed").Value = contract.salaryAgreed.ToString();
-                contractElement.Element("isHour").Value = contract.isHour.ToString();
-                contractElement.Element("workBegin").Value = contract.workBegin.ToString();
-                contractElement.Element("workBegin").Value = contract.workBegin.ToString();
-            }
-            catch (Exception)
-            {
-                throw new Exception("Contract is not appear in system");
-            }
-            childFile.Save(momPath);
+            XElement contractElement = (from contr in childFile.Elements()
+                                        where int.Parse(contr.Element("id").Value) == contract.idContract
+                                        select contr).FirstOrDefault();
+            if (contractElement == null)
+                throw new Exception("Contract is not exist in system");
+
+            contractElement.Element("Child").Element("name").Value = contract.nameChild;
+            contractElement.Element("Child").Element("Id").Value = contract.idChild.ToString();
+            contractElement.Element("Nanny").Element("name").Value = contract.nameNanny;
+            contractElement.Element("Nanny").Element("Id").Value = contract.idNanny.ToString();
+            contractElement.Element("isMet").Value = contract.isMet.ToString();
+            contractElement.Element("isContract").Value = contract.isContract.ToString();
+            contractElement.Element("salaryPerHour").Value = contract.salaryPerHour.ToString();
+            contractElement.Element("salaryPerMonth").Value = contract.salaryPerMonth.ToString();
+            contractElement.Element("salaryAgreed").Value = contract.salaryAgreed.ToString();
+            contractElement.Element("isHour").Value = contract.isHour.ToString();
+            contractElement.Element("workBegin").Value = contract.workBegin.ToString();
+            contractElement.Element("workBegin").Value = contract.workBegin.ToString();
+
+            contractFile.Save(contractPath);
         }
 
         public IEnumerable<Contract> getContracts(Func<Contract, bool> Predicate = null)
@@ -721,33 +734,27 @@ namespace DAL
             LoadData("contract");
             Contract contract;
 
-            try
-            {
-                contract = (from contr in contractFile.Elements()
-                            where long.Parse(contr.Element("id").Value) == idChildContract
+            contract = (from contr in contractFile.Elements()
+                        where long.Parse(contr.Element("id").Value) == idChildContract
 
-                            select new Contract()
-                            {
-                                idContract = int.Parse(contr.Element("Id").Value),
-                                nameChild = contr.Element("Child").Element("name").Value,
-                                idChild = long.Parse(contr.Element("Child").Element("Id").Value),
-                                nameNanny = contr.Element("Nanny").Element("name").Value,
-                                idNanny = long.Parse(contr.Element("Nanny").Element("Id").Value),
-                                isMet = bool.Parse(contr.Element("isMet").Value),
-                                isContract = bool.Parse(contr.Element("isContract").Value),
-                                salaryPerHour = double.Parse(contr.Element("salaryPerHour").Value),
-                                salaryPerMonth = double.Parse(contr.Element("salaryPerMonth").Value),
-                                salaryAgreed = double.Parse(contr.Element("salaryAgreed").Value),
-                                isHour = bool.Parse(contr.Element("isHour").Value),
-                                workBegin = DateTime.Parse(contr.Element("workBegin").Value),
-                                workEnd = DateTime.Parse(contr.Element("workEnd").Value)
-                            }).FirstOrDefault();
-            }
-            catch
-            {
-                contract = null;
+                        select new Contract()
+                        {
+                            idContract = int.Parse(contr.Element("Id").Value),
+                            nameChild = contr.Element("Child").Element("name").Value,
+                            idChild = long.Parse(contr.Element("Child").Element("Id").Value),
+                            nameNanny = contr.Element("Nanny").Element("name").Value,
+                            idNanny = long.Parse(contr.Element("Nanny").Element("Id").Value),
+                            isMet = bool.Parse(contr.Element("isMet").Value),
+                            isContract = bool.Parse(contr.Element("isContract").Value),
+                            salaryPerHour = double.Parse(contr.Element("salaryPerHour").Value),
+                            salaryPerMonth = double.Parse(contr.Element("salaryPerMonth").Value),
+                            salaryAgreed = double.Parse(contr.Element("salaryAgreed").Value),
+                            isHour = bool.Parse(contr.Element("isHour").Value),
+                            workBegin = DateTime.Parse(contr.Element("workBegin").Value),
+                            workEnd = DateTime.Parse(contr.Element("workEnd").Value)
+                        }).FirstOrDefault();
+            if (contract == null)
                 throw new Exception("id doesn't exist");
-            }
             return contract;
         }
 
