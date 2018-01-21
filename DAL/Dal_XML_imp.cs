@@ -293,39 +293,50 @@ namespace DAL
         public void addMom(Mother mother)
         {
 
-            XElement id = new XElement("id", mother.IdMom);
-            XElement firstName = new XElement("firstName", mother.FirstNameMom);
-            XElement lastName = new XElement("lastName", mother.LasNameMom);
-            XElement name = new XElement("name", firstName, lastName);
-            XElement phone = new XElement("phone", mother.PhoneMom);
-            XElement address = new XElement("address", mother.AddressMom);
-            XElement addressForNanny = new XElement("addressForNanny", mother.AddressForNanny);
-            XElement sunReq = new XElement("sunReq", mother.DaysRequestMom[0]);
-            XElement monReq = new XElement("monReq", mother.DaysRequestMom[1]);
-            XElement tueReq = new XElement("tueReq", mother.DaysRequestMom[2]);
-            XElement wedReq = new XElement("wedReq", mother.DaysRequestMom[3]);
-            XElement thuReq = new XElement("thuReq", mother.DaysRequestMom[4]);
-            XElement friReq = new XElement("friReq", mother.DaysRequestMom[5]);
-            XElement daysRequest = new XElement("daysRequest", sunReq, monReq, tueReq, wedReq, thuReq, friReq);
-            XElement sunStart = new XElement("sunStart", mother.startHour[0]);
-            XElement monStart = new XElement("monStart", mother.startHour[1]);
-            XElement tueStart = new XElement("tueStart", mother.startHour[2]);
-            XElement wedStart = new XElement("wedStart", mother.startHour[3]);
-            XElement thuStart = new XElement("thuStart", mother.startHour[4]);
-            XElement friStart = new XElement("friStart", mother.startHour[5]);
-            XElement startHour = new XElement("startHour", sunStart, monStart, tueStart, wedStart, thuStart, friStart);
-            XElement sunEnd = new XElement("sunEnd", mother.endHour[0]);
-            XElement monEnd = new XElement("monEnd", mother.endHour[1]);
-            XElement tueEnd = new XElement("tueEnd", mother.endHour[2]);
-            XElement wedEnd = new XElement("wedEnd", mother.endHour[3]);
-            XElement thuEnd = new XElement("thuEnd", mother.endHour[4]);
-            XElement friEnd = new XElement("friEnd", mother.endHour[5]);
-            XElement endHour = new XElement("endHour", sunEnd, monEnd, tueEnd, wedEnd, thuEnd, friEnd);
-            XElement note = new XElement("note", mother.nothMom);
+            try
+            {
+                var momList = getAllMothers().ToList();
+                if (momList.Exists(mom=>mom.IdMom==mother.IdMom))
+                    throw 
 
-            motherFile.Add(new XElement("mother", id, name, phone, address, addressForNanny, daysRequest, startHour, endHour, note));
+                XElement id = new XElement("id", mother.IdMom);
+                XElement firstName = new XElement("firstName", mother.FirstNameMom);
+                XElement lastName = new XElement("lastName", mother.LasNameMom);
+                XElement name = new XElement("name", firstName, lastName);
+                XElement phone = new XElement("phone", mother.PhoneMom);
+                XElement address = new XElement("address", mother.AddressMom);
+                XElement addressForNanny = new XElement("addressForNanny", mother.AddressForNanny);
+                XElement sunReq = new XElement("sunReq", mother.DaysRequestMom[0]);
+                XElement monReq = new XElement("monReq", mother.DaysRequestMom[1]);
+                XElement tueReq = new XElement("tueReq", mother.DaysRequestMom[2]);
+                XElement wedReq = new XElement("wedReq", mother.DaysRequestMom[3]);
+                XElement thuReq = new XElement("thuReq", mother.DaysRequestMom[4]);
+                XElement friReq = new XElement("friReq", mother.DaysRequestMom[5]);
+                XElement daysRequest = new XElement("daysRequest", sunReq, monReq, tueReq, wedReq, thuReq, friReq);
+                XElement sunStart = new XElement("sunStart", mother.startHour[0]);
+                XElement monStart = new XElement("monStart", mother.startHour[1]);
+                XElement tueStart = new XElement("tueStart", mother.startHour[2]);
+                XElement wedStart = new XElement("wedStart", mother.startHour[3]);
+                XElement thuStart = new XElement("thuStart", mother.startHour[4]);
+                XElement friStart = new XElement("friStart", mother.startHour[5]);
+                XElement startHour = new XElement("startHour", sunStart, monStart, tueStart, wedStart, thuStart, friStart);
+                XElement sunEnd = new XElement("sunEnd", mother.endHour[0]);
+                XElement monEnd = new XElement("monEnd", mother.endHour[1]);
+                XElement tueEnd = new XElement("tueEnd", mother.endHour[2]);
+                XElement wedEnd = new XElement("wedEnd", mother.endHour[3]);
+                XElement thuEnd = new XElement("thuEnd", mother.endHour[4]);
+                XElement friEnd = new XElement("friEnd", mother.endHour[5]);
+                XElement endHour = new XElement("endHour", sunEnd, monEnd, tueEnd, wedEnd, thuEnd, friEnd);
+                XElement note = new XElement("note", mother.nothMom);
 
-            motherFile.Save(momPath);
+                motherFile.Add(new XElement("mother", id, name, phone, address, addressForNanny, daysRequest, startHour, endHour, note));
+
+                motherFile.Save(momPath);
+            }
+            catch (Exception exist)
+            {
+                 
+            }
         }
 
         public void deleteMother(long idMotherDel)

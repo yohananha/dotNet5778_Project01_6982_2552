@@ -247,5 +247,10 @@ namespace PLWPF
                 MessageBox.Show(Ex.Message);
             }
         }
+
+        private void dataGridContractDetails_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }

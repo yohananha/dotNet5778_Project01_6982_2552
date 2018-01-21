@@ -46,7 +46,7 @@
                     <Label x:Name="label6" Content="חוזים בטווח שכר(מינ-מקס)" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Margin="6,8,10,8.333"/>
                     <CheckBox x:Name="checkBoxContractByHour" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center" />
                     <Label x:Name="label7" Content="חוזים לפי שעה" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center"/>
-                    <DataGrid x:Name="dataGridContractDetails" AutoGenerateColumns="False" Grid.ColumnSpan="4" Grid.Row="4">
+                    <DataGrid x:Name="dataGridContractDetails" AutoGenerateColumns="False" Grid.ColumnSpan="4" Grid.Row="4" SelectionChanged="dataGridContractDetails_SelectionChanged" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="מספר חוזה" Binding="{Binding idContract}" />
                             <DataGridTextColumn Header="ילד/ה" Binding="{Binding nameChild}" />
@@ -55,7 +55,6 @@
                             <DataGridTextColumn Header="התחלת חוזה" Binding="{Binding workBegin , StringFormat='dd/MM/yyyy' }" />
                             <DataGridTextColumn Header="סיום חוזה" Binding="{Binding workEnd , StringFormat='dd/MM/yyyy' }" />
                         </DataGrid.Columns>
-                     
                     </DataGrid>
                     <Button x:Name="buttonSearchContract" Grid.ColumnSpan="2" Content="חפש חוזים" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center" Click="buttonSearchContract_Click"/>
                     <DockPanel VerticalAlignment="Center" Grid.Column="2" Grid.Row="2"  Margin="3" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxContractBySalery}">
