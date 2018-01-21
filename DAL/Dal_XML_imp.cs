@@ -295,69 +295,73 @@ namespace DAL
         public void addMom(Mother mother)
         {
 
-            try
-            {
-                var momList = getAllMothers().ToList();
-                if (momList.Exists(mom=>mom.IdMom==mother.IdMom))
-                    throw 
+            Nanny momCheck = getNanny(mother.IdMom);
+            if (momCheck != null)
+                throw new Exception("Mother is already exist in system");
+            XElement id = new XElement("id", mother.IdMom);
+            XElement firstName = new XElement("firstName", mother.FirstNameMom);
+            XElement lastName = new XElement("lastName", mother.LasNameMom);
+            XElement name = new XElement("name", firstName, lastName);
+            XElement phone = new XElement("phone", mother.PhoneMom);
+            XElement address = new XElement("address", mother.AddressMom);
+            XElement addressForNanny = new XElement("addressForNanny", mother.AddressForNanny);
+            XElement sunReq = new XElement("sunReq", mother.DaysRequestMom[0]);
+            XElement monReq = new XElement("monReq", mother.DaysRequestMom[1]);
+            XElement tueReq = new XElement("tueReq", mother.DaysRequestMom[2]);
+            XElement wedReq = new XElement("wedReq", mother.DaysRequestMom[3]);
+            XElement thuReq = new XElement("thuReq", mother.DaysRequestMom[4]);
+            XElement friReq = new XElement("friReq", mother.DaysRequestMom[5]);
+            XElement daysRequest = new XElement("daysRequest", sunReq, monReq, tueReq, wedReq, thuReq, friReq);
+            XElement sunStart = new XElement("sunStart", mother.startHour[0]);
+            XElement monStart = new XElement("monStart", mother.startHour[1]);
+            XElement tueStart = new XElement("tueStart", mother.startHour[2]);
+            XElement wedStart = new XElement("wedStart", mother.startHour[3]);
+            XElement thuStart = new XElement("thuStart", mother.startHour[4]);
+            XElement friStart = new XElement("friStart", mother.startHour[5]);
+            XElement startHour = new XElement("startHour", sunStart, monStart, tueStart, wedStart, thuStart, friStart);
+            XElement sunEnd = new XElement("sunEnd", mother.endHour[0]);
+            XElement monEnd = new XElement("monEnd", mother.endHour[1]);
+            XElement tueEnd = new XElement("tueEnd", mother.endHour[2]);
+            XElement wedEnd = new XElement("wedEnd", mother.endHour[3]);
+            XElement thuEnd = new XElement("thuEnd", mother.endHour[4]);
+            XElement friEnd = new XElement("friEnd", mother.endHour[5]);
+            XElement endHour = new XElement("endHour", sunEnd, monEnd, tueEnd, wedEnd, thuEnd, friEnd);
+            XElement note = new XElement("note", mother.nothMom);
 
-                XElement id = new XElement("id", mother.IdMom);
-                XElement firstName = new XElement("firstName", mother.FirstNameMom);
-                XElement lastName = new XElement("lastName", mother.LasNameMom);
-                XElement name = new XElement("name", firstName, lastName);
-                XElement phone = new XElement("phone", mother.PhoneMom);
-                XElement address = new XElement("address", mother.AddressMom);
-                XElement addressForNanny = new XElement("addressForNanny", mother.AddressForNanny);
-                XElement sunReq = new XElement("sunReq", mother.DaysRequestMom[0]);
-                XElement monReq = new XElement("monReq", mother.DaysRequestMom[1]);
-                XElement tueReq = new XElement("tueReq", mother.DaysRequestMom[2]);
-                XElement wedReq = new XElement("wedReq", mother.DaysRequestMom[3]);
-                XElement thuReq = new XElement("thuReq", mother.DaysRequestMom[4]);
-                XElement friReq = new XElement("friReq", mother.DaysRequestMom[5]);
-                XElement daysRequest = new XElement("daysRequest", sunReq, monReq, tueReq, wedReq, thuReq, friReq);
-                XElement sunStart = new XElement("sunStart", mother.startHour[0]);
-                XElement monStart = new XElement("monStart", mother.startHour[1]);
-                XElement tueStart = new XElement("tueStart", mother.startHour[2]);
-                XElement wedStart = new XElement("wedStart", mother.startHour[3]);
-                XElement thuStart = new XElement("thuStart", mother.startHour[4]);
-                XElement friStart = new XElement("friStart", mother.startHour[5]);
-                XElement startHour = new XElement("startHour", sunStart, monStart, tueStart, wedStart, thuStart, friStart);
-                XElement sunEnd = new XElement("sunEnd", mother.endHour[0]);
-                XElement monEnd = new XElement("monEnd", mother.endHour[1]);
-                XElement tueEnd = new XElement("tueEnd", mother.endHour[2]);
-                XElement wedEnd = new XElement("wedEnd", mother.endHour[3]);
-                XElement thuEnd = new XElement("thuEnd", mother.endHour[4]);
-                XElement friEnd = new XElement("friEnd", mother.endHour[5]);
-                XElement endHour = new XElement("endHour", sunEnd, monEnd, tueEnd, wedEnd, thuEnd, friEnd);
-                XElement note = new XElement("note", mother.nothMom);
+            motherFile.Add(new XElement("mother", id, name, phone, address, addressForNanny, daysRequest, startHour, endHour, note));
 
-                motherFile.Add(new XElement("mother", id, name, phone, address, addressForNanny, daysRequest, startHour, endHour, note));
+            motherFile.Save(momPath);
 
-                motherFile.Save(momPath);
-            }
-            catch (Exception exist)
-            {
-                 
-            }
+
         }
 
         public void deleteMother(long idMotherDel)
         {
-            LoadData("mother");
 
             XElement motherElement;
-            try
-            {
-                motherElement = (from mom in motherFile.Elements()
-                                 where int.Parse(mom.Element("id").Value) == idMotherDel
-                                 select mom).FirstOrDefault();
-                motherElement.Remove();
-                motherFile.Save(momPath);
-            }
-            catch
-            {
-                throw new Exception("Delete mothe problem");
-            }
+
+            motherElement = (from nan in motherFile.Elements()
+                             where int.Parse(nan.Element("id").Value) == idMotherDel
+                             select nan).FirstOrDefault();
+            if (motherElement == null)
+                throw new Exception("Mother is not exist in system");
+            deleteAllChildtMother(Convert.ToInt64(motherElement.Element("idMom").Value));
+
+            motherElement.Remove();
+
+            motherFile.Save(momPath);
+            
+        }
+
+        private void deleteAllChildtMother(long idMotherDel)
+        {
+            var listChildToDelete = (from item in childFile.Elements()
+                                     where int.Parse(item.Element("idMom").Value) == idMotherDel
+                                     select item).ToList();
+
+            //the metod deleteChild delete also the contract child
+            foreach (XElement item in listChildToDelete)
+                deleteChild(Convert.ToInt64(item.Element("idChild").Value));
         }
 
         public void updateMother(Mother mother)
@@ -367,6 +371,8 @@ namespace DAL
             XElement motherElement = (from mom in motherFile.Elements()
                                       where int.Parse(mom.Element("id").Value) == mother.IdMom
                                       select mom).FirstOrDefault();
+            if (motherElement == null)
+                throw new Exception("Nanny is not exist in system");
 
             motherElement.Element("name").Element("firstName").Value = mother.FirstNameMom;
             motherElement.Element("name").Element("lastName").Value = mother.LasNameMom;
@@ -459,8 +465,6 @@ namespace DAL
             LoadData("mother");
             Mother mother;
 
-            try
-            {
                 mother = (from mom in motherFile.Elements()
                           where long.Parse(mom.Element("id").Value) == idMom
 
@@ -501,11 +505,9 @@ namespace DAL
                               },
                               nothMom = mom.Element("note").Value
                           }).FirstOrDefault();
-            }
-            catch
-            {
-                mother = null;
-            }
+            
+            if (mother == null)
+                throw new Exception("id doesn't exist");
             return mother;
 
         }
