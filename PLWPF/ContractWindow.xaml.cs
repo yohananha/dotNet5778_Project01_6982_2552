@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -57,6 +58,22 @@ namespace PLWPF
                 comboBoxChooseChild.SelectedIndex = -1;
                 contract = new BE.Contract();
                 addContractTab.DataContext = contract;
+                try
+                {
+                    new Thread(() =>
+                       {
+                           Dispatcher.Invoke(new Action(() =>
+                     {
+                         var copNanny = bl.getAllCompatibleNanny((BE.Mother)comboBoxChooseMom.SelectedItem);
+                         dataGridDetalis.ItemsSource = copNanny;
+                         dataGridDetalis.SelectedValuePath = "nannyId";
+                     }));
+                       }).Start();
+                }
+                catch (Exception n)
+                {
+                    MessageBox.Show(n.Message);
+                }
             }
         }
 
@@ -65,8 +82,7 @@ namespace PLWPF
             if (comboBoxChooseChild.SelectedIndex != -1)
             {
                 contract.idChild = (long)comboBoxChooseChild.SelectedValue;
-                dataGridDetalis.ItemsSource = bl.getAllCompatibleNanny((BE.Mother)comboBoxChooseMom.SelectedItem);
-                dataGridDetalis.SelectedValuePath = "nannyId";
+
             }
         }
 
@@ -239,6 +255,6 @@ namespace PLWPF
 
         #endregion
 
-       
+
     }
 }
