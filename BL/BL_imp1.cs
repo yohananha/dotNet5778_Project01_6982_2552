@@ -243,11 +243,24 @@ namespace BL
             var compatibleNanny = from a in nannyList
                                   where checkSchedule(a, mom)
                                   select a;
+
             if (!compatibleNanny.Any())
             {
-                return fiveNearestNanny(mom);
+                var fiveNearestList = fiveNearestNanny(mom);
+                foreach (var nanny in fiveNearestList)
+                {
+                    nanny.Distance = CalculateDistance(mom.AddressMom, nanny.addressNanny);
+                }
+                return fiveNearestList;
             }
-            else return compatibleNanny;
+            else
+            {
+                foreach (var nanny in compatibleNanny)
+                {
+                    nanny.Distance = CalculateDistance(mom.AddressMom, nanny.addressNanny);
+                }
+                return compatibleNanny;
+            }
         }
 
         private IEnumerable<Nanny> fiveNearestNanny(Mother mom)
@@ -409,3 +422,48 @@ namespace BL
         }
     }
 }
+
+//private void ThreadAndFillDataGrid(IEnumerable<Nanny> IEnanny)
+//{
+//    try
+//    {
+//        int momId = BlTools.GetMomIdOfChildId((All_Childs_ComboBox.SelectedItem as Child).ChildID);
+//        new Thread(() =>
+//        {
+//            List<Nanny> l = IEnanny.ToList();
+//            List<object> fiveAppropriateNanniesList = null;
+
+//            //if there is no fully fit nanny
+//            if (l.Count == 0)
+//            {
+//                Mother mother;
+//                Dispatcher.Invoke(new Action(() =>
+//                {
+//                    Nannies_warning.Visibility = Visibility.Visible;
+//                    Column_Distance.Visibility = Visibility.Visible;
+//                    Order_ComboBox.IsEnabled = false;
+//                }));
+//                mother = BlTools.GetMother(momId);
+//                fiveAppropriateNanniesList = BlTools.FiveAppropriateNannies(mother);
+//            }
+
+//            Dispatcher.Invoke(new Action(() =>
+//            {
+//                try
+//                {
+//                    if (fiveAppropriateNanniesList == null)
+//                        Nannies_Fit_Mom_DataGrid.ItemsSource = l;
+//                    else Nannies_Fit_Mom_DataGrid.ItemsSource = fiveAppropriateNanniesList;
+//                }
+//                catch (Exception n)
+//                {
+//                    MessageBox.Show(n.Message);
+//                }
+//            }));
+//        }).Start();
+//    }
+//    catch (Exception n)
+//    {
+//        MessageBox.Show(n.Message);
+//    }
+//}
