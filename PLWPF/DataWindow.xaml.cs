@@ -76,7 +76,7 @@ namespace PLWPF
                 if (checkBoxWithSpaiclNeed.IsChecked == true)
                     childList = from a in childList
                                 let x = a.idChild
-                                from b in bl.getKids(a => a.isSpecialNeed == true)
+                                from b in bl.getKids(b => b.isSpecialNeed == true)
                                 where x == b.idChild
                                 select a;
 
@@ -173,30 +173,30 @@ namespace PLWPF
                 momList = bl.getAllMothers();
 
                 if (CheckBoxArrangedMom.IsChecked == true)
-                    momList = from a in momList
-                              let x = a.IdMom
-                              where ((bl.getKids(a => a.idMom == x)).ToList().Count) == (from k in bl.getKids(a => a.idMom == x)
-                                                                                         let y = k.idChild
-                                                                                         from c in bl.getContracts()
-                                                                                         where y == c.idChild
-                                                                                         select k).ToList().Count
-                              select a;
+                    momList = from item in momList
+                        let x = item.IdMom
+                        where ((bl.getKids(a => a.idMom == x)).ToList().Count) == (from k in bl.getKids(k => k.idMom == x)
+                                                                                  let y = k.idChild
+                                                                                  from c in bl.getContracts()
+                                                                                  where y == c.idChild
+                                                                                  select k).ToList().Count
+                        select item;
 
                 if (checkBoxNotArrangedMom.IsChecked == true)
-                    momList = from a in momList
-                              let x = a.IdMom
-                              where ((bl.getKids(a => a.idMom == x)).ToList().Count) != (from k in bl.getKids(a => a.idMom == x)
+                    momList = from item in momList
+                              let x = item.IdMom
+                              where ((bl.getKids(a => a.idMom == x)).ToList().Count) != (from k in bl.getKids(k => k.idMom == x)
                                                                                          let y = k.idChild
                                                                                          from c in bl.getContracts()
                                                                                          where y == c.idChild
                                                                                          select k).ToList().Count
-                              select a;
+                              select item;
 
                 if (checkBoxMomByNumChild.IsChecked == true)
-                    momList = from a in momList
-                              let x = a.IdMom
+                    momList = from item in momList
+                              let x = item.IdMom
                               where bl.getKids(a => a.idMom == x).ToList().Count == int.Parse(numChildTextBox.Text)
-                              select a;
+                              select item;
 
                 dataGridMomDetails.ItemsSource = momList;
             }

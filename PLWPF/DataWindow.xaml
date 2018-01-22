@@ -43,9 +43,9 @@
                     <CheckBox x:Name="checkBoxContractByMom" IsChecked="False" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center"/>
                     <ComboBox x:Name="comboBoxContractByNanny" Grid.Column="1" Margin="5" Grid.Row="1" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxContractByNanny}" SelectionChanged="comboBoxContractByNanny_SelectionChanged" />
                     <ComboBox x:Name="comboBoxContractByMom" Grid.Column="3" Margin="5" Grid.Row="1" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxContractByMom}" SelectionChanged="comboBoxContractByMom_SelectionChanged" />
-                    <Label x:Name="label6" Content="חוזים בטווח שכר(מינ-מקס)" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Margin="6,8,10,8.333"/>
-                    <CheckBox x:Name="checkBoxContractByHour" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center" />
-                    <Label x:Name="label7" Content="חוזים לפי שעה" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center"/>
+                    <Label x:Name="label6" Content="חוזים בטווח שכר(מינ-מקס)" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalContentAlignment="Right"/>
+                    <CheckBox x:Name="checkBoxContractByHour" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center"  />
+                    <Label x:Name="label7" Content="חוזים לפי שעה" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" HorizontalContentAlignment="Right" VerticalAlignment="Center"/>
                     <DataGrid x:Name="dataGridContractDetails" AutoGenerateColumns="False" Grid.ColumnSpan="4" Grid.Row="4" SelectionChanged="dataGridContractDetails_SelectionChanged" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="מספר חוזה" Binding="{Binding idContract}" />
