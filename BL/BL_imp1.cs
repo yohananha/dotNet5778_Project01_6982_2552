@@ -28,13 +28,13 @@ namespace BL
             NannyInitilize();
             MotherInitilize();
             ChildInitilize();
-            var mother = dal.getAllMothers();
-            var nanny = dal.getAllNanny();
-            var child = dal.getKids();
+            //var mother = dal.getAllMothers();
+            //var nanny = dal.getAllNanny();
+            //var child = dal.getKids();
 
-            SaveToXML(mother, "mother.xml");
-            SaveToXML(nanny, "nanny.xml");
-            SaveToXML(child, "child.xml");
+            //SaveToXML(mother, "mother.xml");
+            //SaveToXML(nanny, "nanny.xml");
+            //SaveToXML(child, "child.xml");
 
 
         }
@@ -249,10 +249,10 @@ namespace BL
             if (!compatibleNanny.Any())
             {
                 var fiveNearestList = fiveNearestNanny(mom);
-                foreach (var nanny in fiveNearestList)
-                {
-                    nanny.Distance = CalculateDistance(mom.AddressMom, nanny.addressNanny);
-                }
+                //foreach (var nanny in fiveNearestList)
+                //{
+                //    nanny.Distance = CalculateDistance(mom.AddressMom, nanny.addressNanny);
+                //}
                 return fiveNearestList;
             }
             else
@@ -415,13 +415,13 @@ namespace BL
         #endregion
 
      
-        public static void SaveToXML<T>(T source, string path)
-        {
-            FileStream file = new FileStream(path, FileMode.Create);
-            XmlSerializer xmlSerializer = new XmlSerializer(source.GetType());
-            xmlSerializer.Serialize(file, source);
-            file.Close();
-        }
+        //public static void SaveToXML<T>(T source, string path)
+        //{
+        //    FileStream file = new FileStream(path, FileMode.Create);
+        //    XmlSerializer xmlSerializer = new XmlSerializer(source.GetType());
+        //    xmlSerializer.Serialize(file, source);
+        //    file.Close();
+        //}
     }
 }
 
