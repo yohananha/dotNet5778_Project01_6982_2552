@@ -356,7 +356,7 @@ namespace BL
                 firstNameNanny = "חווי",
                 lastNameNanny = "הורן",
                 dateNanny = new DateTime(1994, 5, 9),
-                addressNanny = "rusalemמאה שערים 8 ירושלים",
+                addressNanny = "מאה שערים 8 ירושלים",
                 elevatorNanny = false,
                 floorNanny = 2,
                 experienceNanny = 3,
