@@ -76,8 +76,9 @@
                     <ComboBox x:Name="comboBoxChooseChild"  Margin="3" Grid.Row="1" SelectionChanged="comboBoxChooseChild_SelectionChanged" Grid.Column="1"/>
                     <DataGrid x:Name="dataGridDetalis" Margin="3" FlowDirection="RightToLeft" AutoGenerateColumns="False" Grid.ColumnSpan="2"  Grid.Row="3" SelectionChanged="dataGridDetalis_SelectionChanged" Height="250" Grid.Column="0">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Binding="{Binding fullName}" />
-                            <DataGridTextColumn Header="Address" Binding="{Binding addressNanny}" />
+                            <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
+                            <DataGridTextColumn Header="כתובת" Binding="{Binding addressNanny}" />
+                            <DataGridTextColumn Header="מרחק" Binding="{Binding Distance}" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Label x:Name="labelChooseMom" Content="בחר/י אמא" HorizontalAlignment="Center" VerticalAlignment="Center"/>
