@@ -221,16 +221,23 @@ namespace BL
         //google directions
         public int CalculateDistance(string source/*mother*/, string dest/*nanny*/)
         {
-            var drivingDirectionRequest = new DirectionsRequest
+            try
             {
-                TravelMode = TravelMode.Walking,
-                Origin = source,
-                Destination = dest,
-            };
-            DirectionsResponse drivingDirections = GoogleMaps.Directions.Query(drivingDirectionRequest);
-            Route route = drivingDirections.Routes.First();
-            Leg leg = route.Legs.First();
-            return leg.Distance.Value;
+                var drivingDirectionRequest = new DirectionsRequest
+                {
+                    TravelMode = TravelMode.Walking,
+                    Origin = source,
+                    Destination = dest,
+                };
+                DirectionsResponse drivingDirections = GoogleMaps.Directions.Query(drivingDirectionRequest);
+                Route route = drivingDirections.Routes.First();
+                Leg leg = route.Legs.First();
+                return leg.Distance.Value;
+            }
+            catch (Exception n)
+            {
+                throw new Exception(n.Message);
+            }
         }
 
         /// <summary>
@@ -242,17 +249,17 @@ namespace BL
         {
             var nannyList = dal.getAllNanny();
 
-            var compatibleNanny = from a in nannyList
+            var compatibleNanny = (from a in nannyList
                                   where checkSchedule(a, mom)
-                                  select a;
+                                  select a).ToList();
 
             if (!compatibleNanny.Any())
             {
-                var fiveNearestList = fiveNearestNanny(mom);
-                //foreach (var nanny in fiveNearestList)
-                //{
-                //    nanny.Distance = CalculateDistance(mom.AddressMom, nanny.addressNanny);
-                //}
+                var fiveNearestList = fiveNearestNanny(mom).ToList();
+                foreach (var nanny in fiveNearestList)
+                {
+                    nanny.Distance = CalculateDistance(mom.AddressMom, nanny.addressNanny);
+                }
                 return fiveNearestList;
             }
             else
@@ -425,47 +432,4 @@ namespace BL
     }
 }
 
-//private void ThreadAndFillDataGrid(IEnumerable<Nanny> IEnanny)
-//{
-//    try
-//    {
-//        int momId = BlTools.GetMomIdOfChildId((All_Childs_ComboBox.SelectedItem as Child).ChildID);
-//        new Thread(() =>
-//        {
-//            List<Nanny> l = IEnanny.ToList();
-//            List<object> fiveAppropriateNanniesList = null;
 
-//            if there is no fully fit nanny
-//            if (l.Count == 0)
-//            {
-//                Mother mother;
-//                Dispatcher.Invoke(new Action(() =>
-//                {
-//                    Nannies_warning.Visibility = Visibility.Visible;
-//                    Column_Distance.Visibility = Visibility.Visible;
-//                    Order_ComboBox.IsEnabled = false;
-//                }));
-//                mother = BlTools.GetMother(momId);
-//                fiveAppropriateNanniesList = BlTools.FiveAppropriateNannies(mother);
-//            }
-
-//            Dispatcher.Invoke(new Action(() =>
-//            {
-//                try
-//                {
-//                    if (fiveAppropriateNanniesList == null)
-//                        Nannies_Fit_Mom_DataGrid.ItemsSource = l;
-//                    else Nannies_Fit_Mom_DataGrid.ItemsSource = fiveAppropriateNanniesList;
-//                }
-//                catch (Exception n)
-//                {
-//                    MessageBox.Show(n.Message);
-//                }
-//            }));
-//        }).Start();
-//    }
-//    catch (Exception n)
-//    {
-//        MessageBox.Show(n.Message);
-//    }
-//}
