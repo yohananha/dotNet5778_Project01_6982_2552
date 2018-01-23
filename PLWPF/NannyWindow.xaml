@@ -31,7 +31,7 @@
 
                     </Grid.RowDefinitions>
 
-                    <Grid x:Name="grid1"  >
+                    <Grid x:Name="grid1" HorizontalAlignment="Center" Margin="0,10,0,0"  >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -45,20 +45,54 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Right" Content="מעלית:" FontSize="16" Grid.Column="1"/>
-                        <CheckBox x:Name="elevatorNannyCheckBox" VerticalAlignment="Center" Grid.Row="0" Margin="3" IsChecked="{Binding elevatorNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Content=""/>
-                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Content="קומה:" FontSize="16" Grid.Column="1"/>
-                        <TextBox x:Name="floorNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding floorNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left"/>
-                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Content="לפי שעה:" Grid.Column="1"/>
-                        <CheckBox x:Name="isByHourNannyCheckBox" VerticalAlignment="Center" Grid.Row="2" Margin="3" IsChecked="{Binding isByHourNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Content=""/>
-                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Right" Content="שכר לשעה:" FontSize="16" Grid.Column="1"/>
-                        <TextBox x:Name="rateHourNannyTextBox" Width="120" VerticalAlignment="Center"  Text="{Binding rateHourNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left"/>
-                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Right" Content="שכר לחודש:" FontSize="16" Grid.Column="1"/>
-                        <TextBox x:Name="rateMonthNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding rateMonthNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left"/>
-                        <Button x:Name="buttonAddNanny" Content="הוסף" Grid.Row="5"  Grid.ColumnSpan="2" Click="button_Click_buttonAddNanny" />
+                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" Content="מעלית" FontSize="16" Grid.Column="1" HorizontalContentAlignment="Right" HorizontalAlignment="Right"/>
+                        <CheckBox x:Name="elevatorNannyCheckBox" VerticalAlignment="Center" Grid.Row="0" Margin="3" IsChecked="{Binding elevatorNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0"/>
+                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" Content="קומה" FontSize="16" Grid.Column="1" HorizontalContentAlignment="Right" HorizontalAlignment="Right"/>
+                        <TextBox x:Name="floorNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding floorNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" Content="לפי שעה" Grid.Column="1" HorizontalContentAlignment="Right" HorizontalAlignment="Right" FontSize="16"/>
+                        <CheckBox x:Name="isByHourNannyCheckBox" VerticalAlignment="Center" Grid.Row="2" Margin="0" IsChecked="{Binding isByHourNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0"/>
+                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" Content="שכר לשעה" FontSize="16" Grid.Column="1" HorizontalContentAlignment="Right" HorizontalAlignment="Right"/>
+                        <TextBox x:Name="rateHourNannyTextBox" Width="120" VerticalAlignment="Center"  Text="{Binding rateHourNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" Content="שכר לחודש" FontSize="16" Grid.Column="1" HorizontalContentAlignment="Right" HorizontalAlignment="Right"/>
+                        <TextBox x:Name="rateMonthNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding rateMonthNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                        <Button x:Name="buttonAddNanny" Content="הוסף" Grid.Row="5"  Grid.ColumnSpan="2" Click="button_Click_buttonAddNanny" Width="150" Height="50" Margin="-2,0,64.8,-182.2" VerticalAlignment="Bottom">
+                            <Button.Style>
+                                <Style>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=nannyIdTextBox, Path=Text}" Value="">
+                                            <Setter Property="Button.IsEnabled" Value="false"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=firstNameNannyTextBox, Path=Text}" Value="">
+                                            <Setter Property="Button.IsEnabled" Value="false"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=lastNameNannyTextBox, Path=Text}" Value="">
+                                            <Setter Property="Button.IsEnabled" Value="false"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=dateNannyDatePicker, Path=Text}" Value="">
+                                            <Setter Property="Button.IsEnabled" Value="false"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=addressNannyTextBox, Path=Text}" Value="">
+                                            <Setter Property="Button.IsEnabled" Value="false"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=phoneNannyTextBox, Path=Text}" Value="">
+                                            <Setter Property="Button.IsEnabled" Value="false"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=maxChildNannyTextBox, Path=Text}" Value="">
+                                            <Setter Property="Button.IsEnabled" Value="false"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=maxChildNannyTextBox, Path=Text}" Value="">
+                                            <Setter Property="Button.IsEnabled" Value="false"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=minAgeChildNannyTextBox, Path=Text}" Value="">
+                                            <Setter Property="Button.IsEnabled" Value="false"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
 
                     </Grid>
-                    <Grid x:Name="grid2" Grid.Column="1" >
+                    <Grid x:Name="grid2" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -72,22 +106,22 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Right" Content="שנות ניסיון:" FontSize="16" Grid.Column="1"/>
-                        <TextBox x:Name="experienceNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding experienceNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left"/>
-                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Content="מספר ילדים מקסימלי:" FontSize="16" Grid.Column="1"/>
-                        <TextBox x:Name="maxChildNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding maxChildNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left"/>
-                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Content="גיל ילדים מינימלי:" FontSize="16" Grid.Column="1"/>
-                        <TextBox x:Name="minAgeChildNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding minAgeChildNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left"/>
-                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Right" Content="גיל ילדים מקסימלי:" FontSize="16" Grid.Column="1"/>
-                        <TextBox x:Name="maxAgeChildNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding maxAgeChildNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left"/>
-                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Right" Content="המלצות:" FontSize="16" Grid.Column="1"/>
-                        <TextBox x:Name="recommendationsNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding recommendationsNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left"/>
-                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Right" Content="חופושת משרד התמת:" FontSize="16" Grid.Column="1"/>
-                        <CheckBox x:Name="isTamatNannyCheckBox" VerticalAlignment="Center" Grid.Row="5" Margin="3" IsChecked="{Binding isTamatNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Content=""/>
+                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Right" Content="שנות ניסיון" FontSize="16" Grid.Column="1"/>
+                        <TextBox x:Name="experienceNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding experienceNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Content="מספר ילדים מקסימלי" FontSize="16" Grid.Column="1"/>
+                        <TextBox x:Name="maxChildNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding maxChildNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Content="גיל ילדים מינימלי" FontSize="16" Grid.Column="1"/>
+                        <TextBox x:Name="minAgeChildNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding minAgeChildNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Right" Content="גיל ילדים מקסימלי" FontSize="16" Grid.Column="1"/>
+                        <TextBox x:Name="maxAgeChildNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding maxAgeChildNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Right" Content="המלצות" FontSize="16" Grid.Column="1"/>
+                        <TextBox x:Name="recommendationsNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding recommendationsNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Right" Content="חופושת משרד התמת" FontSize="16" Grid.Column="1"/>
+                        <CheckBox x:Name="isTamatNannyCheckBox" VerticalAlignment="Center" Grid.Row="5" Margin="3" IsChecked="{Binding isTamatNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content="" Padding="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
                     </Grid>
 
-                    <Grid x:Name="grid3" Grid.Column="2">
+                    <Grid x:Name="grid3" Grid.Column="2" HorizontalAlignment="Center" Margin="0,10,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -100,22 +134,22 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Right" Content="תעודת זהות:" FontSize="16" Grid.Column="1"/>
-                        <TextBox x:Name="nannyIdTextBox" Width="120" VerticalAlignment="Center" Text="{Binding nannyId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left"/>
-                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Content="שם פרטי:" FontSize="16" Grid.Column="1"/>
-                        <TextBox x:Name="firstNameNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding firstNameNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left"/>
-                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Content="שם משפחה:" FontSize="16" Grid.Column="1"/>
-                        <TextBox x:Name="lastNameNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding lastNameNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left"/>
-                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Right" Content="תאריך לידה:" FontSize="16" Grid.Column="1"/>
-                        <DatePicker x:Name="dateNannyDatePicker" VerticalAlignment="Center" Text="01/01/2000" SelectedDate="{Binding dateNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" HorizontalAlignment="Left"/>
-                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Right" Content="כתובת:" FontSize="16" Grid.Column="1"/>
-                        <TextBox x:Name="addressNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding addressNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left"/>
-                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Right" Content="מספר פלאפון:" FontSize="16" Grid.Column="1"/>
-                        <TextBox x:Name="phoneNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding phoneNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left"/>
+                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Right" Content="תעודת זהות" FontSize="16" Grid.Column="1"/>
+                        <TextBox x:Name="nannyIdTextBox" Width="120" VerticalAlignment="Center" Text="{Binding nannyId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Content="שם פרטי" FontSize="16" Grid.Column="1"/>
+                        <TextBox x:Name="firstNameNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding firstNameNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Content="שם משפחה" FontSize="16" Grid.Column="1"/>
+                        <TextBox x:Name="lastNameNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding lastNameNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Right" Content="תאריך לידה" FontSize="16" Grid.Column="1"/>
+                        <DatePicker x:Name="dateNannyDatePicker" VerticalAlignment="Center" Text="01/01/2000" SelectedDate="{Binding dateNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" HorizontalAlignment="Left" FontSize="16"/>
+                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Right" Content="כתובת" FontSize="16" Grid.Column="1"/>
+                        <TextBox x:Name="addressNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding addressNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Right" Content="מספר פלאפון" FontSize="16" Grid.Column="1"/>
+                        <TextBox x:Name="phoneNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding phoneNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
 
 
                     </Grid>
-                    <Grid x:Name="grid4" Grid.Row="1" HorizontalAlignment="Right" Grid.ColumnSpan="3" Margin="0,25.6,43.4,-24.2" Grid.RowSpan="2" >
+                    <Grid x:Name="grid4" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Margin="0,20,55,30" Grid.Column="1" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -179,7 +213,7 @@
 
                     </Grid.RowDefinitions>
 
-                    <Grid x:Name="gridUpdate1"  >
+                    <Grid x:Name="gridUpdate1" FlowDirection="RightToLeft" Width="230"  >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -189,24 +223,23 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="130"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Right" Content="מעלית:" FontSize="16"/>
-                        <CheckBox x:Name="elevatorNannyCheckBoxUpdate" VerticalAlignment="Center" Grid.Row="0" Margin="3" IsChecked="{Binding elevatorNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Content="קומה:" FontSize="16"/>
-                        <TextBox x:Name="floorNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding floorNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Content="לפי שעה:"/>
-                        <CheckBox x:Name="isByHourNannyCheckBoxUpdate" VerticalAlignment="Center" Grid.Row="2" Margin="3" IsChecked="{Binding isByHourNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Right" Content="שכר לשעה:" FontSize="16"/>
-                        <TextBox x:Name="rateHourNannyTextBoxUpdate" Width="120" VerticalAlignment="Center"  Text="{Binding rateHourNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Right" Content="שכר לחודש:" FontSize="16"/>
-                        <TextBox x:Name="rateMonthNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding rateMonthNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                        <Button x:Name="buttonUpdateNanny" Content="עדכן" Grid.Row="5"  Grid.ColumnSpan="2" Click="buttonUpdateNanny_Click" Grid.Column="1"  />
+                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" Content="מעלית:" FontSize="16"/>
+                        <CheckBox x:Name="elevatorNannyCheckBoxUpdate" VerticalAlignment="Center" Grid.Row="0" Margin="3" IsChecked="{Binding elevatorNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" Content="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" Content="קומה:" FontSize="16"/>
+                        <TextBox x:Name="floorNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding floorNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Height="20" HorizontalAlignment="Left" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" Content="לפי שעה:" FontSize="16"/>
+                        <CheckBox x:Name="isByHourNannyCheckBoxUpdate" VerticalAlignment="Center" Grid.Row="2" Margin="3" IsChecked="{Binding isByHourNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" Content="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" Content="שכר לשעה:" FontSize="16"/>
+                        <TextBox x:Name="rateHourNannyTextBoxUpdate" Width="120" VerticalAlignment="Center"  Text="{Binding rateHourNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Height="20" HorizontalAlignment="Left" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" Content="שכר לחודש:" FontSize="16"/>
+                        <TextBox x:Name="rateMonthNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding rateMonthNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Height="20" HorizontalAlignment="Center" Grid.Column="1" FontSize="14"/>
 
                     </Grid>
-                    <Grid x:Name="gridUpdate2" Grid.Column="1" >
+                    <Grid x:Name="gridUpdate2" Grid.Column="1" FlowDirection="RightToLeft" Width="300" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -217,25 +250,25 @@
 
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="130"/>
                         </Grid.ColumnDefinitions>
-                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Right" Content="שנות ניסיון:" FontSize="16"/>
-                        <TextBox x:Name="experienceNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding experienceNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Content="מספר ילדים מקסימלי:" FontSize="16"/>
-                        <TextBox x:Name="maxChildNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding maxChildNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Content="גיל ילדים מינימלי:" FontSize="16"/>
-                        <TextBox x:Name="minAgeChildNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding minAgeChildNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Right" Content="גיל ילדים מקסימלי:" FontSize="16"/>
-                        <TextBox x:Name="maxAgeChildNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding maxAgeChildNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Right" Content="המלצות:" FontSize="16"/>
-                        <TextBox x:Name="recommendationsNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding recommendationsNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Right" Content="חופושת משרד התמת:" FontSize="16"/>
-                        <CheckBox x:Name="isTamatNannyCheckBoxUpdate" VerticalAlignment="Center" Grid.Row="5" Margin="3" IsChecked="{Binding isTamatNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" Content="שנות ניסיון:" FontSize="16"/>
+                        <TextBox x:Name="experienceNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding experienceNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Height="23" HorizontalAlignment="Right" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" Content="מספר ילדים מקסימלי:" FontSize="16"/>
+                        <TextBox x:Name="maxChildNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding maxChildNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Height="23" HorizontalAlignment="Right" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" Content="גיל ילדים מינימלי:" FontSize="16"/>
+                        <TextBox x:Name="minAgeChildNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding minAgeChildNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Height="23" HorizontalAlignment="Right" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" Content="גיל ילדים מקסימלי:" FontSize="16"/>
+                        <TextBox x:Name="maxAgeChildNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding maxAgeChildNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Height="23" HorizontalAlignment="Right" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" Content="המלצות:" FontSize="16"/>
+                        <TextBox x:Name="recommendationsNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding recommendationsNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Height="23" HorizontalAlignment="Right" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" Content="חופושת משרד התמת:" FontSize="16"/>
+                        <CheckBox x:Name="isTamatNannyCheckBoxUpdate" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Margin="0" IsChecked="{Binding isTamatNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" Content="" Padding="0,4,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
                     </Grid>
 
-                    <Grid x:Name="gridUpdate3" Grid.Column="2">
+                    <Grid x:Name="gridUpdate3" Grid.Column="2" FlowDirection="RightToLeft" Width="232" Height="280" HorizontalAlignment="Center" Margin="23.6,-1,76.4,1" VerticalAlignment="Top">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -246,27 +279,27 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="130"/>
                         </Grid.ColumnDefinitions>
-                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Right" Content="בחר מטפלת" FontSize="16"/>
-                        <ComboBox x:Name="comboBoxNannyUpdate" Grid.Row="0" Grid.Column="1" SelectionChanged="comboBoxNannyUpdate_SelectionChanged"/>
-                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Content="תעודת זהות:" FontSize="16"/>
-                        <TextBox x:Name="nannyIdTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding nannyId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Content="שם פרטי:" FontSize="16"/>
-                        <TextBox x:Name="firstNameNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding firstNameNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Right" Content="שם משפחה:" FontSize="16"/>
-                        <TextBox x:Name="lastNameNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding lastNameNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Right" Content="תאריך לידה:" FontSize="16"/>
-                        <DatePicker x:Name="dateNannyDatePickerUpdate" VerticalAlignment="Center" Text="01/01/2000" SelectedDate="{Binding dateNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Right" Content="כתובת:" FontSize="16"/>
-                        <TextBox x:Name="addressNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding addressNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Right" Content="מספר פלאפון:" FontSize="16"/>
-                        <TextBox x:Name="phoneNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding phoneNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                        <Label VerticalAlignment="Top" Grid.Row="0" Margin="0,6,0,7.6" HorizontalAlignment="Left" Content="בחר מטפלת" FontSize="16" Height="32" Width="84" HorizontalContentAlignment="Right"/>
+                        <ComboBox x:Name="comboBoxNannyUpdate" Grid.Column="1" SelectionChanged="comboBoxNannyUpdate_SelectionChanged" Margin="2.2,5,-3.4,0" Width="120" Height="25" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="0,3.4,0,3" HorizontalAlignment="Left" Content="תעודת זהות:" FontSize="16" Height="32" Width="84" HorizontalContentAlignment="Right"/>
+                        <TextBox x:Name="nannyIdTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding nannyId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Height="25" HorizontalAlignment="Center" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="0,4,0,2.4" HorizontalAlignment="Left" Content="שם פרטי:" FontSize="16" Height="32" Width="68" HorizontalContentAlignment="Right"/>
+                        <TextBox x:Name="firstNameNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding firstNameNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="0" Height="25" HorizontalAlignment="Center" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="0,3.6,0,2.8" HorizontalAlignment="Left" Content="שם משפחה:" FontSize="16" Height="32" Width="88" HorizontalContentAlignment="Right"/>
+                        <TextBox x:Name="lastNameNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding lastNameNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="0" Height="25" HorizontalAlignment="Center" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="0,5.2,0,4.4" HorizontalAlignment="Left" Content="תאריך לידה:" FontSize="16" Height="32" Width="83" HorizontalContentAlignment="Right"/>
+                        <DatePicker x:Name="dateNannyDatePickerUpdate" VerticalAlignment="Center" Text="01/01/2000" SelectedDate="{Binding dateNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="0" HorizontalAlignment="Center" Grid.Column="1" Height="25" Width="120" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="0" HorizontalAlignment="Left" Content="כתובת:" FontSize="16" Height="32" Width="52" HorizontalContentAlignment="Right"/>
+                        <TextBox x:Name="addressNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding addressNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="0" Height="25" HorizontalAlignment="Center" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="6" Margin="0,0,0,2.2" HorizontalAlignment="Left" Content="מספר פלאפון:" FontSize="16" Height="32" Width="96" HorizontalContentAlignment="Right"/>
+                        <TextBox x:Name="phoneNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding phoneNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="0" Height="25" HorizontalAlignment="Center" Grid.Column="1" FontSize="14"/>
 
 
                     </Grid>
-                    <Grid x:Name="gridUpdate4" Grid.Row="1" HorizontalAlignment="Right" Grid.ColumnSpan="3"  Grid.RowSpan="2" >
+                    <Grid x:Name="gridUpdate4" HorizontalAlignment="Right" Grid.ColumnSpan="2" Grid.Column="1" Margin="0,269,79.4,20.4" Grid.RowSpan="2" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -310,8 +343,7 @@
                         <xctk:TimePicker x:Name="FriEndUpdate" Format="ShortTime" Value="{Binding endHour[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=FriCheckUpdate}" Grid.Row="3"/>
                         <xctk:TimePicker x:Name="FriStartUpdate" Format="ShortTime"  Value="{Binding startHour[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  IsEnabled="{Binding IsChecked, ElementName=FriCheckUpdate}"  Grid.Row="2"/>
                     </Grid>
-
-
+                    <Button x:Name="buttonUpdateNanny" Content="עדכן" Click="buttonUpdateNanny_Click" Width="150" Height="50"  Margin="55,327,126.2,45.4" Grid.RowSpan="2" IsEnabled="False"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="deleteNannyTab" FlowDirection="LeftToRight" Header="מחיקת מטפלת" Height="80" Width="332" FontFamily="Open Sans Hebrew" FontSize="20" Opacity="0.8" Foreground="#FF0E1842" BorderBrush="{x:Null}" MouseLeftButtonUp="deleteNannyTab_MouseLeftButtonUp">
@@ -321,9 +353,9 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="labelDeleteNanny" Content="בחר/י מטפלת למחיקה" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" />
-                    <ComboBox x:Name="comboBoxNanny" Grid.Row="1" Margin="300,40" />
-                    <Button x:Name="buttonDeleteNanny" Content="מחק" Grid.Row="2" Margin="300,40" Click="buttonDeleteNanny_Click" />
+                    <Label x:Name="labelDeleteNanny" Content="בחר/י מטפלת למחיקה" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Width="500" Height="75" HorizontalContentAlignment="Center" FlowDirection="RightToLeft" VerticalContentAlignment="Center" Margin="0,60,0,0" />
+                    <ComboBox x:Name="comboBoxNanny" Grid.Row="1" Margin="0" Height="50" MaxDropDownHeight="289" FlowDirection="RightToLeft" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="400" />
+                    <Button x:Name="buttonDeleteNanny" Content="מחק" Grid.Row="2" Margin="0,0,0,40" Click="buttonDeleteNanny_Click" Width="150" Height="50" />
                 </Grid>
             </TabItem>
 

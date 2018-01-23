@@ -345,7 +345,8 @@ namespace DAL
                              select nan).FirstOrDefault();
             if (motherElement == null)
                 throw new Exception("Mother is not exist in system");
-            deleteAllChildtMother(Convert.ToInt64(motherElement.Element("idMom").Value));
+            var idMom = Convert.ToInt64(motherElement.Element("id").Value);
+            deleteAllChildtMother(idMom);
 
             motherElement.Remove();
 
@@ -392,12 +393,12 @@ namespace DAL
             motherElement.Element("startHour").Element("thuStart").Value = mother.startHour[4].ToString();
             motherElement.Element("startHour").Element("friStart").Value = mother.startHour[5].ToString();
 
-            motherElement.Element("sunEnd").Element("sunEnd").Value = mother.endHour[0].ToString();
-            motherElement.Element("sunEnd").Element("monEnd").Value = mother.endHour[1].ToString();
-            motherElement.Element("sunEnd").Element("tueEnd").Value = mother.endHour[2].ToString();
-            motherElement.Element("sunEnd").Element("wedEnd").Value = mother.endHour[3].ToString();
-            motherElement.Element("sunEnd").Element("thuEnd").Value = mother.endHour[4].ToString();
-            motherElement.Element("sunEnd").Element("friEnd").Value = mother.endHour[5].ToString();
+            motherElement.Element("endHour").Element("sunEnd").Value = mother.endHour[0].ToString();
+            motherElement.Element("endHour").Element("monEnd").Value = mother.endHour[1].ToString();
+            motherElement.Element("endHour").Element("tueEnd").Value = mother.endHour[2].ToString();
+            motherElement.Element("endHour").Element("wedEnd").Value = mother.endHour[3].ToString();
+            motherElement.Element("endHour").Element("thuEnd").Value = mother.endHour[4].ToString();
+            motherElement.Element("endHour").Element("friEnd").Value = mother.endHour[5].ToString();
 
             motherElement.Element("note").Value = mother.nothMom;
 

@@ -126,6 +126,7 @@ namespace PLWPF
         {
             child = (BE.Child)comboBoxChoseChild.SelectedItem;
             updateChildTab.DataContext = child;
+            buttonupdateChild.IsEnabled = true;
         }
 
         private void buttonupdateChild_Click(object sender, RoutedEventArgs e)
@@ -133,6 +134,7 @@ namespace PLWPF
 
             try
             {
+                buttonupdateChild.IsEnabled = true;
                 bl.updateChild(child);
                 MessageBox.Show("פרטי ילד עודכנו בהצלחה");
                 comboBoxChoseChild.SelectedIndex = -1;
@@ -142,6 +144,11 @@ namespace PLWPF
             {
                 MessageBox.Show(Ex.Message);
             }
+        }
+
+        private void comboBoxChild_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            buttonDeleteChild.IsEnabled = true;
         }
     }
 }

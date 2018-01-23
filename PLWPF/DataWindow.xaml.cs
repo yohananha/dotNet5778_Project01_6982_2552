@@ -217,6 +217,7 @@ namespace PLWPF
                 comboBoxChoosMomNanny.DisplayMemberPath = "fullName";
                 comboBoxChoosMomNanny.SelectedValuePath = "AddressMom";
                 comboBoxChoosMomNanny.SelectedIndex = -1;
+                buttonSearchNanny.IsEnabled = true;
             }
         }
 
@@ -251,6 +252,46 @@ namespace PLWPF
         private void dataGridContractDetails_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
+        }
+
+        private void checkBoxNannyByTamt_Checked(object sender, RoutedEventArgs e)
+        {
+            buttonSearchNanny.IsEnabled = true;
+        }
+
+        private void checkBoxNannyByHour_Checked(object sender, RoutedEventArgs e)
+        {
+            buttonSearchNanny.IsEnabled = true;
+        }
+
+        private void checkBoxChildByMom_Checked(object sender, RoutedEventArgs e)
+        {
+            buttonSearchChild.IsEnabled = true;
+        }
+
+        private void checkBoxNotNanny_Checked(object sender, RoutedEventArgs e)
+        {
+            buttonSearchChild.IsEnabled = true;
+        }
+
+        private void checkBoxWithSpaiclNeed_Checked(object sender, RoutedEventArgs e)
+        {
+            buttonSearchChild.IsEnabled = true;
+        }
+
+        private void CheckBoxArrangedMom_Checked(object sender, RoutedEventArgs e)
+        {
+            buttonSearchMom.IsEnabled = true;
+        }
+
+        private void checkBoxNotArrangedMom_Checked(object sender, RoutedEventArgs e)
+        {
+            buttonSearchMom.IsEnabled = true;
+        }
+
+        private void checkBoxMomByNumChild_Checked(object sender, RoutedEventArgs e)
+        {
+            buttonSearchMom.IsEnabled = true;
         }
     }
 }

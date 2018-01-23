@@ -25,11 +25,10 @@
 
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="55*"/>
-                        <RowDefinition Height="45*"/>
-                        <RowDefinition Height="53*"/>
-                        <RowDefinition Height="59*"/>
-                        <RowDefinition Height="199*"/>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="115*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="232*"/>
@@ -37,16 +36,16 @@
                         <ColumnDefinition Width="257*"/>
                         <ColumnDefinition Width="285*"/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="label4" Content="חוזים של מטפלת" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                    <Label x:Name="label5" Content="חוזים של אמא" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                    <CheckBox x:Name="checkBoxContractByNanny" IsChecked="False"  HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
-                    <CheckBox x:Name="checkBoxContractByMom" IsChecked="False" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="comboBoxContractByNanny" Grid.Column="1" Margin="5" Grid.Row="1" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxContractByNanny}" SelectionChanged="comboBoxContractByNanny_SelectionChanged" />
-                    <ComboBox x:Name="comboBoxContractByMom" Grid.Column="3" Margin="5" Grid.Row="1" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxContractByMom}" SelectionChanged="comboBoxContractByMom_SelectionChanged" />
-                    <Label x:Name="label6" Content="חוזים בטווח שכר(מינ-מקס)" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalContentAlignment="Right"/>
-                    <CheckBox x:Name="checkBoxContractByHour" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center"  />
-                    <Label x:Name="label7" Content="חוזים לפי שעה" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" HorizontalContentAlignment="Right" VerticalAlignment="Center"/>
-                    <DataGrid x:Name="dataGridContractDetails" AutoGenerateColumns="False" Grid.ColumnSpan="4" Grid.Row="4" SelectionChanged="dataGridContractDetails_SelectionChanged" >
+                    <Label x:Name="label4" Content="חוזים של מטפלת" HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="10,0,20,0" Width="150" Height="34"/>
+                    <Label x:Name="label5" Content="חוזים של אמא" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="46.8,2.8,95.8,5"/>
+                    <CheckBox x:Name="checkBoxContractByNanny" IsChecked="False"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="168,14.8,48,15"/>
+                    <CheckBox x:Name="checkBoxContractByMom" IsChecked="False" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="200.8,14.8,40.8,15"/>
+                    <ComboBox x:Name="comboBoxContractByNanny" Grid.Column="1" Margin="5" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxContractByNanny}" SelectionChanged="comboBoxContractByNanny_SelectionChanged" Width="200" Height="30" />
+                    <ComboBox x:Name="comboBoxContractByMom" Grid.Column="3" Margin="5" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxContractByMom}" SelectionChanged="comboBoxContractByMom_SelectionChanged" Width="200" Height="30" />
+                    <Label x:Name="label6" Content="חוזים בטווח שכר(מינ-מקס)" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalContentAlignment="Right"/>
+                    <CheckBox x:Name="checkBoxContractByHour" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center"  />
+                    <Label x:Name="label7" Content="חוזים לפי שעה" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" HorizontalContentAlignment="Right" VerticalAlignment="Center"/>
+                    <DataGrid x:Name="dataGridContractDetails" AutoGenerateColumns="False" Grid.ColumnSpan="4" Grid.Row="3" SelectionChanged="dataGridContractDetails_SelectionChanged" FontSize="16" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="מספר חוזה" Binding="{Binding idContract}" />
                             <DataGridTextColumn Header="ילד/ה" Binding="{Binding nameChild}" />
@@ -56,25 +55,25 @@
                             <DataGridTextColumn Header="סיום חוזה" Binding="{Binding workEnd , StringFormat='dd/MM/yyyy' }" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="buttonSearchContract" Grid.ColumnSpan="2" Content="חפש חוזים" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center" Click="buttonSearchContract_Click"/>
-                    <DockPanel VerticalAlignment="Center" Grid.Column="2" Grid.Row="2"  Margin="3" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxContractBySalery}">
+                    <Button x:Name="buttonSearchContract" Content="חפש חוזים" Grid.Column="3" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Click="buttonSearchContract_Click" IsEnabled="False" Width="150" Height="50" Margin="91.2,3.4,44.4,5.8"/>
+                    <DockPanel VerticalAlignment="Center" Grid.Column="2" Grid.Row="1"  Margin="3" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxContractBySalery}">
                         <TextBox x:Name="minTextBox" Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="50" />
                         <Slider Maximum="3000" TickPlacement="BottomRight" TickFrequency="300" IsSnapToTickEnabled="True" Name="slValue" />
                     </DockPanel>
-                    <DockPanel VerticalAlignment="Center" Grid.Column="3" Grid.Row="2"  Margin="3" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxContractBySalery}">
+                    <DockPanel VerticalAlignment="Center" Grid.Column="3" Grid.Row="1"  Margin="3" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxContractBySalery}">
                         <TextBox x:Name="maxTextBox" Text="{Binding ElementName=slValue1, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="50" />
                         <Slider Maximum="3000" TickPlacement="BottomRight" TickFrequency="300" IsSnapToTickEnabled="True" Name="slValue1" />
                     </DockPanel>
-                    <CheckBox x:Name="checkBoxContractBySalery" IsChecked="False" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="checkBoxContractBySalery" IsChecked="False" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center"/>
                 </Grid>
             </TabItem>
             <TabItem Header="חיפוש מטפלות" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Margin="0" VerticalAlignment="Top" Width="246">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="115*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="408*"/>
@@ -82,15 +81,15 @@
                         <ColumnDefinition Width="289*"/>
                         <ColumnDefinition Width="210*"/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="label11" Content="מטפלות לפי תמת" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-                    <Label x:Name="label12" Content="מטפלות לפי שעה" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
-                    <Label x:Name="label13" Content="מטפלות לפי מרחק מאמא" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center"/>
-                    <CheckBox x:Name="checkBoxNannyByTamt" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <CheckBox x:Name="checkBoxNannyByHour" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
+                    <Label x:Name="label11" Content="מטפלות לפי תמת" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="250" Height="35" Margin="40,0"/>
+                    <Label x:Name="label12" Content="מטפלות לפי שעה" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="250" Height="35" Margin="40,0"/>
+                    <Label x:Name="label13" Content="מטפלות לפי מרחק מאמא" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="250" Height="35" Margin="40,0"/>
+                    <CheckBox x:Name="checkBoxNannyByTamt" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="checkBoxNannyByTamt_Checked"/>
+                    <CheckBox x:Name="checkBoxNannyByHour" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Checked="checkBoxNannyByHour_Checked"/>
                     <CheckBox x:Name="checkBoxNannyByMom" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Checked="checkBoxNannyByMom_Checked"/>
-                    <ComboBox x:Name="comboBoxChoosMomNanny" Grid.Column="2" Margin="4" Grid.Row="2" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxNannyByMom}"/>
-                    <Button x:Name="buttonSearchNanny" Content="חפש" Grid.Column="3" HorizontalAlignment="Center" Grid.RowSpan="3" VerticalAlignment="Center" Height="80" Width="80" Click="buttonSearchNanny_Click"/>
-                    <DataGrid x:Name="dataGridNanny"  AutoGenerateColumns="False"  Grid.Row="3" Grid.ColumnSpan="4" Height="288" Width="995">
+                    <ComboBox x:Name="comboBoxChoosMomNanny" Grid.Column="2" Margin="4" Grid.Row="2" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxNannyByMom}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontSize="16"/>
+                    <Button x:Name="buttonSearchNanny" Content="חפש" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="150" Click="buttonSearchNanny_Click" Grid.Row="2" IsEnabled="False"/>
+                    <DataGrid x:Name="dataGridNanny"  AutoGenerateColumns="False"  Grid.Row="3" Grid.ColumnSpan="4" Width="995" Margin="0,0,-3,3" FontSize="16">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
                             <DataGridTextColumn Header="תעודת זהות" Binding="{Binding nannyId}" />
@@ -102,10 +101,10 @@
             <TabItem x:Name="dataChildTab" Header="חיפוש ילדים" FlowDirection="LeftToRight" FontFamily="Open Sans Hebrew" Height="80" Width="246" FontSize="20" MouseLeftButtonUp="dataChildTab_MouseLeftButtonUp">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="32*"/>
-                        <RowDefinition Height="31*"/>
                         <RowDefinition Height="35*"/>
-                        <RowDefinition Height="108*"/>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="115*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="199*"/>
@@ -113,53 +112,53 @@
                         <ColumnDefinition Width="121*"/>
                         <ColumnDefinition Width="398*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dataGridDetailsChild" AutoGenerateColumns="False" FlowDirection="RightToLeft" Grid.ColumnSpan="4" Grid.Row="3" VerticalAlignment="Top">
+                    <DataGrid x:Name="dataGridDetailsChild" AutoGenerateColumns="False" FlowDirection="RightToLeft" Grid.ColumnSpan="4" Grid.Row="3" VerticalAlignment="Top" FontSize="16">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
                             <DataGridTextColumn Header="תעודת זהות" Binding="{Binding idChild}" />
                             <DataGridTextColumn Header="תאריך לידה" Binding="{Binding birthdayKid , StringFormat='dd/MM/yyyy' }" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="buttonSearchChild" Content="חפש ילדים" Margin="30,30,29.667,30" Grid.RowSpan="3" Click="buttonSearchChild_Click"/>
-                    <Label x:Name="label1" Content="ילדים לפי אמא" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="138,13"/>
-                    <Label x:Name="label2" Content="ילדים ללא מסגרת" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Margin="126,12"/>
-                    <Label x:Name="label3" Content="ילדים עם צרכים מיוחדים" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Margin="100,16"/>
-                    <ComboBox x:Name="comboBoxChildByMom" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxChildByMom}" Grid.Column="1"  Margin="40.333,15,39.333,15" SelectionChanged="comboBoxChildByMom_SelectionChanged" />
-                    <CheckBox x:Name="checkBoxNotNanny" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                    <CheckBox x:Name="checkBoxWithSpaiclNeed" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                    <CheckBox x:Name="checkBoxChildByMom" IsChecked="False" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                    <Button x:Name="buttonSearchChild" Content="חפש ילדים" Click="buttonSearchChild_Click" Width="150" Height="50" Grid.Row="2" IsEnabled="False"/>
+                    <Label x:Name="label1" Content="ילדים לפי אמא" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="40" Margin="39,0,40,0" HorizontalContentAlignment="Right"/>
+                    <Label x:Name="label2" Content="ילדים ללא מסגרת" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="200" Height="40" Margin="39,0,40,0" HorizontalContentAlignment="Right"/>
+                    <Label x:Name="label3" Content="ילדים עם צרכים מיוחדים" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="200" Height="40" Margin="39,0,40,0" HorizontalContentAlignment="Right"/>
+                    <ComboBox x:Name="comboBoxChildByMom" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxChildByMom}" Grid.Column="1"  Margin="40.333,15,39.333,15" SelectionChanged="comboBoxChildByMom_SelectionChanged" FontSize="14" FlowDirection="RightToLeft" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                    <CheckBox x:Name="checkBoxNotNanny" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Checked="checkBoxNotNanny_Checked"/>
+                    <CheckBox x:Name="checkBoxWithSpaiclNeed" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Checked="checkBoxWithSpaiclNeed_Checked"/>
+                    <CheckBox x:Name="checkBoxChildByMom" IsChecked="False" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="checkBoxChildByMom_Checked"  />
 
                 </Grid>
             </TabItem>
             <TabItem x:Name="dataMomTab" Header="חיפוש אמהות" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Width="246" Margin="0,-1,0,1">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="402*"/>
+                        <ColumnDefinition Width="122*"/>
+                        <ColumnDefinition Width="271*"/>
+                        <ColumnDefinition Width="200*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="115*"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="buttonSearchMom" Content="חפש" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="80" Grid.RowSpan="3" Click="buttonSearchMom_Click"/>
-                    <DataGrid x:Name="dataGridMomDetails" AutoGenerateColumns="False" Grid.Row="3" Grid.ColumnSpan="4">
+                    <Button x:Name="buttonSearchMom" Content="חפש" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" Click="buttonSearchMom_Click" Grid.Row="2" Margin="33.6,8.8,16.4,6.8" IsEnabled="False"/>
+                    <DataGrid x:Name="dataGridMomDetails" AutoGenerateColumns="False" Grid.Row="3" Grid.ColumnSpan="4" FontSize="16" Margin="0,0.2,0.4,0">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
                             <DataGridTextColumn Header="תעודת זהות" Binding="{Binding IdMom}" />
                             <DataGridTextColumn Header="כתובת" Binding="{Binding AddressMom}" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label x:Name="label8" Content="אמהות מסודרות" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-                    <Label x:Name="label9" Content="אמהות לא מסודרות" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
-                    <Label x:Name="label10" Content="אמהות לפי מספר ילדים" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center"/>
-                    <CheckBox x:Name="CheckBoxArrangedMom" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <CheckBox x:Name="checkBoxNotArrangedMom" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
-                    <CheckBox x:Name="checkBoxMomByNumChild" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center"/>
-                    <DockPanel VerticalAlignment="Center" Grid.Column="2" Grid.Row="2"  Margin="3" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxMomByNumChild}">
+                    <Label x:Name="label8" Content="אמהות מסודרות" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="35" Width="200"/>
+                    <Label x:Name="label9" Content="אמהות לא מסודרות" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Height="35" Width="200"/>
+                    <Label x:Name="label10" Content="אמהות לפי מספר ילדים" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="35" Width="200"/>
+                    <CheckBox x:Name="CheckBoxArrangedMom" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" Margin="55.4,25,50.2,25.6" Width="16" Checked="CheckBoxArrangedMom_Checked"/>
+                    <CheckBox x:Name="checkBoxNotArrangedMom" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Height="15" Margin="55.4,25.4,50.2,25.2" Width="16" Checked="checkBoxNotArrangedMom_Checked"/>
+                    <CheckBox x:Name="checkBoxMomByNumChild" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Height="16" Margin="55.4,24.8,50.2,24.8" Width="16" Checked="checkBoxMomByNumChild_Checked"/>
+                    <DockPanel VerticalAlignment="Center" Grid.Column="2" Grid.Row="2"  Margin="2.8,18.8,1.4,18.8" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxMomByNumChild}" Height="28">
                         <TextBox x:Name="numChildTextBox" Text="{Binding ElementName=sliderNum, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="50" />
                         <Slider Maximum="10" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Name="sliderNum" />
                     </DockPanel>

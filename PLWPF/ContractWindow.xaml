@@ -52,28 +52,28 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Right" Content="תעודת זהות ילד" FontSize="18"/>
-                        <TextBox x:Name="idChildTextBox" Width="120" VerticalAlignment="Center" Text="{Binding idChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Center" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Right" Content="תעודת זהות מטפלת" FontSize="18"/>
-                        <TextBox x:Name="idNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding idNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Center" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="8" Margin="3" HorizontalAlignment="Right" Content="האם נחתם חוזה" FontSize="18"/>
-                        <CheckBox x:Name="isContractCheckBox" VerticalAlignment="Center" Grid.Row="8" Margin="3" IsChecked="{Binding isContract, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content="" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Right" Content="לפי שעה" FontSize="18"/>
-                        <CheckBox x:Name="isHourCheckBox" VerticalAlignment="Center" Grid.Row="3" Margin="3" IsChecked="{Binding isHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content="" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Right" Content="נפגשו" FontSize="18"/>
-                        <CheckBox x:Name="isMetCheckBox" VerticalAlignment="Center" Grid.Row="2" Margin="3" IsChecked="{Binding isMet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content="" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Right" Content="משכורת לפי לשעה" FontSize="18"/>
-                        <TextBox x:Name="salaryPerHourTextBox" Width="120" VerticalAlignment="Center" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Center" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Right" Content="משכורת לפי לחודש" FontSize="18"/>
-                        <TextBox x:Name="salaryPerMonthTextBox" Width="120" VerticalAlignment="Center" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Center" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Right" Content="תחילת חוזה" FontSize="18"/>
-                        <DatePicker x:Name="workBeginDatePicker" VerticalAlignment="Center" SelectedDate="{Binding workBegin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" HorizontalAlignment="Center" Grid.Column="1"/>
-                        <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Right" Content="סוף חוזה" FontSize="18"/>
-                        <DatePicker x:Name="workEndDatePicker" VerticalAlignment="Center" SelectedDate="{Binding workEnd, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" HorizontalAlignment="Center" Grid.Column="1"/>
-                        <Button x:Name="buttonAddContract" Grid.ColumnSpan="2" Content="הוסף חוזה" Grid.Row="9" Click="buttonAddContract_Click" Grid.Column="1"/>
+                        <Label VerticalAlignment="Center" Grid.Row="0" Margin="3,5" Content="תעודת זהות ילד" FontSize="14" VerticalContentAlignment="Stretch" Height="30"/>
+                        <TextBox x:Name="idChildTextBox" Width="150" VerticalAlignment="Center" Text="{Binding idChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3,5" Height="30" HorizontalAlignment="Center" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="1" Margin="3,5" Content="תעודת זהות מטפלת" FontSize="14" VerticalContentAlignment="Stretch" Height="30"/>
+                        <TextBox x:Name="idNannyTextBox" Width="150" VerticalAlignment="Center" Text="{Binding idNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3,5" Height="30" HorizontalAlignment="Center" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="8" Margin="3,5" Content="האם נחתם חוזה" FontSize="14" VerticalContentAlignment="Stretch" Height="30" Padding="5,5,5,0"/>
+                        <CheckBox x:Name="isContractCheckBox" VerticalAlignment="Center" Grid.Row="8" IsChecked="{Binding isContract, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content="" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Margin="0,5,0,0" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="3" Margin="3,5" Content="לפי שעה" FontSize="14" VerticalContentAlignment="Stretch" Height="30"/>
+                        <CheckBox x:Name="isHourCheckBox" VerticalAlignment="Center" Grid.Row="3" IsChecked="{Binding isHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content="" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Margin="0,5" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="2" Margin="3,5" Content="נפגשו" FontSize="14" VerticalContentAlignment="Stretch" Height="30"/>
+                        <CheckBox x:Name="isMetCheckBox" VerticalAlignment="Center" Grid.Row="2" IsChecked="{Binding isMet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content="" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Margin="0,5" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="5" Margin="3,5" Content="משכורת לפי לשעה" FontSize="14" VerticalContentAlignment="Stretch" Height="30"/>
+                        <TextBox x:Name="salaryPerHourTextBox" Width="150" VerticalAlignment="Center" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3,5" Height="30" HorizontalAlignment="Center" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="4" Margin="3,5" Content="משכורת לפי לחודש" FontSize="14" VerticalContentAlignment="Stretch" Height="30"/>
+                        <TextBox x:Name="salaryPerMonthTextBox" Width="150" VerticalAlignment="Center" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3,5" Height="30" HorizontalAlignment="Center" Grid.Column="1" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="6" Margin="3,5" Content="תחילת חוזה" FontSize="14" VerticalContentAlignment="Stretch" Height="30"/>
+                        <DatePicker x:Name="workBeginDatePicker" VerticalAlignment="Center" SelectedDate="{Binding workBegin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3,5" HorizontalAlignment="Center" Grid.Column="1" Width="150" Height="30" FontSize="14"/>
+                        <Label VerticalAlignment="Center" Grid.Row="7" Margin="3,5" Content="סוף חוזה" FontSize="14" VerticalContentAlignment="Stretch" Height="30"/>
+                        <DatePicker x:Name="workEndDatePicker" VerticalAlignment="Center" SelectedDate="{Binding workEnd, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3,5" HorizontalAlignment="Center" Grid.Column="1" Width="150" Height="30" FontSize="14"/>
+                        <Button x:Name="buttonAddContract" Grid.ColumnSpan="2" Content="הוסף חוזה" Grid.Row="10" Click="buttonAddContract_Click" Grid.Column="1" Width="150" Height="50" Margin="0,0,5,5"/>
                     </Grid>
-                    <ComboBox x:Name="comboBoxChooseMom" Margin="3" Grid.Row="1" SelectionChanged="comboBoxChooseMom_SelectionChanged" />
-                    <ComboBox x:Name="comboBoxChooseChild"  Margin="3" Grid.Row="1" SelectionChanged="comboBoxChooseChild_SelectionChanged" Grid.Column="1"/>
+                    <ComboBox x:Name="comboBoxChooseMom" Margin="3" Grid.Row="1" SelectionChanged="comboBoxChooseMom_SelectionChanged" Width="250" Height="40" FontSize="16" />
+                    <ComboBox x:Name="comboBoxChooseChild"  Margin="3" Grid.Row="1" SelectionChanged="comboBoxChooseChild_SelectionChanged" Grid.Column="1" Width="250" Height="40" FontSize="16"/>
                     <DataGrid x:Name="dataGridDetalis" Margin="3" FlowDirection="RightToLeft" AutoGenerateColumns="False" Grid.ColumnSpan="2"  Grid.Row="3" SelectionChanged="dataGridDetalis_SelectionChanged" Height="250" Grid.Column="0">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
@@ -103,13 +103,14 @@
                     </Grid.ColumnDefinitions>
                     <Label x:Name="label4" Content="בחר אמא" Grid.Column="2" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center"/>
                     <Label x:Name="label5" Content="בחר ילד" Grid.Column="2" HorizontalAlignment="Center" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="comboBoxchooseMomUPdate" Grid.Column="1" Margin="10,5" SelectionChanged="comboBoxchooseMomUPdate_SelectionChanged"/>
-                    <ComboBox x:Name="comboBoxChooseChildUpdate" Grid.Column="1"  Grid.Row="1" Margin="10,5" SelectionChanged="comboBoxChooseChildUpdate_SelectionChanged"/>
-                    <Label x:Name="label6" Content="שינוי שעות אמא" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                    <Button x:Name="buttonUpdateMomhour" Content="עדכן שעות" Grid.Column="2" HorizontalAlignment="Center" Margin="3" Grid.Row="4" VerticalAlignment="Center" Click="buttonUpdateMomhour_Click" />
-                    <Button x:Name="buttonUpdateContract" Content="עדכן חוזה" Grid.Column="1" HorizontalAlignment="Center" Margin="3" Grid.Row="4" VerticalAlignment="Center" Click="buttonUpdateContract_Click" />
+                    <ComboBox x:Name="comboBoxchooseMomUPdate" Grid.Column="1" Margin="1.8,5,40.4,5.8" SelectionChanged="comboBoxchooseMomUPdate_SelectionChanged" FlowDirection="RightToLeft" HorizontalContentAlignment="Right" Height="30"/>
+                    <ComboBox x:Name="comboBoxChooseChildUpdate" Grid.Column="1"  Grid.Row="1" Margin="1.8,6.2,40.4,5.4" SelectionChanged="comboBoxChooseChildUpdate_SelectionChanged" FlowDirection="RightToLeft" HorizontalContentAlignment="Right" Height="30"/>
+                    <Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="309" Margin="175.8,11.6,0,0" Grid.Row="2" Grid.RowSpan="3" Stroke="Black" VerticalAlignment="Top" Width="471"/>
+                    <Label x:Name="label6" Content="שינוי שעות אמא" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" FontSize="36" Width="250" Height="50" Grid.ColumnSpan="2" Margin="295.8,23.6,117.4,8.8"/>
+                    <Button x:Name="buttonUpdateMomhour" Content="עדכן שעות" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Click="buttonUpdateMomhour_Click" Width="150" Height="50" Margin="8.6,11.4,173.4,21" IsEnabled="False" />
+                    <Button x:Name="buttonUpdateContract" Content="עדכן חוזה" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Click="buttonUpdateContract_Click" Width="150" Height="50" Margin="331,19.4,181.4,13" IsEnabled="False" Grid.ColumnSpan="2" />
 
-                    <Grid x:Name="gridHourMom" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Grid.ColumnSpan="2"   >
+                    <Grid x:Name="gridHourMom" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Grid.ColumnSpan="2" Margin="0,0.2,32.4,82" Grid.RowSpan="2"   >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -172,27 +173,27 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Label Content="תעודת זהות ילד" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="1" VerticalAlignment="Center" FontSize="15"/>
-                        <TextBox x:Name="idChildTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding idChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <TextBox x:Name="idChildTextBox1" HorizontalAlignment="Center" Height="23" Margin="3" Grid.Row="1" Text="{Binding idChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="14"/>
                         <Label Content="מספר חוזה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center" FontSize="15"/>
-                        <TextBox x:Name="idContractTextBox" HorizontalAlignment="Left" Height="23" Margin="3" Text="{Binding idContract, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <TextBox x:Name="idContractTextBox" HorizontalAlignment="Center" Height="23" Margin="3" Text="{Binding idContract, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="14"/>
                         <Label Content="תעודת זהות מטפלת" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="2" VerticalAlignment="Center" FontSize="15"/>
-                        <TextBox x:Name="idNannyTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding idNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <TextBox x:Name="idNannyTextBox1" HorizontalAlignment="Center" Height="23" Margin="3" Grid.Row="2" Text="{Binding idNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="14"/>
                         <Label Content="יש חוזה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="3" VerticalAlignment="Center" FontSize="15"/>
-                        <CheckBox x:Name="isContractCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding isContract, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                        <CheckBox x:Name="isContractCheckBox1" Content="" HorizontalAlignment="Center" IsChecked="{Binding isContract, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="3" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0"/>
                         <Label Content="לפי שעה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="6" VerticalAlignment="Center" FontSize="15"/>
-                        <CheckBox x:Name="isHourCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding isHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+                        <CheckBox x:Name="isHourCheckBox1" Content="" HorizontalAlignment="Center" IsChecked="{Binding isHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="6" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0"/>
                         <Label Content="נפגשו" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="4" VerticalAlignment="Center" FontSize="15"/>
-                        <CheckBox x:Name="isMetCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding isMet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                        <CheckBox x:Name="isMetCheckBox1" Content="" HorizontalAlignment="Center" IsChecked="{Binding isMet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0"/>
                         <Label Content="משכורת חודשית לפי שעה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="7" VerticalAlignment="Center" FontSize="15"/>
-                        <TextBox x:Name="salaryPerHourTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="7" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <TextBox x:Name="salaryPerHourTextBox1" HorizontalAlignment="Center" Height="23" Margin="3" Grid.Row="7" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="14"/>
                         <Label Content="משכורת לפי חודשית" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="8" VerticalAlignment="Center" FontSize="15"/>
-                        <TextBox x:Name="salaryPerMonthTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <TextBox x:Name="salaryPerMonthTextBox1" HorizontalAlignment="Center" Height="23" Margin="3" Grid.Row="8" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="14"/>
                         <Label Content="תחילת החוזה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="9" VerticalAlignment="Center" FontSize="15"/>
-                        <DatePicker x:Name="workBeginDatePicker1" HorizontalAlignment="Left" Margin="3" Grid.Row="9" SelectedDate="{Binding workBegin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+                        <DatePicker x:Name="workBeginDatePicker1" HorizontalAlignment="Left" Margin="3" Grid.Row="9" SelectedDate="{Binding workBegin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" FontSize="14" HorizontalContentAlignment="Center"/>
                         <Label Content="סיום החוזה" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="10" VerticalAlignment="Center" FontSize="15"/>
-                        <DatePicker x:Name="workEndDatePicker1" HorizontalAlignment="Left" Margin="3" Grid.Row="10" SelectedDate="{Binding workEnd, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+                        <DatePicker x:Name="workEndDatePicker1" HorizontalAlignment="Left" Margin="3" Grid.Row="10" SelectedDate="{Binding workEnd, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" FontSize="14" HorizontalContentAlignment="Center"/>
                         <Label x:Name="label7" Content="שכר שסוכם" Grid.Column="1" HorizontalAlignment="Right"  Grid.Row="5" VerticalAlignment="Center" FontSize="15"/>
-                        <TextBox x:Name="salryAgreedTextBox" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding salaryAgreed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <TextBox x:Name="salryAgreedTextBox" HorizontalAlignment="Center" Height="23" Margin="3" Grid.Row="5" Text="{Binding salaryAgreed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="14"/>
                     </Grid>
 
                 </Grid>
@@ -209,11 +210,11 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="buttonDeleteContract" Content="מחק/י חוזה" Margin="300,40" Grid.ColumnSpan="2"  Grid.Row="2" Click="buttonDeleteContract_Click" />
-                    <ComboBox x:Name="comboBoxChooseMomdelete"   Margin="150,50" SelectionChanged="comboBoxChooseMomdelete_SelectionChanged" />
-                    <ComboBox x:Name="comboBoxchooseChildDelete" Margin="150,50" Grid.Row="1" SelectionChanged="comboBoxchooseChildDelete_SelectionChanged" />
-                    <Label x:Name="label2" Content="בחר/י אמא" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    <Label x:Name="label3" Content="בחר/י ילד" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" />
+                    <Button x:Name="buttonDeleteContract" Content="מחק/י חוזה" Margin="51,44.8,296.6,42"  Grid.Row="2" Click="buttonDeleteContract_Click" Width="150" Height="50" IsEnabled="False" />
+                    <ComboBox x:Name="comboBoxChooseMomdelete" SelectionChanged="comboBoxChooseMomdelete_SelectionChanged" Width="400" Height="50" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FlowDirection="RightToLeft" />
+                    <ComboBox x:Name="comboBoxchooseChildDelete" Grid.Row="1" SelectionChanged="comboBoxchooseChildDelete_SelectionChanged" Width="400" Height="50" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FlowDirection="RightToLeft" />
+                    <Label x:Name="label2" Content="בחר/י אמא" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="75" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="36" />
+                    <Label x:Name="label3" Content="בחר/י ילד" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Width="300" Height="75" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="36" />
 
                 </Grid>
             </TabItem>

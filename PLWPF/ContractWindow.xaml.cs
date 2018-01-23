@@ -154,6 +154,7 @@ namespace PLWPF
 
         private void comboBoxchooseChildDelete_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            buttonDeleteContract.IsEnabled = true;
             child = (BE.Child)comboBoxchooseChildDelete.SelectedItem;
         }
 
@@ -206,10 +207,13 @@ namespace PLWPF
             {
                 if (comboBoxChooseChildUpdate.SelectedIndex != -1)
                 {
+                    
                     contract = bl.getContract((long)comboBoxChooseChildUpdate.SelectedValue);
                     gridDetalisContract.DataContext = contract;
                     mom = bl.getMother((long)comboBoxchooseMomUPdate.SelectedValue);
                     gridHourMom.DataContext = mom;
+                    buttonUpdateContract.IsEnabled = true;
+                    buttonUpdateMomhour.IsEnabled = true;
                 }
             }
             catch (Exception Ex)

@@ -76,6 +76,7 @@ namespace PLWPF
         {
             if (motherUpdateCombo.SelectedIndex != -1)
             {
+                button3.IsEnabled = true;
                 mother = (BE.Mother)motherUpdateCombo.SelectedItem;
                 updateMomTab.DataContext = mother;
             }

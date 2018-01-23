@@ -98,6 +98,7 @@ namespace PLWPF
 
         private void comboBoxNannyUpdate_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            buttonUpdateNanny.IsEnabled = true;
             nanny = (BE.Nanny)comboBoxNannyUpdate.SelectedItem;
             updateNannyTab.DataContext = nanny;
         }

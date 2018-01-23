@@ -32,24 +32,45 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="498*"/>
+                        <ColumnDefinition Width="276*"/>
+                        <ColumnDefinition Width="221*"/>
                     </Grid.ColumnDefinitions>
-                    <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Center" Grid.Column="1" Content="תאריך לידה"/>
-                    <DatePicker x:Name="birthdayKidDatePicker" VerticalAlignment="Center" SelectedDate="{Binding birthdayKid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" HorizontalAlignment="Center"/>
-                    <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Center" Grid.Column="1" Content=" שם פרטי"/>
-                    <TextBox x:Name="firstNameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding firstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Center"/>
-                    <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Center" Grid.Column="1" Content="תעודת זהות"/>
-                    <TextBox x:Name="idChildTextBox" Width="120" VerticalAlignment="Center" Text="{Binding idChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Center"/>
-                    <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Center" Grid.Column="1" Content="תעודת זהות אמא"/>
-                    <TextBox x:Name="idMomTextBox" Width="120" VerticalAlignment="Center" Text="{Binding idMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Center"/>
-                    <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Center" Grid.Column="1" Content="צרכים מיוחדים"/>
-                    <CheckBox x:Name="isSpecialNeedCheckBox" VerticalAlignment="Center" Grid.Row="5" Margin="3" IsChecked="{Binding isSpecialNeed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content=""/>
-                    <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Center" Grid.Column="1" Content="פירוט צרכים מיוחדים"/>
-                    <TextBox x:Name="specialNeedsTextBox" Width="120" VerticalAlignment="Center" Text="{Binding specialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Center"/>
-                    <ComboBox x:Name="comboBoxMom"  Margin="100,15" SelectionChanged="comboBoxMom_SelectionChanged"/>
-                    <Label x:Name="choseMom" Content="בחר/י אמא להוספת ילד" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-                    <Button x:Name="addChildButtom" Content="הוסף ילד" HorizontalAlignment="Center" Margin="80,20" Grid.ColumnSpan="2" Grid.Row="7" VerticalAlignment="Center" Click="addChildButtom_Click"/>
+                    <Label VerticalAlignment="Center" Grid.Row="3" HorizontalAlignment="Right" Grid.Column="1" Content="תאריך לידה" Margin="0,5"/>
+                    <DatePicker x:Name="birthdayKidDatePicker" VerticalAlignment="Center" SelectedDate="{Binding birthdayKid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" HorizontalAlignment="Right" FontSize="16" VerticalContentAlignment="Center" Width="200" Height="30" Margin="0,5,29.6,5"/>
+                    <Label VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="1" Content=" שם פרטי" Grid.Row="1" Margin="0,5"/>
+                    <TextBox x:Name="firstNameTextBox" Width="200" VerticalAlignment="Center" Text="{Binding firstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Height="30" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FlowDirection="RightToLeft" FontSize="16" Margin="0,5,29.6,5"/>
+                    <Label VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Right" Grid.Column="1" Content="תעודת זהות" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,5"/>
+                    <TextBox x:Name="idChildTextBox" Width="200" VerticalAlignment="Center" Text="{Binding idChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Height="30" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FlowDirection="RightToLeft" FontSize="16" Margin="0,5,29.6,5"/>
+                    <Label VerticalAlignment="Center" Grid.Row="4" HorizontalAlignment="Right" Grid.Column="1" Content="תעודת זהות אמא" Margin="0,5"/>
+                    <TextBox x:Name="idMomTextBox" Width="200" VerticalAlignment="Center" Text="{Binding idMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Height="30" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FlowDirection="RightToLeft" FontSize="16" Margin="0,5,29.6,5"/>
+                    <Label VerticalAlignment="Center" Grid.Row="5" HorizontalAlignment="Right" Grid.Column="1" Content="צרכים מיוחדים" Margin="0,5"/>
+                    <CheckBox x:Name="isSpecialNeedCheckBox" VerticalAlignment="Center" Grid.Row="5" Margin="359,11.4,119.6,4.8" IsChecked="{Binding isSpecialNeed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Content="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label VerticalAlignment="Center" Grid.Row="6" HorizontalAlignment="Right" Grid.Column="1" Content="פירוט צרכים מיוחדים" Margin="0,5"/>
+                    <TextBox x:Name="specialNeedsTextBox" Width="200" VerticalAlignment="Center" Text="{Binding specialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Height="30" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FlowDirection="RightToLeft" FontSize="16" Margin="0,5,29.6,5"/>
+                    <ComboBox x:Name="comboBoxMom" SelectionChanged="comboBoxMom_SelectionChanged" FlowDirection="RightToLeft" Width="200" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,5,29.6,5" VerticalContentAlignment="Center" FontSize="16"/>
+                    <Label x:Name="choseMom" Content="בחר/י אמא להוספת ילד" Grid.Column="1" HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="0,5"/>
+                    <Button x:Name="addChildButtom" Content="הוסף ילד" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Click="addChildButtom_Click" Width="150" Height="50" Margin="292,18.4,55.6,18">
+                        <Button.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=firstNameTextBox, Path=Text}" Value="">
+                                        <Setter Property="Button.IsEnabled" Value="False"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=firstNameTextBox, Path=Text}" Value="">
+                                        <Setter Property="Button.IsEnabled" Value="False"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=idChildTextBox, Path=Text}" Value="">
+                                        <Setter Property="Button.IsEnabled" Value="False"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=idMomTextBox, Path=Text}" Value="">
+                                        <Setter Property="Button.IsEnabled" Value="False"></Setter>
+                                    </DataTrigger>
+
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                 </Grid>
 
             </TabItem>
@@ -58,6 +79,8 @@
 
                 <Grid x:Name="grid2">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
@@ -72,23 +95,23 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Label Content="תאריך לידה" Grid.Column="1"   Grid.Row="5" HorizontalAlignment="Center" />
-                    <DatePicker x:Name="birthdayKidDatePicker1" Margin="5"  Grid.Row="5" SelectedDate="{Binding birthdayKid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
-                    <Label Content="שם פרטי" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center"/>
-                    <TextBox x:Name="firstNameTextBox1"  Grid.Row="2" Margin="5" Text="{Binding firstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  />
-                    <Label Content="תעודת זהות ילד" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center"/>
-                    <TextBox x:Name="idChildTextBox1"  Grid.Row="3" Margin="5" Text="{Binding idChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  />
-                    <Label Content="תעודת זהות אמא" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center"/>
-                    <TextBox x:Name="idMomTextBox1"  Grid.Row="4" Margin="5" Text="{Binding idMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
-                    <Label Content="צרכים מיוחדים" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="6" VerticalAlignment="Center"/>
-                    <CheckBox x:Name="isSpecialNeedCheckBox1" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding isSpecialNeed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" />
-                    <Label Content="פירוט צרכים מיוחדים" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center"/>
-                    <TextBox x:Name="specialNeedsTextBox1"  Grid.Row="7" Margin="5" Text="{Binding specialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
-                    <Label x:Name="label1" Content="בחר/י אמא" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-                    <Label x:Name="label2" Content="בחר/י ילד/ה" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center"/>
-                    <Button x:Name="buttonupdateChild" Grid.ColumnSpan="2" Content="עדכנ/י" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Click="buttonupdateChild_Click" />
-                    <ComboBox x:Name="comboBoxChoseMom" Margin="5" SelectionChanged="comboBoxChoseMom_SelectionChanged" />
-                    <ComboBox x:Name="comboBoxChoseChild" Grid.Row="1" Margin="5" SelectionChanged="comboBoxChoseChild_SelectionChanged"/>
+                    <Label Content="תאריך לידה" Grid.Column="2"   Grid.Row="4" HorizontalAlignment="Left" Width="170" Height="35" Margin="29,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Right" />
+                    <DatePicker x:Name="birthdayKidDatePicker1"  Grid.Row="5" SelectedDate="{Binding birthdayKid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" Width="170" Height="29" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
+                    <Label Content="שם פרטי" Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Center" Width="170" Height="35" Margin="29,0,0,0" HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="firstNameTextBox1"  Grid.Row="2" Text="{Binding firstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" Width="170" Height="29" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"  />
+                    <Label Content="תעודת זהות ילד" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="170" Height="35" Margin="29,0,0,0" HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="idChildTextBox1"  Grid.Row="3" Text="{Binding idChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" Width="170" Height="29" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"  />
+                    <Label Content="תעודת זהות אמא" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" Width="170" Height="35" Margin="29,0,0,0" HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="idMomTextBox1"  Grid.Row="4" Text="{Binding idMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" Width="170" Height="29" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
+                    <Label Content="צרכים מיוחדים" Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="6" VerticalAlignment="Center" Width="170" Height="35" Margin="29,0,0,0" HorizontalContentAlignment="Right"/>
+                    <CheckBox x:Name="isSpecialNeedCheckBox1" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding isSpecialNeed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="0" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label Content="פירוט צרכים מיוחדים" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center" Width="170" Height="35" Margin="29,0,0,0" HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="specialNeedsTextBox1"  Grid.Row="7" Text="{Binding specialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" Width="170" Height="29" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
+                    <Label x:Name="label1" Content="בחר/י אמא" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="170" Height="35" Margin="29,0,0,0" HorizontalContentAlignment="Right"/>
+                    <Label x:Name="label2" Content="בחר/י ילד/ה" Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center" Width="170" Height="35" Margin="29,0,0,0" HorizontalContentAlignment="Right"/>
+                    <Button x:Name="buttonupdateChild" Content="עדכנ/י" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Click="buttonupdateChild_Click" Width="150" Height="50" IsEnabled="False" Grid.Column="1" Margin="0,20,0,0" />
+                    <ComboBox x:Name="comboBoxChoseMom" SelectionChanged="comboBoxChoseMom_SelectionChanged" FlowDirection="RightToLeft" Grid.Column="1" Width="170" Height="29" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
+                    <ComboBox x:Name="comboBoxChoseChild" Grid.Row="1" SelectionChanged="comboBoxChoseChild_SelectionChanged" FlowDirection="RightToLeft" Grid.Column="1" Width="170" Height="29" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
                 </Grid>
 
             </TabItem>
@@ -104,11 +127,11 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="labelDeleteChild" Content="בחר/י ילד/ה למחיקה" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48"  Grid.Column="1" Grid.Row="1" />
-                    <ComboBox x:Name="comboBoxChild" Grid.Row="1" Margin="30,30" />
-                    <Button x:Name="buttonDeleteChild" Content="מחק" Grid.Row="2" Margin="300,40.333,300,40" Click="buttonDeleteChild_Click" Grid.ColumnSpan="2" />
-                    <ComboBox x:Name="comboBoxMomDelete"  Margin="30,30" SelectionChanged="comboBoxMomDelete_SelectionChanged"/>
-                    <Label x:Name="labalChoseMomDelete" Content="בחר/י אמא" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48"/>
+                    <Label x:Name="labelDeleteChild" Content="בחר/י ילד/ה למחיקה" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="36"  Grid.Column="1" Grid.Row="1" Width="300" Height="75" HorizontalContentAlignment="Right" />
+                    <ComboBox x:Name="comboBoxChild" Grid.Row="1" Width="400"  Height="50" HorizontalAlignment="Right" Margin="0,0,20,0" SelectionChanged="comboBoxChild_SelectionChanged" FlowDirection="RightToLeft" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <Button x:Name="buttonDeleteChild" Content="מחק" Grid.Row="2" Margin="79,27.8,269.4,59" Click="buttonDeleteChild_Click" Width="150" Height="50" IsEnabled="False" />
+                    <ComboBox x:Name="comboBoxMomDelete" SelectionChanged="comboBoxMomDelete_SelectionChanged" Width="400" Height="50" HorizontalAlignment="Right" Margin="0,0,20,0" FlowDirection="RightToLeft" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                    <Label x:Name="labalChoseMomDelete" Content="בחר/י אמא" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="36" Width="300" Height="75" HorizontalContentAlignment="Right"/>
                 </Grid>
             </TabItem>
         </TabControl>
