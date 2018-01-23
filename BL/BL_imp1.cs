@@ -219,16 +219,23 @@ namespace BL
         //google directions
         public int CalculateDistance(string source/*mother*/, string dest/*nanny*/)
         {
-            var drivingDirectionRequest = new DirectionsRequest
+            try
             {
-                TravelMode = TravelMode.Walking,
-                Origin = source,
-                Destination = dest,
-            };
-            DirectionsResponse drivingDirections = GoogleMaps.Directions.Query(drivingDirectionRequest);
-            Route route = drivingDirections.Routes.First();
-            Leg leg = route.Legs.First();
-            return leg.Distance.Value;
+                var drivingDirectionRequest = new DirectionsRequest
+                {
+                    TravelMode = TravelMode.Walking,
+                    Origin = source,
+                    Destination = dest,
+                };
+                DirectionsResponse drivingDirections = GoogleMaps.Directions.Query(drivingDirectionRequest);
+                Route route = drivingDirections.Routes.First();
+                Leg leg = route.Legs.First();
+                return leg.Distance.Value;
+            }
+            catch (Exception n)
+            {
+                throw new Exception(n.Message);
+            }
         }
 
         /// <summary>
@@ -240,13 +247,13 @@ namespace BL
         {
             var nannyList = dal.getAllNanny();
 
-            var compatibleNanny = from a in nannyList
+            var compatibleNanny = (from a in nannyList
                                   where checkSchedule(a, mom)
-                                  select a;
+                                  select a).ToList();
 
             if (!compatibleNanny.Any())
             {
-                var fiveNearestList = fiveNearestNanny(mom);
+                var fiveNearestList = fiveNearestNanny(mom).ToList();
                 foreach (var nanny in fiveNearestList)
                 {
                     nanny.Distance = CalculateDistance(mom.AddressMom, nanny.addressNanny);

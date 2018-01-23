@@ -25,6 +25,7 @@ namespace PLWPF
         public BE.Contract contract;
         public BE.Mother mom;
         public BL.Ibl bl;
+        List<BE.Nanny> copNanny = null;
 
         public ContractWindow()
         {
@@ -58,17 +59,19 @@ namespace PLWPF
                 comboBoxChooseChild.SelectedIndex = -1;
                 contract = new BE.Contract();
                 addContractTab.DataContext = contract;
+                mom = (BE.Mother)comboBoxChooseMom.SelectedItem;
                 try
                 {
+
                     new Thread(() =>
-                       {
-                           Dispatcher.Invoke(new Action(() =>
                      {
-                         var copNanny = bl.getAllCompatibleNanny((BE.Mother)comboBoxChooseMom.SelectedItem);
-                         dataGridDetalis.ItemsSource = copNanny;
-                         dataGridDetalis.SelectedValuePath = "nannyId";
-                     }));
-                       }).Start();
+                         copNanny = bl.getAllCompatibleNanny(mom).ToList();
+                         Dispatcher.Invoke(new Action(() =>
+                         {
+                             dataGridDetalis.ItemsSource = copNanny;
+                             dataGridDetalis.SelectedValuePath = "nannyId";
+                         }));
+                     }).Start();
                 }
                 catch (Exception n)
                 {
