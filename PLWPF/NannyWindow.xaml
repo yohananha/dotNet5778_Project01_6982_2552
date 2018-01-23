@@ -283,9 +283,9 @@
                             <ColumnDefinition Width="130"/>
                         </Grid.ColumnDefinitions>
                         <Label VerticalAlignment="Top" Grid.Row="0" Margin="0,6,0,7.6" HorizontalAlignment="Left" Content="בחר מטפלת" FontSize="16" Height="32" Width="84" HorizontalContentAlignment="Right"/>
-                        <ComboBox x:Name="comboBoxNannyUpdate" Grid.Column="1" SelectionChanged="comboBoxNannyUpdate_SelectionChanged" Margin="2.2,5,-3.4,0" Width="120" Height="25" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="comboBoxNannyUpdate" Grid.Column="1" SelectionChanged="comboBoxNannyUpdate_SelectionChanged" Margin="2.2,5,-3.4,0" Width="120" Height="25" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
                         <Label VerticalAlignment="Center" Grid.Row="1" Margin="0,3.4,0,3" HorizontalAlignment="Left" Content="תעודת זהות:" FontSize="16" Height="32" Width="84" HorizontalContentAlignment="Right"/>
-                        <TextBox x:Name="nannyIdTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding nannyId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Height="25" HorizontalAlignment="Center" Grid.Column="1" FontSize="14"/>
+                        <TextBox x:Name="nannyIdTextBoxUpdate" IsReadOnly="True" Width="120" VerticalAlignment="Center" Text="{Binding nannyId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Height="25" HorizontalAlignment="Center" Grid.Column="1" FontSize="14"/>
                         <Label VerticalAlignment="Center" Grid.Row="2" Margin="0,4,0,2.4" HorizontalAlignment="Left" Content="שם פרטי:" FontSize="16" Height="32" Width="68" HorizontalContentAlignment="Right"/>
                         <TextBox x:Name="firstNameNannyTextBoxUpdate" Width="120" VerticalAlignment="Center" Text="{Binding firstNameNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="0" Height="25" HorizontalAlignment="Center" Grid.Column="1" FontSize="14"/>
                         <Label VerticalAlignment="Center" Grid.Row="3" Margin="0,3.6,0,2.8" HorizontalAlignment="Left" Content="שם משפחה:" FontSize="16" Height="32" Width="88" HorizontalContentAlignment="Right"/>
@@ -354,7 +354,7 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Label x:Name="labelDeleteNanny" Content="בחר/י מטפלת למחיקה" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Width="500" Height="75" HorizontalContentAlignment="Center" FlowDirection="RightToLeft" VerticalContentAlignment="Center" Margin="0,60,0,0" />
-                    <ComboBox x:Name="comboBoxNanny" Grid.Row="1" Margin="0" Height="50" MaxDropDownHeight="289" FlowDirection="RightToLeft" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="400" />
+                    <ComboBox x:Name="comboBoxNanny" Grid.Row="1" Margin="0" Height="50" MaxDropDownHeight="289" FlowDirection="RightToLeft" FontSize="18" VerticalContentAlignment="Center" Width="400" />
                     <Button x:Name="buttonDeleteNanny" Content="מחק" Grid.Row="2" Margin="0,0,0,40" Click="buttonDeleteNanny_Click" Width="150" Height="50" />
                 </Grid>
             </TabItem>

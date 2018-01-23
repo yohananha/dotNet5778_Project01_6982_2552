@@ -78,7 +78,7 @@ namespace PLWPF
             {
                 bl.deleteNanny(Convert.ToInt64(comboBoxNanny.SelectedValue));
                 MessageBox.Show("מטפלת נמחקה בהצלחה");
-                comboBoxNanny.Items.Refresh();
+                comboBoxNanny.SelectedIndex=-1;
             }
             catch (Exception Ex)
             {

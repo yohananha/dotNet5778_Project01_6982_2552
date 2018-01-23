@@ -112,6 +112,7 @@ namespace PLWPF
             {
                 contract.nameChild = (bl.getChild(contract.idChild)).fullName;
                 contract.nameNanny = nanny.fullName;
+                contract.isContract = true;
                 if (contract.isHour)
                     contract.salaryAgreed = contract.salaryPerHour;
                 else

@@ -126,7 +126,7 @@ namespace PLWPF
             {
                 bl.deleteMother(mother.IdMom);
                 MessageBox.Show("אם נמחקה מהמערכת");
-                deleteMomCombo.Items.Refresh();
+                deleteMomCombo.SelectedIndex = -1;
             }
             catch (Exception Ex)
             {
@@ -136,5 +136,12 @@ namespace PLWPF
 
         #endregion
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            System.Windows.Data.CollectionViewSource motherViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("motherViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // motherViewSource.Source = [generic data source]
+        }
     }
 }

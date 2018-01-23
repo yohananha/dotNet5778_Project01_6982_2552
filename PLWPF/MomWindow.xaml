@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="PLWPF.MomWindow"
         mc:Ignorable="d"
-        Title="MomWindow" Height="700" Width="1000" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="MomWindow" Height="700" Width="1000" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="motherViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Mother}, CreateList=True}"/>
+    </Window.Resources>
 
     <Window.Background>
         <SolidColorBrush Color="White" Opacity="0.8"/>
@@ -245,7 +248,7 @@
 
             <TabItem x:Name="delMomTab" Header="מחיקת אם" FlowDirection="LeftToRight" Height="80" Width="330" FontFamily="Open Sans Hebrew" FontSize="20" BorderBrush="{x:Null}" MouseLeftButtonUp="delMomTab_MouseLeftButtonUp">
 
-                <Grid Background="#FFFF" Opacity="1">
+                <Grid Background="#FFFF" Opacity="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
