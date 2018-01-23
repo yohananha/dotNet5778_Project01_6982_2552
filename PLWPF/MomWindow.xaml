@@ -73,7 +73,29 @@
                         <TextBox x:Name="nothMomTextBox" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding nothMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="16"/>
 
                     </Grid>
-                    <Button x:Name="button1" Content="הוספה" HorizontalAlignment="Left" Margin="62,39.6,50,38" Grid.Row="1" VerticalAlignment="Bottom" Width="200" Height="50" BorderBrush="{x:Null}" Click="button1_Click"/>
+                    <Button x:Name="button1" Content="הוספה" HorizontalAlignment="Left" Margin="62,39.6,50,38" Grid.Row="1" VerticalAlignment="Bottom" Width="200" Height="50" BorderBrush="{x:Null}" Click="button1_Click">
+                        <Button.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=firstNameMomTextBox, Path=Text}" Value="">
+                                        <Setter Property="Button.IsEnabled" Value="false"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=lasNameMomTextBox, Path=Text}" Value="">
+                                        <Setter Property="Button.IsEnabled" Value="false"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=idMomTextBox, Path=Text}" Value="">
+                                        <Setter Property="Button.IsEnabled" Value="false"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=phoneMomTextBox, Path=Text}" Value="">
+                                        <Setter Property="Button.IsEnabled" Value="false"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding ="{Binding ElementName=addressMomTextBox, Path=Text}" Value="">
+                                        <Setter Property="Button.IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                     <Grid x:Name="grid4" HorizontalAlignment="Right" Grid.ColumnSpan="2" Margin="0,228,50,38" Grid.RowSpan="2" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
