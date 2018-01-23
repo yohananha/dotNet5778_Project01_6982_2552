@@ -21,17 +21,17 @@
         <Image x:Name="BGMain" Source="images/1459.jpg" Stretch="Fill" Width="1000" Height="700" Grid.ColumnSpan="2" Margin="0,0,-6.4,-6.4" Grid.RowSpan="4" />
         <Image x:Name="mary" Source="images/mary2.png" Width="200" HorizontalAlignment="Left"
                VerticalAlignment="Bottom" Margin="0,0,0,-0.4" Grid.Row="3" />
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="164,174,153.6,0" TextWrapping="Wrap"
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="164,129,153.6,0" TextWrapping="Wrap"
                    Text="ברוכים הבאים" VerticalAlignment="Top" Height="131" Width="676" TextAlignment="Center"
                    LineHeight="22" FontSize="100" FontWeight="Bold" Foreground="White" FontFamily="Open Sans Hebrew" Grid.ColumnSpan="2" />
-        <Button x:Name="momSbutton" Content="מסך אם" HorizontalAlignment="left" Margin="20,0,0,0"
+        <Button x:Name="momSbutton" Content="מסך אם" HorizontalAlignment="left" Margin="20.2,306,0,49.6"
                   VerticalAlignment="Center" Width="200" Height="78" FontSize="20"
                 FontFamily="Open Sans Hebrew" FontWeight="Bold" Background="White" Opacity="0.6" BorderBrush="{x:Null}"
-                Foreground="#FF93398D" Grid.Column="1" Grid.Row="1" Click="momSbutton_Click" />
-        <Button x:Name="kidsButton" Content="מסך ילדים" HorizontalAlignment="right" Margin="0,0,20,0"
+                Foreground="#FF93398D" Grid.Column="1" Click="momSbutton_Click" Grid.RowSpan="2" />
+        <Button x:Name="kidsButton" Content="מסך ילדים" HorizontalAlignment="right" Margin="0,306,19.8,49.6"
                 VerticalAlignment="Center" Width="200" Height="78" Click="kids_Click" FontSize="20"
                 FontFamily="Open Sans Hebrew" FontWeight="Bold" Opacity="0.6" BorderBrush="{x:Null}"
-                Foreground="#FF93398D" Grid.Row="1">
+                Foreground="#FF93398D" Grid.RowSpan="2">
             <Button.Background>
                 <RadialGradientBrush>
                     <GradientStop Color="White" Offset="0" />
@@ -43,25 +43,30 @@
                 VerticalAlignment="Bottom" Width="104" Height="37" Background="White" BorderBrush="{x:Null}"
                 Opacity="0.6" Click="exitButton_Click" Grid.Column="1" Grid.Row="3" Foreground="#FFD060AA" RenderTransformOrigin="0.5,0.505" />
         <Button x:Name="dataButton" Content="חיפוש במסד נתונים" HorizontalAlignment="center" Height="75"
-                Margin="357,36,357.6,0" VerticalAlignment="Top" Width="279" FontFamily="Open Sans Hebrew"
-                FontSize="20" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FFA84F8E" Click="button1_Click" Grid.ColumnSpan="2" Grid.Row="3">
+                Margin="357,77.4,357.6,0" VerticalAlignment="Top" Width="279" FontFamily="Open Sans Hebrew"
+                FontSize="20" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FFA84F8E" Click="button1_Click" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2">
             <Button.Background>
                 <SolidColorBrush Color="White" Opacity="0.6" />
             </Button.Background>
         </Button>
-        <Button x:Name="nannyButton" Content="מסך מטפלת" HorizontalAlignment="left" Margin="20,0,0,0"
+        <Button x:Name="nannyButton" Content="מסך מטפלת" HorizontalAlignment="left" Margin="20.2,45.8,0,49"
             VerticalAlignment="Center" Width="200" Height="78" Click="button_Click" FontSize="20"
             FontFamily="Open Sans Hebrew" FontWeight="Bold" Background="White" Opacity="0.6" BorderBrush="{x:Null}"
-            Foreground="#FF93398D" Grid.Column="1" Grid.Row="2" />
-        <Button x:Name="contractsButton" Content="מסך חוזים" HorizontalAlignment="right" Margin="0,0,20,0"
+            Foreground="#FF93398D" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" />
+        <Button x:Name="contractsButton" Content="מסך חוזים" HorizontalAlignment="right" Margin="0,45.8,19.8,49"
             VerticalAlignment="Center" Width="200" Height="78" Click="contract_Click" FontSize="20"
             FontFamily="Open Sans Hebrew" FontWeight="Bold" Opacity="0.6" BorderBrush="{x:Null}"
-            Foreground="#FF93398D" Grid.Row="2">
+            Foreground="#FF93398D" Grid.Row="1" Grid.RowSpan="2">
             <Button.Background>
                 <RadialGradientBrush>
                     <GradientStop Color="White" Offset="0" />
                     <GradientStop Color="White" Offset="1" />
                 </RadialGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="button" Grid.ColumnSpan="2" Content="אודות המפתחים" HorizontalAlignment="Center" Height="40" Margin="421,110,422.6,23.6" Grid.Row="3" VerticalAlignment="Center" Width="150" BorderBrush="{x:Null}" Foreground="#FFD663B0" Click="button_Click_1">
+            <Button.Background>
+                <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
             </Button.Background>
         </Button>
 

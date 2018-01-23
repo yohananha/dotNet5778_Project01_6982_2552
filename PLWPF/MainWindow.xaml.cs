@@ -61,5 +61,11 @@ namespace PLWPF
         {
             Close();
         }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var about = new aboutWindow();
+            about.ShowDialog();
+        }
     }
 }

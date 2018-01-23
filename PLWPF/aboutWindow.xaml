@@ -1,0 +1,21 @@
+﻿<Window x:Class="PLWPF.aboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="aboutWindow" Height="600" Width="600" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image gif:ImageBehavior.RepeatBehavior ="0x" gif:ImageBehavior.AnimatedSource="images/we.gif" Width="600" Height="600" Grid.ColumnSpan="2"/>
+        <Label x:Name="label" Content="עידו הראל" HorizontalAlignment="Center" Height="54" VerticalAlignment="Top" Width="205" Grid.Column="1" Margin="0,50,0,0" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Open Sans Hebrew" FontSize="36" FontWeight="Bold" Padding="0,5,0,0"/>
+        <Label x:Name="label_Copy" Content="יוחנן חאיק" HorizontalAlignment="Center" Height="54" VerticalAlignment="Top" Width="205" Margin="0,50,0,0" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Open Sans Hebrew" FontSize="36" FontWeight="Bold" Padding="0,5,0,0"/>
+        <TextBlock x:Name="textBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="137" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="454" FontFamily="Open Sans Hebrew" FontSize="16" Margin="0,0,0,30" FlowDirection="RightToLeft" TextAlignment="Center"><Span><Run Text="כל הזכויות שמורות"/></Span><Span><Run FlowDirection="RightToLeft" Text="."/></Span><LineBreak/><Run FlowDirection="RightToLeft" Text="נעשה בקורס &quot;מיני-פרוייקט בC#&quot;"/><LineBreak/><Run FlowDirection="RightToLeft" Text="מרצה: יאיר גולדשטיין"/><LineBreak/><Run FlowDirection="RightToLeft"/><LineBreak/><Run FlowDirection="RightToLeft" Text="לפניות: "/><Run Text="yohananha@gmail.com"/><LineBreak/><Run Text="idoharel@gmail.com"/></TextBlock>
+        <Button x:Name="button" Content="X" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="30" Grid.Row="1" Background="#FFFF8888" BorderBrush="{x:Null}" Click="button_Click"/>
+    </Grid>
+</Window>
