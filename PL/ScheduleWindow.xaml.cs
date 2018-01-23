@@ -22,12 +22,12 @@ namespace PL
     public partial class ScheduleWindow : UserControl
     {
         public bool tmpCheck;
-        public Schedule tmpSched;
+       // public Schedule tmpSched;
         public ScheduleWindow()
         {
             InitializeComponent();
             bool [] tmpCheck = new bool[6];
-            Schedule[] tmpSched = new Schedule[6];
+     //       Schedule[] tmpSched = new Schedule[6];
         }
 
 

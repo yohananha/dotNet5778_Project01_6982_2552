@@ -80,7 +80,8 @@ namespace PLWPF
 
         private void comboBoxMomDelete_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            comboBoxChild.ItemsSource = bl.getKids(a => a.idMom == Convert.ToInt64(comboBoxMomDelete.SelectedValue));
+            var idCheck = Convert.ToInt64(comboBoxMomDelete.SelectedValue);
+            comboBoxChild.ItemsSource = bl.getKids(a => a.idMom == idCheck);
             comboBoxChild.DisplayMemberPath = "fullName";
             comboBoxChild.SelectedValuePath = "idChild";
             comboBoxChild.SelectedIndex = -1;
@@ -114,6 +115,7 @@ namespace PLWPF
 
         private void comboBoxChoseMom_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             comboBoxChoseChild.ItemsSource = bl.getKids(a => a.idMom == Convert.ToInt64(comboBoxChoseMom.SelectedValue));
             comboBoxChoseChild.DisplayMemberPath = "fullName";
             comboBoxChoseChild.SelectedValuePath = "idChild";

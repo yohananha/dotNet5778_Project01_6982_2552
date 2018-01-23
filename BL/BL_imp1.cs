@@ -5,11 +5,13 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using System.Xml.Serialization;
 using BE;
 using GoogleMapsApi;
 using GoogleMapsApi.Entities.Directions.Request;
 using GoogleMapsApi.Entities.Directions.Response;
+using System.Threading;
 
 namespace BL
 {
@@ -26,13 +28,13 @@ namespace BL
             NannyInitilize();
             MotherInitilize();
             ChildInitilize();
-            var mother = dal.getAllMothers();
-            var nanny = dal.getAllNanny();
-            var child = dal.getKids();
+            //var mother = dal.getAllMothers();
+            //var nanny = dal.getAllNanny();
+            //var child = dal.getKids();
 
-            SaveToXML(mother, "mother.xml");
-            SaveToXML(nanny, "nanny.xml");
-            SaveToXML(child, "child.xml");
+            //SaveToXML(mother, "mother.xml");
+            //SaveToXML(nanny, "nanny.xml");
+            //SaveToXML(child, "child.xml");
 
 
         }
@@ -258,6 +260,11 @@ namespace BL
                 {
                     nanny.Distance = CalculateDistance(mom.AddressMom, nanny.addressNanny);
                 }
+                var fiveNearestList = fiveNearestNanny(mom);
+                //foreach (var nanny in fiveNearestList)
+                //{
+                //    nanny.Distance = CalculateDistance(mom.AddressMom, nanny.addressNanny);
+                //}
                 return fiveNearestList;
             }
             else
@@ -420,13 +427,13 @@ namespace BL
         #endregion
 
      
-        public static void SaveToXML<T>(T source, string path)
-        {
-            FileStream file = new FileStream(path, FileMode.Create);
-            XmlSerializer xmlSerializer = new XmlSerializer(source.GetType());
-            xmlSerializer.Serialize(file, source);
-            file.Close();
-        }
+        //public static void SaveToXML<T>(T source, string path)
+        //{
+        //    FileStream file = new FileStream(path, FileMode.Create);
+        //    XmlSerializer xmlSerializer = new XmlSerializer(source.GetType());
+        //    xmlSerializer.Serialize(file, source);
+        //    file.Close();
+        //}
     }
 }
 
@@ -440,7 +447,7 @@ namespace BL
 //            List<Nanny> l = IEnanny.ToList();
 //            List<object> fiveAppropriateNanniesList = null;
 
-//            //if there is no fully fit nanny
+//            if there is no fully fit nanny
 //            if (l.Count == 0)
 //            {
 //                Mother mother;
