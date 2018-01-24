@@ -676,7 +676,7 @@ namespace DAL
             XElement contractElement;
 
             contractElement = (from contr in contractFile.Elements()
-                               where int.Parse(contr.Element("idChild").Value) == idChildContractDel
+                               where int.Parse(contr.Element("Child").Element("idChild").Value) == idChildContractDel
                                select contr).FirstOrDefault();
          if (contractElement == null)
                return;
@@ -692,7 +692,7 @@ namespace DAL
         {
             LoadData("contract");
 
-            XElement contractElement = (from contr in childFile.Elements()
+            XElement contractElement = (from contr in contractFile.Elements()
                                         where int.Parse(contr.Element("idContract").Value) == contract.idContract
                                         select contr).FirstOrDefault();
             if (contractElement == null)
@@ -709,7 +709,7 @@ namespace DAL
             contractElement.Element("salaryAgreed").Value = contract.salaryAgreed.ToString();
             contractElement.Element("isHour").Value = contract.isHour.ToString();
             contractElement.Element("workBegin").Value = contract.workBegin.ToString();
-            contractElement.Element("workBegin").Value = contract.workBegin.ToString();
+            contractElement.Element("workEnd").Value = contract.workEnd.ToString();
 
             contractFile.Save(contractPath);
         }

@@ -40,12 +40,19 @@ namespace PLWPF
         #region addContractEvent
         private void addContractTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (comboBoxChooseChild.SelectedIndex == -1)
+            try
             {
-                comboBoxChooseMom.ItemsSource = bl.getAllMothers();
-                comboBoxChooseMom.DisplayMemberPath = "fullName";
-                comboBoxChooseMom.SelectedValuePath = "IdMom";
-                comboBoxChooseMom.SelectedIndex = -1;
+                if (comboBoxChooseChild.SelectedIndex == -1)
+                {
+                    comboBoxChooseMom.ItemsSource = bl.getAllMothers();
+                    comboBoxChooseMom.DisplayMemberPath = "fullName";
+                    comboBoxChooseMom.SelectedValuePath = "IdMom";
+                    comboBoxChooseMom.SelectedIndex = -1;
+                }
+            }
+            catch (Exception n)
+            {
+                MessageBox.Show(n.Message);
             }
         }
 
@@ -53,15 +60,15 @@ namespace PLWPF
         {
             if (comboBoxChooseMom.SelectedIndex != -1)
             {
-                comboBoxChooseChild.ItemsSource = bl.getKids(a => a.idMom == Convert.ToInt64(comboBoxChooseMom.SelectedValue));
-                comboBoxChooseChild.DisplayMemberPath = "fullName";
-                comboBoxChooseChild.SelectedValuePath = "idChild";
-                comboBoxChooseChild.SelectedIndex = -1;
-                contract = new BE.Contract();
-                addContractTab.DataContext = contract;
-                mom = (BE.Mother)comboBoxChooseMom.SelectedItem;
                 try
                 {
+                    comboBoxChooseChild.ItemsSource = bl.getKids(a => a.idMom == Convert.ToInt64(comboBoxChooseMom.SelectedValue));
+                    comboBoxChooseChild.DisplayMemberPath = "fullName";
+                    comboBoxChooseChild.SelectedValuePath = "idChild";
+                    comboBoxChooseChild.SelectedIndex = -1;
+                    contract = new BE.Contract();
+                    addContractTab.DataContext = contract;
+                    mom = (BE.Mother)comboBoxChooseMom.SelectedItem;
 
                     new Thread(() =>
                      {
@@ -101,6 +108,8 @@ namespace PLWPF
                 {
                     contract.salaryPerHour = bl.getSalary(contract.idChild, nanny.nannyId, true, false);
                 }
+                else
+                    contract.salaryPerHour = 0;
                 contract.salaryPerMonth = bl.getSalary(contract.idChild, nanny.nannyId, false, false);
                 contract.idNanny = nanny.nannyId;
             }
@@ -208,7 +217,7 @@ namespace PLWPF
             {
                 if (comboBoxChooseChildUpdate.SelectedIndex != -1)
                 {
-                    
+
                     contract = bl.getContract((long)comboBoxChooseChildUpdate.SelectedValue);
                     gridDetalisContract.DataContext = contract;
                     mom = bl.getMother((long)comboBoxchooseMomUPdate.SelectedValue);
@@ -222,15 +231,19 @@ namespace PLWPF
                 MessageBox.Show(Ex.Message);
             }
         }
+
         private void buttonUpdateMomhour_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                bl.updateMother(mom);
                 if (!bl.checkSchedule(bl.getNanny(contract.idNanny), mom))
                     throw new Exception("המטפלת לא עובדת בשעות הנדרשות");
 
                 if (contract.isHour == true)
                     contract.salaryPerHour = bl.getSalary(contract.idChild, contract.idNanny, true, true);
+                else
+                    contract.salaryPerHour = 0;
                 contract.salaryPerMonth = bl.getSalary(contract.idChild, contract.idNanny, false, true);
             }
             catch (Exception Ex)

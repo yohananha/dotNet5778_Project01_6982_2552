@@ -37,12 +37,14 @@ namespace PLWPF
         #region addMomTab
         private void addMomTab_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            mother = new BE.Mother();
-            mother.startHour = new DateTime[6];
-            mother.endHour = new DateTime[6];
-            mother.DaysRequestMom = new bool[6];
-            addMomTab.DataContext = mother;
-
+            if (mother == null)
+            {
+                mother = new BE.Mother();
+                mother.startHour = new DateTime[6];
+                mother.endHour = new DateTime[6];
+                mother.DaysRequestMom = new bool[6];
+                addMomTab.DataContext = mother;
+            }
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -50,7 +52,7 @@ namespace PLWPF
             try
             {
                 bl.addMom(mother);
-                mother = new BE.Mother();
+                mother = null;
                 addMomTab.DataContext = mother;
                 MessageBox.Show("אם נוספה בהצלחה");
             }
