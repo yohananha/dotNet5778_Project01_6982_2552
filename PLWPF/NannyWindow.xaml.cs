@@ -78,7 +78,10 @@ namespace PLWPF
             {
                 bl.deleteNanny(Convert.ToInt64(comboBoxNanny.SelectedValue));
                 MessageBox.Show("מטפלת נמחקה בהצלחה");
-                comboBoxNanny.SelectedIndex=-1;
+                comboBoxNanny.ItemsSource = bl.getAllNanny();
+                comboBoxNanny.DisplayMemberPath = "fullName";
+                comboBoxNanny.SelectedValuePath = "nannyId";
+                comboBoxNanny.SelectedIndex = -1;
             }
             catch (Exception Ex)
             {
@@ -109,7 +112,9 @@ namespace PLWPF
             {
                 bl.updateNanny(nanny);
                 MessageBox.Show("פרטי המטפלת עודכנו");
-                comboBoxNannyUpdate.Items.Refresh();
+                comboBoxNannyUpdate.SelectedIndex = -1;
+                nanny = new Nanny();
+                updateNannyTab.DataContext = nanny;
 
             }
             catch (Exception Ex)

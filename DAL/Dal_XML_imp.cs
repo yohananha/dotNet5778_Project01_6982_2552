@@ -146,12 +146,12 @@ namespace DAL
             nannyElement.Element("recommendationsNanny").Value = nannye.recommendationsNanny;
             nannyElement.Element("currentChildren").Value = nannye.currentChildren.ToString();
 
-            nannyElement.Element("startHour").Element("sunStart").Value = nannye.daysWorkNanny[0].ToString();
-            nannyElement.Element("startHour").Element("monStart").Value = nannye.daysWorkNanny[1].ToString();
-            nannyElement.Element("startHour").Element("tueStart").Value = nannye.daysWorkNanny[2].ToString();
-            nannyElement.Element("startHour").Element("wedStart").Value = nannye.daysWorkNanny[3].ToString();
-            nannyElement.Element("startHour").Element("thuStart").Value = nannye.daysWorkNanny[4].ToString();
-            nannyElement.Element("startHour").Element("friStart").Value = nannye.daysWorkNanny[5].ToString();
+            nannyElement.Element("startHour").Element("sunStart").Value = nannye.startHour[0].ToString();
+            nannyElement.Element("startHour").Element("monStart").Value = nannye.startHour[1].ToString();
+            nannyElement.Element("startHour").Element("tueStart").Value = nannye.startHour[2].ToString();
+            nannyElement.Element("startHour").Element("wedStart").Value = nannye.startHour[3].ToString();
+            nannyElement.Element("startHour").Element("thuStart").Value = nannye.startHour[4].ToString();
+            nannyElement.Element("startHour").Element("friStart").Value = nannye.startHour[5].ToString();
 
             nannyElement.Element("endHour").Element("sunEnd").Value = nannye.endHour[0].ToString();
             nannyElement.Element("endHour").Element("monEnd").Value = nannye.endHour[1].ToString();
@@ -218,7 +218,7 @@ namespace DAL
                                     }
                              }).ToList();
             }
-            catch
+            catch (Exception Ex)
             {
                 nannyList = null;
             }
