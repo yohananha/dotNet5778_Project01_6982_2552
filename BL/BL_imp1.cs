@@ -384,20 +384,20 @@ namespace BL
             //if no sort return by grouping
             if (!isSort)
                 return from a in dal.getAllNanny()
-                       group a by CalculateDistance(addressMom, a.addressNanny) / 5000;
+                       group a by CalculateDistance(addressMom, a.addressNanny) / 500;
 
             //if is sort first get all nanny and clac the distance and after return by grouping with order
-            var nannyList = from a in dal.getAllNanny()
-                            select a.duplicate();
+            var nannyList = (from a in dal.getAllNanny()
+                            select a).ToList();
 
             foreach (var a in nannyList)
             {
                 a.Distance = CalculateDistance(addressMom, a.addressNanny);
             }
 
-            return from a in dal.getAllNanny()
+            return from a in nannyList
                    orderby a.Distance
-                   group a by a.Distance / 5000;
+                   group a by a.Distance / 500;
         }
 
         public IEnumerable<IGrouping<int, Nanny>> getChildByAgeRange(bool minAge, bool isSort)
@@ -410,14 +410,14 @@ namespace BL
                 else
                     return from a in dal.getAllNanny()
                            orderby a.maxAgeChildNanny
-                           group a by a.minAgeChildNanny / 3;
+                           group a by a.maxAgeChildNanny / 3;
             else
                     if (minAge)
                 return from a in dal.getAllNanny()
                        group a by a.minAgeChildNanny / 3;
             else
                 return from a in dal.getAllNanny()
-                       group a by a.minAgeChildNanny / 3;
+                       group a by a.maxAgeChildNanny / 3;
         }
         #endregion
 

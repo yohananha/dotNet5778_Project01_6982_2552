@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,6 +27,10 @@ namespace PLWPF
         public IEnumerable<BE.Nanny> nannyList;
         public IEnumerable<BE.Child> childList;
         public IEnumerable<BE.Contract> contractList;
+        IEnumerable<IGrouping<int, BE.Nanny>> list1;
+        List<BE.Nanny> nannyListByAge;
+        List<BE.Nanny> nannyListByDistance;
+        ListCollectionView collection;
 
 
         public DataWindow()
@@ -165,7 +170,7 @@ namespace PLWPF
         }
         #endregion
 
-        #region momEventTab
+        #region momTabEvent
         private void buttonSearchMom_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -174,13 +179,13 @@ namespace PLWPF
 
                 if (CheckBoxArrangedMom.IsChecked == true)
                     momList = from item in momList
-                        let x = item.IdMom
-                        where ((bl.getKids(a => a.idMom == x)).ToList().Count) == (from k in bl.getKids(k => k.idMom == x)
-                                                                                  let y = k.idChild
-                                                                                  from c in bl.getContracts()
-                                                                                  where y == c.idChild
-                                                                                  select k).ToList().Count
-                        select item;
+                              let x = item.IdMom
+                              where ((bl.getKids(a => a.idMom == x)).ToList().Count) == (from k in bl.getKids(k => k.idMom == x)
+                                                                                         let y = k.idChild
+                                                                                         from c in bl.getContracts()
+                                                                                         where y == c.idChild
+                                                                                         select k).ToList().Count
+                              select item;
 
                 if (checkBoxNotArrangedMom.IsChecked == true)
                     momList = from item in momList
@@ -208,6 +213,7 @@ namespace PLWPF
 
         #endregion
 
+        #region nannyTabEvent
         private void checkBoxNannyByMom_Checked(object sender, RoutedEventArgs e)
         {
 
@@ -217,8 +223,13 @@ namespace PLWPF
                 comboBoxChoosMomNanny.DisplayMemberPath = "fullName";
                 comboBoxChoosMomNanny.SelectedValuePath = "AddressMom";
                 comboBoxChoosMomNanny.SelectedIndex = -1;
-                buttonSearchNanny.IsEnabled = true;
             }
+        }
+
+        private void comboBoxChoosMomNanny_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxChoosMomNanny.SelectedIndex != -1)
+                mom = (BE.Mother)comboBoxChoosMomNanny.SelectedItem;
         }
 
         private void buttonSearchNanny_Click(object sender, RoutedEventArgs e)
@@ -237,61 +248,85 @@ namespace PLWPF
                                 where a.isByHourNanny == true
                                 select a;
 
+                dataGridNanny.Visibility = Visibility.Visible;
                 dataGridNanny.ItemsSource = nannyList;
 
+                if (checkBoxNannyByAge.IsChecked == true)
+                {
+
+                    dataGridNanny.Visibility = Visibility.Hidden;
+                    dataGridGrouping.Visibility = Visibility.Visible;
+                    nannyListByAge = new List<BE.Nanny>();
+                    if (checkBoxGroupByMax.IsChecked == true)
+                        list1 = bl.getChildByAgeRange(false, true);
+                    else
+                        list1 = bl.getChildByAgeRange(true, true);
+                    foreach (var it in list1)
+                    {
+                        if (it != null)
+                        {
+                            foreach (var item in it)
+                            {
+                                string tmp = (it.Key * 3).ToString();
+                                string tmp2 = ((it.Key * 3) - 3).ToString();
+                                string tmp3 = tmp2 + "-" + tmp + " Months";
+                                item.KayGroupAge = tmp3.ToString();
+                                nannyListByAge.Add(item);
+                            }
+                        }
+                    }
+
+                    collection = new ListCollectionView(nannyListByAge);
+                    collection.GroupDescriptions.Add(new PropertyGroupDescription("KayGroupAge"));
+                    dataGridGrouping.ItemsSource = collection;
+                }
+
+
+
                 if (checkBoxNannyByMom.IsChecked == true)
-                    dataGridNanny.ItemsSource = bl.getChildByAgeRange(false, false);
-                    //dataGridNannyDetails.ItemsSource = bl.getNannyByDistance((string)comboBoxChoosMomNanny.SelectedValue, false);
+                {
+                    dataGridNanny.Visibility = Visibility.Hidden;
+                    dataGridGrouping.Visibility = Visibility.Hidden;
+                    dataGridGroupingByDistance.Visibility = Visibility.Visible;
+
+                    new Thread(() =>
+                    {
+                        nannyListByDistance = new List<BE.Nanny>();
+                        list1 = bl.getNannyByDistance(mom.AddressMom, true);
+
+                        foreach (var it in list1)
+                        {
+                            if (it != null)
+                            {
+                                foreach (var item in it)
+                                {
+                                    string tmp = ((it.Key + 1) * 500).ToString();
+                                    string tmp2 = (((it.Key + 1) * 500) - 500).ToString();
+                                    string tmp3 = tmp2 + "-" + tmp + " מטר";
+                                    item.KayGroupDistance = tmp3.ToString();
+                                    nannyListByDistance.Add(item);
+                                }
+                            }
+                        }
+                        Dispatcher.Invoke(new Action(() =>
+                        {
+                            collection = new ListCollectionView(nannyListByDistance);
+                            collection.GroupDescriptions.Add(new PropertyGroupDescription("KayGroupDistance"));
+                            dataGridGroupingByDistance.ItemsSource = collection;
+                        }));
+                    }).Start();
+                }
             }
+
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message);
             }
         }
 
-        private void dataGridContractDetails_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-        }
 
-        private void checkBoxNannyByTamt_Checked(object sender, RoutedEventArgs e)
-        {
-            buttonSearchNanny.IsEnabled = true;
-        }
+        #endregion
 
-        private void checkBoxNannyByHour_Checked(object sender, RoutedEventArgs e)
-        {
-            buttonSearchNanny.IsEnabled = true;
-        }
 
-        private void checkBoxChildByMom_Checked(object sender, RoutedEventArgs e)
-        {
-            buttonSearchChild.IsEnabled = true;
-        }
-
-        private void checkBoxNotNanny_Checked(object sender, RoutedEventArgs e)
-        {
-            buttonSearchChild.IsEnabled = true;
-        }
-
-        private void checkBoxWithSpaiclNeed_Checked(object sender, RoutedEventArgs e)
-        {
-            buttonSearchChild.IsEnabled = true;
-        }
-
-        private void CheckBoxArrangedMom_Checked(object sender, RoutedEventArgs e)
-        {
-            buttonSearchMom.IsEnabled = true;
-        }
-
-        private void checkBoxNotArrangedMom_Checked(object sender, RoutedEventArgs e)
-        {
-            buttonSearchMom.IsEnabled = true;
-        }
-
-        private void checkBoxMomByNumChild_Checked(object sender, RoutedEventArgs e)
-        {
-            buttonSearchMom.IsEnabled = true;
-        }
     }
 }
