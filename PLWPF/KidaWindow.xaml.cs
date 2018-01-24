@@ -47,7 +47,10 @@ namespace PLWPF
         {
             mom = (BE.Mother)comboBoxMom.SelectedItem;
             if (mom != null)
+            {
                 idMomTextBox.Text = Convert.ToString(mom.IdMom);
+                child.idMom = mom.IdMom;
+            }
 
         }
 
@@ -55,6 +58,7 @@ namespace PLWPF
         {
             try
             {
+                child.lastName = mom.LasNameMom;
                 bl.addChild(child);
                 MessageBox.Show("ילד נוסף בהצלחה");
                 child = new BE.Child();

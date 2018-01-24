@@ -471,9 +471,9 @@ namespace DAL
 
                       select new Mother()
                       {
-                          IdMom = long.Parse(mom.Element("Id").Value),
-                          FirstNameMom = mom.Element("name").Element("FirstName").Value,
-                          LasNameMom = mom.Element("name").Element("LastName").Value,
+                          IdMom = long.Parse(mom.Element("id").Value),
+                          FirstNameMom = mom.Element("name").Element("firstName").Value,
+                          LasNameMom = mom.Element("name").Element("lastName").Value,
                           PhoneMom = long.Parse(mom.Element("phone").Value),
                           AddressMom = mom.Element("address").Value,
                           AddressForNanny = mom.Element("addressForNanny").Value,
@@ -604,28 +604,28 @@ namespace DAL
         public Child getChild(long idChild)
         {
             LoadData("child");
-            Child child;
+            Child getChild;
             //var childList = getKids();
 
             //var child = childList.FirstOrDefault(_child => _child.idChild == idChild);
             //if (child == null)
             //    throw new Exception("id doesn't exist");
 
-            child = (from kid in childFile.Elements()
+            getChild = (from kid in childFile.Elements()
                      where long.Parse(kid.Element("idChild").Value) == idChild
 
                      select new Child()
                      {
-                         idMom = long.Parse(kid.Element("IdMom").Value),
+                         idMom = long.Parse(kid.Element("idMom").Value),
                          idChild = long.Parse(kid.Element("idChild").Value),
                          firstName = kid.Element("name").Element("firstName").Value,
                          lastName = kid.Element("name").Element("lastName").Value,
                          birthdayKid = DateTime.Parse(kid.Element("birthday").Value),
-                         isSpecialNeed = Convert.ToBoolean(kid.Element("isSpecial").Value),
-                         specialNeeds = kid.Element("needs").Value,
+                         isSpecialNeed = bool.Parse(kid.Element("isSpecial").Value),
+                         specialNeeds = kid.Element("needs").Value
                      }).FirstOrDefault();
 
-            return child;
+            return getChild;
 
         }
 
