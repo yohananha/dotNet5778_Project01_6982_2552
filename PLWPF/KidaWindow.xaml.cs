@@ -154,5 +154,79 @@ namespace PLWPF
         {
             buttonDeleteChild.IsEnabled = true;
         }
+
+        #region add child input check
+
+        private void firstNameTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!stringCheck(firstNameTextBox.Text, "string"))
+                firstNameTextBox.Text = "";
+
+        }
+
+        private void idChildTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!stringCheck(idChildTextBox.Text, "int"))
+                idChildTextBox.Text = "";
+
+        }
+
+        #endregion
+
+        #region update child input check
+
+        private void firstNameTextBox1_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!stringCheck(firstNameTextBox.Text, "string"))
+                firstNameTextBox1.Text = "";
+        }
+
+        private void idChildTextBox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!stringCheck(idChildTextBox.Text, "int"))
+                idChildTextBox1.Text = "";
+        }
+
+        #endregion
+
+
+
+
+        #region input func check
+
+        public bool stringCheck(string str, string type)
+        {
+            switch (type)
+            {
+                case "string":
+                    foreach (char item in str)
+                    {
+                        if (char.IsDigit(item))
+                        {
+                            MessageBox.Show("נא להכניס אותיות בלבד");
+                            return false;
+                        }
+                    }
+                    break;
+                case "int":
+                    foreach (char item in str)
+                    {
+                        if (!char.IsDigit(item))
+                        {
+                            MessageBox.Show("נא להכניס מספרים בלבד");
+                            return false;
+                        }
+                    }
+                    break;
+            }
+
+            return true;
+        }
+
+        #endregion
+
+        
     }
+
+
 }
