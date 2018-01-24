@@ -76,6 +76,8 @@
                             <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
                             <DataGridTextColumn Header="כתובת" Binding="{Binding addressNanny}" />
                             <DataGridTextColumn Header="מרחק" Binding="{Binding Distance}" />
+                            <DataGridTextColumn Header="שכר לשעה" Binding="{Binding rateHourNanny}" />
+                            <DataGridTextColumn Header="שכר חודשי" Binding="{Binding rateMonthNanny}" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Label x:Name="labelChooseMom" Content="בחר/י אמא" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="136,13,135.8,1.2"/>

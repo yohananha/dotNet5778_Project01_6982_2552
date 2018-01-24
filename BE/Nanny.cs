@@ -38,6 +38,8 @@ namespace BE
         //other data
         public double diff { get; set; }
         public int Distance { get; set; }
+        public string KayGroupAge { get; set; }
+        public string KayGroupDistance { get; set; }
 
         public string fullName { get { return firstNameNanny + " " + lastNameNanny; } }
         //public override string ToString()
