@@ -56,6 +56,7 @@ namespace PLWPF
             nanny.startHour = new DateTime[6];
             nanny.endHour = new DateTime[6];
             nanny.daysWorkNanny = new bool[6];
+            nanny.dateNanny = new DateTime(1990, 1, 1);
             addNannyTab.DataContext = nanny;
         }
 

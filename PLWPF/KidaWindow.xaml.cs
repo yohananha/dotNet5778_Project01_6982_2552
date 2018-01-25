@@ -40,6 +40,7 @@ namespace PLWPF
             comboBoxMom.DisplayMemberPath = "fullName";
             comboBoxMom.SelectedIndex = -1;
             child = new BE.Child();
+            child.birthdayKid = new DateTime(1990, 1, 1);
             addChildTab.DataContext = child;
         }
 

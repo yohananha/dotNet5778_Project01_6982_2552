@@ -67,6 +67,8 @@ namespace PLWPF
                     comboBoxChooseChild.SelectedValuePath = "idChild";
                     comboBoxChooseChild.SelectedIndex = -1;
                     contract = new BE.Contract();
+                    contract.workBegin = DateTime.Today;
+                    contract.workEnd = DateTime.Today;
                     addContractTab.DataContext = contract;
                     mom = (BE.Mother)comboBoxChooseMom.SelectedItem;
 
