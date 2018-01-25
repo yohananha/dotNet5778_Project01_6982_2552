@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
         <Image x:Name="BGMain" Source="images/nanny.jpg" Stretch="Fill" Width="1000" Height="700" Grid.ColumnSpan="2" Margin="0,0,-6.4,-6.4" Grid.RowSpan="4" />
         <Label x:Name="label" Content="מסך המטפלות" FontSize="50" FontFamily="Open Sans Hebrew" HorizontalAlignment="Right" Margin="0,45,0,0" VerticalAlignment="Bottom" Height="150" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White"/>
-        <TabControl x:Name="tabControl" FlowDirection="RightToLeft" SelectedIndex="{Binding Mode=OneWay }" HorizontalAlignment="Center" Height="500" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="1000" Opacity="0.8" BorderBrush="{x:Null}" >
+        <TabControl x:Name="tabControl" FlowDirection="RightToLeft" SelectedIndex="{Binding Mode=OneWay }" HorizontalAlignment="Center" Height="500" Margin="-3,196,-3.4,-2.4" VerticalAlignment="Center" Width="1000" Opacity="0.8" BorderBrush="{x:Null}" Grid.RowSpan="2" >
             <TabItem x:Name="addNannyTab" FlowDirection="LeftToRight" Header="הוספת מטפלת" Width="332" FontFamily="Open Sans Hebrew" FontSize="20" Height="80" Opacity="0.8" Foreground="#FF0E1842" BorderBrush="{x:Null}" MouseLeftButtonUp="addNannyTab_MouseLeftButtonUp" >
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -299,7 +299,7 @@
 
 
                     </Grid>
-                    <Grid x:Name="gridUpdate4" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1"  >
+                    <Grid x:Name="gridUpdate4" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Margin="0,6,4.4,15.4"  >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
