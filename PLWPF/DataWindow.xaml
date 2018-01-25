@@ -63,7 +63,7 @@
                     <Label x:Name="label6" Content="חוזים בטווח שכר(מינ-מקס)" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalContentAlignment="Right"/>
                     <CheckBox x:Name="checkBoxContractByHour" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center"  />
                     <Label x:Name="label7" Content="חוזים לפי שעה" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" HorizontalContentAlignment="Right" VerticalAlignment="Center"/>
-                    <DataGrid x:Name="dataGridContractDetails" AutoGenerateColumns="False" Grid.ColumnSpan="4" Grid.Row="3"  FontSize="16" Margin="0,0.333,0,0" >
+                    <DataGrid x:Name="dataGridContractDetails" AutoGenerateColumns="False" Grid.ColumnSpan="4" Grid.Row="3"  FontSize="16" Margin="0,0.333,0,0" SelectionChanged="dataGrid_SelectionChanged" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="מספר חוזה" Binding="{Binding idContract}" />
                             <DataGridTextColumn Header="ילד/ה" Binding="{Binding nameChild}" />
@@ -109,7 +109,7 @@
                     <CheckBox x:Name="checkBoxNannyByAge" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Height="15" Margin="34.667,8.333,36,14.667" Width="16"/>
                     <ComboBox x:Name="comboBoxChoosMomNanny" Grid.Column="2" Margin="4,5.667,4,4.667" Grid.Row="2" Visibility="{Binding IsChecked, Converter={StaticResource notBooleanToVisibilityConverter}, ElementName=checkBoxNannyByMom}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" SelectionChanged="comboBoxChoosMomNanny_SelectionChanged" Grid.ColumnSpan="2"/>
                     <Button x:Name="buttonSearchNanny" Content="חפש" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="150" Click="buttonSearchNanny_Click" Grid.Row="1" Margin="30,27,30,5.667" Grid.RowSpan="2" />
-                    <DataGrid x:Name="dataGridNanny" Visibility="Hidden" AutoGenerateColumns="False"  Grid.Row="4" Grid.ColumnSpan="5" Margin="0,3.333,-1,0" FontSize="16">
+                    <DataGrid x:Name="dataGridNanny" Visibility="Hidden" AutoGenerateColumns="False"  Grid.Row="4" Grid.ColumnSpan="5" Margin="0,3.333,-1,0" FontSize="16" SelectionChanged="dataGrid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
                             <DataGridTextColumn Header="תעודת זהות" Binding="{Binding nannyId}" />
@@ -121,7 +121,7 @@
                             <DataGridTextColumn Header="שכר לחודש" Binding="{Binding rateMonthNanny}" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="dataGridGrouping" Visibility="Hidden" AutoGenerateColumns="False" Grid.Row="4" Grid.ColumnSpan="5" Margin="0,3.333,-1,0" FontSize="16">
+                    <DataGrid x:Name="dataGridGrouping" Visibility="Hidden" AutoGenerateColumns="False" Grid.Row="4" Grid.ColumnSpan="5" Margin="0,3.333,-1,0" FontSize="16" SelectionChanged="dataGrid_SelectionChanged">
                         <DataGrid.GroupStyle>
                             <GroupStyle ContainerStyle="{StaticResource GroupHeaderStyle}">
                                 <GroupStyle.Panel>
@@ -145,7 +145,7 @@
                             
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="dataGridGroupingByDistance" Visibility="Hidden" AutoGenerateColumns="False" Grid.Row="4" Grid.ColumnSpan="5" Margin="0,3.333,-1,0" FontSize="16">
+                    <DataGrid x:Name="dataGridGroupingByDistance" Visibility="Hidden" AutoGenerateColumns="False" Grid.Row="4" Grid.ColumnSpan="5" Margin="0,3.333,-1,0" FontSize="16" SelectionChanged="dataGrid_SelectionChanged">
                         <DataGrid.GroupStyle>
                             <GroupStyle ContainerStyle="{StaticResource GroupHeaderStyle}">
                                 <GroupStyle.Panel>
@@ -188,7 +188,7 @@
                         <ColumnDefinition Width="121*"/>
                         <ColumnDefinition Width="398*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dataGridDetailsChild" AutoGenerateColumns="False" FlowDirection="RightToLeft" Grid.ColumnSpan="4" Grid.Row="3" VerticalAlignment="Top" FontSize="16" Margin="-4,0.333,-4,0" Height="215">
+                    <DataGrid x:Name="dataGridDetailsChild" AutoGenerateColumns="False" FlowDirection="RightToLeft" Grid.ColumnSpan="4" Grid.Row="3" VerticalAlignment="Top" FontSize="16" Margin="-4,0.333,-4,0" Height="215" SelectionChanged="dataGrid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
                             <DataGridTextColumn Header="תעודת זהות" Binding="{Binding idChild}" />
@@ -221,7 +221,7 @@
                         <RowDefinition Height="115*"/>
                     </Grid.RowDefinitions>
                     <Button x:Name="buttonSearchMom" Content="חפש" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" Click="buttonSearchMom_Click" Grid.Row="2" Margin="33.6,8.8,16.4,6.8" />
-                    <DataGrid x:Name="dataGridMomDetails" AutoGenerateColumns="False" Grid.Row="3" Grid.ColumnSpan="4" FontSize="16" Margin="0,0.333,0,0">
+                    <DataGrid x:Name="dataGridMomDetails" AutoGenerateColumns="False" Grid.Row="3" Grid.ColumnSpan="4" FontSize="16" Margin="0,0.333,0,0" SelectionChanged="dataGrid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="שם" Binding="{Binding fullName}" />
                             <DataGridTextColumn Header="תעודת זהות" Binding="{Binding IdMom}" />

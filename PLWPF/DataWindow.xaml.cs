@@ -31,7 +31,7 @@ namespace PLWPF
         List<BE.Nanny> nannyListByAge;
         List<BE.Nanny> nannyListByDistance;
         ListCollectionView collection;
-
+        DetailsWindow detWin;
 
         public DataWindow()
         {
@@ -325,8 +325,39 @@ namespace PLWPF
         }
 
 
+
         #endregion
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid dg = sender as DataGrid;
+            if (dg.SelectedIndex > -1)
+            {
+                if (dg.SelectedItem is BE.Child)
+                {
+                    detWin = new DetailsWindow(dg.SelectedItem as BE.Child);
+                    detWin.ShowDialog();
+                }
+                if (dg.SelectedItem is BE.Contract)
+                {
+                    detWin = new DetailsWindow(dg.SelectedItem as BE.Contract);
+                    detWin.ShowDialog();
+                }
+                if (dg.SelectedItem is BE.Mother)
+                {
+                    detWin = new DetailsWindow(dg.SelectedItem as BE.Mother);
+                    detWin.ShowDialog();
+                }
+                if (dg.SelectedItem is BE.Nanny)
+                {
+                    detWin = new DetailsWindow(dg.SelectedItem as BE.Nanny);
+                    detWin.ShowDialog();
+                }
+            }
+
+        }
 
 
     }
+
 }
