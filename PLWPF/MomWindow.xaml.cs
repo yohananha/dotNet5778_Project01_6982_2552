@@ -145,5 +145,91 @@ namespace PLWPF
             // Load data by setting the CollectionViewSource.Source property:
             // motherViewSource.Source = [generic data source]
         }
+        #region input func check
+
+        public bool stringCheck(string str, string type)
+        {
+            switch (type)
+            {
+                case "string":
+                    foreach (char item in str)
+                    {
+                        if (char.IsDigit(item))
+                        {
+                            MessageBox.Show("נא להכניס אותיות בלבד");
+                            return false;
+                        }
+                    }
+                    break;
+                case "int":
+                    foreach (char item in str)
+                    {
+                        if (!char.IsDigit(item))
+                        {
+                            MessageBox.Show("נא להכניס מספרים בלבד");
+                            return false;
+                        }
+                    }
+                    break;
+            }
+
+            return true;
+        }
+
+        #endregion
+
+        #region add mother input check
+
+        private void firstNameMomTextBox_LostFocus_1(object sender, RoutedEventArgs e)
+        {
+            if (!stringCheck(firstNameMomTextBox.Text, "string"))
+                firstNameMomTextBox.Text = "";
+        }
+
+        private void lasNameMomTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!stringCheck(firstNameMomTextBox.Text, "string"))
+                firstNameMomTextBox.Text = "";
+        }
+
+        private void idMomTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!stringCheck(idMomTextBox.Text, "int"))
+                idMomTextBox.Text = "";
+        }
+
+        private void phoneMomTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!stringCheck(phoneMomTextBox.Text, "int"))
+                phoneMomTextBox.Text = "";
+        }
+
+
+
+
+        #endregion
+
+        #region update mother input check
+
+        private void firstNameMomTextBox1_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!stringCheck(firstNameMomTextBox1.Text, "string"))
+                firstNameMomTextBox1.Text = "";
+        }
+
+        private void lasNameMomTextBox1_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!stringCheck(lasNameMomTextBox1.Text, "string"))
+                lasNameMomTextBox1.Text = "";
+        }
+
+        private void phoneMomTextBox1_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!stringCheck(phoneMomTextBox1.Text, "int"))
+                phoneMomTextBox1.Text = "";
+        }
+
+        #endregion
+
     }
 }
