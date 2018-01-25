@@ -24,10 +24,10 @@ namespace BL
         public xmlInitilizer()
         {
             dal = DAL.factoryDal.getDal();
-            initilizeArray();
-            NannyInitilize();
-            MotherInitilize();
-            ChildInitilize();
+            //initilizeArray();
+            //NannyInitilize();
+            //MotherInitilize();
+            //ChildInitilize();
             //var mother = dal.getAllMothers();
             //var nanny = dal.getAllNanny();
             //var child = dal.getKids();

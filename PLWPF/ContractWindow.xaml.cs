@@ -76,12 +76,20 @@ namespace PLWPF
 
                     new Thread(() =>
                      {
+                         try
+                         {
+
                          copNanny = bl.getAllCompatibleNanny(mom).ToList();
                          Dispatcher.Invoke(new Action(() =>
                          {
                              dataGridDetalis.ItemsSource = copNanny;
                              dataGridDetalis.SelectedValuePath = "nannyId";
                          }));
+                         }
+                         catch (Exception n)
+                         {
+                             MessageBox.Show(n.Message);
+                         }
                      }).Start();
                 }
                 catch (Exception n)
