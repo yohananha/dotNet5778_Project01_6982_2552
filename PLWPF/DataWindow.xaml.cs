@@ -257,6 +257,7 @@ namespace PLWPF
 
                     dataGridNanny.Visibility = Visibility.Hidden;
                     dataGridGrouping.Visibility = Visibility.Visible;
+                    dataGridGroupingByDistance.Visibility = Visibility.Hidden;
                     nannyListByAge = new List<BE.Nanny>();
                     if (checkBoxGroupByMax.IsChecked == true)
                         list1 = bl.getChildByAgeRange(false, true);
