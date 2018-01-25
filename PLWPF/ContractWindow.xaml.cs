@@ -34,6 +34,8 @@ namespace PLWPF
         }
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow main = new MainWindow();
+            main.Show();
             Close();
         }
 

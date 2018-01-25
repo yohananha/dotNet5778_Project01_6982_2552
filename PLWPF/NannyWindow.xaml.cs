@@ -32,6 +32,8 @@ namespace PLWPF
         #region addNannyEvent
         private void button_buttonBackMainWindow(object sender, RoutedEventArgs e)
         {
+            MainWindow main = new MainWindow();
+            main.Show();
             Close();
         }
 
