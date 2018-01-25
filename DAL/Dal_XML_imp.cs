@@ -18,10 +18,10 @@ namespace DAL
         public static int contract_Id = 1;
 
         private XElement nannysFile, motherFile, childFile, contractFile;
-        string nannyPath = @"c:\xml\nanny.xml";
-        string momPath = @"c:\xml\mother.xml";
-        string kidPath = @"c:\xml\child.xml";
-        string contractPath = @"c:\xml\contract.xml";
+        string nannyPath = @"c:\Poppins\nanny.xml";
+        string momPath = @"c:\Poppins\mother.xml";
+        string kidPath = @"c:\Poppins\child.xml";
+        string contractPath = @"c:\Poppins\contract.xml";
 
 
         public Dal_XML_imp()
