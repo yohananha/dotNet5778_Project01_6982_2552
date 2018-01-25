@@ -28,5 +28,15 @@ namespace PLWPF
         {
             Close();
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/yohananha");
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/idoharel");
+        }
     }
 }
