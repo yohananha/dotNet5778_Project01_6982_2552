@@ -53,6 +53,8 @@ namespace PLWPF
         {
             try
             {
+                mother.AddressMom = addressMomTextBox.Text;
+                mother.AddressForNanny = addressForNannyTextBox.Text;
                 bl.addMom(mother);
                 mother = null;
                 addMomTab.DataContext = mother;
@@ -82,6 +84,8 @@ namespace PLWPF
             {
                 button3.IsEnabled = true;
                 mother = (BE.Mother)motherUpdateCombo.SelectedItem;
+                addressMomTextBox1.Text = mother.AddressMom;
+                addressForNannyTextBox1.Text = mother.AddressForNanny;
                 updateMomTab.DataContext = mother;
             }
         }
@@ -90,6 +94,8 @@ namespace PLWPF
         {
             try
             {
+                mother.AddressMom = addressMomTextBox1.Text;
+                mother.AddressForNanny = addressForNannyTextBox1.Text;
                 bl.updateMother(mother);
                 MessageBox.Show("פרטי האם עודכנו");
                 motherUpdateCombo.SelectedIndex = -1;

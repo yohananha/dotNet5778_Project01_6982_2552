@@ -41,6 +41,7 @@ namespace PLWPF
         {
             try
             {
+                nanny.addressNanny = addressNannyTextBox.Text;
                 bl.addNanny(nanny);
                 nanny = new BE.Nanny();
                 addNannyTab.DataContext = nanny;
@@ -106,6 +107,7 @@ namespace PLWPF
         {
             buttonUpdateNanny.IsEnabled = true;
             nanny = (BE.Nanny)comboBoxNannyUpdate.SelectedItem;
+            addressNannyTextBoxUpdate.Text = nanny.addressNanny;
             updateNannyTab.DataContext = nanny;
         }
 
@@ -113,6 +115,7 @@ namespace PLWPF
         {
             try
             {
+                nanny.addressNanny = addressNannyTextBoxUpdate.Text;
                 bl.updateNanny(nanny);
                 MessageBox.Show("פרטי המטפלת עודכנו");
                 comboBoxNannyUpdate.SelectedIndex = -1;

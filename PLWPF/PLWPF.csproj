@@ -37,6 +37,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GoogleMapsApi, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleMapsApi.0.69.0\lib\net40\GoogleMapsApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -127,6 +131,7 @@
     <Compile Include="DetailsWindow.xaml.cs">
       <DependentUpon>DetailsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GoogleApiFunc.cs" />
     <Compile Include="KidaWindow.xaml.cs">
       <DependentUpon>KidaWindow.xaml</DependentUpon>
     </Compile>
@@ -142,6 +147,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PlaceAutoCompleteUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MomWindow.xaml.cs">
@@ -151,6 +160,9 @@
       <DependentUpon>NannyWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="NotBooleanToVisibilityConverter.cs" />
+    <Compile Include="PlaceAutoCompleteUC.xaml.cs">
+      <DependentUpon>PlaceAutoCompleteUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

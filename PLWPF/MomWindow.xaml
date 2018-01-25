@@ -69,11 +69,12 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Label Content="(כתובת למטפלת (במידה ושונה" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-                        <TextBox x:Name="addressForNannyTextBox" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding AddressForNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="16" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <local:PlaceAutoCompleteUC x:Name="addressForNannyTextBox"  Grid.Row="1" Text="{Binding AddressForNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="5,10" FontSize="16" FlowDirection="RightToLeft"/>
                         <Label Content="כתובת האם" Grid.Column="1" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center"/>
-                        <TextBox x:Name="addressMomTextBox" HorizontalAlignment="Left" Height="23" Margin="3" Text="{Binding AddressMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="16" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <local:PlaceAutoCompleteUC x:Name="addressMomTextBox" Text="{Binding AddressMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="5,10" FontSize="16" FlowDirection="RightToLeft"/>
                         <Label Content="הערות נוספות" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
                         <TextBox x:Name="nothMomTextBox" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding nothMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="16" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
 
                     </Grid>
                     <Button x:Name="button1" Content="הוספה" HorizontalAlignment="Left" Margin="62,39.6,50,38" Grid.Row="1" VerticalAlignment="Bottom" Width="150" Height="50" BorderBrush="{x:Null}" Click="button1_Click">
@@ -171,7 +172,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Label Content="כתובת האם" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="3" VerticalAlignment="Center" FontSize="16"/>
-                        <TextBox x:Name="addressMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding AddressMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="14" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <local:PlaceAutoCompleteUC x:Name="addressMomTextBox1" Grid.Row="3" Text="{Binding AddressMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="5,10" FontSize="16" FlowDirection="RightToLeft"  />
                         <Label Content="שם פרטי" Grid.Column="1" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center" FontSize="16"/>
                         <TextBox x:Name="firstNameMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Text="{Binding FirstNameMom, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=LostFocus, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="14" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" LostFocus="firstNameMomTextBox1_LostFocus"/>
                         <Label Content="שם משפחה" Grid.Column="1" HorizontalAlignment="Right"  Margin="3" Grid.Row="1" VerticalAlignment="Center" FontSize="16"/>
@@ -231,14 +232,11 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Label Content="כתובת עבור המטפלת" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="1" VerticalAlignment="Center" FontSize="16"/>
-                        <TextBox x:Name="addressForNannyTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding AddressForNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="14" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        <Label Content="כתובת האם" Grid.Column="1" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center" FontSize="16"/>
-                        <TextBox x:Name="addressMomTextBox2" HorizontalAlignment="Left" Height="23" Margin="3" Text="{Binding AddressMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="14" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        <Label Content="הערות" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="2" VerticalAlignment="Center" FontSize="16"/>
-                        <TextBox x:Name="nothMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding nothMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="14" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Label Content="כתובת עבור המטפלת" Grid.Column="1" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center" FontSize="16"/>
+                        <local:PlaceAutoCompleteUC x:Name="addressForNannyTextBox1" Text="{Binding AddressForNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="5,10" FontSize="16" FlowDirection="RightToLeft" />
+                        <Label Content="הערות" Grid.Column="1" HorizontalAlignment="Right" Margin="3" Grid.Row="1" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox x:Name="nothMomTextBox1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding nothMom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontSize="14" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                     </Grid>
                     <Button x:Name="button3" Content="עדכון" HorizontalAlignment="Left" IsEnabled="False" Margin="61,270.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Height="50" BorderBrush="{x:Null}" Background="#FFE8E8E8" Click="button3_Click" BorderThickness="0"/>
                     <ComboBox x:Name="motherUpdateCombo" Grid.Column="2" HorizontalAlignment="center" Height="30" Margin="0,70,0,0" VerticalAlignment="Top" Width="200" Grid.RowSpan="2" SelectionChanged="comboBox_SelectionChanged" FlowDirection="RightToLeft" VerticalContentAlignment="Center" FontSize="16"/>
